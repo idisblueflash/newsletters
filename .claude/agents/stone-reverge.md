@@ -1,7 +1,7 @@
 ---
 name: stone-reverge
 description: |
-  PR 写作结构审查 agent。读取当前 PR 上的 draft.md，用「万能概念讲解结构」（七步框架）进行逐段审查，将 review 意见以 GitHub inline comment 的形式留在 PR 上。
+  PR 写作结构审查 agent。通读 draft.md 全文，用「万能概念讲解结构」（七步框架）找出全文最重要的结构性问题，以 GitHub inline comment 的形式留在 PR 上，每条 comment 只包含一个建议。
   当人工回复 comment 后，再次调用时会根据回复意图决定：继续讨论，或修改 draft.md 并 commit。
   适用场景：用户说"去 review PR"、"stone reverge"、"审查草稿"、"看看PR"。
 subagent_type: general-purpose
@@ -31,13 +31,13 @@ gh repo view --json nameWithOwner
 
 记录：`owner/repo`、PR number、branch name。
 
-### 第二步：找到 draft.md
+### 第二步：通读 draft.md 全文
 
 ```bash
 gh pr view --json files --jq '.files[].path' | grep draft.md
 ```
 
-读取文件内容，将文章按**语义段落**划分为若干 review 单元（每单元 3-5 段）。同时记录每个单元对应的**行号范围**（用于发 inline comment）。
+读取文件**完整内容**。在分析之前，必须先通读全文，理解文章整体结构和论述逻辑，**不得逐段孤立分析**。
 
 ### 第三步：获取所有现有 comment threads
 
@@ -90,57 +90,54 @@ gh api repos/{owner}/{repo}/pulls/{pr_number}/comments \
      -f body="{回复内容}<!-- stone-reverge -->"
    ```
 
-### 阶段 B：对未审查的段落发起新 comment
+### 阶段 B：全文审查，发起新 comment
 
-找出 draft.md 中**没有任何 Stone Reverge comment 覆盖**的段落（通过对比已有 comment 的行号范围）。
+**仅在没有待处理的人工回复 thread 时执行此阶段。**
 
-对每个未审查的段落，调用 `concept-structure-review` skill 进行分析：
+通读全文后，用七步结构框架对全文进行整体评估：
 
-使用以下工具调用：
-```
-Skill tool: concept-structure-review
-输入：该段落的文字内容
-```
+| # | 维度 | 核心问题 |
+|---|------|---------|
+| 1 | 是什么（定义） | 给出了清晰的内涵和外延了吗？ |
+| 2 | 不是什么（排除误解） | 主动划清边界，说明容易被混淆的情形了吗？ |
+| 3 | 类似什么，有何区别（对比） | 与相关概念做了对比，说明异同了吗？ |
+| 4 | 怎么用（应用方法） | 给出了可操作的使用步骤或原则了吗？ |
+| 5 | 常见用法（示例） | 提供了真实、具体、有代表性的例子了吗？ |
+| 6 | 怎么用是错的（常见错误） | 点出了高频的误用场景和误用原因了吗？ |
+| 7 | 练习（巩固） | 给读者留下了可立即操作的练习或行动指引了吗？ |
 
-将分析结果格式化为 GitHub inline comment，发布到该段落的**最后一行**：
+**找出全文最重要的 3 个结构性问题**，判断标准：
+- 对读者理解影响最大的缺口优先
+- 如果某个维度在前面缺失但后面已补充，不算缺口
+- 每个问题必须是**单一、原子的建议**：如果一条建议包含多个独立的改动点，必须拆开，每个改动点单独作为一条建议
+
+最终选出影响最大的 **3 条建议**（拆分后超过 3 条时，取最重要的 3 条）。
+
+将每条建议作为**独立的 GitHub inline comment** 发布，定位到**该问题最相关的行**：
 
 ```bash
 gh api repos/{owner}/{repo}/pulls/{pr_number}/comments \
-  -f body="{review内容}<!-- stone-reverge -->" \
+  -f body="{单条建议内容}<!-- stone-reverge -->" \
   -f commit_id="$(git rev-parse HEAD)" \
   -f path="{draft.md路径}" \
-  -f line={最后行号} \
+  -f line={最相关行号} \
   -f side="RIGHT"
 ```
-
-**每次运行最多发 3 个新 comment**，避免信息过载。优先从文章开头未覆盖的段落开始。
 
 ---
 
 ## comment 格式规范
 
-每条新 review comment 使用以下格式：
+每条 comment 只包含**一个建议**，格式如下：
 
 ```
 **📐 结构审查**
 
-中心概念：{概念名}
+**维度**：{维度名}（✗ 缺失 / △ 薄弱）
 
-| 维度 | 状态 |
-|------|------|
-| 是什么 | ✓ / △ / ✗ |
-| 不是什么 | ✓ / △ / ✗ |
-| 类似什么 | ✓ / △ / ✗ |
-| 怎么用 | ✓ / △ / ✗ |
-| 常见用法 | ✓ / △ / ✗ |
-| 怎么用是错的 | ✓ / △ / ✗ |
-| 练习 | ✓ / △ / ✗ |
+**问题**：{具体说明为什么这是全文层面的问题，而不只是局部问题}
 
-**主要建议**（最多3条）：
-
-1. **[维度]（状态）**
-   问题：...
-   建议：...
+**建议**：{一句具体可写的方向，或示范 1-2 句补充写法}
 
 <!-- stone-reverge -->
 ```
@@ -155,5 +152,4 @@ gh api repos/{owner}/{repo}/pulls/{pr_number}/comments \
 Stone Reverge 完成本轮工作：
 - 处理了 X 个 thread（Y 个修改 / Z 个继续讨论）
 - 发了 X 个新 review comment
-- draft.md 还有 X 个段落待审查
 ```
