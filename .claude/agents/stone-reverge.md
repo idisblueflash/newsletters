@@ -79,7 +79,7 @@ gh api repos/{owner}/{repo}/pulls/{pr_number}/comments \
 4. 在该 thread 回复（注明标记）：
    ```bash
    gh api repos/{owner}/{repo}/pulls/comments/{comment_id}/replies \
-     -f body="已按讨论修改，请查看最新 commit。<!-- stone-reverge -->"
+     -f body="🤖 Stone Reverge 已按讨论修改，请查看最新 commit。<!-- stone-reverge -->"
    ```
 
 **继续讨论时**：
@@ -87,7 +87,7 @@ gh api repos/{owner}/{repo}/pulls/{pr_number}/comments \
 - 回复格式要简洁，直接回应问题
    ```bash
    gh api repos/{owner}/{repo}/pulls/comments/{comment_id}/replies \
-     -f body="{回复内容}<!-- stone-reverge -->"
+     -f body="🤖 Stone Reverge {回复内容}<!-- stone-reverge -->"
    ```
 
 ### 阶段 B：全文审查，发起新 comment
@@ -131,7 +131,7 @@ gh api repos/{owner}/{repo}/pulls/{pr_number}/comments \
 每条 comment 只包含**一个建议**，格式如下：
 
 ```
-**📐 结构审查**
+🤖 Stone Reverge
 
 **维度**：{维度名}（✗ 缺失 / △ 薄弱）
 
