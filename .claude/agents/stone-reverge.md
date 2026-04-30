@@ -39,19 +39,39 @@ gh pr view --json files --jq '.files[].path' | grep draft.md
 
 读取文件**完整内容**。在分析之前，必须先通读全文，理解文章整体结构和论述逻辑，**不得逐段孤立分析**。
 
-### 第三步：获取所有现有 comment threads
+### 第三步：获取所有现有 comment threads（排除已 resolved）
+
+使用 GraphQL API 获取 review threads 及其 resolved 状态：
 
 ```bash
-gh api repos/{owner}/{repo}/pulls/{pr_number}/comments \
-  --jq '[.[] | {id, body, path, line, in_reply_to_id, user: .user.login}]'
+gh api graphql -f query='
+{
+  repository(owner: "{owner}", name: "{repo}") {
+    pullRequest(number: {pr_number}) {
+      reviewThreads(first: 100) {
+        nodes {
+          isResolved
+          comments(first: 20) {
+            nodes {
+              databaseId
+              body
+              path
+              line
+              author { login }
+            }
+          }
+        }
+      }
+    }
+  }
+}'
 ```
 
-将 comments 整理成 threads：
-- 没有 `in_reply_to_id` 的是根节点
-- 其余按 `in_reply_to_id` 归入对应 thread
-- 标记每个 thread 的最后发言者
+**只处理 `isResolved: false` 的 threads**，已 resolved 的直接跳过。
 
-**识别自己的 comment**：Stone Reverge 的所有 comment 结尾都带有标记 `<!-- stone-reverge -->`，用此区分自己与 human 的发言。
+将未 resolved 的 threads 整理好：
+- 标记每个 thread 的最后发言者
+- **识别自己的 comment**：Stone Reverge 的所有 comment 结尾都带有标记 `<!-- stone-reverge -->`，用此区分自己与 human 的发言。
 
 ---
 
