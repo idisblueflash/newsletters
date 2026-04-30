@@ -70,11 +70,11 @@ gh api repos/{owner}/{repo}/pulls/{pr_number}/comments \
 **执行修改时**：
 1. 读取 thread 中完整的讨论内容，理解达成的修改共识
 2. 定位 draft.md 中对应段落，按共识修改文字
-3. 提交修改：
+3. 提交并推送修改：
    ```bash
    git add {draft.md路径}
    git commit -m "review: 按讨论修改 [简短描述]"
-   git push
+   git push origin HEAD
    ```
 4. 在该 thread 回复（注明标记）：
    ```bash
