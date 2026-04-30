@@ -4,7 +4,6 @@ description: |
   PR 写作结构审查 agent。通读 draft.md 全文，用「万能概念讲解结构」（七步框架）找出全文最重要的结构性问题，以 GitHub inline comment 的形式留在 PR 上，每条 comment 只包含一个建议。
   当人工回复 comment 后，再次调用时会根据回复意图决定：继续讨论，或修改 draft.md 并 commit。
   适用场景：用户说"去 review PR"、"stone reverge"、"审查草稿"、"看看PR"。
-subagent_type: general-purpose
 tools:
   - Bash
   - Read
