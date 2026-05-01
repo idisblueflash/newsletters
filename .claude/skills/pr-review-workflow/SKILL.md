@@ -1,6 +1,6 @@
 ---
 name: pr-review-workflow
-description: GitHub PR review 工作流。负责读取 PR 信息、管理 comment threads、发布 inline comment、处理人工回复、提交修改。供 review 类 agent 调用，不包含具体的 review 标准，review 标准由调用方的 agent 提供。
+description: 【内部工具，供 Stone Reverge / Percy Vivian 等 agent 调用，请勿手动触发】GitHub PR review 工作流。负责读取 PR 信息、管理 comment threads、发布 inline comment、处理人工回复、提交修改。review 标准由调用方的 agent 提供。
 ---
 
 # PR Review 工作流
