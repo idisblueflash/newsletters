@@ -73,14 +73,15 @@ gh api graphql -f query='
 **执行修改时**：
 1. 读取 thread 完整讨论，理解修改共识
 2. 定位 draft.md 对应段落，按共识修改
-3. 提交并推送：
+3. 提交并推送，记录 commit hash：
    ```bash
    git add {draft.md路径}
    git commit -m "review: 按讨论修改 [简短描述]"
    git push origin HEAD
+   HASH=$(git rev-parse HEAD)
    ```
-4. 回复 thread（使用调用方 agent 定义的署名格式 + 专属标记）：
-   `{署名} 已按讨论修改，请查看最新 commit。{专属标记}`
+4. 回复 thread，附上可点击的 commit 链接（使用调用方 agent 定义的署名格式 + 专属标记）：
+   `{署名} 已按讨论修改：{owner}/{repo}@{HASH}{专属标记}`
 
 **继续讨论时**：
 - 针对 human 疑问给出进一步解释或替代方案
