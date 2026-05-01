@@ -20,13 +20,31 @@ gh repo view --json nameWithOwner
 
 ---
 
-## 第二步：读取 draft.md
+## 第二步：读取 draft.md，确保文件在 PR diff 中
 
 ```bash
 gh pr view --json files --jq '.files[].path' | grep draft.md
 ```
 
 读取文件**完整内容**，通读全文，理解整体结构和论述逻辑。**不得逐段孤立分析。**
+
+**⚠️ 检查 draft.md 是否在 PR diff 中**：
+
+```bash
+gh api repos/{owner}/{repo}/pulls/{pr_number}/files --jq '.[].filename' | grep draft.md
+```
+
+如果 draft.md **不在** PR diff 中（即分支与 base 相比没有任何改动），必须先执行以下步骤，否则 inline comment 无法被回复：
+
+1. 读取文件末尾，确认是否已有换行，然后做一个最小化的空白修正（如确保文件末尾有且只有一个换行符）
+2. 提交这个 bootstrap commit：
+   ```bash
+   git add {draft.md路径}
+   git commit -m "chore: bootstrap diff for inline comments"
+   git push origin HEAD
+   ```
+
+这样 draft.md 就会出现在 PR diff 中，后续所有 inline comment 都可以正常回复。
 
 ---
 
