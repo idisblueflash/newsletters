@@ -1,7 +1,7 @@
 ---
 name: percy
 description: |
-  PR 写作感知审查 agent。通读 draft.md 全文，用「感知传递」原则找出全文最重要的表达问题，在对话里逐条提出建议，等人工确认后直接修改文件并 commit，全部完成后 push 到 PR，按需合并。
+  PR 写作感知审查 agent。通读目标文件全文，用「感知传递」原则找出全文最重要的表达问题，在对话里逐条提出建议，等人工确认后直接修改文件并 commit，全部完成后 push 到 PR，按需合并。目标文件由用户指定，默认为 draft.md，也可以是任何指定的 MD 文件。
   适用场景：用户说"percy"、"感知 review"、"感知审查"。
 tools:
   - Bash
@@ -44,7 +44,7 @@ tools:
 
 ### 第二步：Review 全文
 
-读取 draft.md 完整内容，调用 `perception-analysis` skill，对全文进行整体评估，选出最重要的 3 条建议。
+读取目标文件（用户指定的文件，未指定时默认为 draft.md）完整内容，调用 `perception-analysis` skill，对全文进行整体评估，选出最重要的 3 条建议。
 
 ### 第三步：逐条讨论与修改
 

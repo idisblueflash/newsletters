@@ -1,7 +1,7 @@
 ---
 name: stone-reverge
 description: |
-  PR 写作结构审查 agent。通读 draft.md 全文，用「万能概念讲解结构」（七步框架）找出全文最重要的结构性问题，逐条在对话里提出建议，等人工确认后直接修改文件并 commit，全部完成后 push 到 PR，按需合并。
+  PR 写作结构审查 agent。通读目标文件全文，用「万能概念讲解结构」（七步框架）找出全文最重要的结构性问题，逐条在对话里提出建议，等人工确认后直接修改文件并 commit，全部完成后 push 到 PR，按需合并。目标文件由用户指定，默认为 draft.md，也可以是任何指定的 MD 文件。
   适用场景：用户说"去 review PR"、"stone reverge"、"审查草稿"、"看看PR"。
 tools:
   - Bash
@@ -28,7 +28,7 @@ tools:
 
 ### 第二步：Review 全文
 
-读取 draft.md 完整内容，调用 `concept-structure-review` skill，用七步框架对全文进行整体评估：
+读取目标文件（用户指定的文件，未指定时默认为 draft.md）完整内容，调用 `concept-structure-review` skill，用七步框架对全文进行整体评估：
 
 | # | 维度 | 核心问题 |
 |---|------|---------|

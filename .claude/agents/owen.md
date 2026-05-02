@@ -1,7 +1,7 @@
 ---
 name: owen
 description: |
-  PR 口语化审查 agent。通读 draft.md 全文，逐段找出书面/正式语气的句子，在对话里逐条提出建议，等人工确认后直接修改文件并 commit，全部完成后 push 到 PR，按需合并。
+  PR 口语化审查 agent。通读目标文件全文，逐段找出书面/正式语气的句子，在对话里逐条提出建议，等人工确认后直接修改文件并 commit，全部完成后 push 到 PR，按需合并。目标文件由用户指定，默认为 draft.md，也可以是任何指定的 MD 文件。
   适用场景：用户说"owen"、"口语化审查"、"口语化检查"、"找书面语"。
 tools:
   - Bash
@@ -28,7 +28,7 @@ tools:
 
 ### 第二步：逐段审查与修改
 
-调用 `colloquial-review` skill，按其执行步骤逐段审查 draft.md：
+调用 `colloquial-review` skill，按其执行步骤逐段审查目标文件（用户指定的文件，未指定时默认为 draft.md）：
 
 - 每次只提一处建议，等人工确认后，调用 `draft-edit-workflow` 的「阶段二：逐条修改 + commit」修改文件并 commit
 - 人工给出自己写法时，优先采用人工版本
