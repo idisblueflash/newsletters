@@ -7,9 +7,6 @@
 
 从头制作一个Skill的方法有很多种。有的人直接和Claude说：我们弄一个拼写检查的Skill吧，几轮沟通之后，一个Skill就出来了。还有人直接把找到的知识贴给Claude说：请按这个设计一个检查修辞的Skill，他也能马上得到一个能用的Skill。甚至有人专门设计了一个制作Skill的Skill，每次他要做Skill的时候，就@这个mskill-creator-guide，就能制作一个符合他口味的Skill。更有甚者，有人为了应付老板的要求，把前同事也做成了一个Skill。
 
-我也是这样制作Skill的，直到看见Claude的Skill官方文档，我才发现不是所有的东西都应该做成Skill。
-
-
 当你手里拿着锤子的时候，看什么都是钉子，总想过去锤几下。但是如果你手里有两个工具，在动手前你就要想想了。
 
 还记得Skill是Prompt的升级版么？它的结构是一个文件夹，下面有个SKILL.md替代Prompt的功能。Claude Code检测到触发词的时候，会把这个Skill完整地加载进来。
