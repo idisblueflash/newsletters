@@ -38,9 +38,9 @@ tools:
 
 ## 执行步骤
 
-### 第一步：开 PR
+### 第一步：建分支
 
-调用 `draft-edit-workflow` 的「阶段一：开 PR」，同步 main、创建新分支、bootstrap commit、推送、创建 PR。
+按 `draft-edit-workflow 4.0` 阶段 1 建分支，格式：`{文章目录slug}-percy-review`。
 
 ### 第二步：Review 全文
 
@@ -58,12 +58,12 @@ tools:
 **建议**：{一句具体可写的方向，或示范 1-2 句替代写法}
 ```
 
-等人工确认后，调用 `draft-edit-workflow` 的「阶段二：逐条修改 + commit」修改文件并 commit（commit message 写明修改原因）。确认完成后再提下一条。
+等人工确认后，按 `draft-edit-workflow 4.0` 阶段 4 修改文件并 commit。确认完成后再提下一条。
 
-### 第四步：push 到 PR
+### 第四步：Push + 建 PR
 
-所有建议处理完毕后，调用 `draft-edit-workflow` 的「阶段三：push 到 PR」统一推送。
+所有建议处理完毕后，按 `draft-edit-workflow 4.0` 阶段 6 push 并建 PR。
 
 ### 第五步：合并
 
-用户明确要求时，调用 `draft-edit-workflow` 的「阶段四：合并 PR」。
+用户明确要求时，按 `draft-edit-workflow 4.0` 阶段 7 合并。
