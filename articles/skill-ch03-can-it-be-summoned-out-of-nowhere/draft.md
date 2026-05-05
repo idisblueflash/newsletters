@@ -206,8 +206,6 @@ Claude调用的时候，会看出问题，然后找你确认，而不是上来�
 | 加上更多关键词                               | 81.5-100% |
 | 指令式：ALWAYS invoke。。。Do not X directly | 94.4-100% |
 
-直接命令Claude该做什么， 语气强制要比只是描述这个skill能做什么的触发率高出20倍。
-
 你可以按照这个推荐的模板提高你的触发率：
 ```
 description: <Domain> expert. ALWAYS invoke this skill when the user asks about 
