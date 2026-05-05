@@ -22,7 +22,6 @@ skill-ch03-can-it-be-summoned-out-of-nowhere
 | 地方   | 具体  | 是物理位置，能指向实体，只是没有给出名字。 |
 | 夜    | 抽象  | 是时间概念，看不到摸不到          |
 
-让我们用Claude Code设计这个Skill：
 ```
 请帮我设计一个叫做anki-abstract-noun的skill，它根据对话中的内容，找出练习的错误的抽象名词，并制作成Anki卡片。输出的格式可以参考：
 
