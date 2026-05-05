@@ -143,8 +143,6 @@ Skill创建完成后，我们用/exit命令退出Claude Code，再用claude命�
 生成Anki卡片
 ```
 # 动词卡片skill
-让我们再设计一个Skill，用来把查找错误的动词做成卡片。
-
 我们这次可以说：请你参考 /anki-abstract-noun 设计一个anki-verb 的skill用来制作学生练习里漏掉的动词. 
 
 Claude可能会找你澄清一些说法，比如卡片应该是什么样子的？你可以回答它：正面放句子,背面放找到的动词 。
