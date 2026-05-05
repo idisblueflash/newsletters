@@ -101,7 +101,7 @@ Anki卡片分正反面两部分，考核的词，和答案。答案里包括理�
 
 > .csv文件是Anki App接受的导入格式，你可以Anki的菜单File > Import里选中这个.csv文件，然后导入到你选中的deck里。
 
-Skill创建完成后，我们用/exit命令退出Claude Code，再用claude命令进来。这就把刚才新创的skill成功激活了。
+Skill创建完成后，我们用/exit命令退出Claude Code，再用claude命令进来。这样刚才新建的skill就激活了。
 
 > 如果你想回来的时候，接着上面的上下文，你要用--resume开关。这个完整的命令回在你每次退出Claude Code的时候提示给你。你可以复制粘贴到命令行，再回车，就能回去了。比如我的是这样的： claude --resume 498b3f8f-4a88-4bb4-aab0-cc41e6e17615
 >
