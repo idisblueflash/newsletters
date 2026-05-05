@@ -62,7 +62,7 @@ Anki卡片分正反面两部分，考核的词，和答案。答案里包括理�
 ```
 选1. Yes就行。下一个2. Yes，and always allow access to ... from this project是再说永远不要再问同样问题了。3. No是不要执行，通常你用不到。
 
-简单的讲，skill是在你的~/.claude/skills下面的一个文件夹，然后里面的SKILL.md写了如何使用这个skill。也就是提示词。
+说白了，skill就是你~/.claude/skills下面的一个文件夹，里面的SKILL.md写的是怎么用这个skill，也就是提示词。
 > ~在Mac OS下是你的「家目录」的缩写，展开之后~/就代表着/Users/husongtao/。
 
 这时候还有一个确认：
