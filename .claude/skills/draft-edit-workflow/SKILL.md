@@ -1,5 +1,6 @@
 ---
 name: draft-edit-workflow
+version: "4.0.0"
 description: 文章协作修改 + PR 追踪工作流（Workflow 4.0）。减少交互次数，保留原子化提交。当用户说"创建 PR 方便我们修改"、"把修改提交到 PR"、"合并 PR"、或配合任何 review skill 需要 PR 追踪时激活。
 ---
 
