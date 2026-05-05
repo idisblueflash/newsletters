@@ -155,8 +155,6 @@ Claude可能会找你澄清一些说法，比如卡片应该是什么样子的�
 
 这时候如果你输入：`制作Anki卡片`，你只会看到anki-abstract-noun被调用，而anki-verb没有调用的情况。
 
-你如果打开两个SKILL.md对比着看，就能发现区别。
-
 ```
 ---
 name: anki-abstract-noun
