@@ -189,6 +189,8 @@ description: 从对话中找出学生在动词识别练习里漏掉的动词，�
 | 加上更多关键词                               | 81.5-100% |
 | 指令式：ALWAYS invoke。。。Do not X directly | 94.4-100% |
 
+被动式触发率低的原因在于，它只描述了用途，没有对 Claude 发出明确的行动指令。Claude 在判断时会退回到「猜意图」的模式，所以触发率不稳定。
+
 你可以按照这个推荐的模板提高你的触发率：
 ```
 description: <Domain> expert. ALWAYS invoke this skill when the user asks about 
