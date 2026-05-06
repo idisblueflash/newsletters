@@ -68,7 +68,7 @@ skill-ch03-can-it-be-summoned-out-of-nowhere
 
  Esc to cancel · Tab to amend
 ```
-选1. Yes就行，因为要创建这个SKILL.md文件。第二个选择是允许Claude编辑它自己的settings。对于初学者我不推荐，因为Claude会替你做很多决定，而你却不知道。后面出了问题，你不知道是哪一步被它改了，只能从头翻设置文件。
+选1. Yes就行，因为要创建这个SKILL.md文件。第二个选择是允许Claude编辑它自己的settings。对于初学者我不推荐，因为 Claude 会替你做很多决定，你点了一个「允许」，屏幕上已经在滚，等你想搞清楚它在干什么，它已经改完了。后面出了问题，你不知道是哪一步被它改了，只能从头翻设置文件。
 
 现在Claude做好了新的Skill，你会看到类似这样的回复：
 ```
