@@ -153,7 +153,7 @@ Claude可能会找你澄清一些说法，比如卡片应该是什么样子的�
 
 # 胡乱触发
 
-这时候如果你输入：`制作Anki卡片`，屏幕上只弹出了anki-abstract-noun，anki-verb没有出现。
+输入`制作Anki卡片`，屏幕上弹出来一个：anki-abstract-noun。anki-verb 没有动。
 
 ```
 ---
