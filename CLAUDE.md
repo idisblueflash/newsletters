@@ -36,11 +36,23 @@
 
 **Fast mode**：用户说「fast mode」或「快速模式」时启用。每条建议的执行顺序严格如下：
 
-1. Percy 提建议
+1. Percy 提建议（格式见下方）
 2. 主 agent 执行 Edit
-3. 后台调用 Charlie commit
+3. 后台调用 Charlie commit（commit message body 写原因，见下方）
 4. **主 agent 用 Read tool 重新读取刚改动的行及前后各 10 行**（必须，不可跳过；不需要读全文）
 5. Percy 基于重读后的文件内容提下一条建议
+
+**Fast mode 建议格式**：只输出行号 + 改动，不写解释。例：
+```
+第47行：「感知传递」→「读者脑海里浮现的画面」
+```
+
+**Fast mode commit message 格式**：标题用 `[Percy-N] 简述改动`，body 写原因。例：
+```
+[Percy-3] 第47行：感知传递→读者脑海里浮现的画面
+
+原因：抽象名词换成具体视觉画面，让读者直接感知
+```
 
 每条独立 commit（方便事后 `git revert <hash>` 精确回滚）。全部完成后开 PR 供用户 review。
 
