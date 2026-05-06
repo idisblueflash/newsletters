@@ -109,7 +109,7 @@ Skill创建完成后，我们用/exit命令退出Claude Code，再用claude命�
 @anki-abstract-noun
 ```
 
-如果你能看到下面这个消息，就证明Skill被触发了。
+你看到这条消息，skill 就认出来了：
 ```
  Skill(anki-abstract-noun)                 
   ⎿  Successfully loaded skill
