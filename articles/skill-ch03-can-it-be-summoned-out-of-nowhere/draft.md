@@ -167,7 +167,7 @@ description: 从对话中找出学生在动词识别练习里漏掉的动词，�
 ---
 ```
 
-`制作Anki卡片`这个触发短语在anki-abstract-noun里高度一致，也没有在anki-verb里出现。
+`制作Anki卡片`这五个字，在anki-abstract-noun的description里原原本本出现过；anki-verb里一个字都没有。
 
 那么如果我们也把这个触发短语加入anki-verb，是不是就能把胡乱触发的效果复刻出来呢？我把同一个触发短语加进去，发了同样一条消息，等来的不是随机的跳出来一个skill，而是 Claude 停下来问你想用哪个。
 ```
