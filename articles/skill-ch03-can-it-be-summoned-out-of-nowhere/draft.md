@@ -33,7 +33,7 @@ skill-ch03-can-it-be-summoned-out-of-nowhere
 保存成.csv文件
 ```
 
-制作过程中，Claude Code会和你要「家目录」下的.claude/skills文件夹的访问权限。这是skill文件的默认存放位置。选择yes就可以。
+制作过程中，Claude Code 会弹出来问你，能不能进「家目录」下的 .claude/skills 文件夹。这是 skill 文件住的地方。选 yes 就可以。
 
 > 你可能会注意到它不是在你的项目目录下的.claude/skills里创建的skill，而是这样的： /Users/husongtao/.claude/skills/anki-abstract-noun。在Mac OS下/Users/husongtao/是你的「家目录」。也就是你自己文件的存放路径，它下面可以有各种文件夹：Desktop、Downloads，你也可以创建一个Projects放你的多个Vibe coding项目。husongtao这是我登录自己Mac的用户名，你的会不一样，但是你肯定能认出来。
 >
