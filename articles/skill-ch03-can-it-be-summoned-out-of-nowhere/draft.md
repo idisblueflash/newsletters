@@ -5,7 +5,7 @@ skill-ch03-can-it-be-summoned-out-of-nowhere
 
 你只是照常说话，说到了它认识的词，它自己就跳出来了；你也可以通过 /skill-name 主动叫它。Skill 一创建出来，这两种方式就都开着，这叫「预设」触发方式。
 
-这就好比你去医院看病。如果你很清楚自己应该看哪科，你可以直接说「我要看牙科」（手动指定），但是有时候你只说了「我头疼」，分诊台的护士听完就把你领到神经内科门口，你甚至不用开口说「我要看哪科」。
+这就好比你去医院看病。如果你很清楚自己应该看哪科，你可以直接说「我要看牙科」，但是有时候你只说了「我头疼」，分诊台的护士听完就把你领到神经内科门口，你甚至不用开口说「我要看哪科」。
 
 「预设」是两个入口都开着：你没叫它，屏幕上也可能突然弹出它；你叫了一个，另一个也可能跟着探出头来。
 
@@ -33,7 +33,7 @@ skill-ch03-can-it-be-summoned-out-of-nowhere
 保存成.csv文件
 ```
 
-制作过程中，Claude Code会和你要「家目录」下的.claude/skills文件夹的访问权限。这是skill文件的默认存放位置。选择yes就可以。
+制作过程中，Claude Code 会弹出来问你，能不能进「家目录」下的 .claude/skills 文件夹。这是 skill 文件住的地方。选 yes 就可以。
 
 > 你可能会注意到它不是在你的项目目录下的.claude/skills里创建的skill，而是这样的： /Users/husongtao/.claude/skills/anki-abstract-noun。在Mac OS下/Users/husongtao/是你的「家目录」。也就是你自己文件的存放路径，它下面可以有各种文件夹：Desktop、Downloads，你也可以创建一个Projects放你的多个Vibe coding项目。husongtao这是我登录自己Mac的用户名，你的会不一样，但是你肯定能认出来。
 >
@@ -68,7 +68,7 @@ skill-ch03-can-it-be-summoned-out-of-nowhere
 
  Esc to cancel · Tab to amend
 ```
-选1. Yes就行，因为要创建这个SKILL.md文件。第二个选择是允许Claude编辑它自己的settings。对于初学者我不推荐，因为 Claude 会替你做很多决定，你点了一个「允许」，屏幕上已经在滚，等你想搞清楚它在干什么，它已经改完了。后面出了问题，你不知道是哪一步被它改了，只能从头翻设置文件。
+选1. Yes就行，因为要创建这个SKILL.md文件。第二个选择是允许Claude编辑它自己的settings。对于初学者我不推荐，因为 Claude 会替你做很多决定，你选了「2. Yes， and always allow ...」，屏幕上就滚起来了，等你想搞清楚它在干什么，它已经改完了。后面出了问题，你不知道是哪一步被它改了，只能从头翻。
 
 现在Claude做好了新的Skill，你会看到类似这样的回复：
 ```
@@ -167,7 +167,7 @@ description: 从对话中找出学生在动词识别练习里漏掉的动词，�
 ---
 ```
 
-`制作Anki卡片`这五个字，在anki-abstract-noun的description里原原本本出现过；anki-verb里一个字都没有。
+`制作Anki卡片`这五个字，在 anki-abstract-noun 的 description 里一字不差地写着；anki-verb 里一个字都没有。
 
 那么如果我们把同一个触发短语也加进anki-verb，能不能让两个skill同时抢着响应？我把同一个触发短语加进去，发了同样一条消息，等来的不是俩 skill 抢着跳出来各干各的，而是 Claude 停下来问你想用哪个。
 ```
