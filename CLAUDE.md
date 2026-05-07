@@ -36,8 +36,8 @@
 
 **Fast mode**：用户说「fast mode」或「快速模式」时启用。每条建议的执行顺序严格如下：
 
-1. Percy 提建议
-2. 主 agent **不等用户确认**，直接执行 Edit（fast mode 的核心：建议即执行，不需要二次确认）
+1. Percy 内部确定问题和改写，**不向用户输出任何内容**——用户通过 git diff / PR review 看结果，屏幕上显示是浪费
+2. 主 agent 直接执行 Edit（fast mode 的核心：建议即执行，不需要二次确认）
 3. 后台调用 Charlie commit
 4. **主 agent 用 Read tool 重新读取刚改动的行及前后各 5 行**（必须，不可跳过；不需要读全文）
 5. Percy 基于重读后的文件内容提下一条建议
