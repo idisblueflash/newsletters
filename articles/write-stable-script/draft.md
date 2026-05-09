@@ -479,3 +479,6 @@ URL 和代码是不可拆分的整体，内部不处理，左右各加一个空�
 你现在能一步一个脚印的做 Vibe Coding 了，我相信你会花很少时间去找 bug 了。即使碰到新的 bug，让 Codex 把它改写成一个测试，然后修复它。这个 bug 就再也不会回过头在三更半夜来咬你了。
 
 祝 Vibe Coding 顺利！
+
+## 参考
+- [中英文混排加空格（盘古之白）是否有充分理由坚持？](https://github.com/idisblueflash/newsletters/blob/main/articles/write-stable-script/2026-05-08-pangu-spacing-validity.md)
