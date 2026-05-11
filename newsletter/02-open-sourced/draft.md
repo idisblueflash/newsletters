@@ -17,13 +17,13 @@
 
 ## 我这周的产出
 
-[你的 Skill 会被莫名起来地召唤出来么？](https://ai-companion-newsletter.beehiiv.com/p/vibe-coding-tdd-stable-script)
+[你的 Skill 会被莫名其妙地召唤出来么？](https://ai-companion-newsletter.beehiiv.com/p/skill-trigger-rate)
 这是「从零设计一个 Skill 」系列的一篇，讲了如何提高 Skill 的触发成功率。这篇文章差点写蹦，我在辛苦的往回圆这个主题，到了最后才安全落地。我开始写大纲的时候太主观了，写到后面才发现自己想错了，于是全文感觉会有点不一致。
 
 [写日志还是日记](https://ai-companion-newsletter.beehiiv.com/p/vibe-coding-dev-log-vs-diary)
 这是「为什么 Vibe Coding 新人应该「公开写日志」」系列的第一集。我真的不想写成系列。只是文章一旦超过两千字，我现在控制不住。不是越写越长，就是会反复修改。所以我干脆就写成系列短篇了。等第二天脑子好用了，再接着写吧。
 
-[如何边写稳定的脚本](https://ai-companion-newsletter.beehiiv.com/p/vibe-coding-tdd-stable-script)
+[如何编写稳定的脚本](https://ai-companion-newsletter.beehiiv.com/p/vibe-coding-tdd-stable-script)
 这是一篇实验性质的文章。我在尝试一边探索，一边写日记的路线。总共写了三个小时加上半个小时的修改，不算后面 Claude 那些 Subagents 的帮忙。我不知道你读起来感觉如何，反正我是写得挺爽，完全不知道时间过得这么快。
 
 这种教程类的文章在 Beehiiv 电子报平台上有个问题。从 MarkDown 文件贴过去的时候很痛苦。因为各种复杂的原因，我只好手工一段段的复制粘贴，费老劲了。听说这个平台出了 MCP，下周我打算试试看。
