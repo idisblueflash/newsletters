@@ -3,3 +3,8 @@
 .claude/scheduled_tasks.lock
 assets/images/
 output/
+eval/.venv/
+eval/__pycache__/
+**/__pycache__/
+eval/.env
+**/.deepeval/
