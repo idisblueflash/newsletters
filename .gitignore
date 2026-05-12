@@ -6,3 +6,4 @@ output/
 eval/.venv/
 eval/__pycache__/
 **/__pycache__/
+eval/.env
