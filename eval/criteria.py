@@ -1,10 +1,10 @@
 CRITERIA = [
-    ("必要性",   "文章是否说明了讲解这个概念的必要性？读者应该能理解为什么要了解这个概念。"),
-    ("概念定义", "文章是否清晰定义了核心概念是什么？"),
-    ("反例",     "文章是否说明了概念不是什么，或提供了反例？"),
-    ("类比",     "文章是否用类比或对比帮助读者理解这个概念？"),
-    ("使用方法", "文章是否说明了怎么使用这个概念？"),
-    ("正确用法", "文章是否举出了正确的使用示例？"),
-    ("错误用法", "文章是否指出了常见的错误用法？"),
-    ("练习",     "文章是否提供了练习题目或读者可以操作实践的内容？"),
+    ("necessity",      "Does the article explain why this concept is worth knowing? The reader should understand the motivation before diving in."),
+    ("definition",     "Does the article clearly define what the concept is?"),
+    ("counter-example","Does the article explain what the concept is NOT, or provide a counter-example?"),
+    ("analogy",        "Does the article use an analogy or contrast to help the reader build intuition?"),
+    ("how-to-use",     "Does the article explain how to apply or use the concept?"),
+    ("correct-usage",  "Does the article show a correct, concrete example of the concept in practice?"),
+    ("wrong-usage",    "Does the article point out common mistakes or misuses of the concept?"),
+    ("exercise",       "Does the article provide an exercise or actionable prompt for the reader to practice?"),
 ]
