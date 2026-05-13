@@ -24,6 +24,11 @@
 
 - 避免使用破折号（——），用其他标点或改写句子结构代替
 
+# 提交规范
+
+- 每处修改独立 commit，不合并多处改动到一个 commit
+- commit message 须写清楚「改了什么 + 为什么改」，不能写泛泛的「优化表达」
+
 # Subagent 调用规范
 
 - **Stone Reverge**：Agent tool 的 `subagent_type` 必须设为 `general-purpose`，不能用 `stone-reverge`。原因：Agent tool 只识别内置 agent 类型，自定义名称会报错。
