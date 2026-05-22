@@ -30,8 +30,6 @@
 
 回想一个你常用的 Skill，是不是有过上面提到的那些情况，如果是，就看看能不能拆出脚本来。
 
-让 LLM 的归 LLM，让脚本的归脚本。
-
 ---
 
 如果你也在用 Vibe Coding 做 App / Skill，欢迎来 Discord 群，聊聊你的困惑和心得：https://discord.gg/tyAaFHMT
