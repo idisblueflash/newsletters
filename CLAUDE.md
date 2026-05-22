@@ -31,7 +31,7 @@
 
 # Subagent 调用规范
 
-- **Stone Reverge**：Agent tool 的 `subagent_type` 必须设为 `general-purpose`，不能用 `stone-reverge`。原因：Agent tool 只识别内置 agent 类型，自定义名称会报错。
+- **Stone Reverge**：Agent tool 的 `subagent_type` 必须设为 `general-purpose`，不能用 `stone-reverge`。原因：Agent tool 只识别内置 agent 类型，自定义名称会报错。Stone 只负责分析和提建议，不写文件、不 commit、不开 PR。用户确认后，由主 agent 执行 Edit + 调用 `commit-edit` skill 提交。
 - **Percy**：只负责分析，不写文件、不 commit、不开 PR。一次读完目标文件，在上下文里记住内容和行号，逐条提建议。用户确认后，由主 agent 执行 Edit + 调用 `commit-edit` skill 提交，Percy 立刻继续分析下一处。Percy 对应 `perception-analysis` 技能（感知传递），不是 `show-dont-tell-review`。
 - **Vivian**：项目级 agent（`.claude/agents/vivian.md`），专注 Show Don't Tell 表达审查。支持 normal mode 和 fast mode，调用时在 prompt 里注明模式。
 - **commit-edit**：轻量 Skill（`.claude/skills/commit-edit/`），负责 git add + commit。主 agent 完成 Edit 后用 Skill tool 调用，commit message 须写清楚修改原因。
