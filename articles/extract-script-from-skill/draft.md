@@ -26,7 +26,7 @@
 
 当然也不能无止境地多拆。另一篇论文《Less is More：Optimizing function call for LLM Execution onEdge Devices》分析了为什么过多的脚本调用会让 LLM 的脑子变得不太灵光。少调用，执行时间最多能缩短 70%。拆 Skill 里的脚本也是一样的逻辑，把这个原则告诉 AI，让它来决定拆哪些就行。
 
-罗马不是一天造成的。Skill 也不是一上来就要先拆出来脚本。实际的做法是「没问题就不动它」。让真实的案例倒逼 Skill 的改进，永远是防止过度设计的良方。比如你先让 Claude Code 设计一个纯 Prompt 的 Skill，通常 Claude Code 会默认这么做。后面碰到了每次「输出不一致」的问题，才升级到拆脚本。拆出来的脚本最好是 Python 3 + 内置库，因为每台 Mac 电脑都预装了这些环境。你从自己的 Mac Book Air 换到家里另一台的 Mac Mini ，你的 Skill 也能正常使用。
+罗马不是一天造成的。Skill 也不是一上来就要先拆出来脚本。实际的做法是「没问题就不动它」。等真实的问题出现了，再升级，这是防止过度设计最管用的办法。比如你先让 Claude Code 设计一个纯 Prompt 的 Skill，通常 Claude Code 会默认这么做。后面碰到了每次「输出不一致」的问题，才升级到拆脚本。拆出来的脚本最好是 Python 3 + 内置库，因为每台 Mac 电脑都预装了这些环境。你从自己的 Mac Book Air 换到家里另一台的 Mac Mini ，你的 Skill 也能正常使用。
 
 回想一个你常用的 Skill，是不是有过上面提到的那些情况，如果是，就看看能不能拆出脚本来。
 
