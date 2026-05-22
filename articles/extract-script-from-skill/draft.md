@@ -12,7 +12,7 @@
 
 反正拆成脚本这件事也不用我来做，和 Claude Code 说一句话就成了。要不了几分钟。
 
-就拿我这个贝叶斯的 Skill 来说，里面每一次更新的数字（概率）都有现成的数学公式，做成脚本会很稳当。论文《Evaluating Mathematical Reasoning of Large Language Models》指出，计算错误是 LLM 最难以自查的错误，而 LLM 「猜」出来的平均正确率只有 26.3%。
+像这种每一步都有现成数学公式的计算，做成脚本会很稳当。论文《Evaluating Mathematical Reasoning of Large Language Models》指出，计算错误是 LLM 最难以自查的错误，而 LLM 「猜」出来的平均正确率只有 26.3%。
 
 我们可以从「确定性」这个角度来考虑某个 Skill 是否可以拆。有些日常的 Skill 会做确定的工作。比如：刚才贝叶斯例子里的公式计算， 从 PDF 里提取文字，从一个网页里抽出所有的图片链接，把 Markdown 转成 HTML 文件。这种可以找到现成算法（如代码库、经典算法、常用本地 CLI）的， 或者有固定输入输出， 每次同样输入得到同样输出的过程，都适合让 Claude Code 拆出来做成脚本，再让 Skill 调用。 
 
