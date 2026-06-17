@@ -37,7 +37,7 @@
 
 把刚才下载的 skill 拖到这个目录下，然后和 Claude 说：「请帮我安装 fb-maker Skill。」
 
-在安装 skill 的过程中 ，你可以把你要转化的文章放在一个叫 input 的文件夹里。比如，我放进了一篇`when-extract-from-skill.md` 。
+在安装 skill 的过程中 ，你可以把你要转化的文章放在一个叫 input 的文件夹里。
 
 安装好之后输入`/fb-maker-skill @input/when-extract-from-skill.md`，他会和在 [Claude.ai](http://Claude.ai) 一样把文章转好。
 
