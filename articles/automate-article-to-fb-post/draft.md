@@ -39,11 +39,11 @@
 
 装 skill 的同时，你可以把要转的文章放进一个叫 input 的文件夹里。
 
-装好之后输入`/fb-maker-skill @input/when-extract-from-skill.md`，Claude 就把文章转好了。
+装好之后输入`/fb-maker-skill @input/when-extract-from-skill.md`，回车。屏幕上一条条往下吐：三个备选标题、正文、结尾 callback。
 
 转好以后，接着说：「请把转好的内容存成 MD 格式，放在 output 文件夹下。」
 
-一套半自动的流程就有了。
+打开 output 文件夹，里面多了一个 .md 文件。这就是半自动流程。
 
 ---
 
