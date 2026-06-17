@@ -33,7 +33,7 @@
 
 把 prompt 做成 skill。你可以和 Claude 说：「请帮我做成 skill，名叫 fb-maker」然后从 Claude.ai 下载回自己的电脑。
 
-创建一个目录叫做`leadpost-maker`，用`cd leadpost-maker` 进入这个目录，再输入`claude` 打开你的 Claude Code。这时 Claude 就能看到这个文件夹下的所有文件了。
+创建一个目录叫做`leadpost-maker`，用`cd leadpost-maker` 进入这个目录，再输入`claude` 打开你的 Claude Code。
 
 把刚才下载的 skill 拖到这个目录下，然后和 Claude 说：「请帮我安装 fb-maker Skill。」
 
