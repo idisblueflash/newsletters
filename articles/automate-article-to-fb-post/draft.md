@@ -53,7 +53,7 @@
 
 说：「请帮我转一下 @input/when-extract-from-skill.md」
 
-这时你可以观察 Claude Code 是怎么自己触发 skill、又如何自动地把结果存在 output 文件夹之下的。
+这时你可以看 Claude Code 自己怎么触发 skill，又怎么把结果自动存到 output 文件夹里。
 
 如果发现它有做得不对的地方，比如：
 
