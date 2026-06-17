@@ -1,7 +1,7 @@
 # 长文转社群文案的自动化流程
 一步一步搭出最小化流程
 
-昨天在社群里看到小艺在问「如何把长文章自动转成 FB、Threads 等社交平台的文案」。有人回复说：「这是个很适合问 AI 的问题」，也有人说：「用 Codex 可以连同配图一起做出好」。我总觉得小艺可能还是没法下手，就写了下面的回答。
+昨天在社群里看到小艺在问「如何把长文章自动转成 FB、Threads 等社交平台的文案」。有人回复说：「这是个很适合问 AI 的问题」。我总觉得小艺可能还是没法下手，就写了下面的回答。
 
 > 贴长文给 AI，问：
 >
@@ -27,9 +27,15 @@
 
 动手之前，先看一眼这套最小化流程长什么样。
 
-三个部件：一个 skill（封装转换 prompt）、一个 CLAUDE.md（告诉 Claude 何时自动触发）、一组 input/output 文件夹（规定输入输出位置）。怎么协作？你说「帮我转一下 @input/xxx.md」，Claude Code 读 CLAUDE.md，知道要调用 fb-maker skill，转完自动存进 output。为什么这么拆？prompt 不沉淀成 skill，每次都要重贴；skill 不写进 CLAUDE.md，每次都要手动 /fb-maker；没有 input/output 约定，文件就散在对话里捞不回来。
+一个 skill（从 prompt 转过来的）、一个 CLAUDE.md（告诉 Claude 啥时候自动触发）、一组 input/output 文件夹（输入输出文件的地方）。
 
-上面说到了 prompt，接下去最好把它做成 skill。你可以和 Claude 说：「请帮我做成 skill，名叫 fb-maker」然后从 Claude.ai 下载回自己的电脑。
+你说「帮我转一下 @input/xxx.md」，Claude Code 读 CLAUDE.md，知道要用 fb-maker skill，转完自动存进 output。
+
+prompt 不沉淀成 skill，每次都要重贴，一点也不自动；skill 不写进 CLAUDE.md，每次都要手动敲 /fb-maker；没有 input/output 约定，文件就会越堆越多，最后很难找。
+
+---
+
+上面说到了生成 prompt，接下来最好把它做成 skill。你可以和 Claude 说：「请帮我做成 skill，名叫 fb-maker」然后从 Claude.ai 下载回自己的电脑。
 
 创建一个目录叫做`leadpost-maker`，用`cd leadpost-maker` 进入这个目录，再输入`claude` 打开你的 Claude Code。这时 Claude 就能看到这个文件夹下的所有文件了。
 
