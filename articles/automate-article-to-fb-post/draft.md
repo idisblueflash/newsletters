@@ -1,7 +1,7 @@
 # 长文转社群文案的自动化流程
 一步一步搭出最小化流程
 
-昨天在社群里看到小艺在问「如何把长文章自动转成 FB、Threads 等社交平台的文案」。有人回复说：「这是个很适合问 AI 的问题」。我总觉得小艺可能还是没法下手。
+昨天在社群里看到小艺在问「如何把长文章自动转成 FB、Threads 等社交平台的文案」。有人回复说：「这是个很适合问 AI 的问题」。但我总觉得小艺看完还是没法下手。
 
 > 贴长文给 AI，问：
 >
@@ -21,11 +21,11 @@
 
 上面的步骤已经能让新人把文章转换好了，我也贴了社群里别人分享的自动化帖子。
 
-很多新人想到一个流程的时候，都会幻想着按下一个按钮，那套流程就跑完了。我们看别人 demo 的时候是这样的，但他们在 5 分钟之内没办法把每一个细节讲清楚。
+很多新人想到一个流程的时候，都会幻想着按下一个按钮，那套流程就跑完了。我们看别人 demo 的时候是这样的，但他们在 5 分钟之内是没办法把每一个细节讲清楚。
 
 ## 一步一步搭出最小化自动流程
 
-一个 skill（从 prompt 转过来的）、一个 CLAUDE.md（告诉 Claude 啥时候自动触发）、一组 input/output 文件夹。
+我们需要一些基础的组件：一个 skill（从 prompt 转过来的）、一个 CLAUDE.md（告诉 Claude 啥时候自动触发）、一组 input/output 文件夹。
 
 你说「帮我转一下 @input/xxx.md」，Claude Code 读 CLAUDE.md，知道要用 fb-maker skill，转完自动存进 output。
 
@@ -39,17 +39,19 @@
 
 在安装 skill 的过程中 ，你可以把你要转化的文章放在一个叫 input 的文件夹里。
 
-安装好之后输入`/fb-maker-skill @input/when-extract-from-skill.md`，他会把文章转好。
+安装好之后输入`/fb-maker-skill @input/when-extract-from-skill.md`，Claude 会把文章转好。
 
-转好以后，接着说：「请把转好的文件存成 MD 格式，放在 output 文件夹下。」
+转好以后，接着说：「请把转好的内容存成 MD 格式，放在 output 文件夹下。」
 
 一套半自动的流程就有了。
 
+---
+
 接着你可以说：「请把转换过程记在你的 CLAUDE.md 里。」
 
-等他写好了，输入`/clear` 回车，清空上下文。我们再模拟一次转化的流程。
+等它写好了，输入`/clear` 回车，清空上下文。我们再走一次流程。
 
-然后说：「请帮我转一下 @input/when-extract-from-skill.md」
+说：「请帮我转一下 @input/when-extract-from-skill.md」
 
 这时你可以观察 Claude Code 是怎么自己触发 skill、又如何自动地把结果存在 output 文件夹之下的。
 
@@ -65,7 +67,7 @@
 
 ---
 
-我们把文件夹开源了，你可以在下面的 GitHub 仓库里看到 CLAUDE.md 文件是怎么写的，fb-maker 的 skill 文件，还有转化出来的文件内容。
+我把文件夹开源了，你可以在下面的 GitHub 仓库里看到 CLAUDE.md 文件是怎么写的，fb-maker 的 skill 文件，还有转化出来的文件内容。
 
 https://github.com/idisblueflash/leadpost-maker
 
