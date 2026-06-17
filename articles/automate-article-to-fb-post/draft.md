@@ -29,8 +29,6 @@
 
 你说「帮我转一下 @input/xxx.md」，Claude Code 读 CLAUDE.md，知道要用 fb-maker skill，转完自动存进 output。
 
-prompt 不沉淀成 skill，每次都要重贴，一点也不自动；skill 不写进 CLAUDE.md，每次都要手动敲 /fb-maker；没有 input/output 约定，文件就会越堆越多，最后很难找。
-
 ---
 
 上面说到了生成 prompt，接下来最好把它做成 skill。你可以和 Claude 说：「请帮我做成 skill，名叫 fb-maker」然后从 Claude.ai 下载回自己的电脑。
