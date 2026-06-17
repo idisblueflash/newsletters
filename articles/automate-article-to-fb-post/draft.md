@@ -25,8 +25,6 @@
 
 ## 一步一步搭出最小化自动流程
 
-动手之前，先看一眼这套最小化流程长什么样。
-
 一个 skill（从 prompt 转过来的）、一个 CLAUDE.md（告诉 Claude 啥时候自动触发）、一组 input/output 文件夹（输入输出文件的地方）。
 
 你说「帮我转一下 @input/xxx.md」，Claude Code 读 CLAUDE.md，知道要用 fb-maker skill，转完自动存进 output。
