@@ -67,7 +67,7 @@
 
 ---
 
-我把文件夹开源了，你可以在下面的 GitHub 仓库里看到 CLAUDE.md 文件是怎么写的，fb-maker 的 skill 文件，还有转化出来的文件内容。
+我把文件夹开源了，你可以在下面的 GitHub 仓库里看到 CLAUDE.md 是怎么写的、fb-maker 的 skill 文件，还有转出来的文件内容。
 
 https://github.com/idisblueflash/leadpost-maker
 
