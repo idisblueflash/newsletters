@@ -40,4 +40,4 @@
 
 你们跟 AI 说话的时候，会主动提这种「不像人话」的具体要求吗？还是习惯一句「帮我做个 X」就甩过去？🤔
 
-> 完整版在我的 newsletter：[文章标题](链接待补)
+> 完整版在我的 newsletter：[想要，和说得清，是两件事]([链接待补](https://ai-companion-newsletter.beehiiv.com/p/naming-the-unspoken-requirement))
