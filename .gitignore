@@ -8,3 +8,14 @@ eval/__pycache__/
 **/__pycache__/
 eval/.env
 **/.deepeval/
+/gazette/
+
+# 文章封面图：保留 cover-prompt.md，只忽略 cover/ 和 covers/ 里的图片
+articles/*/cover*/*.png
+articles/*/cover*/*.jpg
+articles/*/cover*/*.jpeg
+articles/*/cover*/*.webp
+articles/*/cover*/*.gif
+
+# 文章封面的归档/草图，整目录忽略
+articles/*/archive/
