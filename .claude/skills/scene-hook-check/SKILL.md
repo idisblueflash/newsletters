@@ -9,6 +9,30 @@ A diagnostic flow for scene *endings* that pull the reader forward. Sibling to
 `scene-check`: that one asks whether a scene is *seen*; this one asks whether its
 exit is a **door**.
 
+## Output contract (read this before anything else)
+
+Everything below this section is **diagnostic method for you to think with — not
+an output template**. The Parts, the table, and the self-check card exist so you
+can find the first real problem fast; reproducing them in your reply is the
+failure mode this skill most needs to avoid, because a full audit buries the one
+fix the writer needs under ten they don't.
+
+Your reply contains exactly four things, in this order:
+
+1. A one-line overall judgment.
+2. One thing that's working, with the reason (quote the actual text).
+3. The **first** structural failure only — found it? Stop diagnosing. Other
+   problems you noticed get at most one sentence: "once this is fixed, X is
+   worth a look."
+4. One minimal fix. Deletion and reordering before rewriting; when you rewrite,
+   move as little as possible so the writer sees exactly what changed.
+
+Never output: a Part-by-Part audit, any scoring or verdict table, the self-check
+card (filled or blank), or judgments on Parts you never reached. This holds even
+if the user asks for "the full checklist" — briefly explain that one fix at a
+time is how this method works, deliver the four things above, and offer to go
+another round after they revise.
+
 The technique, in one line: establish an ordinary, vivid baseline; let **one**
 thing violate it; leave the violation **unexplained** at the scene's edge.
 
@@ -29,6 +53,16 @@ instead of earning it. Say so.
 Do not polish the door if there is no disturbance. Do not tune the disturbance if
 there is no normal for it to break. Work top-down; the lower parts are wasted
 effort until the higher ones hold.
+
+### Part 0 — What genre is this, and what is the "next scene"?
+
+A fiction chapter's next scene is the next chapter: suspense pulls the reader
+there. A newsletter's next scene is next week's issue: the *relationship* pulls
+the reader there. For newsletters, essays, and letters, a quiet close (see R.2)
+is a legitimate choice — do not demand a suspense-grade disturbance, and do not
+grade the close against hook-standard. Decide the genre first; it sets how hard
+Parts 2–4 should be enforced. Whatever the genre, one rule never relaxes: the
+last line lands on perception, not conclusion.
 
 ### Part 1 — Is the Normal actually *seen*, or is it filler?
 
@@ -84,14 +118,22 @@ This is what separates a hook from a cheap trick.
 The hook *is* the unanswered question. Explaining it closes the door.
 
 - **4.1** Do not explain the disturbance in the same scene. No "which was strange
-  because…", no character reasoning it away.
+  because…", no character reasoning it away. **Boundary:** *using* the
+  disturbance as a contrast or turn ("I can't tell X — but I'm sure of Y") is
+  not explaining it, as long as X itself stays unidentified. Explanation closes
+  the question; contrast leans on the question while leaving it open. Don't
+  charge a turn with 4.1.
 - **4.2** End on the perception, not the conclusion. Stop on the seen thing or the
   unresolved thought — never on "and she knew something was wrong."
 - **4.3** Trust the reader. If Parts 1–3 hold, the disturbance doesn't need
   flagging. Flagging kills it.
 - **4.4 The fix:** if the ending *is* a conclusion, look one or two sentences back.
   There is almost always a stronger perception moment buried just before it. Dig it
-  out and let it be the last line.
+  out and let it be the last line. **Handling what's in between:** if working
+  sentences sit between that perception moment and the old ending — the writer's
+  pivot, a necessary emotional beat — *move them earlier*, don't delete them
+  along the way. Deletion targets only the failing part: the explaining sentence,
+  the named emotion. Nothing the writer got right should disappear in the repair.
 
 > **Fail signal:** the last sentence *tells* the reader how to feel about the
 > disturbance instead of showing it.
@@ -138,6 +180,9 @@ Even a perfect hook fails if it's a reflex.
 
 Only raise this if you've seen several of the writer's scenes, or they ask about
 pacing across a manuscript. Don't scold a single passage for a sin you can't see.
+When the condition isn't met, don't mention R at all — not even as an aside or a
+"by the way". (One exception: *citing* R.2 to reassure a writer that a quiet
+close is legitimate is fine. Granting an exemption is not issuing a warning.)
 
 ---
 
@@ -192,7 +237,7 @@ can see exactly what moved.
 
 ---
 
-## Quick self-check card (for the writer)
+## Quick self-check card (for the writer working alone — NEVER output or fill in this card when giving feedback; see the output contract)
 
 0. Does each key image carry *one specific detail* (the blue-8 test)?
 1. Is the normal *seen*, or filler I could cut?

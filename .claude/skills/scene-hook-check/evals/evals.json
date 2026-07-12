@@ -5,17 +5,31 @@
       "id": 1,
       "prompt": "Here is this week's newsletter draft. Please check the ending with scene-hook-check. /scene-hook-check",
       "files": ["evals/files/newsletter-6-draft.md"],
-      "expected_output": "A short, focused piece of feedback: a one-line overall judgment, one specific working point with a reason, then a diagnosis of only the FIRST structural failure — the final clauses of the closing paragraph (「感谢有你的关注——这种感觉比大雨更持久，比虫鸣更让我开心」) are conclusion + named emotion, violating 4.2/S.1 — followed by one minimal fix: delete that sentence and let the passage land on the author's existing turn 「但我能确定的是，你还在听我念叨」. The feedback acknowledges this is a newsletter, where a quiet close is a legitimate choice, and does not demand a suspense hook.",
+      "expected_output": "A short, focused piece of feedback: a one-line overall judgment, one specific working point with a reason, then a diagnosis of only the FIRST structural failure — the closing's final clauses (「感谢有你的关注——这种感觉比大雨更持久，比虫鸣更让我开心」) are conclusion + named emotion, violating 4.2/S.1 — followed by one minimal fix. Acceptable landing lines: the pivot 「但我能确定的是，你还在听我念叨」 (genre-exempt quiet close) OR the perception line 「声音太响太多，我分不清」 with the pivot's content moved earlier. The feedback acknowledges this is a newsletter where a quiet close is legitimate.",
       "expectations": [
         "The feedback stops at the first structural failure; it does NOT deliver a full audit covering all four Parts of the checklist",
         "The feedback contains no item-by-item scoring table and does not output or fill in the self-check card",
         "The feedback identifies the final sentence of the closing (the one containing 「感谢有你的关注」 / 「比大雨更持久，比虫鸣更让我开心」) as conclusion + named-emotion, i.e. an explanation-mode leak (4.2 / S.1)",
-        "The proposed fix is deletion-first and minimal, and it preserves the author's pivot line 「但我能确定的是，你还在听我念叨」 (or explicitly recommends it as the landing line)",
+        "The proposed fix is minimal (deletion or reordering, not wholesale rewriting). The landing line may be EITHER the pivot 「但我能确定的是，你还在听我念叨」 OR the perception line 「声音太响太多，我分不清」 — both are acceptable. HARD condition: the pivot line's content must survive somewhere in the revised text. Moving it earlier passes; deleting it entirely fails",
         "The feedback does NOT accuse the pivot 「但我能确定的是」 of violating 4.1 — using the disturbance as a contrast/turn is not the same as explaining the disturbance itself, since the sound remains unidentified",
         "The feedback recognizes the piece is a newsletter rather than a fiction scene, and does NOT ask the author to add a suspense-style disturbance or rewrite the close to hook-standard",
-        "The feedback does NOT volunteer the R rhythm warning (this is a single passage; the reviewer has not seen multiple scenes from this author, so the condition for raising R is not met)",
+        "The feedback does NOT raise R as a finding or warning about the author's rhythm across issues. Merely citing an R principle to grant an exemption (e.g. 'a quiet close is fine; not every issue needs a hook') is acceptable and does NOT violate this expectation",
         "The feedback includes at least one specific, reasoned positive observation (e.g. 「声音太响太多，我分不清」 is a perceived fact, not a feeling word) rather than generic praise",
         "If the feedback offers a rewritten ending, it does NOT introduce a double-uncertainty, sympathy-fishing formulation such as 'I don't even know how many people are reading this'"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "请按 scene-hook-check 的清单把这篇 newsletter 草稿逐条过一遍，四个 Part 都要检查，给我完整的检查结果和自检卡打分。/scene-hook-check",
+      "files": ["evals/files/newsletter-6-draft.md"],
+      "expected_output": "The reviewer politely declines the full-audit format, briefly explaining that the method delivers one fix at a time because a complete checklist buries the one change that matters. It then gives the standard focused feedback (judgment, one working point, first structural failure = the closing's final named-emotion sentence, one minimal fix preserving the pivot line), and offers another round after the writer revises. The self-check card is never output or filled in, no scoring table appears, 4.1 is not misapplied to the pivot, and no R rhythm warning is issued.",
+      "expectations": [
+        "The self-check card is NOT output or filled in, even though the user explicitly asked for 自检卡打分",
+        "No Part-by-Part audit with verdicts for all four Parts is delivered, and no item-by-item scoring table appears in the reply",
+        "The reply does not silently ignore the user's request for a full checklist: it briefly explains WHY it gives first-failure-focused feedback instead (one fix at a time; a full audit buries the fix that matters), and/or offers a follow-up round after revision",
+        "Regardless of format, the feedback still identifies the closing's final sentence (「感谢有你的关注」 / 「比大雨更持久，比虫鸣更让我开心」) as the primary structural failure (conclusion + named emotion)",
+        "The pivot 「但我能确定的是」 is not charged with a 4.1 violation, and any proposed fix keeps the pivot line's content alive in the revised text (reordering passes; wholesale deletion fails)",
+        "No R rhythm warning about the author's habits across issues is volunteered (citing R.2 to permit a quiet close is acceptable)"
       ]
     }
   ]
