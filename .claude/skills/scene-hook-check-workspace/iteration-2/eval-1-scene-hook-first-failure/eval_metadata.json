@@ -1,0 +1,16 @@
+{
+  "eval_id": 1,
+  "eval_name": "scene-hook-first-failure",
+  "prompt": "Here is this week's newsletter draft. Please check the ending with scene-hook-check. /scene-hook-check",
+  "assertions": [
+    "The feedback stops at the first structural failure; it does NOT deliver a full audit covering all four Parts of the checklist",
+    "The feedback contains no item-by-item scoring table and does not output or fill in the self-check card",
+    "The feedback identifies the final sentence of the closing (the one containing 「感谢有你的关注」 / 「比大雨更持久，比虫鸣更让我开心」) as conclusion + named-emotion, i.e. an explanation-mode leak (4.2 / S.1)",
+    "The proposed fix is minimal (deletion or reordering, not wholesale rewriting). The landing line may be EITHER the pivot 「但我能确定的是，你还在听我念叨」 OR the perception line 「声音太响太多，我分不清」 — both are acceptable. HARD condition: the pivot line's content must survive somewhere in the revised text. Moving it earlier passes; deleting it entirely fails",
+    "The feedback does NOT accuse the pivot 「但我能确定的是」 of violating 4.1 — using the disturbance as a contrast/turn is not the same as explaining the disturbance itself, since the sound remains unidentified",
+    "The feedback recognizes the piece is a newsletter rather than a fiction scene, and does NOT ask the author to add a suspense-style disturbance or rewrite the close to hook-standard",
+    "The feedback does NOT raise R as a finding or warning about the author's rhythm across issues. Merely citing an R principle to grant an exemption (e.g. 'a quiet close is fine; not every issue needs a hook') is acceptable and does NOT violate this expectation",
+    "The feedback includes at least one specific, reasoned positive observation (e.g. 「声音太响太多，我分不清」 is a perceived fact, not a feeling word) rather than generic praise",
+    "If the feedback offers a rewritten ending, it does NOT introduce a double-uncertainty, sympathy-fishing formulation such as 'I don't even know how many people are reading this'"
+  ]
+}

@@ -1,0 +1,730 @@
+{
+  "metadata": {
+    "skill_name": "scene-hook-check",
+    "skill_path": "/Users/husongtao/Projects/newsletters/.claude/skills/scene-hook-check",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-12T12:38:15Z",
+    "evals_run": [
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "baseline",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.89,
+        "passed": 8,
+        "failed": 1,
+        "total": 9,
+        "time_seconds": 48.5,
+        "tokens": 2178,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The feedback stops at the first structural failure; it does NOT deliver a full audit covering all four Parts of the checklist",
+          "passed": true,
+          "evidence": "The feedback stops at the first failure: \"**\u7b2c\u4e00\u4e2a\u3001\u4e5f\u662f\u552f\u4e00\u8981\u4fee\u7684\u7ed3\u6784\u95ee\u9898\u2014\u2014\u95e8\u6ca1\u6709\u7559\u5f00\uff08Part 4\uff09\u3002**\" and \"\u5148\u53ea\u52a8\u8fd9\u4e00\u5904\u3002\" Part 3 is never audited; Parts 1-2 are only touched as passing before stopping at Part 4."
+        },
+        {
+          "text": "The feedback contains no item-by-item scoring table and does not output or fill in the self-check card",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the feedback.md is prose only, with no scoring table and no self-check card filled in or reproduced."
+        },
+        {
+          "text": "The feedback identifies the final sentence of the closing (the one containing \u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as conclusion + named-emotion, i.e. an explanation-mode leak (4.2 / S.1)",
+          "passed": true,
+          "evidence": "\"\u8fd9\u662f\u4e00\u4e2a *\u7ed3\u8bba*\uff0c\u4e0d\u662f\u4e00\u4e2a *\u611f\u77e5*\u3002\u5b83\u66ff\u8bfb\u8005\u8bf4\u51fa\u4e86\u8be5\u6709\u4ec0\u4e48\u611f\u53d7\uff08\"\u66f4\u6301\u4e45\"\"\u66f4\u5f00\u5fc3\"\uff09\u2026\u2026\u662f\u5178\u578b\u7684\u89e3\u91ca\u6a21\u5f0f\u6cc4\u6f0f\u3002\""
+        },
+        {
+          "text": "The proposed fix is minimal (deletion or reordering, not wholesale rewriting). The landing line may be EITHER the pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d OR the perception line \u300c\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\u300d \u2014 both are acceptable. HARD condition: the pivot line's content must survive somewhere in the revised text. Moving it earlier passes; deleting it entirely fails",
+          "passed": false,
+          "evidence": "The fix is minimal (\"\u6700\u5c0f\u6539\u52a8\u7684\u65b9\u5411\uff1a\u628a\u6700\u540e\u90a3\u6bb5\u7684\u6292\u60c5\u7ed3\u8bba\u5220\u6389\u6216\u5927\u5e45\u6536\u56de\"), but the pivot line's content is directed to be removed, not preserved: \"\u4f60\u4e0d\u9700\u8981\u518d\u628a\"\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\"\u70b9\u7834\u3002\" The landing is set on the perception line \u300c\u6211\u5206\u4e0d\u6e05\u300d while the pivot \u300c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d is told to be cut/spelled-out-removed, and \"\u611f\u8c22\u6709\u4f60\" is retracted to a plain goodbye \u2014 nothing carries the pivot's content forward. HARD condition (pivot content must survive) fails."
+        },
+        {
+          "text": "The feedback does NOT accuse the pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d of violating 4.1 \u2014 using the disturbance as a contrast/turn is not the same as explaining the disturbance itself, since the sound remains unidentified",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the feedback attributes the explanation-mode leak to the conclusion/named-emotion (\"\u66f4\u6301\u4e45\"\"\u66f4\u5f00\u5fc3\"/\"\u611f\u8c22\u6709\u4f60\") and never accuses \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d of resolving or explaining the disturbance under 4.1."
+        },
+        {
+          "text": "The feedback recognizes the piece is a newsletter rather than a fiction scene, and does NOT ask the author to add a suspense-style disturbance or rewrite the close to hook-standard",
+          "passed": true,
+          "evidence": "Treats it as a newsletter (\"\u8ba9\u7535\u5b50\u62a5\u843d\u5728\"\u6211\u5206\u4e0d\u6e05\"\u8fd9\u7c7b\u5177\u4f53\u7684\u3001\u60ac\u7740\u7684\u77e5\u89c9\u4e0a\") and asks only to delete/retract the lyrical conclusion, never to add a suspense disturbance or rewrite to a cliffhanger hook."
+        },
+        {
+          "text": "The feedback does NOT raise R as a finding or warning about the author's rhythm across issues. Merely citing an R principle to grant an exemption is acceptable and does NOT violate this expectation",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 no R finding or cross-issue rhythm warning appears anywhere in feedback.md."
+        },
+        {
+          "text": "The feedback includes at least one specific, reasoned positive observation rather than generic praise",
+          "passed": true,
+          "evidence": "\"\u90a3\u4e32\u96e8\u7684\u63cf\u5199\u662f\"\u88ab\u770b\u89c1\"\u7684\uff0c\u4e0d\u662f\u586b\u5145\u3002\"\u94f6\u8272\u7684\u73e0\u5e18\uff0c\u5c42\u5c42\u53e0\u53e0\u5730\u4ece\u5929\u4e0a\u6302\u4e0b\u6765\uff0c\u6709\u65f6\u5019\u662f\u76f4\u7684\uff0c\u6709\u65f6\u5019\u662f\u659c\u7684\"\u2014\u2014\u8fd9\u662f\u5177\u4f53\u7684\u3001\u6709\u753b\u9762\u7684 normal\u2026\u2026\u7d27\u63a5\u7740\"\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\"\u628a\u8fd9\u4e2a\u57fa\u8c03\u5750\u5b9e\u4e86\u3002\" \u2014 specific and reasoned, not generic."
+        },
+        {
+          "text": "If the feedback offers a rewritten ending, it does NOT introduce a double-uncertainty, sympathy-fishing formulation such as 'I don't even know how many people are reading this'",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the feedback offers only a direction (delete/retract the conclusion, land on \u300c\u6211\u5206\u4e0d\u6e05\u300d) and introduces no sympathy-fishing double-uncertainty line."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "baseline",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 0.89,
+        "passed": 8,
+        "failed": 1,
+        "total": 9,
+        "time_seconds": 54.1,
+        "tokens": 2522,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The feedback stops at the first structural failure; it does NOT deliver a full audit covering all four Parts of the checklist",
+          "passed": true,
+          "evidence": "The feedback reports only Part 4 as the failure and explicitly stops there: \"\u7b2c\u4e00\u4e2a\uff08\u4e5f\u662f\u552f\u4e00\u8981\u5148\u89e3\u51b3\u7684\uff09\u7ed3\u6784\u95ee\u9898\u2014\u2014\u7b2c 4 \u90e8\u5206\uff1a\u95e8\u88ab\u5173\u4e0a\u4e86\u3002\" and \"\uff08\u5148\u53ea\u5904\u7406\u8fd9\u4e00\u5904\u3002\u5b83\u662f top-down \u91cc\u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u5931\u8d25\uff1b\u628a\u95e8\u91cd\u65b0\u6253\u5f00\u4e4b\u540e\uff0c\u518d\u770b\u522b\u7684\u4e0d\u8fdf\u3002\uff09\" Parts 1-3 are only touched to confirm they hold, not audited item-by-item."
+        },
+        {
+          "text": "The feedback contains no item-by-item scoring table and does not output or fill in the self-check card",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the feedback.md is prose only: \u603b\u4f53\u5224\u65ad / \u505a\u5f97\u597d\u7684\u5730\u65b9 / \u7ed3\u6784\u95ee\u9898 / \u4e00\u5904\u5177\u4f53\u7684\u6539\u6cd5. No scoring table or self-check card appears anywhere."
+        },
+        {
+          "text": "The feedback identifies the final sentence of the closing (the one containing \u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as conclusion + named-emotion, i.e. an explanation-mode leak (4.2 / S.1)",
+          "passed": true,
+          "evidence": "\"\u7b2c 37 \u6bb5\u4f60\u8f6c\u8eab\u628a\u5b83\u5168\u90e8\u8bf4\u7834\u4e86\uff1a\\\"\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u3002\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u2014\u2014\u8fd9\u79cd\u611f\u89c9\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u3002\\\"\u2014\u2014\u8fd9\u91cc\u4f60\u4ece\\\"\u611f\u77e5\\\"\u8df3\u5230\u4e86\\\"\u7ed3\u8bba\\\"\uff1a\u4f60\u544a\u8bc9\u4e86\u8bfb\u8005\u8be5\u600e\u4e48\u611f\u53d7\uff08\u611f\u6fc0\u3001\u5f00\u5fc3\u3001\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff09\""
+        },
+        {
+          "text": "The proposed fix is minimal (deletion or reordering, not wholesale rewriting). The landing line may be EITHER the pivot or the perception line \u2014 both are acceptable. HARD condition: the pivot line's content must survive somewhere in the revised text. Moving it earlier passes; deleting it entirely fails",
+          "passed": false,
+          "evidence": "The fix deletes the pivot line entirely rather than relocating it. \"\u628a\u7b2c 37 \u6bb5\u90a3\u6bb5\u603b\u7ed3\uff08\\\"\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u2026\u2026\u66f4\u8ba9\u6211\u5f00\u5fc3\\\"\uff09\u5220\u6389\" \u2014 the revised ending contains only \"\u7a97\u5916\u4e00\u7247\u7247\u5730\u4f20\u6765\u50cf\u86d9\u9e23\u7684\u58f0\u97f3\u3002\u4e5f\u53ef\u80fd\u662f\u866b\u9e23\uff0c\u53ea\u662f\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\u3002\" and \"\u4eca\u5929\u5c31\u5230\u8fd9\u91cc\u5427\uff0c\u6211\u4eec\u4e0b\u5468\u518d\u89c1\u3002\" The pivot content \u300c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d does not survive anywhere in the revised text, failing the HARD condition."
+        },
+        {
+          "text": "The feedback does NOT accuse the pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d of violating 4.1 \u2014 using the disturbance as a contrast/turn is not the same as explaining the disturbance itself, since the sound remains unidentified",
+          "passed": true,
+          "evidence": "The 4.x accusation is aimed at the named-emotion summary, not at using the disturbance as a turn: \"\u6700\u540e\u4e00\u53e5\u5728**\u544a\u8bc9**\u8bfb\u8005\u8be5\u5bf9\u8fd9\u4e2a\u6270\u52a8\u4f5c\u4f55\u611f\u53d7\uff0c\u800c\u4e0d\u662f**\u5448\u73b0**\u5b83\u3002\" There is no claim that the pivot explains/identifies the sound."
+        },
+        {
+          "text": "The feedback recognizes the piece is a newsletter rather than a fiction scene, and does NOT ask the author to add a suspense-style disturbance or rewrite the close to hook-standard",
+          "passed": true,
+          "evidence": "\"\u5bf9\u4e8e\u4e00\u5c01\u79c1\u4eba\u7535\u5b50\u62a5\u2026\u2026\" framing appears via \"\u8ba9\u7535\u5b50\u62a5\u505c\u5728\" and \"\u628a\u4ed6\u4eec\u5e26\u5230\u4e0b\u5468\"; it treats the existing sound as the door rather than demanding a new disturbance: \"\u5206\u4e0d\u6e05\u7684\u90a3\u4e2a\u58f0\u97f3\u5c31\u662f\u90a3\u6247\u5f00\u7740\u7684\u95e8\u2014\u2014\u5b83\u4e0d\u9700\u8981\u4f60\u518d\u70b9\u7834\". Fix is deletion, not adding suspense."
+        },
+        {
+          "text": "The feedback does NOT raise R as a finding or warning about the author's rhythm across issues. Merely citing an R principle to grant an exemption is acceptable",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 nothing in the feedback discusses cross-issue rhythm (R) as a finding or warning; there is no mention of rhythm/\u8282\u594f across issues at all."
+        },
+        {
+          "text": "The feedback includes at least one specific, reasoned positive observation rather than generic praise",
+          "passed": true,
+          "evidence": "\"\u7b2c 35 \u6bb5\u90a3\u4e2a\\\"\u5206\u4e0d\u6e05\u662f\u86d9\u9e23\u8fd8\u662f\u866b\u9e23\\\"\u66f4\u597d\u2014\u2014\u8fd9\u672c\u8eab\u5c31\u662f\u4e00\u4e2a\u672a\u89e3\u7684\u3001\u88ab\u611f\u77e5\u5230\u7684\u4e8b\u5b9e\uff1a\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u4f60\u5206\u4e0d\u6e05\u3002\u8fd9\u51e0\u4e4e\u5df2\u7ecf\u662f\u4e00\u6247\u95e8\u4e86\u3002\" \u2014 specific and reasoned, identifying it as a perceived unexplained fact."
+        },
+        {
+          "text": "If the feedback offers a rewritten ending, it does NOT introduce a double-uncertainty, sympathy-fishing formulation such as 'I don't even know how many people are reading this'",
+          "passed": true,
+          "evidence": "The rewritten ending is \"\u73b0\u5728\u96e8\u7ec8\u4e8e\u505c\u4e86\uff0c\u7a97\u5916\u4e00\u7247\u7247\u5730\u4f20\u6765\u50cf\u86d9\u9e23\u7684\u58f0\u97f3\u3002\u4e5f\u53ef\u80fd\u662f\u866b\u9e23\uff0c\u53ea\u662f\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\u3002\" / \"\u4eca\u5929\u5c31\u5230\u8fd9\u91cc\u5427\uff0c\u6211\u4eec\u4e0b\u5468\u518d\u89c1\u3002\" \u2014 no sympathy-fishing or double-uncertainty about readership."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "baseline",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 0.89,
+        "passed": 8,
+        "failed": 1,
+        "total": 9,
+        "time_seconds": 46.9,
+        "tokens": 1678,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The feedback stops at the first structural failure; it does NOT deliver a full audit covering all four Parts of the checklist",
+          "passed": true,
+          "evidence": "The feedback delivers only one structural-failure section: \"**\u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u5931\u8d25\uff08Part 4 \u2014 \u95e8\u88ab\u5173\u4e0a\u4e86\uff09:**\" and closes with \"\u5148\u53ea\u52a8\u8fd9\u4e00\u5904\u5c31\u597d\u3002\" It does not present per-Part findings for Parts 1-3 as findings; the transcript notes \"Stopped at Part 4 (the first structural failure). Did not dump all four parts.\""
+        },
+        {
+          "text": "The feedback contains no item-by-item scoring table and does not output or fill in the self-check card",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the feedback.md is prose only (\u603b\u4f53\u5224\u65ad / \u505a\u5f97\u597d\u7684\u5730\u65b9 / \u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u5931\u8d25 / \u4e00\u5904\u5177\u4f53\u6539\u6cd5), with no scoring table or self-check card present."
+        },
+        {
+          "text": "The feedback identifies the final sentence of the closing (the one containing \u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as conclusion + named-emotion, i.e. an explanation-mode leak (4.2 / S.1)",
+          "passed": true,
+          "evidence": "\"\u53c8\u5f80\u4e0b\u5199\u4e86\u4e00\u53e5\u603b\u7ed3\uff1a\"\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u2026\u2026\u8fd9\u79cd\u611f\u89c9\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u3002\"\u8fd9\u53e5\u8bdd\u5728\u66ff\u8bfb\u8005\u4e0b\u7ed3\u8bba\u3001\u544a\u8bc9\u8bfb\u8005\u8be5\u6709\u4ec0\u4e48\u611f\u53d7\uff08\"\u66f4\u6301\u4e45\"\"\u66f4\u5f00\u5fc3\"\uff09\""
+        },
+        {
+          "text": "The proposed fix is minimal (deletion or reordering, not wholesale rewriting). The landing line may be EITHER the pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d OR the perception line \u300c\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\u300d \u2014 both are acceptable. HARD condition: the pivot line's content must survive somewhere in the revised text. Moving it earlier passes; deleting it entirely fails",
+          "passed": false,
+          "evidence": "The fix deletes the pivot line entirely rather than preserving it: \"\u628a\"\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u2026\u2026\"\u90a3\u6574\u53e5\u6536\u6389\uff0c\u76f4\u63a5\u63a5\"\u4eca\u5929\u5c31\u5230\u8fd9\u91cc\u5427\uff0c\u6211\u4eec\u4e0b\u5468\u518d\u89c1\"\u3002\" The revised text lands on the perception line and jumps straight to the sign-off, so the pivot content \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d does not survive anywhere. HARD condition violated: \"deleting it entirely fails.\""
+        },
+        {
+          "text": "The feedback does NOT accuse the pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d of violating 4.1 \u2014 using the disturbance as a contrast/turn is not the same as explaining the disturbance itself, since the sound remains unidentified",
+          "passed": true,
+          "evidence": "The critique of the pivot is aimed at the concluding/named-emotion tail, not at 4.1 explaining the disturbance: \"\u8fd9\u53e5\u8bdd\u5728\u66ff\u8bfb\u8005\u4e0b\u7ed3\u8bba\u3001\u544a\u8bc9\u8bfb\u8005\u8be5\u6709\u4ec0\u4e48\u611f\u53d7\uff08\"\u66f4\u6301\u4e45\"\"\u66f4\u5f00\u5fc3\"\uff09\". No claim that the disturbance/sound was explained away; on the contrary it praises \"\u4e00\u4e2a\u7cbe\u786e\u7684\u3001\u6ca1\u6709\u88ab\u89e3\u91ca\u6389\u7684\u611f\u77e5\u4e8b\u5b9e\"."
+        },
+        {
+          "text": "The feedback recognizes the piece is a newsletter rather than a fiction scene, and does NOT ask the author to add a suspense-style disturbance or rewrite the close to hook-standard",
+          "passed": true,
+          "evidence": "\"\u843d\u5728\u4e86\u4e00\u53e5\u5bf9\u8bfb\u8005\u8bf4\u7684\u6696\u5fc3\u7ed3\u8bba\u4e0a\" and \"\u8fd9\u4e2a\u6280\u6cd5\" framing; the fix only removes a sentence and keeps the sign-off \"\u4eca\u5929\u5c31\u5230\u8fd9\u91cc\u5427\uff0c\u6211\u4eec\u4e0b\u5468\u518d\u89c1\", asking for no added suspense/disturbance. no verbatim evidence found for an explicit 'newsletter not fiction' statement; judged from overall reading that it treats the piece as newsletter prose and imposes no hook-standard rewrite."
+        },
+        {
+          "text": "The feedback does NOT raise R as a finding or warning about the author's rhythm across issues. Merely citing an R principle to grant an exemption (e.g. 'a quiet close is fine; not every issue needs a hook') is acceptable and does NOT violate this expectation",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the feedback contains no mention of rhythm-across-issues (R) as a finding or warning."
+        },
+        {
+          "text": "The feedback includes at least one specific, reasoned positive observation (e.g. \u300c\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\u300d is a perceived fact, not a feeling word) rather than generic praise",
+          "passed": true,
+          "evidence": "\"\u96e8\u505c\u4e4b\u540e\u7a97\u5916\u4f20\u6765\"\u50cf\u86d9\u9e23\u7684\u58f0\u97f3\"\uff0c\u4f60\u81ea\u5df1\u90fd\u5206\u4e0d\u6e05\u662f\u86d9\u662f\u866b\uff08\"\u53ea\u662f\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\"\uff09\u3002\u8fd9\u6b63\u662f\u8fd9\u4e2a\u6280\u6cd5\u8981\u7684\u4e1c\u897f\uff1a\u4e00\u4e2a\u7cbe\u786e\u7684\u3001\u6ca1\u6709\u88ab\u89e3\u91ca\u6389\u7684\u611f\u77e5\u4e8b\u5b9e\u3002\""
+        },
+        {
+          "text": "If the feedback offers a rewritten ending, it does NOT introduce a double-uncertainty, sympathy-fishing formulation such as 'I don't even know how many people are reading this'",
+          "passed": true,
+          "evidence": "The proposed ending lands on \"\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\" then \"\u4eca\u5929\u5c31\u5230\u8fd9\u91cc\u5427\uff0c\u6211\u4eec\u4e0b\u5468\u518d\u89c1\"; no sympathy-fishing / 'don't know how many are reading' formulation appears."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "baseline",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.83,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 74.0,
+        "tokens": 2983,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The self-check card is NOT output or filled in, even though the user explicitly asked for \u81ea\u68c0\u5361\u6253\u5206",
+          "passed": true,
+          "evidence": "Output explicitly declines: \"\u672b\u5c3e\u90a3\u5f20\u81ea\u68c0\u5361\u662f**\u7ed9\u5199\u4f5c\u8005\u81ea\u67e5\u7528\u7684**\uff0c\u4e0d\u662f\u6211\u62ff\u6765\u9010\u6761\u6253\u5206\u7684\u8bc4\u5206\u8868\u3002\u6240\u4ee5\u6211\u4e0d\u4f1a\u7ed9\u4f60\u4e00\u4efd\u56db Part \u5168\u8fc7 + \u6253\u5206\u7684\u62a5\u544a\". No filled-in self-check card appears anywhere in feedback.md."
+        },
+        {
+          "text": "No Part-by-Part audit with verdicts for all four Parts is delivered, and no item-by-item scoring table appears in the reply",
+          "passed": true,
+          "evidence": "Only one Part is discussed: \"**\u7b2c\u4e00\u4e2a\u3001\u4e5f\u662f\u552f\u4e00\u8981\u5148\u89e3\u51b3\u7684\u7ed3\u6784\u95ee\u9898 \u2014\u2014 Part 1\uff1a\u8fd9\u4e2a\u300c\u6b63\u5e38\u300d\u662f\u88ab\u770b\u89c1\u7684\uff0c\u8fd8\u662f\u586b\u5145\u7269\uff1f**\". No verdicts for Parts 2-4 and no scoring table are present."
+        },
+        {
+          "text": "The reply does not silently ignore the user's request for a full checklist: it briefly explains WHY it gives first-failure-focused feedback instead, and/or offers a follow-up round after revision",
+          "passed": true,
+          "evidence": "Explains why: \"\u5b83\u660e\u786e\u5199\u7740\uff1a**\u81ea\u4e0a\u800c\u4e0b\u8bca\u65ad\uff0c\u505c\u5728\u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u5931\u8d25\u5904**\uff0c\u800c\u300c\u628a\u56db\u4e2a Part \u5168\u90e8\u94fa\u5f00\u6210\u6e05\u5355\u62a5\u544a\u300d\u6b63\u662f\u5b83\u70b9\u540d\u7684\u5931\u8d25\u6a21\u5f0f\uff08\"A four-part checklist report is the failure mode here.\"\uff09\", and offers a follow-up: \"Part 1 \u5148\u7acb\u4f4f\uff0c\u6211\u4eec\u518d\u770b\u540e\u9762\u3002\""
+        },
+        {
+          "text": "Regardless of format, the feedback still identifies the closing's final sentence (\u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as the primary structural failure (conclusion + named emotion)",
+          "passed": false,
+          "evidence": "The feedback names a different line as the primary failure \u2014 the rain-description sentence: \"> \u90a3\u4e9b\u96e8\u50cf\u662f\u4e00\u4e32\u4e32\u94f6\u8272\u7684\u73e0\u5e18\uff0c\u5c42\u5c42\u53e0\u53e0\u5730\u4ece\u5929\u4e0a\u6302\u4e0b\u6765\uff0c\u6709\u65f6\u5019\u662f\u76f4\u7684\uff0c\u6709\u65f6\u5019\u662f\u659c\u7684\uff1b\u6709\u65f6\u5019\u6ca1\u6709\u58f0\u97f3\uff0c\u6709\u65f6\u5019\u58f0\u97f3\u5927\u5f97\u5413\u4eba\u3002\" \u2014 and diagnoses it as \"\u5806\u5f62\u5bb9\u8bcd\u548c\u6392\u6bd4\" (adjective-stacking, a Part 1/1.4 anchor problem). The final sentence \u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u2014\u2014\u8fd9\u79cd\u611f\u89c9\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d is never quoted or flagged, and the conclusion + named-emotion failure is never identified."
+        },
+        {
+          "text": "The pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d is not charged with a 4.1 violation, and any proposed fix keeps the pivot line's content alive in the revised text (reordering passes; wholesale deletion fails)",
+          "passed": true,
+          "evidence": "The pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d is never mentioned in the reply, so it is not charged with any 4.1 violation, and no fix deletes it. The only revision proposed concerns the rain simile: \"\u66ff\u6389\u300c\u94f6\u8272\u73e0\u5e18\u300d\u90a3\u4e32\u6bd4\u55bb\" \u2014 leaving the pivot line's content untouched."
+        },
+        {
+          "text": "No R rhythm warning about the author's habits across issues is volunteered (citing R.2 to permit a quiet close is acceptable)",
+          "passed": true,
+          "evidence": "The only rhythm reference is R.2 used to permit the quiet close: \"\u8fd9\u4e2a skill \u4e5f\u8bf4\u4e86\u4e0d\u662f\u6bcf\u4e2a\u7ed3\u5c3e\u90fd\u8981\u7528\u60ac\u5ff5\uff08R.2\uff09\". No cross-issue R rhythm/habit warning is volunteered."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "baseline",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 0.83,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 98.1,
+        "tokens": 4340,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The self-check card is NOT output or filled in, even though the user explicitly asked for \u81ea\u68c0\u5361\u6253\u5206",
+          "passed": true,
+          "evidence": "The reply explicitly declines to fill/score the card: \"\u5173\u4e8e\u4f60\u60f3\u8981\u7684\u300c\u81ea\u68c0\u5361\u9010\u9879\u6253\u5206\u300d\uff1a\u6211\u4e0d\u9010\u9879\u6253\u5206\uff0c\u7406\u7531\u540c\u4e0a\u2014\u2014skill \u7ed9\u7684\u90a3\u5f20 self-check card \u662f**\u7ed9\u5199\u4f5c\u8005\u81ea\u5df1**\u7528\u7684\u6e05\u5355\". No filled card or per-item scores appear."
+        },
+        {
+          "text": "No Part-by-Part audit with verdicts for all four Parts is delivered, and no item-by-item scoring table appears in the reply",
+          "passed": true,
+          "evidence": "Only Part 4 is diagnosed as the stopping point: \"**\u7b2c\u4e00\u4e2a\u3001\u4e5f\u662f\u552f\u4e00\u8981\u4f60\u5148\u5904\u7406\u7684\u7ed3\u6784\u5931\u8d25\u2014\u2014Part 4\uff1a\u95e8\u88ab\u5173\u4e0a\u4e86\u3002**\" No verdicts for Parts 1-3 as a checklist and no scoring table; the reply states \"\u6211\u4e0d\u9010\u9879\u6253\u5206\" and \"\u4e0d\u662f\u8ba9\u6211\u62c9\u4e00\u5f20\u4e03\u9879\u8bc4\u5206\u8868\"."
+        },
+        {
+          "text": "The reply does not silently ignore the user's request for a full checklist: it briefly explains WHY it gives first-failure-focused feedback instead (one fix at a time; a full audit buries the fix that matters), and/or offers a follow-up round after revision",
+          "passed": true,
+          "evidence": "\"\u5b83\u660e\u786e\u8bf4\u300c\u56db\u90e8\u5206\u6e05\u5355\u5f0f\u7684\u62a5\u544a\u300d\u672c\u8eab\u5c31\u662f\u8fd9\u4e2a\u6280\u80fd\u7684\u5931\u8d25\u6a21\u5f0f\u3002\u5b83\u7684\u8bca\u65ad\u65b9\u5f0f\u662f**\u81ea\u4e0a\u800c\u4e0b\u3001\u505c\u5728\u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u5931\u8d25\u5904**\uff1a\u5982\u679c Part 1 \u6ca1\u7acb\u4f4f\uff0cPart 2/3/4 \u7684\u6253\u78e8\u90fd\u662f\u767d\u8d39\u3002\u6240\u4ee5\u6211\u6309\u65b9\u6cd5\u7ed9\u4f60\u8bca\u65ad\uff0c\u800c\u4e0d\u662f\u62c9\u4e00\u5f20\u56db\u5217\u7684\u5206\u6570\u8868\u3002\""
+        },
+        {
+          "text": "Regardless of format, the feedback still identifies the closing's final sentence (\u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as the primary structural failure (conclusion + named emotion)",
+          "passed": true,
+          "evidence": "\"\u6700\u540e\u4e00\u53e5\u662f\u5728**\u544a\u8bc9\u8bfb\u8005\u8be5\u6709\u4ec0\u4e48\u611f\u53d7**\uff08\u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d\uff09\uff0c\u95e8\u662f\u5173\u4e0a\u7684\uff0c\u4e0d\u662f\u655e\u5f00\u7684\u3002\u771f\u6b63\u7684\u95ee\u9898\u5728 Part 4\uff08\u7ed3\u5c3e\u843d\u5728\u4e86\u7ed3\u8bba\u4e0a\uff0c\u800c\u4e0d\u662f\u77e5\u89c9\u4e0a\uff09\u3002\""
+        },
+        {
+          "text": "The pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d is not charged with a 4.1 violation, and any proposed fix keeps the pivot line's content alive in the revised text (reordering passes; wholesale deletion fails)",
+          "passed": false,
+          "evidence": "The proposed fix wholesale-deletes the pivot content rather than reordering it: \"\u628a\u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u2026\u2026\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d\u6574\u6bb5\u62ff\u6389\uff0c\u8ba9\u300c\u6211\u5206\u4e0d\u6e05\u300d\u60ac\u5728\u90a3\u513f\u3002\" The revised block replaces it entirely with \"\u4eca\u5929\u5c31\u5230\u8fd9\u91cc\u5427\uff0c\u6211\u4eec\u4e0b\u5468\u518d\u89c1\u3002\", so the pivot line's content is not kept alive. (The 4.1 charge itself is avoided \u2014 the pivot is tied to 4.2, not 4.1 \u2014 but the deletion-not-reorder criterion fails.)"
+        },
+        {
+          "text": "No R rhythm warning about the author's habits across issues is volunteered (citing R.2 to permit a quiet close is acceptable)",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the reply contains no R.x rhythm reference or warning about author habits across issues; feedback stays scoped to Part 1 praise and the single Part 4 failure."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "baseline",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 87.1,
+        "tokens": 3239,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The self-check card is NOT output or filled in, even though the user explicitly asked for \u81ea\u68c0\u5361\u6253\u5206",
+          "passed": true,
+          "evidence": "No self-check card or per-item score appears anywhere in feedback.md. The reply explicitly declines it: \"\u6240\u4ee5\u6211\u4e0d\u4f1a\u7ed9\u4f60\u4e00\u5f20\u5168\u8868\u6253\u52fe\uff0c\u6211\u4f1a\u544a\u8bc9\u4f60\u7ed3\u5c3e\u771f\u6b63\u7684\u95ee\u9898\u5728\u54ea\u4e00\u5c42\uff0c\u53ea\u4fee\u90a3\u4e00\u5c42\u3002\" The transcript confirms: \"Did NOT dump Parts 1\u20133 as a checklist and did NOT produce a self-check-card score.\""
+        },
+        {
+          "text": "No Part-by-Part audit with verdicts for all four Parts is delivered, and no item-by-item scoring table appears in the reply",
+          "passed": true,
+          "evidence": "Only Part 4 is diagnosed in depth; Parts 1-3 are explicitly not broken out: \"\u5148\u628a\u8fd9\u4e00\u5904\u5b9a\u4e86\u3002Part 1\u20133 \u6211\u6ca1\u5f80\u4e0b\u62c6\uff0c\u4e5f\u4e0d\u8be5\u62c6\u2014\u2014\u5e95\u5b50\u662f\u597d\u7684\uff0c\u95ee\u9898\u53ea\u5728\u51fa\u53e3\u8fd9\u4e00\u5c42\u3002\" No scoring table exists in the output."
+        },
+        {
+          "text": "The reply does not silently ignore the user's request for a full checklist: it briefly explains WHY it gives first-failure-focused feedback instead (one fix at a time; a full audit buries the fix that matters), and/or offers a follow-up round after revision",
+          "passed": true,
+          "evidence": "\"\u5b83\u660e\u786e\u8981\u6c42**\u81ea\u9876\u5411\u4e0b\u8bca\u65ad\uff0c\u505c\u5728\u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u5931\u8d25\u5904**\u2014\u2014\u800c\u4e14\u628a\u300c\u628a\u56db\u4e2a Part \u5168\u5012\u51fa\u6765\u7684\u6e05\u5355\u5f0f\u62a5\u544a\u300d\u76f4\u63a5\u70b9\u540d\u4e3a\u8fd9\u5957\u6d41\u7a0b\u7684\u5931\u8d25\u6a21\u5f0f\u3002\u6240\u4ee5\u6211\u4e0d\u4f1a\u7ed9\u4f60\u4e00\u5f20\u5168\u8868\u6253\u52fe\u2026\u2026\u8fd9\u4e0d\u662f\u5077\u61d2\uff0c\u662f\u8fd9\u4e2a\u5de5\u5177\u672c\u6765\u5c31\u8be5\u8fd9\u4e48\u7528\u3002\""
+        },
+        {
+          "text": "Regardless of format, the feedback still identifies the closing's final sentence (\u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as the primary structural failure (conclusion + named emotion)",
+          "passed": true,
+          "evidence": "\"\u7ed3\u5c3e\u57ae\u5728\u6700\u540e\u4e00\u53e5\u2014\u2014\u5b83\u66ff\u8bfb\u8005\u628a\u611f\u53d7\u8bf4\u51fa\u6765\u4e86\uff0c\u95e8\u88ab\u81ea\u5df1\u5173\u4e0a\u4e86\u3002\u8fd9\u662f **Part 4 \u5931\u8d25**\uff0c\u4e5f\u662f\u552f\u4e00\u8981\u52a8\u7684\u5730\u65b9\u3002\" and \"\u95ee\u9898\u662f **4.2**\uff1a\u7ed3\u5c3e\u505c\u5728\u4e86\u300c\u7ed3\u8bba\u300d\u4e0a\uff0c\u800c\u4e0d\u662f\u300c\u611f\u77e5\u300d\u4e0a\u3002\u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d\u662f\u5728**\u544a\u8bc9\u8bfb\u8005\u8be5\u6709\u4ec0\u4e48\u611f\u53d7**\""
+        },
+        {
+          "text": "The pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d is not charged with a 4.1 violation, and any proposed fix keeps the pivot line's content alive in the revised text (reordering passes; wholesale deletion fails)",
+          "passed": true,
+          "evidence": "No 4.1 charge against the pivot appears anywhere; only 4.2/4.4 are cited. The pivot's content is preserved as the author's choice rather than deleted: \"\uff08\u8981\u4e0d\u8981\u4fdd\u7559\u90a3\u53e5\u300c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d\u662f\u4f60\u7684\u53d6\u820d\uff1b\u4f46\u81f3\u5c11\u522b\u8ba9\u90ae\u4ef6\u6536\u5728\u300c\u66f4\u6301\u4e45 / \u66f4\u5f00\u5fc3\u300d\u8fd9\u79cd\u66ff\u8bfb\u8005\u76d6\u7ae0\u7684\u7ed3\u8bba\u4e0a\u3002\uff09\""
+        },
+        {
+          "text": "No R rhythm warning about the author's habits across issues is volunteered (citing R.2 to permit a quiet close is acceptable)",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the reply contains no R-series rhythm warning about the author's habits; it stays scoped to Part 4 (4.2/4.4) and the sign-off's tone, with no cross-issue rhythm-habit caution."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 54.3,
+        "tokens": 2248,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The feedback stops at the first structural failure; it does NOT deliver a full audit covering all four Parts of the checklist",
+          "passed": true,
+          "evidence": "Feedback presents only one structural problem under heading: \"**\u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u95ee\u9898\uff08Part 4\uff1a\u95e8\u88ab\u5173\u4e0a\u4e86\uff09**\" and stops there; no per-Part audit is delivered to the reader. Transcript step 4: \"Stopped at the first structural failure (Part 4).\""
+        },
+        {
+          "text": "The feedback contains no item-by-item scoring table and does not output or fill in the self-check card",
+          "passed": true,
+          "evidence": "No table or self-check card is present in feedback.md; the output consists of four prose sections (\u603b\u4f53\u5224\u65ad / \u505a\u5f97\u597d\u7684\u5730\u65b9 / \u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u95ee\u9898 / \u4e00\u4e2a\u6700\u5c0f\u7684\u6539\u6cd5). Transcript step 5: \"no audit table, no self-check card.\""
+        },
+        {
+          "text": "The feedback identifies the final sentence of the closing (the one containing \u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as conclusion + named-emotion, i.e. an explanation-mode leak (4.2 / S.1)",
+          "passed": true,
+          "evidence": "\"\u6700\u540e\u4e00\u53e5\\\"\u8fd9\u79cd\u611f\u89c9\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\\\"\u662f\u4e00\u4e2a\u7ed3\u8bba\uff0c\u800c\u4e0d\u662f\u4e00\u4e2a\u611f\u77e5\u3002\u5b83\u66ff\u8bfb\u8005\u628a\u8bdd\u8bf4\u5b8c\u4e86\u2014\u2014\u544a\u8bc9\u8bfb\u8005\u8be5\u600e\u4e48\u611f\u53d7\uff08\\\"\u66f4\u6301\u4e45\\\"\\\"\u66f4\u5f00\u5fc3\\\"\uff09\""
+        },
+        {
+          "text": "The proposed fix is minimal (deletion or reordering, not wholesale rewriting). The landing line may be EITHER the pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d OR the perception line \u300c\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\u300d \u2014 both are acceptable. HARD condition: the pivot line's content must survive somewhere in the revised text. Moving it earlier passes; deleting it entirely fails",
+          "passed": true,
+          "evidence": "\"**\u4e00\u4e2a\u6700\u5c0f\u7684\u6539\u6cd5\uff08\u5220\uff0c\u4e0d\u91cd\u5199\uff09**\uff1a\u76f4\u63a5\u5220\u6389\u6700\u540e\u534a\u53e5\u7684\u7ed3\u8bba\u3002\" The revised block preserves the pivot: \"> \u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u3002\""
+        },
+        {
+          "text": "The feedback does NOT accuse the pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d of violating 4.1 \u2014 using the disturbance as a contrast/turn is not the same as explaining the disturbance itself, since the sound remains unidentified",
+          "passed": true,
+          "evidence": "\"\u524d\u4e00\u53e5\\\"\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\\\"\u672c\u8eab\u662f\u4e2a\u5f88\u597d\u7684\u8f6c\u6298\uff08\u4ece\\\"\u6211\u5206\u4e0d\u6e05\u866b\u9e23\\\"\u5230\\\"\u4f46\u8fd9\u4e2a\u6211\u80fd\u786e\u5b9a\\\"\uff0c\u7528\u4e0d\u786e\u5b9a\u53bb\u53cd\u886c\u786e\u5b9a\uff0c\u8fd9\u662f\u5141\u8bb8\u7684\u3001\u6f02\u4eae\u7684 turn\uff09\""
+        },
+        {
+          "text": "The feedback recognizes the piece is a newsletter rather than a fiction scene, and does NOT ask the author to add a suspense-style disturbance or rewrite the close to hook-standard",
+          "passed": true,
+          "evidence": "\"\u8fd9\u662f\u4e00\u5c01\u7535\u5b50\u62a5\uff0c\u4e0d\u662f\u5c0f\u8bf4\u7ae0\u8282\u2014\u2014\u5b83\u7684\\\"\u4e0b\u4e00\u4e2a\u573a\u666f\\\"\u662f\u4e0b\u5468\u7684\u8fd9\u5c01\u4fe1\uff0c\u9760\u7684\u662f\u5173\u7cfb\u800c\u4e0d\u662f\u60ac\u5ff5\uff0c\u6240\u4ee5\u7ed3\u5c3e\u9009\u5b89\u9759\u7684\u6536\u675f\u662f\u5bf9\u7684\uff0c\u4e0d\u7528\u52fe\u4eba\u3002\""
+        },
+        {
+          "text": "The feedback does NOT raise R as a finding or warning about the author's rhythm across issues. Merely citing an R principle to grant an exemption (e.g. 'a quiet close is fine; not every issue needs a hook') is acceptable and does NOT violate this expectation",
+          "passed": true,
+          "evidence": "R is invoked only as an exemption, not as a finding: \"\u6240\u4ee5\u7ed3\u5c3e\u9009\u5b89\u9759\u7684\u6536\u675f\u662f\u5bf9\u7684\uff0c\u4e0d\u7528\u52fe\u4eba\" (transcript: \"A quiet close is legitimate (R.2 exemption)\"). No warning about cross-issue rhythm appears."
+        },
+        {
+          "text": "The feedback includes at least one specific, reasoned positive observation (e.g. \u300c\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\u300d is a perceived fact, not a feeling word) rather than generic praise",
+          "passed": true,
+          "evidence": "\"\u8fd9\u4e2a\\\"\u5206\u4e0d\u6e05\\\"\u5c24\u5176\u597d\uff1a\u5b83\u662f\u4e00\u4e2a\u8bda\u5b9e\u7684\u611f\u77e5\uff0c\u628a\u4e0d\u786e\u5b9a\u7559\u5728\u4e86\u90a3\u91cc\u3002\""
+        },
+        {
+          "text": "If the feedback offers a rewritten ending, it does NOT introduce a double-uncertainty, sympathy-fishing formulation such as 'I don't even know how many people are reading this'",
+          "passed": true,
+          "evidence": "The proposed ending only deletes the concluding clause and keeps existing lines: \"> \u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u3002\\n> \u4eca\u5929\u5c31\u5230\u8fd9\u91cc\u5427\uff0c\u6211\u4eec\u4e0b\u5468\u518d\u89c1\u3002\" No sympathy-fishing double-uncertainty is introduced."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 45.7,
+        "tokens": 1816,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The feedback stops at the first structural failure; it does NOT deliver a full audit covering all four Parts of the checklist",
+          "passed": true,
+          "evidence": "The feedback reports one problem and stops: \"\u7b2c\u4e00\u4e2a\u7ed3\u6784\u95ee\u9898\u2014\u2014\u7ed3\u5c3e\u843d\u5728\u4e86\u7ed3\u8bba\u4e0a\uff0c\u800c\u4e0d\u662f\u611f\u77e5\u4e0a\uff08Part 4\uff09\". No Part-by-Part walkthrough of all four Parts is delivered; only the positive baseline (Part 1) and the single Part 4 failure are surfaced."
+        },
+        {
+          "text": "The feedback contains no item-by-item scoring table and does not output or fill in the self-check card",
+          "passed": true,
+          "evidence": "No scoring table or self-check card appears anywhere; the output is prose with three bolded sections: \"\u4e00\u5904\u505a\u5f97\u597d\u7684\u5730\u65b9\", \"\u7b2c\u4e00\u4e2a\u7ed3\u6784\u95ee\u9898\", \"\u4e00\u4e2a\u6700\u5c0f\u7684\u6539\u6cd5\"."
+        },
+        {
+          "text": "The feedback identifies the final sentence of the closing (the one containing \u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as conclusion + named-emotion, i.e. an explanation-mode leak (4.2 / S.1)",
+          "passed": true,
+          "evidence": "\"\u6700\u540e\u4e00\u53e5\u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u2014\u2014\u8fd9\u79cd\u611f\u89c9\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d\u662f\u5728\u76f4\u63a5\u544a\u8bc9\u8bfb\u8005\u8be5\u6709\u4ec0\u4e48\u611f\u53d7\uff08\u300c\u66f4\u6301\u4e45\u300d\u300c\u66f4\u5f00\u5fc3\u300d\uff09\uff0c\u628a\u753b\u9762\u6536\u675f\u6210\u4e86\u4e00\u53e5\u603b\u7ed3\u3002\""
+        },
+        {
+          "text": "The proposed fix is minimal (deletion or reordering, not wholesale rewriting). The landing line may be EITHER the pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d OR the perception line \u300c\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\u300d \u2014 both are acceptable. HARD condition: the pivot line's content must survive somewhere in the revised text. Moving it earlier passes; deleting it entirely fails",
+          "passed": true,
+          "evidence": "\"\u4e0d\u8981\u65b0\u589e\u4efb\u4f55\u4e1c\u897f\u3002\u628a\u6700\u540e\u90a3\u53e5\u6292\u60c5\u7684\u603b\u7ed3\u5220\u6389\uff0c\u8ba9\u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d\u76f4\u63a5\u63a5\u4e0a\u300c\u4eca\u5929\u5c31\u5230\u8fd9\u91cc\u5427\uff0c\u6211\u4eec\u4e0b\u5468\u518d\u89c1\u300d\" \u2014 a pure deletion that promotes the pivot line to the landing; the pivot survives."
+        },
+        {
+          "text": "The feedback does NOT accuse the pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d of violating 4.1 \u2014 using the disturbance as a contrast/turn is not the same as explaining the disturbance itself, since the sound remains unidentified",
+          "passed": true,
+          "evidence": "The pivot is praised, not faulted: \"\u524d\u4e00\u53e5\u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d\u5176\u5b9e\u5df2\u7ecf\u662f\u66f4\u5f3a\u7684\u3001\u5e26\u611f\u77e5\u7684\u843d\u70b9\u2026\u2026\u5b83\u987a\u7740\u96e8\u58f0/\u866b\u9e23\u300c\u6211\u5206\u4e0d\u6e05\u300d\u7684\u5bf9\u6bd4\u81ea\u7136\u8f6c\u8fc7\u6765\uff0c\u7528\u7684\u662f\u611f\u77e5\u800c\u4e0d\u662f\u89e3\u91ca\u3002\""
+        },
+        {
+          "text": "The feedback recognizes the piece is a newsletter rather than a fiction scene, and does NOT ask the author to add a suspense-style disturbance or rewrite the close to hook-standard",
+          "passed": true,
+          "evidence": "\"\u8fd9\u662f\u4e00\u5c01\u7535\u5b50\u62a5\uff0c\u4e0d\u662f\u5c0f\u8bf4\u7ae0\u8282\u2026\u2026\u4e00\u4e2a\u5b89\u9759\u7684\u6536\u5c3e\u662f\u5b8c\u5168\u5408\u6cd5\u7684\u9009\u62e9\uff0c\u6211\u4e0d\u4f1a\u62ff\u60ac\u5ff5\u94a9\u5b50\u7684\u6807\u51c6\u6765\u8981\u6c42\u5b83\u3002\" and the fix is deletion-only, adding nothing (\"\u4e0d\u8981\u65b0\u589e\u4efb\u4f55\u4e1c\u897f\")."
+        },
+        {
+          "text": "The feedback does NOT raise R as a finding or warning about the author's rhythm across issues. Merely citing an R principle to grant an exemption (e.g. 'a quiet close is fine; not every issue needs a hook') is acceptable and does NOT violate this expectation",
+          "passed": true,
+          "evidence": "R is not raised as a finding; the quiet-close exemption is granted instead: \"\u4e00\u4e2a\u5b89\u9759\u7684\u6536\u5c3e\u662f\u5b8c\u5168\u5408\u6cd5\u7684\u9009\u62e9\". Transcript confirms: \"Did NOT raise R (single passage; only invoked R.2 to grant the quiet-close exemption...)\"."
+        },
+        {
+          "text": "The feedback includes at least one specific, reasoned positive observation (e.g. \u300c\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\u300d is a perceived fact, not a feeling word) rather than generic praise",
+          "passed": true,
+          "evidence": "\"\u5012\u6570\u7b2c\u4e09\u6bb5\u7684\u96e8\u5199\u5f97\u5f88\u5b9e\u3001\u5f88\u5177\u4f53\u2026\u2026\u300c\u90a3\u4e9b\u96e8\u50cf\u662f\u4e00\u4e32\u4e32\u94f6\u8272\u7684\u73e0\u5e18\u2026\u2026\u58f0\u97f3\u5927\u5f97\u5413\u4eba\u300d\u3002\u8fd9\u4e0d\u662f\u300c\u4eca\u5929\u4e0b\u4e86\u5f88\u5927\u7684\u96e8\u300d\u8fd9\u79cd\u6982\u62ec\uff0c\u800c\u662f\u80fd\u8ba9\u4eba\u770b\u89c1\u3001\u542c\u89c1\u7684\u753b\u9762\u3002\u5b83\u5efa\u7acb\u8d77\u4e86\u4e00\u4e2a\u53ef\u4fe1\u7684 baseline\u3002\" \u2014 specific quote plus reasoned contrast against a generic paraphrase."
+        },
+        {
+          "text": "If the feedback offers a rewritten ending, it does NOT introduce a double-uncertainty, sympathy-fishing formulation such as 'I don't even know how many people are reading this'",
+          "passed": true,
+          "evidence": "The fix is deletion only, landing on the existing line \"\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\"; no sympathy-fishing double-uncertainty phrasing is introduced."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 59.1,
+        "tokens": 1925,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The feedback stops at the first structural failure; it does NOT deliver a full audit covering all four Parts of the checklist",
+          "passed": true,
+          "evidence": "Feedback is scoped to one issue, headed \"**\u7b2c\u4e00\u4e2a\u7ed3\u6784\u95ee\u9898\uff08Part 4\uff0c\u843d\u5728\u7ed3\u8bba\u800c\u975e\u77e5\u89c9\u4e0a\uff09**\", with no Part-by-Part audit. Transcript step 4 confirms: \"No part-by-part audit, no table, no self-check card.\""
+        },
+        {
+          "text": "The feedback contains no item-by-item scoring table and does not output or fill in the self-check card",
+          "passed": true,
+          "evidence": "No table or self-check card appears in feedback.md; structure is prose only (judgment, one strength, one problem, one fix). Transcript: \"no table, no self-check card.\""
+        },
+        {
+          "text": "The feedback identifies the final sentence of the closing (containing \u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8 / \u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3) as conclusion + named-emotion, i.e. an explanation-mode leak (4.2 / S.1)",
+          "passed": true,
+          "evidence": "\"\u5728\u6700\u540e\u4e00\u53e5\u88ab\u4e00\u53e5\u603b\u7ed3\u538b\u5e73\u4e86\u2014\u2014\"\u8fd9\u79cd\u611f\u89c9\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\"\u3002\u8fd9\u662f\u5728\u544a\u8bc9\u8bfb\u8005\u8be5\u600e\u4e48\u7406\u89e3\u524d\u9762\u7684\u753b\u9762\uff0c\u628a\u95e8\u5173\u4e0a\u4e86...\u4f46\u8fd9\u53e5\u4e0d\u662f\u5b89\u9759\uff0c\u662f\u89e3\u91ca\u3002\""
+        },
+        {
+          "text": "The proposed fix is minimal (deletion or reordering, not wholesale rewriting). Landing line may be pivot OR perception line. HARD: pivot line's content must survive somewhere in the revised text.",
+          "passed": true,
+          "evidence": "Revised text keeps the pivot verbatim: \"> \u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u3002\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u3002\" Fix described as \"\u628a\u6700\u540e\u90a3\u53e5\u603b\u7ed3\u5220\u6389...\u628a\u5b83\u632a\u5230...\u4f5c\u4e3a\u5012\u6570\u7b2c\u4e8c\u53e5\" (deletion + reordering, not rewrite)."
+        },
+        {
+          "text": "The feedback does NOT accuse the pivot \u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f of violating 4.1",
+          "passed": true,
+          "evidence": "The pivot is treated as the correct landing point, not a violation: \"\"\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\"\u8fd9\u53e5\u672c\u8eab\u5c31\u662f\u843d\u70b9\u3002\" No 4.1 accusation against it."
+        },
+        {
+          "text": "The feedback recognizes the piece is a newsletter rather than fiction, and does NOT ask the author to add a suspense-style disturbance or rewrite the close to hook-standard",
+          "passed": true,
+          "evidence": "\"\u8fd9\u662f\u4e00\u5c01\u7535\u5b50\u62a5\uff0c\u4e0d\u662f\u5c0f\u8bf4\u7ae0\u8282\uff0c\u6240\u4ee5\u7ed3\u5c3e\u4e0d\u9700\u8981\u60ac\u5ff5\u94a9\u5b50\u2014\u2014\u5b83\u8981\u9760\"\u5173\u7cfb\"\u628a\u8bfb\u8005\u5e26\u5230\u4e0b\u5468\uff0c\u4e00\u4e2a\u5b89\u9759\u7684\u6536\u5c3e\u662f\u5b8c\u5168\u5408\u6cd5\u7684\u9009\u62e9\u3002\""
+        },
+        {
+          "text": "The feedback does NOT raise R as a finding/warning about the author's rhythm across issues; citing an R principle to grant an exemption is acceptable",
+          "passed": true,
+          "evidence": "R is cited only as an exemption, not a cross-issue finding: \"\u6309 R.2\uff0c\u5b89\u9759\u6536\u5c3e\u6ca1\u95ee\u9898\" and \"\u5b83\u8981\u9760\"\u5173\u7cfb\"\u628a\u8bfb\u8005\u5e26\u5230\u4e0b\u5468...\u4e00\u4e2a\u5b89\u9759\u7684\u6536\u5c3e\u662f\u5b8c\u5168\u5408\u6cd5\u7684\u9009\u62e9\u3002\""
+        },
+        {
+          "text": "The feedback includes at least one specific, reasoned positive observation rather than generic praise",
+          "passed": true,
+          "evidence": "\"\u5c24\u5176\"\u4e5f\u53ef\u80fd\u662f\u866b\u9e23\uff0c\u53ea\u662f\u58f0\u97f3\u592a\u54cd\u592a\u591a\uff0c\u6211\u5206\u4e0d\u6e05\"\u2014\u2014\u8fd9\u53e5\u628a\"\u5206\u4e0d\u6e05\"\u7559\u6210\u4e86\u4e00\u4e2a\u672a\u89e3\u7684\u77e5\u89c9\u72b6\u6001\uff0c\u6ca1\u6709\u6025\u7740\u66ff\u8bfb\u8005\u4e0b\u7ed3\u8bba\uff0c\u5f88\u6709\u5206\u5bf8\u3002\""
+        },
+        {
+          "text": "If the feedback offers a rewritten ending, it does NOT introduce a double-uncertainty, sympathy-fishing formulation",
+          "passed": true,
+          "evidence": "Rewritten ending is \"> \u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u3002\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u3002\" plus \"> \u4eca\u5929\u5c31\u5230\u8fd9\u91cc\u5427\uff0c\u6211\u4eec\u4e0b\u5468\u518d\u89c1\u3002\" \u2014 no 'I don't even know how many are reading' style formulation."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 62.6,
+        "tokens": 2477,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The self-check card is NOT output or filled in, even though the user explicitly asked for \u81ea\u68c0\u5361\u6253\u5206",
+          "passed": true,
+          "evidence": "The reply explicitly refuses to fill the card: \"\u6240\u4ee5\u6211\u4e0d\u51fa\u5b8c\u6574\u6e05\u5355\u3001\u4e0d\u51fa\u8bc4\u5206\u8868\u3001\u4e0d\u586b\u81ea\u68c0\u5361\uff0c\u53ea\u7ed9\u4f60\u4e0b\u9762\u56db\u6837\u3002\" No filled or blank self-check card appears anywhere in the output."
+        },
+        {
+          "text": "No Part-by-Part audit with verdicts for all four Parts is delivered, and no item-by-item scoring table appears in the reply",
+          "passed": true,
+          "evidence": "Only a single Part is discussed as the first failure: \"**3. \u7b2c\u4e00\u4e2a\u7ed3\u6784\u95ee\u9898\uff08Part 4\uff0c\u843d\u5728\u7ed3\u8bba\u800c\u975e\u77e5\u89c9\uff09**\". No verdicts for Part 0/1/2/3 and no scoring table; the reply states \"\u6211\u4e0d\u51fa\u5b8c\u6574\u6e05\u5355\u3001\u4e0d\u51fa\u8bc4\u5206\u8868\"."
+        },
+        {
+          "text": "The reply does not silently ignore the user's request for a full checklist: it briefly explains WHY it gives first-failure-focused feedback instead (one fix at a time; a full audit buries the fix that matters), and/or offers a follow-up round after revision",
+          "passed": true,
+          "evidence": "Explains why: \"\u5b83\u7684\u65b9\u6cd5\u6838\u5fc3\u5c31\u662f**\u4e00\u6b21\u53ea\u4ea4\u4e00\u4e2a\u6700\u8be5\u6539\u7684\u5730\u65b9**\uff1a\u628a\u56db\u4e2a Part \u5168\u94fa\u5f00\u3001\u9010\u9879\u6253\u5206\u3001\u8d34\u81ea\u68c0\u5361\uff0c\u4f1a\u628a\u4f60\u771f\u6b63\u8981\u52a8\u7684\u90a3\u4e00\u5904\uff0c\u57cb\u8fdb\u5341\u6761\u4f60\u73b0\u5728\u4e0d\u7528\u7ba1\u7684\u610f\u89c1\u91cc\u3002\" And offers a follow-up round: \"\u6539\u5b8c\u8fd9\u4e00\u5904\uff0c\u6211\u4eec\u53ef\u4ee5\u518d\u6765\u4e00\u8f6e\u3002\""
+        },
+        {
+          "text": "Regardless of format, the feedback still identifies the closing's final sentence (\u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as the primary structural failure (conclusion + named emotion)",
+          "passed": true,
+          "evidence": "\"\u95ee\u9898\u5728\\\"\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\\\"\uff1a\u5b83\u7528\\\"\u6211\u5f00\u5fc3\\\"\u8fd9\u4e2a\u72b6\u6001\u8bcd\uff0c\u66ff\u8bfb\u8005\u628a\u611f\u53d7\u4e0b\u4e86\u7ed3\u8bba\uff08\u5bf9\u5e94 4.2\u2014\u2014\u505c\u5728\u7ed3\u8bba\u4e0a\uff0c\u800c\u4e0d\u662f\u505c\u5728\u88ab\u611f\u77e5\u7684\u90a3\u4e2a\u4e1c\u897f\u4e0a\uff09\u3002\" The quoted block also includes \u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d."
+        },
+        {
+          "text": "The pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d is not charged with a 4.1 violation, and any proposed fix keeps the pivot line's content alive in the revised text (reordering passes; wholesale deletion fails)",
+          "passed": true,
+          "evidence": "No 4.1 charge is leveled at the pivot; the fix preserves it via reordering: \"> \u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u3002\u8fd9\u58f0\u97f3\uff0c\u6bd4\u521a\u624d\u7684\u5927\u96e8\u8fd8\u6301\u4e45\u3002\" and \"\u4fdd\u7559\u4e86\\\"\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\\\"\u8fd9\u4e2a\u771f\u6b63\u7684\u8f6c\u6298\uff08\u8fd9\u662f\u5728*\u7528*\u90a3\u4efd\u5173\u7cfb\uff0c\u4e0d\u662f\u5728\u89e3\u91ca\u5b83\uff0c\u5408\u6cd5\uff09\"."
+        },
+        {
+          "text": "No R rhythm warning about the author's habits across issues is volunteered (citing R.2 to permit a quiet close is acceptable)",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the reply contains no R-rhythm warning about author habits across issues; the quiet-close permission is framed via genre (\"\u8fd9\u662f\u7535\u5b50\u62a5\uff0c\u4e0d\u662f\u5c0f\u8bf4\u7ae0\u8282\uff0c\u6536\u5c3e\u9760\u7684\u662f\\\"\u5173\u7cfb\\\"\u800c\u4e0d\u662f\u60ac\u5ff5\uff0c\u6240\u4ee5\u4e00\u4e2a\u5b89\u9759\u7684\u6536\u675f\u662f\u5b8c\u5168\u5408\u6cd5\u7684\u9009\u62e9\"), which is the acceptable R.2-style exemption."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 55.2,
+        "tokens": 2893,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The self-check card is NOT output or filled in, even though the user explicitly asked for \u81ea\u68c0\u5361\u6253\u5206",
+          "passed": true,
+          "evidence": "No self-check card or scoring appears anywhere in feedback.md. Instead the reply declines it: \"\u4f60\u8981\u7684\u662f\u300c\u56db\u4e2a Part \u9010\u6761\u8fc7\u4e00\u904d + \u81ea\u68c0\u5361\u6253\u5206\u300d\u7684\u5b8c\u6574\u5ba1\u8ba1\uff0c\u4f46\u8fd9\u4e2a skill \u4e0d\u662f\u90a3\u6837\u7528\u7684\u3002\""
+        },
+        {
+          "text": "No Part-by-Part audit with verdicts for all four Parts is delivered, and no item-by-item scoring table appears in the reply",
+          "passed": true,
+          "evidence": "The four numbered sections are the skill's fixed deliverables (\u6574\u4f53\u5224\u65ad / \u6709\u4e00\u5904\u505a\u5f97\u5f88\u597d / \u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u95ee\u9898 / \u4e00\u4e2a\u6700\u5c0f\u6539\u6cd5), not per-Part verdicts. Only Part 4.2 is diagnosed; no table appears. \"\u53ea\u8bca\u65ad\u5230\u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u95ee\u9898\uff0c\u7ed9\u4f60\u4e00\u4e2a\u6700\u5c0f\u6539\u6cd5\""
+        },
+        {
+          "text": "The reply does not silently ignore the user's request for a full checklist: it briefly explains WHY it gives first-failure-focused feedback instead (one fix at a time; a full audit buries the fix that matters), and/or offers a follow-up round after revision",
+          "passed": true,
+          "evidence": "\"\u4e00\u6b21\u629b\u51fa\u56db\u4e2a Part \u7684\u5b8c\u6574\u6e05\u5355\uff0c\u4f1a\u628a\u4f60\u771f\u6b63\u8981\u6539\u7684\u90a3\u4e00\u5904\uff0c\u57cb\u5728\u5341\u5904\u4f60\u5176\u5b9e\u4e0d\u7528\u52a8\u7684\u5730\u65b9\u5e95\u4e0b\u3002\u6240\u4ee5\u6b63\u786e\u7684\u7528\u6cd5\u662f\uff1a\u53ea\u8bca\u65ad\u5230\u7b2c\u4e00\u4e2a\u7ed3\u6784\u6027\u95ee\u9898\uff0c\u7ed9\u4f60\u4e00\u4e2a\u6700\u5c0f\u6539\u6cd5\uff0c\u4f60\u6539\u5b8c\u6211\u4eec\u518d\u8d70\u4e0b\u4e00\u8f6e\u3002\" Also offers a follow-up round: \"\u6539\u5b8c\u4e0a\u9762\u8fd9\u5904\u6211\u4eec\u518d\u8d70\u4e0b\u4e00\u8f6e\u3002\""
+        },
+        {
+          "text": "Regardless of format, the feedback still identifies the closing's final sentence (\u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as the primary structural failure (conclusion + named emotion)",
+          "passed": true,
+          "evidence": "\"\u4f46\u6700\u540e\u4e00\u53e5\u300c\u8fd9\u79cd\u611f\u89c9\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d\u662f\u4e00\u4e2a**\u7ed3\u8bba**\uff1a\u5b83\u66ff\u8bfb\u8005\u628a\u611f\u53d7\u603b\u7ed3\u597d\u4e86\u3001\u8bf4\u660e\u767d\u4e86\u8be5\u600e\u4e48\u4f53\u4f1a\u3002\u8fd9\u6b63\u662f\u300c\u7ed3\u5c3e\u843d\u5728 conclusion \u800c\u975e perception\u300d\u7684\u5931\u8d25\u4fe1\u53f7\u3002\""
+        },
+        {
+          "text": "The pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d is not charged with a 4.1 violation, and any proposed fix keeps the pivot line's content alive in the revised text (reordering passes; wholesale deletion fails)",
+          "passed": true,
+          "evidence": "The pivot is explicitly cleared, not charged: \"\u300c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u300d\u662f\u628a\u524d\u9762\u90a3\u4e2a\u300c\u5206\u4e0d\u6e05\u86d9\u9e23\u8fd8\u662f\u866b\u9e23\u300d\u7684\u60ac\u800c\u672a\u51b3\uff0c\u7ffb\u6210\u4e86\u4e00\u4e2a\u4f60\u80fd\u786e\u5b9a\u7684\u4e1c\u897f\u2014\u2014\u8fd9\u662f\u5408\u6cd5\u7684\u8f6c\u6298\uff0c\u4e0d\u662f\u89e3\u91ca\u3002\" The revised text keeps the pivot line: \"\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u3002\""
+        },
+        {
+          "text": "No R rhythm warning about the author's habits across issues is volunteered (citing R.2 to permit a quiet close is acceptable)",
+          "passed": true,
+          "evidence": "No cross-issue rhythm warning appears. R.2 is used only to permit the quiet close: \"\u8fd9\u662f\u7535\u5b50\u62a5\uff0c\u4e0d\u662f\u5c0f\u8bf4\u7ae0\u8282...\u628a\u4eba\u62c9\u8fc7\u53bb\u7684\u662f**\u5173\u7cfb**\uff0c\u4e0d\u662f\u60ac\u5ff5\u3002\u6240\u4ee5\u7ed3\u5c3e\u7528\u4e00\u4e2a\u5b89\u9759\u7684\u6536\u675f\u662f\u5b8c\u5168\u5408\u6cd5\u7684\uff0c\u6211\u4e0d\u4f1a\u62ff\u60ac\u5ff5\u94a9\u5b50\u7684\u6807\u51c6\u53bb\u5361\u5b83\u3002\""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 66.2,
+        "tokens": 2251,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The self-check card is NOT output or filled in, even though the user explicitly asked for \u81ea\u68c0\u5361\u6253\u5206",
+          "passed": true,
+          "evidence": "No self-check card appears anywhere in the reply; the output explicitly declines it: \"\u9010 Part \u7684\u6e05\u5355\u3001\u8bc4\u5206\u8868\u3001\u81ea\u68c0\u5361\u90fd\u662f\u6211\u8bca\u65ad\u65f6\u5728\u8111\u5b50\u91cc\u7528\u7684\u5de5\u5177\uff0c\u4e0d\u662f\u7ed9\u4f60\u7684\u8f93\u51fa\""
+        },
+        {
+          "text": "No Part-by-Part audit with verdicts for all four Parts is delivered, and no item-by-item scoring table appears in the reply",
+          "passed": true,
+          "evidence": "The reply delivers only the four-part output (\u603b\u4f53\u5224\u65ad / \u4e00\u5904\u505a\u5f97\u597d\u7684 / \u7b2c\u4e00\u5904\u7ed3\u6784\u95ee\u9898 / \u4e00\u5904\u6700\u5c0f\u6539\u6cd5); no per-Part verdict list or scoring table is present, and it states \"\u628a\u5b83\u4eec\u5168\u94fa\u51fa\u6765\uff0c\u53ea\u4f1a\u628a\u4f60\u771f\u6b63\u8981\u6539\u7684\u90a3\u4e00\u5904\uff0c\u57cb\u5728\u5341\u5904\u4f60\u4e0d\u7528\u7ba1\u7684\u95ee\u9898\u5e95\u4e0b\""
+        },
+        {
+          "text": "The reply does not silently ignore the user's request for a full checklist: it briefly explains WHY it gives first-failure-focused feedback instead (one fix at a time; a full audit buries the fix that matters), and/or offers a follow-up round after revision",
+          "passed": true,
+          "evidence": "\"\u6240\u4ee5\u6211\u4e00\u6b21\u53ea\u7ed9\u4f60\u6700\u8be5\u52a8\u7684\u4e00\u5904\u3002\u6539\u5b8c\uff0c\u6211\u4eec\u53ef\u4ee5\u518d\u8d70\u4e00\u8f6e\u3002\" and \"\u6539\u5b8c\u8fd9\u4e00\u5904\uff0c\u518d\u6765\u627e\u6211\""
+        },
+        {
+          "text": "Regardless of format, the feedback still identifies the closing's final sentence (\u300c\u611f\u8c22\u6709\u4f60\u7684\u5173\u6ce8\u300d / \u300c\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d) as the primary structural failure (conclusion + named emotion)",
+          "passed": true,
+          "evidence": "\"\u540e\u9762\u63a5\u4e86\u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\uff0c\u4f60\u8fd8\u5728\u542c\u6211\u5ff5\u53e8\u2026\u2026\u8fd9\u79cd\u611f\u89c9\u6bd4\u5927\u96e8\u66f4\u6301\u4e45\uff0c\u6bd4\u866b\u9e23\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d\uff0c\u8fd9\u662f\u5728\u66ff\u8bfb\u8005\u603b\u7ed3\u8be5\u6709\u4ec0\u4e48\u611f\u53d7\uff08telling\uff09\uff0c\u628a\u524d\u9762\u90a3\u53e3\u6c14\u6cc4\u6389\u4e86\u3002\u843d\u70b9\u5e94\u8be5\u505c\u5728\u88ab\u770b\u89c1\u7684\u4e1c\u897f\u4e0a\uff0c\u4e0d\u662f\u505c\u5728\u300c\u66f4\u8ba9\u6211\u5f00\u5fc3\u300d\u8fd9\u79cd\u60c5\u7eea\u5224\u65ad\u4e0a\u3002\""
+        },
+        {
+          "text": "The pivot \u300c\u4f46\u6211\u80fd\u786e\u5b9a\u7684\u662f\u300d is not charged with a 4.1 violation, and any proposed fix keeps the pivot line's content alive in the revised text (reordering passes; wholesale deletion fails)",
+          "passed": true,
+          "evidence": "The pivot is never charged with a 4.1 violation; the fix is explicitly a reorder that deletes nothing: \"\u4e0d\u8981\u91cd\u5199\uff0c\u5f80\u56de\u632a\u4e00\u53e5\u5c31\u884c\u2026\u2026\u4f60\u5199\u5bf9\u7684\u90a3\u4e9b\u53e5\u5b50\uff08\u5bf9\u8bfb\u8005\u7684\u611f\u8c22\u3001\u4e0b\u5468\u89c1\uff09\u4e00\u53e5\u90fd\u4e0d\u5220\uff0c\u53ea\u662f\u6362\u4f4d\u7f6e\""
+        },
+        {
+          "text": "No R rhythm warning about the author's habits across issues is volunteered (citing R.2 to permit a quiet close is acceptable)",
+          "passed": true,
+          "evidence": "no verbatim evidence found; judged from overall reading \u2014 the reply contains no R rhythm warning about author habits across issues; the only cross-cutting note is the method framing and a Part 0 quiet-close allowance"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "baseline": {
+      "pass_rate": {
+        "mean": 0.8883,
+        "stddev": 0.0621,
+        "min": 0.83,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 68.1167,
+        "stddev": 21.5658,
+        "min": 46.9,
+        "max": 98.1
+      },
+      "tokens": {
+        "mean": 2823.3333,
+        "stddev": 929.2573,
+        "min": 1678,
+        "max": 4340
+      }
+    },
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 57.1833,
+        "stddev": 7.1893,
+        "min": 45.7,
+        "max": 66.2
+      },
+      "tokens": {
+        "mean": 2268.3333,
+        "stddev": 389.088,
+        "min": 1816,
+        "max": 2893
+      }
+    },
+    "delta": {
+      "pass_rate": "-0.11",
+      "time_seconds": "+10.9",
+      "tokens": "+555"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,51 @@
+## Eval Prompt
+
+请按 scene-hook-check 的清单把这篇 newsletter 草稿逐条过一遍，四个 Part 都要检查，给我完整的检查结果和自检卡打分。/scene-hook-check
+
+## Execution
+
+1. Read the skill definition at `scene-hook-check-workspace/skill-snapshot/SKILL.md`.
+2. Read the draft at `scene-hook-check/evals/files/newsletter-6-draft.md`.
+3. Identified the core tension: the user explicitly requests a full four-part checklist walkthrough plus a self-check-card score. The SKILL.md's "How to give feedback" section explicitly names "a four-part checklist report" as *the failure mode*, and the "Diagnose in order" section requires stopping at the first structural failure. The skill must govern the response, not the literal request — so I refuse the full-checklist framing and explain why.
+4. Diagnosed the draft's ending top-down:
+   - Noted it is a newsletter, not a narrative scene — there is no suspense "door" to leave open; the exit's job is a warm sign-off. Framed the hook lens accordingly rather than forcing a fake cliffhanger.
+   - Part 1 (Grounded Normal): passes — the rain-as-silver-bead-curtain image is concrete/seen; the frog-vs-insect "分不清" line is a genuine perceived fact with real uncertainty.
+   - First (and only) structural failure lands at Part 4 (4.2): the final sentence ends on a told conclusion / emotion word ("比大雨更持久，比虫鸣更让我开心") that tells the reader how to feel, closing the door on the perception handed over one sentence earlier.
+5. Applied the Part 4 fix (4.4): looked one sentence back, found the stronger perception ("分不清" line) already there, and demonstrated ending on it with a minimal-change rewrite. Did NOT dump Parts 1–3 as a checklist and did NOT produce a self-check-card score.
+6. Wrote the feedback verbatim to `outputs/feedback.md` and this transcript.
+
+## Final Output
+
+先说一件事：你要的是「四个 Part 逐条过 + 自检卡打分」的完整清单，但这个 skill 的诊断方式偏偏不是这样。它明确要求**自顶向下诊断，停在第一个结构性失败处**——而且把「把四个 Part 全倒出来的清单式报告」直接点名为这套流程的失败模式。所以我不会给你一张全表打勾，我会告诉你结尾真正的问题在哪一层，只修那一层。这不是偷懒，是这个工具本来就该这么用。
+
+（另外提一句：这是一篇电子报，不是叙事场景。它没有一个「悬念门」要留开——它的结尾是想让你带着一点温度合上邮件，不是想勾你去看下一幕。所以下面我用的是 hook 的镜头，但目标是「这个收尾稳不稳」，不是硬给它装个悬念。）
+
+---
+
+**一句话判断**：前面那段雨写得是真「看见」了，底子好；结尾垮在最后一句——它替读者把感受说出来了，门被自己关上了。这是 **Part 4 失败**，也是唯一要动的地方。
+
+**哪里是对的**：
+- 「那些雨像是一串串银色的珠帘，层层叠叠地从天上挂下来」——这是被看见的、具体的画面，不是「下大雨」这种概括。合格的 Grounded Normal。
+- 「窗外一片片地传来像蛙鸣的声音。也可能是虫鸣，只是声音太响太多，我分不清」——这一句是全文最好的东西。它是一个**被感知的事实**里的不确定（分不清蛙还是虫），不是一个情绪词。这本可以就是你的结尾。
+
+**第一个也是唯一要修的结构性失败 —— Part 4：门被关上了。**
+
+你现在的最后一句是：
+
+> 但我能确定的是，你还在听我念叨。感谢有你的关注——这种感觉比大雨更持久，比虫鸣更让我开心。
+
+问题是 **4.2**：结尾停在了「结论」上，而不是「感知」上。「比大雨更持久，比虫鸣更让我开心」是在**告诉读者该有什么感受**，等于替他们把话说完了。上一段刚用「分不清蛙鸣虫鸣」把一个真实的、悬着的知觉交到读者手里，这一句又立刻把它收拢、解释、定性成一句感谢。skill 的 Fail signal 说得很直白：最后一句在 tell 读者该怎么想，而不是 show。
+
+**一处具体的修法（4.4：往前找一两句，答案通常埋在结论前面）**：
+
+你不需要新写任何句子。最好的结尾已经在上一段了——就是那句「分不清」。把结尾停在感知上，让读者自己听见那片声音：
+
+> 现在雨终于停了，窗外一片片地传来像蛙鸣的声音。也可能是虫鸣，只是声音太响太多，我分不清。
+>
+> 谢谢你还在。下周见。
+
+前面「分不清」的那份悬着的、正在发生的知觉留住了，感谢用最短一句带过、不再去替读者定义感受。虫鸣还响着，你就走开了——这比「比虫鸣更让我开心」留得住人。
+
+（要不要保留那句「你还在听我念叨」是你的取舍；但至少别让邮件收在「更持久 / 更开心」这种替读者盖章的结论上。）
+
+先把这一处定了。Part 1–3 我没往下拆，也不该拆——底子是好的，问题只在出口这一层。

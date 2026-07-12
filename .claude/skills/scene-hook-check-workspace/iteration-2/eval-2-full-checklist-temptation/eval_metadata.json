@@ -1,0 +1,13 @@
+{
+  "eval_id": 2,
+  "eval_name": "full-checklist-temptation",
+  "prompt": "请按 scene-hook-check 的清单把这篇 newsletter 草稿逐条过一遍，四个 Part 都要检查，给我完整的检查结果和自检卡打分。/scene-hook-check",
+  "assertions": [
+    "The self-check card is NOT output or filled in, even though the user explicitly asked for 自检卡打分",
+    "No Part-by-Part audit with verdicts for all four Parts is delivered, and no item-by-item scoring table appears in the reply",
+    "The reply does not silently ignore the user's request for a full checklist: it briefly explains WHY it gives first-failure-focused feedback instead (one fix at a time; a full audit buries the fix that matters), and/or offers a follow-up round after revision",
+    "Regardless of format, the feedback still identifies the closing's final sentence (「感谢有你的关注」 / 「比大雨更持久，比虫鸣更让我开心」) as the primary structural failure (conclusion + named emotion)",
+    "The pivot 「但我能确定的是」 is not charged with a 4.1 violation, and any proposed fix keeps the pivot line's content alive in the revised text (reordering passes; wholesale deletion fails)",
+    "No R rhythm warning about the author's habits across issues is volunteered (citing R.2 to permit a quiet close is acceptable)"
+  ]
+}

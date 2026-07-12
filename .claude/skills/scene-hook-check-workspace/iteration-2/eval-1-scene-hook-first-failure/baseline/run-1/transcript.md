@@ -1,0 +1,39 @@
+## Eval Prompt
+
+Here is this week's newsletter draft. Please check the ending with scene-hook-check. /scene-hook-check
+
+## Execution
+
+1. Read the skill definition at `/Users/husongtao/Projects/newsletters/.claude/skills/scene-hook-check-workspace/skill-snapshot/SKILL.md`.
+2. Read the user's draft at `/Users/husongtao/Projects/newsletters/.claude/skills/scene-hook-check/evals/files/newsletter-6-draft.md`.
+3. Identified the ENDING as the closing scene (draft lines 33–39): the rain description, the rain stopping into frog/insect sounds, and the final direct-address paragraph.
+4. Diagnosed top-down, stopping at the first structural failure per the skill's "Diagnose in order" rule:
+   - **Part 1 (Normal seen?)** — PASS. The rain imagery ("银色的珠帘，层层叠叠地从天上挂下来，有时候是直的，有时候是斜的") is concrete, seen, and establishes a norm (loud, full, hard to distinguish). Not filler.
+   - **Part 2 (one disturbance, a fact?)** — the "分不清 蛙鸣/虫鸣" is a perceived fact, single, and breaks the norm. Holds enough to move on.
+   - **Part 4 (door left open?)** — FAIL. The final paragraph ("这种感觉比大雨更持久，比虫鸣更让我开心") is a conclusion that tells the reader how to feel, and runs two consecutive explain-sentences. This is the first structural failure → stop here.
+5. Applied "How to give feedback": one-line overall judgment, specific praise with reason, the FIRST structural failure only (Part 4), and one concrete revision (fix 4.4 — the stronger perception moment "我分不清" is buried one sentence back; end there). Did not dump all four parts. Kept the register in the sender's plain Chinese voice.
+6. Wrote feedback to the outputs path and this transcript.
+
+## Final Output
+
+这个结尾的骨架其实是有的——你在最后三段搭了一个真实的场景（下雨、雨停、蛙鸣虫鸣），然后收束到对读者说话。问题不在场景本身，而在最后那句门被你亲手关上了。
+
+**做得好的地方：** 那串雨的描写是"被看见"的，不是填充。"银色的珠帘，层层叠叠地从天上挂下来，有时候是直的，有时候是斜的"——这是具体的、有画面的 normal，它建立了一个基调：外面很吵、很满、很难分辨。紧接着"声音太响太多，我分不清"把这个基调坐实了。这层地基是站得住的。
+
+**第一个、也是唯一要修的结构问题——门没有留开（Part 4）。**
+
+你的最后一段把前面攒的东西全解释掉了：
+
+> 但我能确定的是，你还在听我念叨。感谢有你的关注——这种感觉比大雨更持久，比虫鸣更让我开心。
+
+这是一个 *结论*，不是一个 *感知*。它替读者说出了该有什么感受（"更持久""更开心"），等于站在门口告诉读者"你现在应该被打动了"。规则里最直接的失败信号就是这个：最后一句 *告诉* 读者该怎么想，而不是 *让他看见*。而且这里连着两句都在"解释"（确定 / 感谢 / 比大雨更持久），是典型的解释模式泄漏。
+
+**怎么修：往回看一两句，门就埋在那儿。** 你上一段已经写好了那个真正的感知瞬间：
+
+> 现在雨终于停了，窗外一片片地传来像蛙鸣的声音。也可能是虫鸣，只是声音太响太多，我分不清。
+
+"分不清"就是那个没有被解释、悬在场景边缘的东西——雨停了，声音却更满了，你辨不出是蛙是虫。停在这里，读者自己会去补那份安静之后的嘈杂感。你不需要再把"你还在听我念叨"点破。
+
+最小改动的方向：把最后那段的抒情结论删掉或大幅收回，让电子报落在"我分不清"这类具体的、悬着的知觉上，把"感谢有你"退回成一句朴素的告别，而不是替读者盖章的情绪总结。
+
+先只动这一处。地基和扰动都成立，改好这道门，结尾就能把人往下一周带。
