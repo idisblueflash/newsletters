@@ -13,5 +13,18 @@
       "Bash(git branch:*)",
       "Bash(git checkout:*)"
     ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; case \"$f\" in */articles/*/draft.md) node .claude/skills/beehiiv-draft2html/scripts/draft2html.js \"$f\" ;; esac; } 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
   }
 }
