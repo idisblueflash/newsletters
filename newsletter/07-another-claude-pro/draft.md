@@ -13,7 +13,7 @@
 
 ## 本周的输出
 
-**凌晨三点，那行红字**
+**[凌晨三点，那行红字](https://ai-companion-newsletter.beehiiv.com/p/claude-code-night-shift)**
 
 我最近又买了一个 Claude Pro 账户。有两个账户用起来真的很爽，我再也不用一边盯着限额，一边小心翼翼地给 Claude Code 下任务了。我的精力全放在了工作上。
 
@@ -21,7 +21,7 @@
 
 后来我的睡眠都不好了。好在 AI 说可以：用脚本让 Claude Code 自动接着干活。
 
-**别再半夜爬起来点「继续」**
+**[别再半夜爬起来点「继续」](https://ai-companion-newsletter.beehiiv.com/p/claude-code-overnight-resume)**
 
 这是上一篇的实操篇，记录了这个能自动接上工作的脚本是怎么设计的。你除了能拿到具体脚本，还能学会设计思路。细心的话，你还能体会到一个好用的工具是如何迭代出来的。
 
