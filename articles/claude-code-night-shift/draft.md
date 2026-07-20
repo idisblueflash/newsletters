@@ -1,10 +1,10 @@
 ---
 slug: claude-code-night-shift
 title: 凌晨三点，那行红字
-status: draft         # draft → in-review → ready
+status: ready         # draft → in-review → ready
 mode: narrative
 created: 2026-07-17
-updated: 2026-07-17
+updated: 2026-07-20
 tags: [claude-code, automation, personal-essay]
 ---
 
@@ -71,3 +71,4 @@ tags: [claude-code, automation, personal-essay]
 [^1]: Claude 官方帮助中心的文章确认了「五小时会话额度」这件事本身，写明每五小时重置一次；「从发出第一条消息起算、不是固定钟点」这半句，现行官方页面没有逐字写出，由 Anthropic 2025 年公告的措辞、多篇独立整理文章，以及我自己几次实跑观测到的漂移重置时间（`6am`/`1:20pm`/`6:20pm`/`11:20pm`）共同佐证。<https://support.claude.com/en/articles/9797557-usage-limit-best-practices> · [存档](http://web.archive.org/web/20260715074201/https://support.claude.com/en/articles/9797557-usage-limit-best-practices)
 
 [^2]: 「限额解开后自动继续」目前不是 Claude Code 自带的功能。在 anthropics/claude-code 的 GitHub 仓库里，「[FEATURE] Auto-continue after subscription rate limit resets」（#35744）截至写作时仍是 open 状态；另一条类似请求 #36320 被标记为重复并关闭。<https://github.com/anthropics/claude-code/issues/35744>
+
