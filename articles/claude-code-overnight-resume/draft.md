@@ -1,10 +1,10 @@
 ---
 slug: claude-code-overnight-resume
 title: 别再半夜爬起来点「继续」：让 Claude Code 撞到限额后自己接着干
-status: draft         # draft → in-review → ready
+status: ready         # draft → in-review → ready
 mode: tutorial
 created: 2026-07-11
-updated: 2026-07-17
+updated: 2026-07-20
 tags: [claude-code, automation, macos, tutorial]
 ---
 
@@ -12,11 +12,9 @@ tags: [claude-code, automation, macos, tutorial]
 
 ## 你能做到什么
 
-读完这篇，你可以在睡前把一个长任务交给 Claude Code，然后去睡觉。在你撞上五小时限额停下来之后，它会自己等限额重置，重置了就接着干，直到把任务全部做完，不用你半夜爬起来点「继续」。
+读完这篇，你可以在睡前把一个长任务交给 Claude Code，然后去睡觉。在你撞上五小时限额停下来之后，它会自己等限额重置，重置了就接着干，直到把任务全部做完，不用你半夜爬起来点「继续」。整个方案就是一个 shell 脚本，做三件事：让电脑保持清醒；每隔几分钟试一次续跑，没到重置时间就继续等，到了就真正开始干活；任务全部做完后自己停下来。
 
-整个方案就是一个 shell 脚本，做三件事：让电脑保持清醒；每隔几分钟试一次续跑，没到重置时间就继续等，到了就真正开始干活；任务全部做完后自己停下来。
-
-顺便交代一句：写这篇的时候（2026 年 7 月），Claude Code 还没有内置「限额一重置就自动续跑」，官方仓库里这条功能请求还开着；市面上也有现成的第三方工具 `claude-auto-retry` 干同样的事[^12]。不想自己搭的可以直接用它。往下是自己搭一个的做法，每一步为什么这么做都讲清楚。
+顺便交代一句：写这篇的时候（2026 年 7 月），Claude Code 还没有内置「限额一重置就自动续跑」，官方仓库里这条功能请求还开着；市面上也有现成的第三方工具 `claude-auto-retry` 干同样的事[^1]。不想自己搭的可以直接用它。往下是自己搭一个的做法。
 
 **动手前你需要准备**：
 
@@ -28,9 +26,9 @@ tags: [claude-code, automation, macos, tutorial]
 
 先试最笨的、谁都会先想到的办法：算好重置时间，到点自动跑一次「继续」。
 
-Claude Code 有个**无头模式**：命令后面加 `-p`（也就是 `--print`），它就不进界面，只执行你给的这一条 prompt，跑完就退出；写成 `claude -c -p "…"`，就是接着这个目录里最近一次对话继续往下做[^1]。
+Claude Code 有个**无头模式**：命令后面加 `-p`（也就是 `--print`），它就不进界面，只执行你给的这一条 prompt，跑完就退出；写成 `claude -c -p "…"`，就是接着这个目录里最近一次对话继续往下做[^2]。
 
-所以最笨的脚本就是：先睡到凌晨 1:05，再执行一次这个命令。把它写出来是下面的样子，用 `caffeinate` 带着跑，免得电脑中途睡着（`caffeinate` 是 macOS 自带的防睡眠工具，例二再细讲）。这段代码不用抄：它不完美，就是拿来演示这条笨路的，等下你会看到它失败，看懂思路就行：
+所以最笨的脚本就是：先等到凌晨 1:05，再执行一次这个命令。把它写出来是下面的样子，用 `caffeinate` 带着跑，免得电脑中途睡着（`caffeinate` 是 macOS 自带的防睡眠工具，例二再细讲）。这段代码不用抄：它不完美，是拿来演示这条笨路的，等下你会看到它失败，看懂思路就行：
 
 ```bash
 cat > ~/resume-claude-1am.sh <<'EOF'
@@ -64,13 +62,13 @@ caffeinate -ims ~/resume-claude-1am.sh
 
 `pgrep` 那两行说明了问题：这时已经 01:22，脚本还活着。要么它还停在 `sleep` 那一行，根本没走到 `claude`；要么走到了，却什么都没写下来（日志是 01:05 建的，倒像是后一种）。不管是哪一种，这一整夜，什么活都没干。
 
-这个办法有两个毛病，互相独立。
+这个办法有两个毛病。
 
-**第一，手写倒计时不可靠。** 那行 `date -j -f "%H:%M:%S" …`，只要解析结果跟预期不一样，就会算出一个错的目标时间，可能差出二十来个小时，而且不报错。另外，指望一个长达几小时的 `sleep` 一整夜不被打断，也不可靠。总结起来：这个脚本在猜限额几点重置，还把整晚押在一个不可靠的定时器上。
+**第一，比较预期时间的办法不靠谱。** 那行 `date -j -f "%H:%M:%S" …`，只要解析结果跟预期不一样，就会算出一个错的时间，可能差出二十来个小时，而且还不报错。另外，指望一个长达几小时的 `sleep` 一整夜不被打断，也不可靠。总结起来：这个脚本在猜限额几点重置，还把整晚押在一个不可靠的定时器上。
 
-**第二，重置时间本身就不该写死。** 五小时的额度窗口，是从你发出第一条 prompt 的时刻开始算的[^2]：大约五小时后重置，跟固定钟点无关。所以实际观察到的重置时间一直在变，6am、1:20pm、6:20pm、11:20pm，几次运行各不相同。写死 01:05 的脚本，到第二天就已经错了。重置时间不是一个能提前算出来的数；既然算不出来，就不要算，改成反复试。
+**第二，重置时间本身就不该写死。** 五小时的额度窗口，是从你发出第一条 prompt 的时刻开始算的[^3]：大约五小时后重置，跟固定钟点无关。所以实际观察到的重置时间一直在变，6am、1:20pm、6:20pm、11:20pm，几次运行各不相同。写死 01:05 的脚本，到第二天就已经没用了。重置时间不是一个能提前算出来的数；既然算不出来，就不要算，改成反复试。
 
-所以改法是：不再计算唤醒时间，改成每隔几分钟执行一次续跑命令。限额还没重置的时候，这次执行几秒钟就结束了，只在日志里留一行记录；哪一次赶上限额已经重置，那一次就真正开始干活。不用做日期计算，不用猜重置时间，重置时间怎么变都不受影响：
+所以改法是：不再计算唤醒时间，改成每隔几分钟执行一次续跑命令。限额还没重置的时候，续跑命令执行几秒钟就结束了，只会在日志里留一行记录；哪一次赶上限额已经重置，那一次就真正开始干活。不用做日期计算，不用猜重置时间，重置时间怎么变都不受影响：
 
 ```bash
 while true; do
@@ -80,7 +78,11 @@ while true; do
 done
 ```
 
-现在日志有内容了。限额期间每 5 分钟尝试一次，整个脚本里没有任何写死的时间点。先说明一句：下面是那天早上的真实日志，跑的是这个循环**外面再包了几行记录代码**的版本——`### RUNNER STARTED`、`>>> ATTEMPT`、时间戳，都是那几行打的，完整脚本例二会给你。光秃秃的四行循环敲门敲得一模一样，只是日志里就只有 Claude 的原始输出。输出节选：
+现在日志有内容了。限额期间每 5 分钟尝试一次，整个脚本里没有任何写死的时间点。
+
+先说明一句：下面是那天早上的真实日志，跑的是这个循环**外面再包了几行记录代码**的版本——`### RUNNER STARTED`、`>>> ATTEMPT`、时间戳，都是那几行打的，完整脚本例二会给你。
+
+四行循环敲门的日志几乎没变，只有敲门的时间不同。输出节选：
 
 ```text
 ### RUNNER STARTED 2026-07-07 08:37:40 CST
@@ -103,7 +105,7 @@ You've hit your session limit · resets 1:20pm (Asia/Shanghai)
 
 ## 例二：能自己收尾、又不会半夜里把仓库搞坏
 
-这一版才是真正可以跑一整晚的脚本。跟例一的循环比，它补上了四件事：一，整批任务真的做完时它会**自己停**；二，**不让电脑睡着**；三，**不用你照看**——用 `--dangerously-skip-permissions` 让它无人值守地跑（为什么必须用它、别的替代不了，下面讲）；四，每次尝试都记下时间戳，第二天早上日志能看得明白。
+这一版才是真正可以跑一整晚的脚本。跟例一的循环比，它多了四个本事：一，整批任务做完时它会**自己停**；二，**不让电脑睡着**；三，**不用你照看**——用 `--dangerously-skip-permissions` 让它无人值守地跑（为什么必须用它、别的替代不了，下面讲）；四，每次尝试都记下时间戳，第二天早上日志能看得明白。
 
 **先解决循环怎么知道自己干完了。** 在 prompt 里跟 Claude 约好：整份任务清单全部做完的时候，打出一行固定的字。循环每次检查输出，见到这行就 `break`，没见到就等几分钟再试。完整脚本：
 
@@ -149,31 +151,35 @@ EOF
 chmod +x ~/resume-claude.sh
 ```
 
-**轮到你了（先别往下看）。** 脚本写好了，但我们现在还不能放心让它跑一整晚。启动之前还缺两样东西，先自己想一想。提示：一样是物理层面的——凌晨 1 点要跑的任务，对电脑本身有什么要求？另一样是信任层面的——这个脚本会在没人看着的情况下改文件、跑命令，睡前你要先做什么，才能恢复夜里万一出的问题？
+**轮到你了（先别往下看）。** 脚本是写好了，可现在还不能放心让它跑一整晚，启动前还差两样东西。先自己想想这两个问题：
+
+一，这活儿凌晨一点才跑，那会儿你在睡觉。电脑得是什么状态，才跑得动？
+
+二，这脚本没人盯着，会自己改文件、跑命令。万一夜里把仓库改坏了，你想第二天一条命令就能退回去。那睡前得先干一件什么事？
 
 想好了再往下看。
 
-第一样，**让电脑保持清醒，并且知道&#x20;**`caffeinate`**&#x20;不是全能的。** `caffeinate` 是 macOS 自带的工具，作用只有一个：不让电脑进入睡眠。`-i` 挡住空闲睡眠，`-m` 不让硬盘休眠，`-s` 防止系统睡眠， `-s` **只在插着电源时有效**。给它一条命令，它会一直撑到这条命令跑完，然后就不再拦着电脑休眠了[^3]。它唯一管不了的是合盖这个动作：MacBook Air 一合上盖子就休眠了，`caffeinate` 也拦不住（不接外接显示器，就做不到合着盖子还醒着）[^4]。所以：**盖子开着，电源插着。** 然后启动：
+第一样，**让电脑保持清醒，并且你要知道&#x20;**`caffeinate`**&#x20;不是全能的。** `caffeinate` 是 macOS 自带的工具，作用是不让电脑进入睡眠。`-i` 挡住空闲睡眠，`-m` 不让硬盘休眠，`-s` 防止系统睡眠，但 `-s` **只在插着电源时才管用**。给它后面加上一条命令，它会一直撑到这条命令跑完，然后就不再拦着电脑休眠了[^4]。它唯一管不了的是合盖这个动作：MacBook Air 一合上盖子就休眠了，`caffeinate` 也拦不住（不接外接显示器，就做不到合着盖子还醒着）[^5]。所以：**盖子开着，插上电源。** 启动：
 
 ```bash
 caffeinate -ims ~/resume-claude.sh
 ```
 
-第二样，**不用你照看——想用白名单管住它，行不通。** 你的第一反应可能是用 `--allowedTools` 限制 Claude 能用哪些工具。但没人值守的时候这条路走不通：白名单之外的任何动作，无头运行没人可问，这一次运行说一句「没权限」就收场了，活没干成[^5]。
+第二样，**不用你照看——想用白名单管住它，行不通。** 你的第一反应可能是用 `--allowedTools` 限制 Claude 能用哪些工具。但没人值守的时候这条路走不通：白名单之外的任何动作，Claude Code 无头运行的时候它去问谁呢，它会说一句「没权限」就收场了，活还是没干成[^6]。
 
-循环虽然还会再敲门，但每一次都撞死在同一堵墙上，这一晚照样什么活都干不成。所以能过夜的脚本得用 `--dangerously-skip-permissions`，把权限确认全部自动放行[^6]。
+循环虽然还会再敲门，但每一次都撞死在同一堵墙上，这一晚照样什么活都干不成。所以能过夜的脚本得用 `--dangerously-skip-permissions`，把权限全部自动放行[^7]。
 
 先把丑话说在前头：这不是隔离。权限一关，Claude 能做的就是你这个账号能做的任何事——不止这个仓库，它也能读你 home 目录里的文件、能联网。官方文档说得直白：这个模式只该在容器、虚拟机这类隔离环境里用。
 
-我在普通电脑上跑，靠两件事把损失变得可控：睡前先提交一个干净的还原点，仓库里的文件夜里真被改坏了，一行命令就能滚回来；再让它只从一个项目仓库启动，缩小出事的面。仓库外的事，回滚管不了。这点剩余风险，要么你像我一样认了（任务就在这个仓库里），要么就真去开个容器或备用账号。
+我在普通电脑上跑，靠两件事拉低风险：睡前先提交一个干净的还原点，夜里仓库真被改坏了，一行命令就能滚回来；再让它只从一个项目仓库启动，万一出事，波及的范围也小。仓库外的事，回滚也管不了。剩下这点风险，要么你像我一样认了（任务就在这个仓库里），要么就真去开个容器或备用账号。
 
 ```bash
 cd /Users/husongtao/Projects/your-project && git add -A && git commit -m "before overnight run"
 ```
 
-还想加码的话，可以用 `--max-turns N` 和 `--max-budget-usd N` 限制它最多跑多少轮、花多少钱[^7]。这是给轮数和花费设上限，不是限制它能用哪些工具，也挡不住某一步把事情办坏。
+还想加码的话，可以用 `--max-turns N` 和 `--max-budget-usd N` 限制它最多跑多少轮、花多少钱[^8]。这是给轮数和花费设上限，不是限制它能用哪些工具，也挡不住某一步把事情办坏。
 
-这样 Claude 就能：限额重置后接着跑、自己把任务做完；仓库里的改动有还原点兜底，仓库外的剩余风险你自己心里有数。「既无人值守、又全程受控、又绝对安全」这三样，真做不到既要、又要、还要。
+这样 Claude 就能：限额重置后接着跑、自己把任务做完；仓库里的改动有还原点兜底，仓库外的风险你自己心里有数。「既无人值守、又全程受控、又绝对安全」这三样，真做不到既要、又要、还要。
 
 \[可选] **过夜之前可以先测一次**，确认交互会话关掉之后，续跑真的能接上：
 
@@ -182,7 +188,7 @@ cd /Users/husongtao/Projects/paper-degist-02
 claude -c -p "Say READY and list the open tasks."
 ```
 
-它如果打出 READY 和你的任务清单，说明 `-c` 接上了正确的对话，过夜的循环也能照样接上。它如果说没有可以继续的对话，就是 `-c` 在这个目录下没找到会话，改用明确指定的 `--resume <session-id>`[^8]。
+它如果打出 READY 和你的任务清单，说明 `-c` 接上了正确的对话，过夜的循环也能照样接上。它如果说没有可以继续的对话，就是 `-c` 在这个目录下没找到会话，改用明确指定的 `--resume <session-id>`[^9]。
 
 睡前一条命令，早上一份带时间戳、能看明白的日志；限额一重置它就开始干活，**干完自己停**。
 
@@ -212,7 +218,7 @@ ALL_TASKS_DONE
 
 例一搭出了循环，例二把它变成可以放心过夜的版本。这一节机制完全不变——还是 `claude -c -p … --dangerously-skip-permissions`，还是见到 `ALL_TASKS_DONE` 自己停。变化是：不再把项目路径写死，让同一个脚本可以用在任何文件夹上。
 
-例二的脚本写死了一个 `PROJECT`，日志也写死在 `$HOME/claude-overnight.log`。只跑一个项目是够用的；可你一旦用同一个脚本跑**第二个**项目，两个实例的 `claude -c` 就会接错目录，还会抢同一个日志文件。
+例二的脚本写死了一个 `PROJECT`目录，日志也写死在 `$HOME/claude-overnight.log`。只跑一个项目是够用的；可你一旦用同一个脚本跑**第二个**项目，两个实例的 `claude -c` 就会接错目录，还会抢同一个日志文件。
 
 **先想想这两处该怎么改**（先别往下看）：项目目录不写死的话，从哪里来？每次运行的日志放在哪里，两个项目才不会互相覆盖？
 
@@ -286,7 +292,7 @@ cd /path/to/a-different-project && caffeinate -ims ~/resume-claude.sh
 
 循环、自停，跟例二完全一样，不再重复。上手前只有两件新事要知道：
 
-1. `PROJECT="${1:-$(pwd)}"` 的意思是：**从错误的目录启动，就会接上错误的会话**。所以先 `cd` 进项目，或者把路径当参数传进去。
+1. `PROJECT="${1:-$(pwd)}"` ：**从错误的目录启动，就会接上错误的会话**。所以先 `cd` 进项目，或者把路径当参数传进去。
 2. `POLL_SECONDS=900`（15 分钟）比例一的 5 分钟试得少一些，限额期间更安静，但从重置到第一次真正干活，中间最多会隔差不多 15 分钟。你可以按自己的需要调整。
 
 ## 几个实战小技巧
@@ -301,22 +307,22 @@ cd /path/to/a-different-project && caffeinate -ims ~/resume-claude.sh
 caffeinate -ims ~/resume-claude.sh
 ```
 
-因为 `claude -c` 按目录继续会话，限额一重置，脚本接上的就是你刚才那个对话，不用抄会话 id。之后看项目文件夹里那份 `.log` 就能知道进度（例三的通用脚本写的是 `claude-overnight-<文件夹名>.log`；例二那版写的是 `~/claude-overnight.log`）。一个要注意的点：`Ctrl+D` **只在输入框是空的时候有效**，输入框里有字它就退不出去，先清空[^9]。如果你的版本按了没反应，用 `/exit` 也一样；关键的一步是**启动脚本**，怎么退出无所谓。
+因为 `claude -c` 按目录继续会话，限额一重置，脚本接上的就是你刚才那个对话，不用抄会话 id。之后看项目文件夹里那份 `.log` 就能知道进度（例三的通用脚本写的是 `claude-overnight-<文件夹名>.log`；例二那版写的是 `~/claude-overnight.log`）。一个要注意的点：`Ctrl+D` **只在输入框是空的时候有效**，输入框里有字它就退不出去，先清空[^10]。如果你的版本按了没反应，用 `/exit` 也一样；关键的一步是**启动脚本**，怎么退出无所谓。
 
 **二，还在限额里的时候，先把下一段任务发给一个新会话。** 这是我自己一直在用的做法：限额还没重置时，新开一个会话，把下一段任务（最好是一个够长、够完整的任务）直接发进去。
 
-Claude Code 不会拦着你发送，只是在你按下发送之后提示你还在限额里。照我自己跑下来的情况，这条 prompt **已经进入了这个会话的上下文**：等限额一重置，脚本照第一条的做法用 `claude -c` 一续，它就接着做你留下的那段任务。
+Claude Code 不会拦着你发送，只是在你按下发送之后提示你还在限额里。照我自己跑下来的情况，这条 prompt **已经进入了这个会话的上下文**：等限额一重置，脚本照第一条的做法用 `claude -c` 一续，它就接着做你留下的那段任务了。
 
-好处是：限额期间不用干等，下一个窗口的活先排上了。
+好处是：限额期间不用干等，下一个窗口的活先安排上。
 
-官方文档没写这个用法，但也不跟文档冲突：文档说限额时客户端会「把后续请求挡到重置之后」[^10]，说的是请求不会立刻执行，不是不让你输入；你输入的内容进了上下文，重置后那次续跑就把它接上了。（这是我自己机器上的经验：专门验证过一次，平时也一直这么用。）
+官方文档没写这个用法，但也不跟文档冲突：文档说限额时客户端会「把后续请求挡到重置之后」[^11]，说的是请求不会立刻执行，不是不让你输入；你输入的内容进了上下文，重置后那次续跑就把它接上了。（这是我自己机器上的经验：专门验证过一次，平时也一直这么用。）
 
 **三，交互界面里 Shift+Tab 的「auto 模式」，和脚本里的 `--dangerously-skip-permissions` 不是一回事。** 你可能会问这两个是不是重复了。不重复，它们在**两个不同的场景**里自动放行：
 
-- `Shift+Tab` 切出来的 auto，作用于**你正看着的这个交互会话**。开了它，Claude 不再用权限确认打断你，你看着它自己往下做。这是当前会话上的一个设置[^11]。
-- `--dangerously-skip-permissions` 作用于**无人值守的运行**。无头的 `claude -c -p` 是重新启动的进程，你之前用 `Shift+Tab` 设的 auto **带不进去**。不加这个参数，无头运行一碰到需要点「同意」的动作，找不到人，这次运行就中止了[^11]。
+- `Shift+Tab` 切出来的 auto，作用于**你正看着的这个交互会话**。开了它，Claude 不再用权限确认打断你，你看着它自己往下做。这是当前会话上的一个设置[^12]。
+- `--dangerously-skip-permissions` 作用于**无人值守的运行**。无头的 `claude -c -p` 是重新启动的进程，你之前用 `Shift+Tab` 设的 auto **带不进去**。不加这个参数，无头运行一碰到需要点「同意」的动作，找不到人，那次运行就中止了[^12]。
 
-`Shift+Tab` 的 auto 是说「我看着的时候别问我」；`--dangerously-skip-permissions` 是「没人看着，谁也别问」。过夜脚本是无头的，所以不管 `Shift+Tab` 设成什么，都要带这个参数。
+`Shift+Tab` 的 auto 是说「我看着的时候别问我」；`--dangerously-skip-permissions` 是「现在没人看着，谁也别问」。过夜脚本是无头的，所以不管 `Shift+Tab` 设成什么，都要带这个参数。
 
 ## 怎么知道成功了
 
@@ -326,32 +332,33 @@ Claude Code 不会拦着你发送，只是在你按下发送之后提示你还�
 2. 至少有一行 `... not done`，说明它碰到过限额，在尝试
 3. 有一个 `ALL_TASKS_DONE`，说明它把清单跑完、自己收工了。活干得好不好，打开项目看一眼最踏实
 
-最后说一个例外。除了五小时限额，还有一个每周总额度，两边用的是同一个池子[^10]。撞限额的时候看一眼提示：写的是 session 还是 weekly。要是 weekly，重置就不是几个小时以后，可能是好几天以后。这种情况我不建议让脚本空转干等：直接停掉它，等每周额度回来再跑。
+最后说一个例外。除了五小时限额，还有一个每周总额度，两边用的是同一个池子[^11]。撞限额的时候看一眼提示：写的是 session 还是 weekly。要是 weekly，重置就不是几个小时以后，可能是好几天以后。这种情况我不建议让脚本空转干等：直接停掉它，等每周额度回来再跑。
 
 现在，你随时都能把手上的长任务给 Claude Code 安排上。只要撞的是五小时限额，不管它凌晨几点重置，你都能睡个安稳觉了。
 
 ---
 
-[^1]: Claude Code Docs,无头模式（`-p` / `--print` 跑一条 prompt 后退出；`-c` / `--continue` 续本目录最近一次对话）。`[CITE: claude-code-headless]`,评级 **A**（官方文档）。
+[^1]: 到 2026-07 为止，「限额重置后自动续跑」仍是 Claude Code 官方仓库里开着的功能请求（#35744 开放中；#36320 被标为重复关闭），第三方 npm 工具 `claude-auto-retry` 填的就是同一个坑，#35744 里也直接点了它的名。<https://github.com/anthropics/claude-code/issues/35744> · [存档](http://web.archive.org/web/20260401014433/https://github.com/anthropics/claude-code/issues/35744)；<https://github.com/anthropics/claude-code/issues/36320> · [存档](http://web.archive.org/web/20260714180829/https://github.com/anthropics/claude-code/issues/36320)
 
-[^2]: 五小时额度窗口每五小时重置，见 Claude Help Center 两篇官方文章（评级 **A**）；「从你第一条 prompt 起算、不卡固定钟点」这半句现行官方页面没有原话，由 Anthropic 2025 年公告措辞、多家独立整理与三晚真跑观测到的漂移重置时间（`6am`/`1:20pm`/`6:20pm`/`11:20pm`）共同佐证（评级 **B**）。`[CITE: usage-limit-rolling-window]`。
+[^2]: Claude Code Docs，无头模式（`-p` / `--print` 跑一条 prompt 后退出；`-c` / `--continue` 续本目录最近一次对话）。<https://code.claude.com/docs/en/headless> · [存档](http://web.archive.org/web/20260624080532/https://code.claude.com/docs/en/headless)
 
-[^3]: `caffeinate(8)` man page:`-i`/`-m`/`-s` 分别挡空闲/硬盘/系统睡眠，`-s` 只在插电时管用；给了命令就在命令退出时放手。`[CITE: macos-caffeinate-man]`,评级 **A**（man page，2026-07-16 已逐条核对原文）。
+[^3]: 五小时额度窗口每五小时重置，见 Claude Help Center 两篇官方文章；「从你第一条 prompt 起算、不卡固定钟点」这半句现行官方页面没有原话，由 Anthropic 2025 年公告措辞、多家独立整理与三晚真跑观测到的漂移重置时间（`6am`/`1:20pm`/`6:20pm`/`11:20pm`）共同佐证。<https://support.claude.com/en/articles/9797557-usage-limit-best-practices> · [存档](http://web.archive.org/web/20260715074201/https://support.claude.com/en/articles/9797557-usage-limit-best-practices)
 
-[^4]: MacBook Air 合盖即睡，`caffeinate` 拦不住（不接外接显示器就没有合盖常亮）;Apple 支持文档。`[CITE: macbook-clamshell-sleep]`,评级 **B**。
+[^4]: `caffeinate(8)` man page：`-i`/`-m`/`-s` 分别挡空闲/硬盘/系统睡眠，`-s` 只在插电时管用；给了命令就在命令退出时放手。<https://ss64.com/mac/caffeinate.html> · [存档](http://web.archive.org/web/20260617180414/https://ss64.com/mac/caffeinate.html)
 
-[^5]: `--allowedTools` 对未列入的工具仍要拿权限；无头运行没人可批，这一次运行就中止退出了（官方文档原话「the run aborts when one is attempted」；2026-07-16 实测复现：说一句没权限就正常退出，什么都没写）。`[CITE: allowedtools-needs-approval]`,评级 **A**（官方文档 + 实测）。
+[^5]: MacBook Air 合盖即睡，`caffeinate` 拦不住（不接外接显示器就没有合盖常亮）；Apple 支持文档。<https://support.apple.com/guide/mac-help/put-your-mac-to-sleep-or-wake-it-mh10330/mac> · [存档](http://web.archive.org/web/20250911132035/https://support.apple.com/guide/mac-help/put-your-mac-to-sleep-or-wake-it-mh10330/mac)
 
-[^6]: `--dangerously-skip-permissions` 自动放行一切权限确认（等价于 `--permission-mode bypassPermissions`）。文档同时警告：这个模式只该在容器、虚拟机这类隔离环境里用。正文里的还原点、单仓库、上限参数替代不了这道隔离，只是把仓库内的损失变成可恢复、把出事的面收小。`[CITE: skip-permissions-unattended]`，评级 **A**（官方文档）。
+[^6]: `--allowedTools` 对未列入的工具仍要拿权限；无头运行没人可批，这一次运行就中止退出了（官方文档原话「the run aborts when one is attempted」，实测复现：说一句没权限就正常退出，什么都没写）。<https://code.claude.com/docs/en/cli-reference> · [存档](http://web.archive.org/web/20260712135822/https://code.claude.com/docs/en/cli-reference)
 
-[^7]: `--max-turns` / `--max-budget-usd` 封住轮数与花费上限（两个参数都只在 `-p` 无头模式下有效，正好是过夜脚本的用法）。`[CITE: max-turns-budget-flags]`,评级 **A**（官方 CLI reference）。
+[^7]: `--dangerously-skip-permissions` 自动放行一切权限确认（等价于 `--permission-mode bypassPermissions`）。文档同时警告：这个模式只该在容器、虚拟机这类隔离环境里用。正文里的还原点、单仓库、上限参数替代不了这道隔离，只是把仓库内的损失变成可恢复、把出事的面收小。<https://code.claude.com/docs/en/cli-reference> · [存档](http://web.archive.org/web/20260712135822/https://code.claude.com/docs/en/cli-reference)
 
-[^8]: `-c` 找不到本目录的对话时，改用写明的 `--resume <session-id>`。`[CITE: claude-code-resume-vs-continue]`,评级 **A**（官方文档）。
+[^8]: `--max-turns` / `--max-budget-usd` 封住轮数与花费上限（两个参数都只在 `-p` 无头模式下有效，正好是过夜脚本的用法）。<https://code.claude.com/docs/en/cli-reference> · [存档](http://web.archive.org/web/20260712135822/https://code.claude.com/docs/en/cli-reference)
 
-[^9]: Claude Code Docs「Interactive mode」快捷键表：`Ctrl+D` 退出会话（EOF 信号）。「只在输入框空着时管用」「按两次」这两点文档没写，是作者自己观察到的行为（与 EOF 语义一致）。`[CITE: ctrl-d-exits-interactive]`，评级 **A**（退出本身，官方文档）/ **C**（空输入框条件，作者观察）。非承重：`/exit` 或关标签页同样能退。
+[^9]: `-c` 找不到本目录的对话时，改用写明的 `--resume <session-id>`。<https://code.claude.com/docs/en/cli-reference> · [存档](http://web.archive.org/web/20260712135822/https://code.claude.com/docs/en/cli-reference)
 
-[^10]: Claude Code Docs,「Errors → Usage limits」:限额时客户端「挡住后续请求到重置」——指的是不立刻发出请求，文档没写、也没否认「打字进上下文、重置后再续」这条路径。「限额里先喂长任务、重置后 `claude -c` 接上」是作者反复用、并于 2026-07-12 自行验证过一次的做法（单一来源经验，机制与文档不冲突）。同一个 Errors 页也写了每周限额（weekly limit），和五小时会话限额共用一个额度池。`[CITE: usage-limit-blocks]`（评级 **A**,文档）/ `[CITE: prime-while-limited]`（评级 **C**,作者经验）。
+[^10]: Claude Code Docs「Interactive mode」快捷键表：`Ctrl+D` 退出会话（EOF 信号）。「只在输入框空着时管用」「按两次」这两点文档没写，是我自己观察到的行为（与 EOF 语义一致）。非承重：`/exit` 或关标签页同样能退。<https://code.claude.com/docs/en/interactive-mode> · [存档](http://web.archive.org/web/20260714142200/https://code.claude.com/docs/en/interactive-mode)
 
-[^11]: Claude Code Docs,「Permission modes」:交互界面 `Shift+Tab` 循环 `default` → `acceptEdits` → `plan`（外加账户开关的 `auto`、标志开关的 `bypassPermissions`）;`auto` 只作用于当前这次交互会话，**不会带进**无头的 `claude -c -p` 跑——后者要在命令上自带 `--dangerously-skip-permissions`(或 `--permission-mode`)。`[CITE: permission-modes]`,评级 **A**(官方文档)。
+[^11]: Claude Code Docs「Errors → Usage limits」：限额时客户端「挡住后续请求到重置」——指的是不立刻发出请求，文档没写、也没否认「打字进上下文、重置后再续」这条路径。「限额里先喂长任务、重置后 `claude -c` 接上」是我反复用、并自行验证过的做法（单一来源经验，机制与文档不冲突）。同一个 Errors 页也写了每周限额（weekly limit），和五小时会话限额共用一个额度池。<https://code.claude.com/docs/en/errors> · [存档](http://web.archive.org/web/20260706133708/https://code.claude.com/docs/en/errors)
 
-[^12]: 到 2026-07 为止，「限额重置后自动续跑」仍是 Claude Code 官方仓库里开着的功能请求（#35744 开放中；#36320 被标为重复关闭），第三方 npm 工具 `claude-auto-retry` 填的就是同一个坑，#35744 里也直接点了它的名。`[CITE: auto-resume-feature-request]`,评级 **A**（issue 追踪器本身；2026-07-16 在线核对）。
+[^12]: Claude Code Docs「Permission modes」：交互界面 `Shift+Tab` 循环 `default` → `acceptEdits` → `plan`（外加账户开关的 `auto`、标志开关的 `bypassPermissions`）；`auto` 只作用于当前这次交互会话，**不会带进**无头的 `claude -c -p` 跑——后者要在命令上自带 `--dangerously-skip-permissions`（或 `--permission-mode`）。<https://code.claude.com/docs/en/permission-modes> · [存档](http://web.archive.org/web/20260714142200/https://code.claude.com/docs/en/permission-modes)
+
