@@ -66,7 +66,7 @@ tags: [claude-code, automation, personal-essay]
 
 ---
 
-这个脚本怎么写、怎么跑起来，我新写了一篇教程：《别再半夜爬起来点「继续」：让 Claude Code 撞到限额后自己接着干》。一步一步照着做，做完它就能自己过夜：撞到限额自己等，解开了自己接着干，你睡你的。
+这个脚本怎么写、怎么跑起来，我新写了一篇教程：《[别再半夜爬起来点「继续」：让 Claude Code 撞到限额后自己接着干](https://ai-companion-newsletter.beehiiv.com/p/claude-code-overnight-resume)》。一步一步照着做，做完它就能自己过夜：撞到限额自己等，解开了自己接着干，你睡你的。
 
 [^1]: Claude 官方帮助中心的文章确认了「五小时会话额度」这件事本身，写明每五小时重置一次；「从发出第一条消息起算、不是固定钟点」这半句，现行官方页面没有逐字写出，由 Anthropic 2025 年公告的措辞、多篇独立整理文章，以及我自己几次实跑观测到的漂移重置时间（`6am`/`1:20pm`/`6:20pm`/`11:20pm`）共同佐证。<https://support.claude.com/en/articles/9797557-usage-limit-best-practices> · [存档](http://web.archive.org/web/20260715074201/https://support.claude.com/en/articles/9797557-usage-limit-best-practices)
 
