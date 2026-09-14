@@ -38,7 +38,7 @@ The sinner watched his nimble mirror-twin mouth the same words.
 
 这里 sinner、nimble 是助记发音的，the same words 是助记意思的。
 
-你还可以让 Vivian 这个助手生成助记文的图片，比如这样：
+我还可以让 Vivian 这个助手生成助记文的图片，比如这样：
 
 TODO：配图
 
