@@ -20,7 +20,11 @@ AI 本身就是 LLM（大语言模型）。它是从成堆的英文里训练出�
 
 这个周末我就去看了很多本地生成图片的教程。我打算从 ComfyUI 入手，试着把 GPT Image 2 的效果复现出来。
 
-说到 ComfyUI 的入门教程，我推荐这个教程：TODO 链接。我看的是老版本，新教程里作者用了大量的动画来讲解，更好理解。而且老教程已经是两年之前的了，很多界面都变动了。所以如果你也感兴趣，我推荐新版。
+说到 ComfyUI 的入门教程，我推荐这个：
+
+[ComfyUI Course - Learn ComfyUI From Scratch](https://youtu.be/HkoRkNLWQzY?list=PL-pohOSaL8P-FhSw1Iwf0pBGzXdtv4DZC)
+
+我看的是老版本，新教程里作者用了大量的动画来讲解，更好理解。而且老教程已经是两年之前的了，很多界面都变动了。所以如果你也感兴趣，我推荐新版。
 
 ## 本周的输出
 
