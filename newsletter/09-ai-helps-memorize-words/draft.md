@@ -32,7 +32,7 @@ AI 本身就是大语言模型（LLM）。它是从成堆的英文里训练出�
 
 我造了一套做单词卡的流程。这倒是值得拿来说一说。
 
-比如你碰到一个生词 synonym，你可以喊上 Nemo 这个助手（subagent），它会给你一句不长的英文，就像这样：
+比如我碰到一个生词 synonym，我会喊上 Nemo 这个助手（subagent），它给我一句不长的英文：
 
 The sinner watched his nimble mirror-twin mouth the same words.
 
@@ -42,13 +42,13 @@ The sinner watched his nimble mirror-twin mouth the same words.
 
 TODO：配图
 
-下次你再见到 synonym，就会想起这张图片，接着回想起它的发音和意思了。
+下次我再看到 synonym，就会想起这张图片，接着回想起它的发音和意思了。
 
 好了，今天先写到这儿，我们下周再见。
 
 ---
 
-「用AI发电」每周一发刊。
+「与 AI 同行」每周一发刊。
 
 如果你对我的内容有什么想法，可以直接回复这封信告诉我。
 
