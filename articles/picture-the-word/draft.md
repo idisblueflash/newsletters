@@ -24,14 +24,16 @@ tags: []
 
 这是用 Codex 生成的，每个例句都有配图。就算例句的文字你看不大懂，看到图之后，就能明白意思了。
 
-我平时是这样用的：
+我平时是这样和我的 Claude 说的：
 
-get _cora on coordinate
+> get _cora on coordinate
 
-Claude 会喊一个 agent 去做所有的流程，最后给我一个 3×3 的图片。
+Claude 会喊一个 subagent （_cora） 去做所有的流程，它中间会调用 Codex 生成图片，最后给我一个上面那样的图片。
 
 如果我有多个单词要做：
 
-get multiple _cora on coordinate, critique, and bias.
+> get multiple _cora on coordinate, critique, and bias.
 
-它会并行地喊出三个 agent 同时去做。这样很省时，但是不能一次并行太多，它会很快吃掉我 Codex 5 小时的用量。
+它会并行地喊出三个 agent 同时去做。这样很省时，但是不能一次并行太多，它会很快吃掉我半天的生图配额。
+
+有了这张图，我能看到单词在各种场合的用法。我对单词的印象比单看字典的解释又深了一步。
