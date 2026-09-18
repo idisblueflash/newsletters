@@ -12,24 +12,22 @@ Claude 生成了一份仔细的计划，连多个模型之间的接力顺序都�
 
 报告的评分是这样的：
 
-| 模型名称 | 单张速度 | 品质 | 年份 |
-| --- | --- | --- | --- |
-| Juggernaut SD1.5 | 115s | 8 | 2023 |
-| Z-Image-Turbo | 122s | 9 | 2025 |
-| Flux Schnell | 81s | 8 | 2024 |
-| SD3.5 Medium | 179s | 7 | 2024 |
+![机器人主题测试评分表](../../assets/images/mac-mini-model-benchmark/robot-test-table.png)
 
-Juggernaut 是 baseline，所以先不用看。剩下来是 SD3.5 又慢又差，也排除掉。再剩下来是 Z-Image-Turbo 首选，因为我对图片质量要求高。Flux Schnell 可以用来生成草稿。
+[配图：机器人]
+
+
+
+Juggernaut 是 baseline，所以先不用看。 SD3.5 又慢又差，也排除掉。Z-Image-Turbo 首选，因为我对图片质量要求高。Flux Schnell 可以用来生成草稿。
 
 这次生图的主题是机器人的，我平时的图是有人物和动作的。所以我又让 Claude 再跑了一次。这次换成了印第安纳·琼斯的动作图。等我散步回来，报告就出来了：
 
-| 模型名称 | 单张速度 | 品质 |
-| --- | --- | --- |
-| Juggernaut SD1.5 | 113s | 5 |
-| Z-Image-Turbo | 123s | 8 |
-| Flux Schnell | 81s | 7 |
-| SD3.5 Medium | 176s | 7 |
+![印第安纳·琼斯主题测试评分表](../../assets/images/mac-mini-model-benchmark/indy-test-table.png)
 
-从机器人的图上，我只能看出结构是不是够精细，而我完全信任 Claude 的评分了。这次有些不同，人物动作的图片看一眼就能分出好坏。
+[配图：Indy]
+
+在机器人的图上，我只能看出精细程度，所以我完全信任 Claude 的评分了。这次有些不同，人物动作的图片看一眼就能分出好坏。
+
+
 
 这两组测试下来，我已经知道 Z-Image-Turbo 是最后的选择了，哪怕会慢一点。
