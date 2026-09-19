@@ -1,6 +1,6 @@
 # Mac Mini 生图模型测试
 
-我把大概测试目的- 品质和速度，提了一下。
+我把大概测试目的（品质和速度）和 Claude 提了一下。
 
 这次测试的本地生图模型是四个：Juggernaut SD1.5, Z-Image-Turbo, Flux Schnell 和 SD3.5 Medium。
 
