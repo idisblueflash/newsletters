@@ -9,4 +9,4 @@ mac-mini-image-model-benchmark
 两组测试跑下来，速度和画质到底该选哪个，答案没有我想的那么简单。
 
 **Meta Title（25字）**
-去理发的功夫，Claude 帮我测完了四个生图模型
+去理发的功夫，Claude 帮我测完了四个模型
