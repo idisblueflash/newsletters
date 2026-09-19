@@ -4,7 +4,7 @@
 
 这次测试的本地生图模型是四个：Juggernaut SD1.5, Z-Image-Turbo, Flux Schnell 和 SD3.5 Medium。
 
-我重点提醒 Claude 的是：模型第一次有加载时间(cold）所以要多生两次图片，才能记录没有加载模型的速度（warm）。
+我重点提醒 Claude ：模型第一次有加载时间(cold）所以要多生两次图片，才能记录没有加载模型的速度（warm）。
 
 Claude 生成了一份仔细的计划，连多个模型之间的接力顺序都想好了，挺不错。我让他把这份计划存成 markdown 文件，然后清空对话框，开始测试。
 
