@@ -11,7 +11,9 @@
       "Bash(git log:*)",
       "Bash(git status:*)",
       "Bash(git branch:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(python3 .claude/skills/beehiiv-seo-metadata/scripts/count_chars.py)",
+      "Bash(python3 .claude/skills/beehiiv-seo-metadata/scripts/save_seo.py)"
     ]
   },
   "hooks": {
