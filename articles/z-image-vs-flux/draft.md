@@ -11,7 +11,7 @@
 | **Z-Image-Turbo**   | 122.28 秒          | 13.83 秒 | 9.0（三次打分都是 9，非常稳定）              |
 | **Flux.2 Klein 4B** | 37.89 秒（约快 3.2 倍） | 12.98 秒 | 8.67（9/8/9，其中一次种子生成的脸偏向骷髅、有点恐怖） |
 
-<!-- preview: z-image-vs-flux-benchmark-table.png -->
+![两个模型在生成速度、加载耗时和质量分上的对比](z-image-vs-flux-benchmark-table.png)
 
 Flux 要比 Z Image 快三倍 ，而且质量就差一点点。 大家直觉上会先选 Flux，但我选的是 Z Image，因为我更看重质量。
 
@@ -36,6 +36,6 @@ Flux 要比 Z Image 快三倍 ，而且质量就差一点点。 大家直觉上�
 | **文本编码器**  | Qwen 系列                                 | Qwen3-4B GGUF                                                               |
 | **本文用的配置** | GGUF Q4_K_S，5 步，dpmpp_sde/beta，cfg 1 | GGUF Q4_K_M UNet + flux2 VAE，4 step，euler/simple，cfg 1，guidance-distilled |
 
-<!-- preview: z-image-vs-flux-params-table.png -->
+![Z-Image-Turbo 与 Flux.2 [klein] 的基础参数和运行配置对比](z-image-vs-flux-params-table.png)
 
 以上。
