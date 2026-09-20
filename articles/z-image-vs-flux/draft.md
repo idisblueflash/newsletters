@@ -14,7 +14,7 @@ Flux 要比 Z Image 快三倍 ，而且质量就差一点点。 大家直觉上�
 
 ![Z-Image Turbo 与 Flux.2 Klein 在机器人场景下三次种子的出图对比](images/robot-scene-comparison.png)
 
-但在我的人物动作场景下, Z Image 的理解力更好。 这种情况从 0.03 的分数差上看不出来 ，但看看出图的效果就很明显了：
+但在我的人物动作场景（一个手持鞭子甩动的动作瞬间）下, Z Image 的理解力更好。 这种情况从 0.03 的分数差上看不出来 ，但看看出图的效果就很明显了：
 
 ![Z-Image Turbo 与 Flux.2 Klein 在人物动作场景下三次种子的出图对比](images/indy-scene-comparison.png)
 
