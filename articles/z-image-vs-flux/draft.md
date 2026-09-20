@@ -24,4 +24,4 @@ Flux 要比 Z Image 快三倍 ，而且质量就差一点点。 大家直觉上�
 
 ![Z-Image-Turbo 与 Flux.2 [klein] 的基础参数和运行配置对比](images/z-image-vs-flux-params-table.png)
 
-以上。
+这就是我把 Z Image Turbo 定为主力、Flux.2 Klein 留着救急的原因。如果你也在同款 Mac mini 上跑本地生图，上面这两张参数表可以直接抄。
