@@ -4,14 +4,7 @@
 
 我的选择是：以 Z Image Turbo 为主模型, Flux.2 Klein 为副手。
 
-下面是两个模型的对比:
-
-|                     | 平均生成时间（热启动）       | 加载耗时    | 平均质量分                           |
-| ------------------- | ----------------- | ------- | ------------------------------- |
-| **Z-Image-Turbo**   | 122.28 秒          | 13.83 秒 | 9.0（三次打分都是 9，非常稳定）              |
-| **Flux.2 Klein 4B** | 37.89 秒（约快 3.2 倍） | 12.98 秒 | 8.67（9/8/9，其中一次种子生成的脸偏向骷髅、有点恐怖） |
-
-![两个模型在生成速度、加载耗时和质量分上的对比](z-image-vs-flux-benchmark-table.png)
+![两个模型在生成速度、加载耗时和质量分上的对比](images/z-image-vs-flux-benchmark-table.png)
 
 Flux 要比 Z Image 快三倍 ，而且质量就差一点点。 大家直觉上会先选 Flux，但我选的是 Z Image，因为我更看重质量。
 
@@ -29,13 +22,6 @@ Flux 要比 Z Image 快三倍 ，而且质量就差一点点。 大家直觉上�
 
 如果你和我用一样的 Mac Mini （M4，16GB）那么下面的参数你会感兴趣：
 
-|            | Z-Image-Turbo                           | Flux.2 [klein]                                                             |
-| ---------- | --------------------------------------- | --------------------------------------------------------------------------- |
-| **出品方**    | Alibaba/Tongyi-MAI                      | Black Forest Labs                                                           |
-| **参数量**    | 6B                                      | 4B（9B 版本对 Mac mini 来说太大了）                                                   |
-| **文本编码器**  | Qwen 系列                                 | Qwen3-4B GGUF                                                               |
-| **本文用的配置** | GGUF Q4_K_S，5 步，dpmpp_sde/beta，cfg 1 | GGUF Q4_K_M UNet + flux2 VAE，4 step，euler/simple，cfg 1，guidance-distilled |
-
-![Z-Image-Turbo 与 Flux.2 [klein] 的基础参数和运行配置对比](z-image-vs-flux-params-table.png)
+![Z-Image-Turbo 与 Flux.2 [klein] 的基础参数和运行配置对比](images/z-image-vs-flux-params-table.png)
 
 以上。
