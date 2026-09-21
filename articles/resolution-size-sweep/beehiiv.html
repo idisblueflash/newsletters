@@ -51,13 +51,13 @@
 </tbody>
 </table>
 
-<p>!<a href="time-scaling-trend.png">Z-Image-Turbo、Flux Schnell 和 Flux.2 Klein 从 512 到 1280 分辨率的生图耗时增长趋势，Z-Image-Turbo 涨幅最快达到 4.42 倍，Flux.2 Klein 涨幅最平缓为 3.73 倍</a></p>
+<img src="time-scaling-trend.png" alt="Z-Image-Turbo、Flux Schnell 和 Flux.2 Klein 从 512 到 1280 分辨率的生图耗时增长趋势，Z-Image-Turbo 涨幅最快达到 4.42 倍，Flux.2 Klein 涨幅最平缓为 3.73 倍" style="max-width:100%;">
 
 <h2>二、768 x 768 是最佳尺寸</h2>
 
 <p>真正反直觉的地方在这：尺寸继续加大，品质并不会跟着变好。让我们换个思路，用回报率的角度来看。比如，我们把变大的部分用像素来表示，除以增加的秒数，就能得到「秒/百万像素」这个指标。把三个模型的平均值都算出来，再加上生图品质打分，放在图表上一起看：</p>
 
-<p>!<a href="return-on-time-spent.png">三个模型在各尺寸下的平均每百万像素耗时与平均品质打分，两条曲线在 768 之后开始分化：品质从 8.33 降到 7.0，而耗时效率几乎没有变化</a></p>
+<img src="return-on-time-spent.png" alt="三个模型在各尺寸下的平均每百万像素耗时与平均品质打分，两条曲线在 768 之后开始分化：品质从 8.33 降到 7.0，而耗时效率几乎没有变化" style="max-width:100%;">
 
 <p>从 768 之后的回报率就不高了。</p>
 
@@ -65,6 +65,6 @@
 
 <p>如果我们的场景是那种简单的（机器人），Flux 2 Klein 是首选。但是如果我们的场景有复杂的人物动作和构图，就需要换 Z-Image-Turbo 了。</p>
 
-<p>!<a href="./assets/images/speed-quality-grid-1789968564932-qkq1b74n.png">Z-Image-Turbo、Flux Schnell 和 Flux.2 Klein 在 1024x1024 下的耗时与品质打分对比，Klein 只用了 Z-Image 三分之一的时间，品质分差距不到一分</a></p>
+<img src="./assets/images/speed-quality-grid-1789968564932-qkq1b74n.png" alt="Z-Image-Turbo、Flux Schnell 和 Flux.2 Klein 在 1024x1024 下的耗时与品质打分对比，Klein 只用了 Z-Image 三分之一的时间，品质分差距不到一分" style="max-width:100%;">
 
 <p>总结一下：尺寸定在 768x768 就够了，场景简单选 Klein，动作和构图复杂就选 Z-Image-Turbo。</p>
