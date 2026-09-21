@@ -12,34 +12,29 @@
 
 [Making Comic](https://a.co/d/0bMpYh20) By Scott McCloud
 
-这本书我买回来很久了，也时不时地在看。这次为了记忆概念，需要用上漫画，我在 Codex 试过，效果不好：
+这本书我买回来很久了，也时不时地在看。我这次创建记忆宫殿，要用上漫画。我在 Codex 试过，效果不好：
 
-「图片：Codex 自由发挥的结果」
+![图片：Codex 自由发挥的结果](./assets/images/clipboard-1790003379985-wxy7-1790003379989-206qxfe7.png)
 
-而且用 Codex 创作漫画还很费 Token。因为我让它每一个画面都要先出 9 个，再选出最好的。结果我的 Codex 限额（20 美金每月）很快就超了。
+用 Codex 做漫画还费 Token。我让它每一个画面都要先出 9 个，再选出最好的。结果我的 Codex 限额（20 美金每月）很快就超了。
 
-后来我又把这本书找出来了。我把书里讲画面的几页拍给 AI，让它整理成文档。再根据文档设计 subagent。用生成的漫画剧本来生成图片，一次就能出来好效果：
+后来我又把这本书找出来了。我把书里讲画面的几页拍给 AI，让它整理成文档。再根据文档设计 subagent。用生成的漫画剧本来生成图片，只要一次就能出来好效果：
 
-「图片：根据漫画剧本生成的图片」
+![图片：根据漫画剧本生成的图片](./assets/images/clipboard-1790003503868-y0wc-1790003503873-chntc0ed.png)
 
 ## 本周的输出
 
-上面说到的做漫画的 subagent 其实也能算到本周的输出，但是没发表，就不写进来了。
+- [一张图看懂一个词](https://ai-companion-newsletter.beehiiv.com/p/picture-the-word)&#x20;
+  - 里面提到了我学英文的技巧：用 AI 生成 corpus 图，帮我快速理解新词。
 
-[一张图看懂一个词](https://ai-companion-newsletter.beehiiv.com/p/picture-the-word)
+* [Mac Mini 生图模型测试](https://ai-companion-newsletter.beehiiv.com/p/mac-mini-image-model-benchmark)
+  - 为了选出常用的 AI 生图模型，我在 Mac mini 里把常见的模型都跑了一个遍。
 
-提到了我学英文的时候发现的一个用法。用 corpus 图片帮助快速理解新词。
-
-[Mac Mini 生图模型测试](https://ai-companion-newsletter.beehiiv.com/p/mac-mini-image-model-benchmark)
-
-为了选出常用的模型，我在 Mac mini 里把常见的模型都跑了一个遍。
-
-[本地生图是不是越大越好?](https://ai-companion-newsletter.beehiiv.com/p/resolution-size-sweep)
-
-我用三个模型跑了几种不同尺寸图片。最后选了个反直觉的最优尺寸：768x768。
+- [本地生图是不是越大越好?](https://ai-companion-newsletter.beehiiv.com/p/resolution-size-sweep)
+  - 我用三个 AI 生图模型跑了几种尺寸的图片。最后选了个反直觉的最优尺寸：768x768。
 
 ---
 
-自从开始日更，我发现要做的事情好多：写稿子、弄排版、做研究、当然还有学东西。有时候我也会把作息弄乱，不过呢，磕磕绊绊地进步吧。
+从上周开始日更，我发现要做的事情好多：写稿子、弄排版、做研究、当然还有学新东西。有时候我也会把自己的作息弄乱，不过呢，磕磕绊绊地进步吧。
 
-几天就写到这里吧，下周见！
+今天先写到这里，下周见！
