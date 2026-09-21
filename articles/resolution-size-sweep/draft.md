@@ -2,7 +2,7 @@
 
 横向对比三个模型看效果
 
-**要点**：不是越大越好，768x768 正合适。从时间花费和品质上看，这个尺寸更优，而且三个不同的模型都是这样。继续提高尺寸会带来奇怪的效果。如果模型自身对动作和构图的理解力不足，再大的尺寸也没用。
+**要点**：不是越大越好，768x768 正合适。从时间花费和品质上看，这个尺寸更优，而且三个不同的模型都是这样。
 
 ---
 
@@ -32,14 +32,10 @@
 
 从 768 之后的回报率就不高了。
 
-往后再增加尺寸不仅不会提升品质，还会引入新问题。
-
-## 三、Flux 2 Klein 又快又好
+## 三、Flux 2 Klein 最快
 
 如果我们的场景是那种简单的（机器人），Flux 2 Klein 是首选。但是如果我们的场景有复杂的人物动作和构图，就需要换 Z-Image-Turbo 了。
 
-![Z-Image-Turbo, Flux Schnell, and Flux.2 Klein compared at 1024×1024, with generation time and quality score per model — Klein finishes in a third of Z-Image's time and still scores within one point](speed-quality-grid.png)
-
-
+![Z-Image-Turbo, Flux Schnell, and Flux.2 Klein compared at 1024×1024, with generation time and quality score per model — Klein finishes in a third of Z-Image's time and still scores within one point](./assets/images/speed-quality-grid-1789968564932-qkq1b74n.png)
 
 总结一下：尺寸定在 768x768 就够了，场景简单选 Klein，动作和构图复杂就选 Z-Image-Turbo。
