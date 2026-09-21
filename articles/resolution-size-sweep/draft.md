@@ -8,7 +8,13 @@ A few results are counter-intuitive.
 
 Going from 512×512 to 1280×1280 multiplies pixel count by 6.25×, but generation time only grows 3.7–4.4× across the three models — cheaper than the naive "quadratic in resolution" intuition suggests. But the *marginal* cost of each step climbs: 512→768 costs far less than proportional to pixel count (a fixed, resolution-independent overhead — queueing, model dispatch — dominates at this end), while 1024→1280 is almost exactly proportional to pixel count, as that fixed overhead gets diluted and the sampler's own per-pixel cost takes over.
 
-![Time and quality score at each resolution, for Z-Image-Turbo, Flux Schnell, and Flux.2 Klein](rollup-table.png)
+| Model | 512 | 768 | 1024 | 1280 | Time multiple (512→1280) |
+|---|---|---|---|---|---|
+| Z-Image-Turbo GGUF | 74.82s / 8 | 123.81s / 9 | 205.52s / 9 | 330.36s / 8 | 4.42× |
+| Flux Schnell GGUF | 54.83s / 6 | 81.78s / 7 | 134.78s / 7 | 212.05s / 6 | 3.87× |
+| Flux.2 Klein 4B GGUF | 24.65s / 8 | 37.54s / 9 | 59.82s / 8 | 91.85s / 7 | 3.73× |
+
+![Generation time growth from 512 to 1280 resolution for Z-Image-Turbo, Flux Schnell, and Flux.2 Klein, showing Z-Image-Turbo scaling fastest at 4.42× and Flux.2 Klein staying flattest at 3.73×](time-scaling-trend.png)
 
 ## 2. 768×768 is the sweet spot for all three models
 
