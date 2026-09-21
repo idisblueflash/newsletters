@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#ffffff;color:#171717;}
+</style>
+</head>
+<body style="display:inline-block">
+<div style="width: 1160px; box-sizing: border-box; background: #ffffff; padding: 64px; display: flex; flex-direction: column; gap: 28px;">
+
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <h2 style="margin: 0; font-size: 28px; font-weight: 800; color: #171717;">同一提示词，1024×1024，Klein 最快但不是最柔和</h2>
+    <p style="margin: 0; font-size: 16px; color: #6B7280; max-width: 640px; line-height: 1.7;">Klein 用了 Z-Image 三分之一的耗时，得分只差一分。</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+      <div style="width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;">
+        <img src="file:///private/tmp/claude-501/-Users-husongtao-Projects-newsletters/0a768223-badc-4866-904d-b42b9850581c/scratchpad/gala-src-speed/1-zimage.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+      </div>
+      <figcaption style="font-size: 14px; color: #6B7280; line-height: 1.6;">Z-Image-Turbo — 205.5s，得分 9</figcaption>
+    </figure>
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+      <div style="width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;">
+        <img src="file:///private/tmp/claude-501/-Users-husongtao-Projects-newsletters/0a768223-badc-4866-904d-b42b9850581c/scratchpad/gala-src-speed/2-schnell.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+      </div>
+      <figcaption style="font-size: 14px; color: #6B7280; line-height: 1.6;">Flux Schnell — 134.8s，得分 7</figcaption>
+    </figure>
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+      <div style="width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;">
+        <img src="file:///private/tmp/claude-501/-Users-husongtao-Projects-newsletters/0a768223-badc-4866-904d-b42b9850581c/scratchpad/gala-src-speed/3-klein.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+      </div>
+      <figcaption style="font-size: 14px; color: #6B7280; line-height: 1.6;">Flux.2 Klein — 59.8s，得分 8</figcaption>
+    </figure>
+  </div>
+
+</div>
+</body>
+</html>

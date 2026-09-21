@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#ffffff;color:#171717;}
+</style>
+</head>
+<body style="display:inline-block">
+<div style="width: 1160px; box-sizing: border-box; background: #ffffff; padding: 64px; display: flex; flex-direction: column; gap: 28px;">
+
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <h2 style="margin: 0; font-size: 28px; font-weight: 800; color: #171717;">768×768 下皮鞭触地效果，三个模型对比</h2>
+    <p style="margin: 0; font-size: 16px; color: #6B7280; max-width: 640px; line-height: 1.7;">只有 Z-Image 稳定还原了提示词里「皮鞭拖到地面」的细节。</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+      <div style="width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;">
+        <img src="file:///private/tmp/claude-501/-Users-husongtao-Projects-newsletters/0a768223-badc-4866-904d-b42b9850581c/scratchpad/gala-src-whip/1-zimage.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+      </div>
+      <figcaption style="font-size: 14px; color: #6B7280; line-height: 1.6;">Z-Image-Turbo：皮鞭拖到地面</figcaption>
+    </figure>
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+      <div style="width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;">
+        <img src="file:///private/tmp/claude-501/-Users-husongtao-Projects-newsletters/0a768223-badc-4866-904d-b42b9850581c/scratchpad/gala-src-whip/2-schnell.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+      </div>
+      <figcaption style="font-size: 14px; color: #6B7280; line-height: 1.6;">Flux Schnell：皮鞭悬在半空打卷</figcaption>
+    </figure>
+    <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+      <div style="width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;">
+        <img src="file:///private/tmp/claude-501/-Users-husongtao-Projects-newsletters/0a768223-badc-4866-904d-b42b9850581c/scratchpad/gala-src-whip/3-klein.png" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+      </div>
+      <figcaption style="font-size: 14px; color: #6B7280; line-height: 1.6;">Flux.2 Klein：皮鞭举在腰部高度</figcaption>
+    </figure>
+  </div>
+
+</div>
+</body>
+</html>
