@@ -8,8 +8,6 @@
 
 我在自己的 Mac mini（M4，16GB）上测试了三个生图模型（Z-Image-Turbo，Flux Schnell 和 Flux 2 Klein）。我把其他参数都锁上了，只修改尺寸（512，768，1024，1280）。下面会根据时间和品质的维度具体分析。
 
-有些结果挺反直觉的。
-
 ## 一、尺寸越大耗时越长
 
 单靠直觉我们也能想到这一点。下面的图表也验证了这个想法。
@@ -23,6 +21,8 @@
 | Flux.2 Klein 4B GGUF | 24.65s / 8 | 37.54s / 9  | 59.82s / 8  | 91.85s / 7  | 3.73×                    |
 
 ![Generation time growth from 512 to 1280 resolution for Z-Image-Turbo, Flux Schnell, and Flux.2 Klein, showing Z-Image-Turbo scaling fastest at 4.42× and Flux.2 Klein staying flattest at 3.73×](time-scaling-trend.png)
+
+真正反直觉的地方在这：尺寸继续加大，品质并不会跟着变好。
 
 ## 二、768 x 768 是最佳尺寸
 
