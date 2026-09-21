@@ -34,24 +34,12 @@
 
 往后再增加尺寸不仅不会提升品质，还会引入新问题。
 
-## 三、提高尺寸不能修复原有问题
-
-有时候提高尺寸可以让图片变得更好，但这也是要看情况的。生图模型训练的时候会用固定的尺寸，这个尺寸生图才保险。低于或者高于这个尺寸都会有问题。
-
-比如模型是按照 512x512 训练的，256 生出来的图就不行，提高到 512 效果一下子就好了，可是再提高到 1024，我们可能会看到人物变成了两个头叠加在一起的诡异结果。
-
-![Z-Image-Turbo, Flux Schnell, and Flux.2 Klein each showing a duplicated foreground object at 1280×1280](1280-artifact-grid.png)
-
-## 四、Flux 2 Klein 又快又好
+## 三、Flux 2 Klein 又快又好
 
 如果我们的场景是那种简单的（机器人），Flux 2 Klein 是首选。但是如果我们的场景有复杂的人物动作和构图，就需要换 Z-Image-Turbo 了。
 
 ![Z-Image-Turbo, Flux Schnell, and Flux.2 Klein compared at 1024×1024, with generation time and quality score per model — Klein finishes in a third of Z-Image's time and still scores within one point](speed-quality-grid.png)
 
-## 五、皮鞭的特例
 
-最后说一个和尺寸没什么关系的发现。在我的提示词里说到了皮鞭，只有 Z-Image-Turbo 还原了，其他模型没办法做到。不光是皮鞭的姿势奇怪，就连皮鞭本体也看上去像根绳子。这种问题和尺寸的关系不大，因为同样的 Flux 系列模型都有这种问题，说明是模型本身对这个细节理解不足，不是尺寸能解决的。
-
-![Z-Image-Turbo, Flux Schnell, and Flux.2 Klein compared on whip-to-ground contact at 768×768](whip-ground-grid.png)
 
 总结一下：尺寸定在 768x768 就够了，场景简单选 Klein，动作和构图复杂就选 Z-Image-Turbo。
