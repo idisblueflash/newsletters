@@ -1,6 +1,6 @@
 # 我的 Mac mini 主力生图模型
 
-上一篇[Mac mini 生图模型测试](https://ai-companion-newsletter.beehiiv.com/p/mac-mini-image-model-benchmark)写了我测试过多个模型， 这次我把目光集中到胜出的两个模型上，选出我的主力模型。
+上一篇[Mac mini 生图模型测试](https://ai-companion-newsletter.beehiiv.com/p/mac-mini-image-model-benchmark)写了我测试过多个模型， 这次我把目光集中到胜出的两个模型上。
 
 我的选择是：**主力模型 Z Image Turbo ，辅助模型  Flux.2 Klein。**
 
