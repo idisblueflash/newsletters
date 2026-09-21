@@ -1,0 +1,70 @@
+<p>横向对比三个模型看效果</p>
+
+<p><strong>要点</strong>：不是越大越好，768x768 正合适。从时间花费和品质上看，这个尺寸更优，而且三个不同的模型都是这样。</p>
+
+<hr>
+
+<p>我在自己的 Mac mini（M4，16GB）上测试了三个生图模型（Z-Image-Turbo，Flux Schnell 和 Flux 2 Klein）。我把其他参数都锁上了，只修改尺寸（512，768，1024，1280）。下面会根据时间和品质的维度具体分析。</p>
+
+<h2>一、尺寸越大耗时越长</h2>
+
+<p>单靠直觉我们也能想到这一点。下面的图表也验证了这个想法。</p>
+
+<p>其实设计试验的时候，还是要考虑更多。比如，我不能把每次切换模型的时间算进去，而是要记录纯粹的生图时间。</p>
+
+<table style="border-collapse:collapse;width:100%;margin:0.5em 0;color:#111 !important;background-color:#fff !important;">
+<thead>
+<tr>
+<th style="border:1px solid #ccc;padding:8px;text-align:left;color:#111 !important;background-color:#f2f2f2 !important;">Model</th>
+<th style="border:1px solid #ccc;padding:8px;text-align:left;color:#111 !important;background-color:#f2f2f2 !important;">512</th>
+<th style="border:1px solid #ccc;padding:8px;text-align:left;color:#111 !important;background-color:#f2f2f2 !important;">768</th>
+<th style="border:1px solid #ccc;padding:8px;text-align:left;color:#111 !important;background-color:#f2f2f2 !important;">1024</th>
+<th style="border:1px solid #ccc;padding:8px;text-align:left;color:#111 !important;background-color:#f2f2f2 !important;">1280</th>
+<th style="border:1px solid #ccc;padding:8px;text-align:left;color:#111 !important;background-color:#f2f2f2 !important;">Time multiple (512→1280)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">Z-Image-Turbo GGUF</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">74.82s / 8</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">123.81s / 9</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">205.52s / 9</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">330.36s / 8</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">4.42×</td>
+</tr>
+<tr>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fafafa !important;">Flux Schnell GGUF</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fafafa !important;">54.83s / 6</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fafafa !important;">81.78s / 7</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fafafa !important;">134.78s / 7</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fafafa !important;">212.05s / 6</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fafafa !important;">3.87×</td>
+</tr>
+<tr>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">Flux.2 Klein 4B GGUF</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">24.65s / 8</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">37.54s / 9</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">59.82s / 8</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">91.85s / 7</td>
+<td style="border:1px solid #ccc;padding:8px;color:#111 !important;background-color:#fff !important;">3.73×</td>
+</tr>
+</tbody>
+</table>
+
+<img src="time-scaling-trend.png" alt="Z-Image-Turbo、Flux Schnell 和 Flux.2 Klein 从 512 到 1280 分辨率的生图耗时增长趋势，Z-Image-Turbo 涨幅最快达到 4.42 倍，Flux.2 Klein 涨幅最平缓为 3.73 倍" style="max-width:100%;">
+
+<h2>二、768 x 768 是最佳尺寸</h2>
+
+<p>真正反直觉的地方在这：尺寸继续加大，品质并不会跟着变好。让我们换个思路，用回报率的角度来看。比如，我们把变大的部分用像素来表示，除以增加的秒数，就能得到「秒/百万像素」这个指标。把三个模型的平均值都算出来，再加上生图品质打分，放在图表上一起看：</p>
+
+<img src="return-on-time-spent.png" alt="三个模型在各尺寸下的平均每百万像素耗时与平均品质打分，两条曲线在 768 之后开始分化：品质从 8.33 降到 7.0，而耗时效率几乎没有变化" style="max-width:100%;">
+
+<p>从 768 之后的回报率就不高了。</p>
+
+<h2>三、Flux 2 Klein 最快</h2>
+
+<p>如果我们的场景是那种简单的（机器人），Flux 2 Klein 是首选。但是如果我们的场景有复杂的人物动作和构图，就需要换 Z-Image-Turbo 了。</p>
+
+<img src="./assets/images/speed-quality-grid-1789968564932-qkq1b74n.png" alt="Z-Image-Turbo、Flux Schnell 和 Flux.2 Klein 在 1024x1024 下的耗时与品质打分对比，Klein 只用了 Z-Image 三分之一的时间，品质分差距不到一分" style="max-width:100%;">
+
+<p>总结一下：尺寸定在 768x768 就够了，场景简单选 Klein，动作和构图复杂就选 Z-Image-Turbo。</p>
