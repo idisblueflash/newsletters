@@ -1,27 +1,25 @@
-# Insight: Framed Ink Style Collapses Output Variation
+# 我该怎么选生图的风格
 
-**Question: which style should I generate my scene in for variations —
-photorealistic or Ink style?**
+照片风格还是插画风格？
 
-**Takeaway:** The "Framed Ink" style descriptor block causes a variation
-collapse that's a property of the prompt text itself, not the checkpoint
-or sampler. Under the identical scene prompt, seeds, and settings, the
-"Original real photo" style produced genuinely different poses and
-compositions across 9 samples (variation score 6/10), while adding the
-Framed Ink block collapsed nearly all 18 outputs to one near-identical
-composition — same 3/4-profile pose, same whip angle, same sparse paper
-count — despite using fully independent seeds (variation score 2-3/10).
-This reproduced almost identically on a second, architecturally unrelated
-model (Flux.2 Klein 4B), ruling out sampler/checkpoint as the cause.
-**Practical implication:** don't rely on seed variety alone for
-compositional diversity when using Framed Ink — vary the prompt's
-pose/action language directly, since the style block itself suppresses
-the model's exploration of the latent space.
+**要点**：插画风格直接生图变化不多。从照片风格开始，后面改风格更实际。
 
-## Evidence
+我想要那种黑白插画风格的图片。同时我又希望能每次都能有不同变化的图片，比如人物的姿势稍微不同。这样我可以从多张变化中选出最好的一张。
 
-Source: [variation-comparison-trial-results.md](variation-comparison-trial-results.md)
-(9 explicit seeds condition only; batch=9 tracked these results closely
+所以这次我们来测试一下不同生图风格和多样性的关系。
+
+我让 Z-Image-Turbo 和 Flux.2 Klein 都做了尝试。它们用同样的提示词，同样的配置，不同的种子数值。再让 
+
+种子数值是用来控制多样性的，数值不同，结果不同。比如你用 925807063139701 这个数值生成一只狗，可能得到一只。换成了345693063902986，你会得到另一只不太一样的狗。
+
+![照片：不太一样的两只狗，同一提示词不同种子数值生成的两只外观不同的狗](two-dogs-image-grid.png)
+
+多样性对比  
+
+
+
+Source: [variation-comparison-trial-results.md](variation-comparison-trial-results.md)  
+(9 explicit seeds condition only; batch=9 tracked these results closely  
 and is omitted here for simplicity)
 
 **Hedge:** variation/quality scores are subjective 1-10 ratings assigned
