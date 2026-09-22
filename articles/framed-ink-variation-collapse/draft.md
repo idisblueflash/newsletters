@@ -33,51 +33,19 @@ visually obvious from the grids below), not a precise or validated metric.
 
 ### Z-Image-Turbo GGUF — Original real photo (6/10)
 
-![s1a-1](images/variation-comparison-trial-1/style1-A-seed1.png)
-![s1a-2](images/variation-comparison-trial-1/style1-A-seed2.png)
-![s1a-3](images/variation-comparison-trial-1/style1-A-seed3.png)
-![s1a-4](images/variation-comparison-trial-1/style1-A-seed4.png)
-![s1a-5](images/variation-comparison-trial-1/style1-A-seed5.png)
-![s1a-6](images/variation-comparison-trial-1/style1-A-seed6.png)
-![s1a-7](images/variation-comparison-trial-1/style1-A-seed7.png)
-![s1a-8](images/variation-comparison-trial-1/style1-A-seed8.png)
-![s1a-9](images/variation-comparison-trial-1/style1-A-seed9.png)
+![Z-Image-Turbo GGUF 在 Original real photo 风格下,9 个独立种子生成的变体网格,姿势与构图各不相同](zimage-original-variation-grid.png)
 
 ### Z-Image-Turbo GGUF — Framed Ink (2/10)
 
-![s2a-1](images/variation-comparison-trial-1/style2-A-seed1.png)
-![s2a-2](images/variation-comparison-trial-1/style2-A-seed2.png)
-![s2a-3](images/variation-comparison-trial-1/style2-A-seed3.png)
-![s2a-4](images/variation-comparison-trial-1/style2-A-seed4.png)
-![s2a-5](images/variation-comparison-trial-1/style2-A-seed5.png)
-![s2a-6](images/variation-comparison-trial-1/style2-A-seed6.png)
-![s2a-7](images/variation-comparison-trial-1/style2-A-seed7.png)
-![s2a-8](images/variation-comparison-trial-1/style2-A-seed8.png)
-![s2a-9](images/variation-comparison-trial-1/style2-A-seed9.png)
+![Z-Image-Turbo GGUF 在 Framed Ink 风格下,9 个独立种子生成的变体网格,姿势与构图几乎完全一致](zimage-framedink-variation-grid.png)
 
 ### Flux.2 Klein 4B GGUF — Original real photo (8/10)
 
-![klein-s1a-1](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style1-A-seed1.png)
-![klein-s1a-2](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style1-A-seed2.png)
-![klein-s1a-3](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style1-A-seed3.png)
-![klein-s1a-4](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style1-A-seed4.png)
-![klein-s1a-5](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style1-A-seed5.png)
-![klein-s1a-6](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style1-A-seed6.png)
-![klein-s1a-7](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style1-A-seed7.png)
-![klein-s1a-8](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style1-A-seed8.png)
-![klein-s1a-9](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style1-A-seed9.png)
+![Flux.2 Klein 4B GGUF 在 Original real photo 风格下,9 个独立种子生成的变体网格,姿势与构图各不相同](flux-original-variation-grid.png)
 
 ### Flux.2 Klein 4B GGUF — Framed Ink (3/10)
 
-![klein-s2a-1](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style2-A-seed1.png)
-![klein-s2a-2](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style2-A-seed2.png)
-![klein-s2a-3](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style2-A-seed3.png)
-![klein-s2a-4](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style2-A-seed4.png)
-![klein-s2a-5](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style2-A-seed5.png)
-![klein-s2a-6](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style2-A-seed6.png)
-![klein-s2a-7](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style2-A-seed7.png)
-![klein-s2a-8](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style2-A-seed8.png)
-![klein-s2a-9](../2026-09-19/images/variation-comparison-flux2-klein-trial-2/style2-A-seed9.png)
+![Flux.2 Klein 4B GGUF 在 Framed Ink 风格下,9 个独立种子生成的变体网格,姿势与构图几乎完全一致](flux-framedink-variation-grid.png)
 
 Cross-model reproduction (Z-Image-Turbo's `dpmpp_sde`/5-step vs. Klein's
 guidance-distilled `euler`/4-step) rules out a single sampler/architecture
