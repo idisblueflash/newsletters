@@ -29,12 +29,7 @@ by Claude Sonnet 5 looking at the images, not by a human rater — treat
 them as a rough signal (the direction and size of the gap is large and
 visually obvious from the grids below), not a precise or validated metric.
 
-| Model | Style | Variation score |
-|---|---|---|
-| Z-Image-Turbo GGUF | Original real photo | 6/10 |
-| Z-Image-Turbo GGUF | Framed Ink | 2/10 |
-| Flux.2 Klein 4B GGUF | Original real photo | 8/10 |
-| Flux.2 Klein 4B GGUF | Framed Ink | 3/10 |
+![Z-Image-Turbo 和 Flux.2 Klein 4B 两个模型下，Original real photo 与 Framed Ink 两种风格的 variation score 对比](variation-score-comparison.png)
 
 ### Z-Image-Turbo GGUF — Original real photo (6/10)
 
