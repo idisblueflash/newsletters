@@ -4,58 +4,38 @@
 
 **要点**：插画风格直接生图变化不多。从照片风格开始，后面改风格更实际。
 
-我想要那种黑白插画风格的图片。同时我又希望能每次都能有不同变化的图片，比如人物的姿势稍微不同。这样我可以从多张变化中选出最好的一张。
+---
 
-所以这次我们来测试一下不同生图风格和多样性的关系。
+我想要那种黑白插画风格的图片。同时我又希望能每次生图能有稍微的变化，比如人物的姿势稍微不同。这样我可以从多张变化中选出最好的一张。
 
-我让 Z-Image-Turbo 和 Flux.2 Klein 都做了尝试。它们用同样的提示词，同样的配置，不同的种子数值。再让 
+所以这次我们来测试一下不同生图风格和多样性。
 
-种子数值是用来控制多样性的，数值不同，结果不同。比如你用 925807063139701 这个数值生成一只狗，可能得到一只。换成了345693063902986，你会得到另一只不太一样的狗。
+我让 Z-Image-Turbo 和 Flux.2 Klein 都做了尝试。它们用同样的提示词，同样的配置，不同的种子数值来生图。最后让 Claude （Sonnet 5）看着一组图片，在多样性上打分：先给每张图打 1-10 分（对照人物、动作、背景等场景要素是否齐全，加上风格是否到位），达到 7 分算合格，再单独给这组 9 张图打一个 1-10 的多样性总分（比较姿势、镜头、纸张散落、背景这几项跨图差异，10 分代表 9 张都明显不同，1 分代表几乎是同一张的重复）。
+
+> 种子是用来控制多样性的，数值不同，结果不同。比如你用 925807063139701 这个数值生成一只狗，可能得到一只。换成了345693063902986，你会得到另一只不太一样的狗。
 
 ![照片：不太一样的两只狗，同一提示词不同种子数值生成的两只外观不同的狗](two-dogs-image-grid.png)
 
-多样性对比  
+## 多样性对比
 
-
-
-Source: [variation-comparison-trial-results.md](variation-comparison-trial-results.md)  
-(9 explicit seeds condition only; batch=9 tracked these results closely  
-and is omitted here for simplicity)
-
-**Hedge:** variation/quality scores are subjective 1-10 ratings assigned
-by Claude Sonnet 5 looking at the images, not by a human rater — treat
-them as a rough signal (the direction and size of the gap is large and
-visually obvious from the grids below), not a precise or validated metric.
+这是得到的对比结果：
 
 ![Z-Image-Turbo 和 Flux.2 Klein 4B 两个模型下，Original real photo 与 Framed Ink 两种风格的 variation score 对比](variation-score-comparison.png)
 
-### Z-Image-Turbo GGUF — Original real photo (6/10)
+黑白插画风格（Framed Ink）在两个模型上表现一致。多样性的分数掉得很厉害。换句话说，用插画风格的提示词出来的图片，变化很少。
+
+## 图片对比
+
+这是生成的图片的效果，我们可以有更直观的感觉：
 
 ![Z-Image-Turbo GGUF 在 Original real photo 风格下,9 个独立种子生成的变体网格,姿势与构图各不相同](zimage-original-variation-grid.png)
 
-### Z-Image-Turbo GGUF — Framed Ink (2/10)
-
 ![Z-Image-Turbo GGUF 在 Framed Ink 风格下,9 个独立种子生成的变体网格,姿势与构图几乎完全一致](zimage-framedink-variation-grid.png)
-
-### Flux.2 Klein 4B GGUF — Original real photo (8/10)
 
 ![Flux.2 Klein 4B GGUF 在 Original real photo 风格下,9 个独立种子生成的变体网格,姿势与构图各不相同](flux-original-variation-grid.png)
 
-### Flux.2 Klein 4B GGUF — Framed Ink (3/10)
+注：Flux 在同样提示词下，不能很好地体现照片风格。看上面的结果，更像是彩色艺术风格，风格也不稳定。但这不影响这里的结论：我们比较的是同一风格下 9 个种子之间像不像，不是这个风格像不像真实照片，所以风格没跑准这件事可以忽略。
 
 ![Flux.2 Klein 4B GGUF 在 Framed Ink 风格下,9 个独立种子生成的变体网格,姿势与构图几乎完全一致](flux-framedink-variation-grid.png)
 
-Cross-model reproduction (Z-Image-Turbo's `dpmpp_sde`/5-step vs. Klein's
-guidance-distilled `euler`/4-step) rules out a single sampler/architecture
-quirk — the collapse tracks the Framed Ink prompt block across both.
-
-## Notable side effect
-
-Framed Ink's low variation is largely why it scored a *higher* good-count
-than the Original photo condition: since the composition barely changes,
-there's little scene-fidelity risk on any given seed. The Original photo
-condition's lower good-count came from real fidelity misses (e.g. whip
-reading as held-in-air or cane-like) that a repeated composition wouldn't
-expose. Framed Ink also under-realized "papers exploding into the air"
-(3-6 sheets vs. Original's 5-15+) — a separate prompt-adherence gap, not
-caused by variation or seeding method.
+一起看下来，直接用插图风格生图得不到多种多样的人物构图。后面的流程要先按照片风格出图，才能在多种可能中选出一个最好的。
