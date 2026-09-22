@@ -1,0 +1,41 @@
+<p>照片风格还是插画风格？</p>
+
+<p><strong>要点</strong>：插画风格直接生图变化不多。从照片风格开始，后面改风格更实际。</p>
+
+<hr>
+
+<p>我想要那种黑白插画风格的图片。同时我又希望能每次生图能有稍微的变化，比如人物的姿势稍微不同。这样我可以从多张变化中选出最好的一张。</p>
+
+<p>所以这次我们来测试一下不同生图风格和多样性。</p>
+
+<p>我让 Z-Image-Turbo 和 Flux.2 Klein 都做了尝试。它们用同样的提示词，同样的配置，不同的种子数值来生图。最后让 Claude （Sonnet 5）看着一组图片，在多样性上打分：给一组 9 张图打一个 1-10 的多样性总分（比较姿势、镜头、纸张散落、背景这几项跨图差异，10 分代表 9 张都明显不同，1 分代表几乎是同一张的重复）。</p>
+
+<blockquote>
+<p>种子是用来控制多样性的，数值不同，结果不同。比如你用 925807063139701 这个数值生成一只狗，可能得到一只。换成了345693063902986，你会得到另一只不太一样的狗。</p>
+</blockquote>
+
+<p><img src="two-dogs-image-grid.png" alt="照片：不太一样的两只狗，同一提示词不同种子数值生成的两只外观不同的狗"></p>
+
+<h2>多样性对比</h2>
+
+<p>这是得到的对比结果：</p>
+
+<p><img src="variation-score-comparison.png" alt="Z-Image-Turbo 和 Flux.2 Klein 4B 两个模型下，Original real photo 与 Framed Ink 两种风格的 variation score 对比"></p>
+
+<p>黑白插画风格（Framed Ink）在两个模型上表现一致。多样性的分数掉得很厉害。换句话说，用插画风格的提示词出来的图片，变化很少。</p>
+
+<h2>图片对比</h2>
+
+<p>这是生成的图片的效果，我们可以有更直观的感觉：</p>
+
+<p><img src="zimage-original-variation-grid.png" alt="Z-Image-Turbo GGUF 在 Original real photo 风格下,9 个独立种子生成的变体网格,姿势与构图各不相同"></p>
+
+<p><img src="zimage-framedink-variation-grid.png" alt="Z-Image-Turbo GGUF 在 Framed Ink 风格下,9 个独立种子生成的变体网格,姿势与构图几乎完全一致"></p>
+
+<p><img src="flux-original-variation-grid.png" alt="Flux.2 Klein 4B GGUF 在 Original real photo 风格下,9 个独立种子生成的变体网格,姿势与构图各不相同"></p>
+
+<p>注：Flux 在同样提示词下，不能很好地体现照片风格。看上面的结果，更像是彩色艺术风格，风格也不稳定。但这不影响这里的结论：我们比较的是同一风格下 9 个种子之间像不像，所以风格没跑准这件事可以忽略。</p>
+
+<p><img src="flux-framedink-variation-grid.png" alt="Flux.2 Klein 4B GGUF 在 Framed Ink 风格下,9 个独立种子生成的变体网格,姿势与构图几乎完全一致"></p>
+
+<p>一起看下来，直接用插图风格生图得不到多种多样的人物构图。后面的流程要先按照片风格出图，才能在多种可能中选出一个最好的。</p>
