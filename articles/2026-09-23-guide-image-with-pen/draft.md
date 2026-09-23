@@ -16,6 +16,8 @@
 
 「图组：多次生图的效果」
 
+![「图组：同一提示词多次生成的效果，构图各不相同」](assets/pen-guide-variation-grid.png)
+
 有办法可以略微控制一下构图嘛？
 
 有的。用 ComfyUI 里的 ControlNet。
