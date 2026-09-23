@@ -8,7 +8,7 @@
 
 用 ControlNet 控制构图生成的图片，如果我们仔细看，会发现有的燕子的尾巴是三条线，可燕子尾巴应该有两个分叉。要修好这一点，我们需要多下一点功夫。
 
-![「图：燕子尾巴特写，尾部是三条线而不是两个分叉」](./assets/images/swallow-tail-closeup.png)
+![「图：燕子尾巴特写，尾部是三条线而不是两个分叉」](./assets/images/swallow-tail-closeup.jpeg)
 
 「图：燕子尾巴的特写」
 
@@ -20,19 +20,19 @@
 
 这次我们先把第一段拿掉，出一幅接近实物的图：
 
-![图：去掉风格提示词后生成的接近实物图片](./assets/images/photo-style-result.png)
+![图：去掉风格提示词后生成的接近实物图片](./assets/images/photo-style-result.jpeg)
 
 「图：接近实物的图片」
 
 用上面的图当轮廓，输入给 AI，再把风格那段加回来，跑一次：
 
-![「图：实物结果与从中提取出的 Canny 轮廓图对比」](assets/pen-guide-photo-vs-contour.png)
+![「图：实物结果与从中提取出的 Canny 轮廓图对比」](assets/pen-guide-photo-vs-contour.jpeg)
 
 「图：实物图与轮廓图对比」
 
 一幅细节上更好的图片就出来了：
 
-![「图：细节修复前后对比，橙色圆圈标出修复前的三条线问题，绿色圆圈标出修复后的同一位置」](assets/pen-guide-detail-before-after.png)
+![「图：细节修复前后对比，橙色圆圈标出修复前的三条线问题，绿色圆圈标出修复后的同一位置」](assets/pen-guide-detail-before-after.jpeg)
 
 「图：细节修复前后对比」
 
