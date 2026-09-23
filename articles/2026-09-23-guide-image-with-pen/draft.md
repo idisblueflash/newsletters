@@ -18,7 +18,7 @@
 
 我把提示词准备好，给到 ComfyUI（一个搭积木式的 AI 生图工具），但是它生成的图片构图不对，我想生成的是：两条平行又稍微倾斜的电线上三三两两地落着一些燕子：
 
-![「图组：同一提示词多次生成的效果，构图各不相同」](assets/pen-guide-variation-grid.png)
+![「图组：同一提示词多次生成的效果，构图各不相同」](assets/pen-guide-variation-grid.jpeg)
 
 「图组：多次生图的效果」
 
@@ -34,7 +34,7 @@ ComfyUI 里有个叫 ControlNet 的模块，它能让 AI 照着一张线条图�
 
 画了大概二十秒：两条弯曲的线表示电线，几个圆点表示燕子的位置，谈不上美观。图片看起来是不是很干净？因为我用了绘图板。但是不用也行。我们在一张纸上画出来也可以的。因为这里的 ControlNet 关心的是图片中的轮廓（Canny 模式）：
 
-![「图：手绘构图原图与 Canny 边缘检测提取出的轮廓图对比」](assets/pen-guide-contour-comparison.png)
+![「图：手绘构图原图与 Canny 边缘检测提取出的轮廓图对比」](assets/pen-guide-contour-comparison.jpeg)
 
 「图：原图和轮廓图对比」
 
@@ -42,7 +42,7 @@ ComfyUI 里有个叫 ControlNet 的模块，它能让 AI 照着一张线条图�
 
 画完构图，拍照，拖到 ComfyUI ，接上两个节点：一个把照片转成线条轮廓（Canny 边缘检测），一个让 ControlNet 按这个轮廓来控制构图，强度先给 0.8，数值越高，AI 越按照你的轮廓线走，但自由度会变小。点击生成按钮：
 
-![](./assets/images/clipboard-1790150898531-n764-1790150898535-pzl6wehr.png)
+![](./assets/images/clipboard-1790150898531-n764-1790150898535-pzl6wehr.jpeg)
 
 「图：最好的结果」
 
