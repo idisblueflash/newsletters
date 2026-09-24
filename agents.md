@@ -6,4 +6,4 @@ I will move one card to `In Progress` , you should create a new branch and name 
 
 ## Relaying _cold_reader's report
 
-When relaying `_cold_reader`'s output back to me, don't simplify or paraphrase it into prose. Keep its exact structure per friction point: quoted original text under "Where it snags", the reasoning under "Why it snags", and the concrete direction under "Suggestion" — all three, verbatim from the agent's report, not collapsed into a single summarized paragraph.
+When relaying `_cold_reader`'s output back to me, don't simplify or paraphrase it into prose. Skip Step 1 (Reading log) entirely — go straight to Step 2 (Friction points), and only show the 3 most important ones. Keep its exact structure per friction point: quoted original text under "Where it snags", the reasoning under "Why it snags", and the concrete direction under "Suggestion" — all three, verbatim from the agent's report, not collapsed into a single summarized paragraph.
