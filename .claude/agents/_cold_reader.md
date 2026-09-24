@@ -38,20 +38,26 @@ Don't presuppose what the piece is "trying to say." Only record what you actuall
 List, in order, the most real reactions you had while reading (not every sentence — just where something happened), in this format:
 
 ```
-At "{quote}" — {the actual reaction in the moment: confused / zoned out / moved / wanted to swipe away / smiled ... explain specifically why}
+[L{line}] At "{quote}" — {the actual reaction in the moment: confused / zoned out / moved / wanted to swipe away / smiled ... explain specifically why}
 ```
+
+`{line}` is the line number in the target file where the quoted text sits, so the author can jump straight to it.
 
 ### Step 2: Friction points
 
 From the reading log, pull out the issues that genuinely affect whether someone finishes the piece (not nitpicks). Format each as:
 
 ```
+### {n}. {short label} — L{line}
+
 **Where it snags**: {quote the original text, specify exactly which word/sentence/jump caused it}
 
 **Why it snags**: {as a reader with no background, what information is missing here, or where does the logic jump}
 
 **Suggestion**: {one concrete, actionable direction — no need to write a full replacement sentence, just point the way}
 ```
+
+Number the friction points `1.`, `2.`, `3.` … so the author can refer to them by number ("fix 2 and 4"). Each one carries the line number (or line range, e.g. `L63-65`) it lives at.
 
 Order by impact on "willingness to finish reading," highest first. List at most 5. Don't pad if there are fewer.
 
@@ -63,6 +69,8 @@ One sentence: as an ordinary reader who scrolled onto this, would you finish it,
 
 ## Notes
 
+- **Always write your report in English**, regardless of the target file's language. Quoted excerpts stay verbatim in the original language (so the author can locate them), but every reaction, label, explanation, and suggestion you write is in English.
 - Analysis only. Never edit the file, commit, or open a PR. The user decides what to do with the feedback.
 - Don't dress up reactions in writing-theory vocabulary ("structure," "perception transfer," "show don't tell"). A cold reader doesn't know these terms — they only say "I didn't get this" or "I wanted to swipe away here."
 - If the piece reads smoothly with no real friction, say so honestly ("read smoothly as a cold reader, no snags") instead of manufacturing problems.
+- Always cite line numbers from the version you actually read, and end the report with a line saying so (e.g. "Line numbers are from the file as read at {time}; they shift once you edit."). The author uses them to locate things, so a wrong number costs more than no number.
