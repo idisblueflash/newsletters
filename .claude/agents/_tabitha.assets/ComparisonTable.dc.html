@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>对比表格组件</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#ffffff;color:#171717;}
+</style>
+</helmet>
+
+<div style="width: 1160px; box-sizing: border-box; background: #ffffff; padding: 64px; display: flex; flex-direction: column; gap: 28px;">
+
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: {{accent}};">组件 · 对比表格</span>
+    <h2 style="margin: 0; font-size: 28px; font-weight: 800; color: #171717;">模型对比一览</h2>
+    <p style="margin: 0; font-size: 16px; color: #6B7280; max-width: 640px; line-height: 1.7;">两个模型的数据放在一起对比时使用，条形长度直接映射数值大小，比纯表格更容易一眼看出差距。</p>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: #EDF2F4; border-radius: 8px;">
+    <span style="display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; background: {{accent}}; color: #ffffff; flex-shrink: 0;">{{highlight.badge}}</span>
+    <span style="font-size: 14px; color: #262626; line-height: 1.6;">{{highlight.text}}</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 24px; padding-bottom: 12px;">
+      <span style="width: 160px; flex-shrink: 0;"></span>
+      <div style="flex: 1; display: flex; align-items: center; gap: 20px;">
+        <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: {{accent}};">
+          <span style="width: 10px; height: 10px; border-radius: 999px; background: {{accent}}; display: inline-block;"></span>
+          {{modelA}}
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #8A5A33;">
+          <span style="width: 10px; height: 10px; border-radius: 999px; background: #8A5A33; display: inline-block;"></span>
+          {{modelB}}
+        </span>
+      </div>
+    </div>
+
+    <sc-for list="{{rows}}" as="m" hint-placeholder-count="3">
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 18px 0; border-bottom: 1px solid #E5E7EB;">
+        <span style="font-size: 15px; font-weight: 700; color: #171717;">{{m.label}}</span>
+
+        <div style="display: flex; align-items: center; gap: 24px;">
+          <span style="width: 160px; font-size: 13px; color: #6B7280; flex-shrink: 0;">{{m.a.name}}</span>
+          <div style="flex: 1; display: flex; align-items: center; gap: 12px;">
+            <div style="flex: 1; height: 10px; background: #F3F3F1; border-radius: 999px; overflow: hidden;">
+              <div style="width: {{m.a.pct}}%; height: 100%; background: {{accent}}; border-radius: 999px;"></div>
+            </div>
+            <span style="width: 84px; text-align: right; font-size: 14px; font-weight: 700; color: {{accent}}; flex-shrink: 0;">{{m.a.display}}</span>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 24px;">
+          <span style="width: 160px; font-size: 13px; color: #6B7280; flex-shrink: 0;">{{m.b.name}}</span>
+          <div style="flex: 1; display: flex; align-items: center; gap: 12px;">
+            <div style="flex: 1; height: 10px; background: #F3F3F1; border-radius: 999px; overflow: hidden;">
+              <div style="width: {{m.b.pct}}%; height: 100%; background: #8A5A33; border-radius: 999px;"></div>
+            </div>
+            <span style="width: 84px; text-align: right; font-size: 14px; font-weight: 700; color: #8A5A33; flex-shrink: 0;">{{m.b.display}}</span>
+          </div>
+        </div>
+
+        <sc-if cond="{{m.note}}">
+          <span style="font-size: 12px; color: #9CA3AF; padding-left: 184px; line-height: 1.6;">{{m.note}}</span>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{
+  "accent": {"editor": "color", "default": "#2B4C5C", "options": ["#2B4C5C", "#171717", "#8A5A33"]},
+  "modelA": {"editor": "text", "default": "Z-Image-Turbo"},
+  "modelB": {"editor": "text", "default": "Flux.2 Klein 4B"},
+  "$preview": {"width": 1160, "height": 820}
+}'>
+class Component extends DCLogic {
+  renderVals() {
+    const modelA = this.props.modelA ?? 'Z-Image-Turbo';
+    const modelB = this.props.modelB ?? 'Flux.2 Klein 4B';
+
+    const makeRow = (label, aVal, aDisplay, bVal, bDisplay, note, scaleMax) => {
+      const max = scaleMax ?? Math.max(aVal, bVal);
+      return {
+        label,
+        note: note ?? '',
+        a: { name: modelA, value: aVal, display: aDisplay, pct: Math.max(6, Math.round((aVal / max) * 100)) },
+        b: { name: modelB, value: bVal, display: bDisplay, pct: Math.max(6, Math.round((bVal / max) * 100)) }
+      };
+    };
+
+    const rows = [
+      makeRow('平均生成时间（热启动）', 122.28, '122.28 秒', 37.89, '37.89 秒', ''),
+      makeRow('加载耗时', 13.83, '13.83 秒', 12.98, '12.98 秒', ''),
+      makeRow('平均质量分', 9.0, '9.0', 8.67, '8.67', '三次打分：Z-Image 9/9/9（稳定）；Flux 9/8/9，其中一次种子生成的脸偏向骷髅、有点恐怖', 10)
+    ];
+
+    return {
+      accent: this.props.accent ?? '#2B4C5C',
+      modelA,
+      modelB,
+      highlight: { badge: '更快 3.2 倍', text: `${modelB} 生成速度约是 ${modelA} 的 3.2 倍，加载耗时接近，质量分略低且偶有瑕疵。` },
+      rows
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>表格组件</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#ffffff;color:#171717;}
+  table{border-collapse:collapse;width:100%;}
+  th{text-align:left;}
+</style>
+</helmet>
+
+<div style="width: 1160px; box-sizing: border-box; background: #ffffff; padding: 64px; display: flex; flex-direction: column; gap: 20px;">
+
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: {{accent}};">组件 · 表格</span>
+    <h2 style="margin: 0; font-size: 28px; font-weight: 800; color: #171717;">写作阶段一览</h2>
+    <p style="margin: 0; font-size: 16px; color: #6B7280; max-width: 640px; line-height: 1.7;">正文中插入的数据表格，延续文章的排版语言：细描边、克制的强调色、宽松的行距。</p>
+  </div>
+
+  <table style="margin-top: 8px;">
+    <thead>
+      <tr>
+        <sc-for list="{{columns}}" as="col" hint-placeholder-count="4">
+          <th style="padding: 14px 20px; font-size: 14px; font-weight: 700; color: #171717; border-bottom: 2px solid #171717; white-space: nowrap;">{{col.label}}</th>
+        </sc-for>
+      </tr>
+    </thead>
+    <tbody>
+      <sc-for list="{{rows}}" as="row" hint-placeholder-count="4">
+        <tr>
+          <td style="padding: 18px 20px; font-size: 15px; font-weight: 700; color: {{accent}}; border-bottom: 1px solid #E5E7EB; white-space: nowrap;">{{row.stage}}</td>
+          <td style="padding: 18px 20px; font-size: 15px; color: #262626; border-bottom: 1px solid #E5E7EB; line-height: 1.6;">{{row.desc}}</td>
+          <td style="padding: 18px 20px; font-size: 15px; color: #262626; border-bottom: 1px solid #E5E7EB; white-space: nowrap;">{{row.time}}</td>
+          <td style="padding: 18px 20px; font-size: 15px; border-bottom: 1px solid #E5E7EB; white-space: nowrap;">
+            <span style="display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: {{row.aiBg}}; color: {{row.aiColor}};">{{row.ai}}</span>
+          </td>
+        </tr>
+      </sc-for>
+    </tbody>
+  </table>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{
+  "accent": {"editor": "color", "default": "#2B4C5C", "options": ["#2B4C5C", "#171717", "#8A5A33"]},
+  "$preview": {"width": 1160, "height": 620}
+}'>
+class Component extends DCLogic {
+  renderVals() {
+    const columns = [
+      { label: '阶段' },
+      { label: '说明' },
+      { label: '耗时' },
+      { label: 'AI 参与' }
+    ];
+    const rows = [
+      { stage: '口述初稿', desc: '上午对着麦克风把想法说完，不打断思路。', time: '约 45 分钟', ai: '转写', aiBg: '#EDF2F4', aiColor: '#2B4C5C' },
+      { stage: '句读精修', desc: '下午逐句校对语气和用词，删掉重复的部分。', time: '约 90 分钟', ai: '辅助润色', aiBg: '#EDF2F4', aiColor: '#2B4C5C' },
+      { stage: '封面制作', desc: '晚上用生成工具做几版封面插画，挑一版定稿。', time: '约 60 分钟', ai: '生成', aiBg: '#EDF2F4', aiColor: '#2B4C5C' },
+      { stage: '发布检查', desc: '通读全文，检查排版和链接后发布。', time: '约 20 分钟', ai: '不参与', aiBg: '#F3F3F1', aiColor: '#6B7280' }
+    ];
+    return {
+      accent: this.props.accent ?? '#2B4C5C',
+      columns,
+      rows
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>折线图组件</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#ffffff;color:#171717;}
+</style>
+</helmet>
+
+<div style="width: 1160px; box-sizing: border-box; background: #ffffff; padding: 64px; display: flex; flex-direction: column; gap: 28px;">
+
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: {{accent}};">组件 · 折线图</span>
+    <h2 style="margin: 0; font-size: 28px; font-weight: 800; color: #171717;">耗时随分辨率的变化趋势</h2>
+    <p style="margin: 0; font-size: 16px; color: #6B7280; max-width: 640px; line-height: 1.7;">多个对象在同一组有序刻度（如分辨率、时间）下各自变化时使用，线的走势直接体现增长快慢，比表格更容易看出谁涨得猛、谁更平稳。</p>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: #EDF2F4; border-radius: 8px;">
+    <span style="display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; background: {{accent}}; color: #ffffff; flex-shrink: 0;">{{highlight.badge}}</span>
+    <span style="font-size: 14px; color: #262626; line-height: 1.6;">{{highlight.text}}</span>
+  </div>
+
+  <svg width="1032" height="380" viewBox="0 0 1032 380" style="overflow: visible;">
+    <sc-for list="{{yTicks}}" as="t" hint-placeholder-count="5">
+      <line x1="{{chart.left}}" y1="{{t.y}}" x2="{{chart.right}}" y2="{{t.y}}" stroke="#E5E7EB" stroke-width="1"></line>
+      <text x="{{chart.leftLabelX}}" y="{{t.textY}}" text-anchor="end" font-size="12" fill="#9CA3AF">{{t.label}}</text>
+    </sc-for>
+
+    <line x1="{{chart.left}}" y1="{{chart.bottom}}" x2="{{chart.right}}" y2="{{chart.bottom}}" stroke="#171717" stroke-width="2"></line>
+
+    <sc-for list="{{xTicks}}" as="xt" hint-placeholder-count="4">
+      <text x="{{xt.x}}" y="{{chart.xLabelY}}" text-anchor="middle" font-size="13" font-weight="600" fill="#171717">{{xt.label}}</text>
+    </sc-for>
+
+    <sc-for list="{{series}}" as="s" hint-placeholder-count="3">
+      <polyline points="{{s.points}}" fill="none" stroke="{{s.color}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      <sc-for list="{{s.dots}}" as="d" hint-placeholder-count="4">
+        <circle cx="{{d.cx}}" cy="{{d.cy}}" r="5" fill="{{s.color}}" stroke="#ffffff" stroke-width="2"></circle>
+      </sc-for>
+      <text x="{{s.endLabelX}}" y="{{s.endLabelY}}" text-anchor="start" font-size="13" font-weight="700" fill="{{s.color}}">{{s.endLabelText}}</text>
+    </sc-for>
+  </svg>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{
+  "accent": {"editor": "color", "default": "#2B4C5C", "options": ["#2B4C5C", "#171717", "#8A5A33"]},
+  "$preview": {"width": 1160, "height": 700}
+}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#2B4C5C';
+
+    // Plot geometry lives inside the 1032px content box (1160 container minus 64px padding
+    // on each side) — NOT the full 1160px container width.
+    const CONTENT_W = 1032;
+    const left = 56, top = 20, bottom = 324;
+
+    const models = [
+      { name: 'Z-Image-Turbo GGUF', color: accent, values: [74.82, 123.81, 205.52, 330.36] },
+      { name: 'Flux Schnell GGUF', color: '#8A5A33', values: [54.83, 81.78, 134.78, 212.05] },
+      { name: 'Flux.2 Klein 4B GGUF', color: '#6B8F71', values: [24.65, 37.54, 59.82, 91.85] }
+    ];
+
+    // End-of-line labels ("{name} · {multiple}×") sit to the right of the plot, so the
+    // plot's right edge must leave room for the widest one — otherwise it clips against
+    // the content box edge. Estimate width from character count (13px bold ≈ 0.62em/char)
+    // and shrink the plot until every label fits, with a floor so the chart itself doesn't
+    // get squeezed too thin.
+    const estimateLabelWidth = text => text.length * 13 * 0.62;
+    const multiples = models.map(m => (m.values[m.values.length - 1] / m.values[0]).toFixed(2));
+    const labelTexts = models.map((m, i) => `${m.name} · ${multiples[i]}×`);
+    const maxLabelWidth = Math.max(...labelTexts.map(estimateLabelWidth));
+    const right = Math.max(left + 300, Math.min(1012, CONTENT_W - 12 - maxLabelWidth - 8));
+
+    const plotW = right - left, plotH = bottom - top;
+
+    const xLabels = ['512', '768', '1024', '1280'];
+    const xTicks = xLabels.map((label, i) => ({
+      label,
+      x: +(left + i * (plotW / (xLabels.length - 1))).toFixed(1)
+    }));
+
+    // Round the axis max up with ~10% headroom so the top line never touches the plot edge.
+    const maxVal = Math.max(...models.flatMap(m => m.values));
+    const niceMax = Math.ceil((maxVal * 1.1) / 100) * 100;
+    const yToPixel = v => +(top + plotH - (v / niceMax) * plotH).toFixed(1);
+
+    const yTicks = [];
+    for (let i = 0; i <= 4; i++) {
+      const v = (niceMax / 4) * i;
+      yTicks.push({ y: yToPixel(v), textY: yToPixel(v) + 4, label: `${Math.round(v)}s` });
+    }
+
+    const series = models.map((m, i) => {
+      const dots = m.values.map((v, j) => ({ cx: xTicks[j].x, cy: yToPixel(v) }));
+      const last = dots[dots.length - 1];
+      return {
+        name: m.name,
+        color: m.color,
+        points: dots.map(d => `${d.cx},${d.cy}`).join(' '),
+        dots,
+        endLabelX: right + 12,
+        endLabelY: last.cy + 4,
+        endLabelText: labelTexts[i]
+      };
+    });
+
+    return {
+      accent,
+      chart: { left, right, top, bottom, leftLabelX: left - 12, xLabelY: bottom + 24 },
+      xTicks,
+      yTicks,
+      series,
+      highlight: {
+        badge: '涨幅差 0.7×',
+        text: '分辨率从 512 涨到 1280，Z-Image-Turbo 耗时涨了 4.42 倍，涨得最快；Flux.2 Klein 4B 只涨了 3.73 倍，最平稳。'
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
