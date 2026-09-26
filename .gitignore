@@ -26,3 +26,8 @@ articles/*/archive/
 # 模型对比的原始出图和 newsletter 大图，体积太大，只留在本地
 articles/z-image-vs-flux/images/
 newsletter/10-going-daily/
+
+# outpaint 文章的 ComfyUI 原始出图，只留在本地
+articles/2026-09-26-enlarge-image-without-painting/issue-outpaint/
+articles/2026-09-26-enlarge-image-without-painting/left-only-outpaint/
+articles/2026-09-26-enlarge-image-without-painting/outpaint-swift/
