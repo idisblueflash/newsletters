@@ -19,3 +19,10 @@ articles/*/cover*/*.gif
 
 # 文章封面的归档/草图，整目录忽略
 articles/*/archive/
+
+# vmark 编辑器工作区状态，不进版本库
+.vmark/
+
+# 模型对比的原始出图和 newsletter 大图，体积太大，只留在本地
+articles/z-image-vs-flux/images/
+newsletter/10-going-daily/
