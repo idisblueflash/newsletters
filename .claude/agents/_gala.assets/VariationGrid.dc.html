@@ -18,31 +18,38 @@
   <div style="display: flex; flex-direction: column; gap: 8px;">
     <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: {{accent}};">组件 · 变体网格</span>
     <h2 style="margin: 0; font-size: 28px; font-weight: 800; color: #171717;">变体网格</h2>
-    <p style="margin: 0; font-size: 16px; color: #6B7280; max-width: 640px; line-height: 1.7;">同一张图 / 同一个 prompt 生成的多种变体一次性对比展示时使用，固定 3×3 九宫格，不带图注。</p>
-    <p style="margin: 0; font-size: 13px; color: #9CA3AF; max-width: 640px; line-height: 1.6;">真实图片统一按 4:3 裁切（object-fit: cover）；固定 9 张，不随图注文字变化，只展示变体本身。</p>
+    <p style="margin: 0; font-size: 16px; color: #6B7280; max-width: 640px; line-height: 1.7;">同一张图 / 同一个 prompt 生成的多种变体一次性对比展示时使用，固定 3×3 九宫格，不带图注。渲染出的图里只保留下面这一行组标签，标明这 9 张共享的模型 / 参数 / 种子；不写标题，不写说明段落。</p>
+    <p style="margin: 0; font-size: 13px; color: #9CA3AF; max-width: 640px; line-height: 1.6;">真实图片统一按 4:3 裁切（object-fit: cover）；固定 9 张，不随图注文字变化，只展示变体本身。渲染时容器 padding 用 40px。</p>
   </div>
 
-  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+
+    <div style="font-size: 15px; font-weight: 600; color: #171717; line-height: 1.5;">{{label}}</div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
     <sc-for list="{{images}}" as="img" hint-placeholder-count="9">
       <figure style="margin: 0;">
         <div style="width: 100%; aspect-ratio: 4/3; background: #F3F3F1; border: 1px dashed #D4D4D4; border-radius: 4px; display: flex; align-items: center; justify-content: center; box-sizing: border-box;">
           <span style="font-size: 13px; color: #9CA3AF; text-align: center; padding: 0 12px;">变体占位 {{img.index}}</span>
         </div>
       </figure>
-    </sc-for>
+      </sc-for>
+    </div>
+
   </div>
 
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{
   "accent": {"editor": "color", "default": "#2B4C5C", "options": ["#2B4C5C", "#171717", "#8A5A33"]},
-  "$preview": {"width": 1160, "height": 1100}
+  "$preview": {"width": 1160, "height": 1220}
 }'>
 class Component extends DCLogic {
   renderVals() {
     const images = Array.from({ length: 9 }, (_, i) => ({ index: i + 1 }));
     return {
       accent: this.props.accent ?? '#2B4C5C',
+      label: 'Flux.2 Klein 4B GGUF — Framed Ink (3/10)',
       images
     };
   }

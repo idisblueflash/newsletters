@@ -38,13 +38,11 @@ Confirm both exist first with `which magick` and `ls "/Applications/Google Chrom
 
 ## Design spec A: Image Grid (replicated from `ImageGrid.dc.html`)
 
-**Container**: width 1160px, `padding: 64px`, background `#ffffff`, `display: flex; flex-direction: column; gap: 28px`
+**Container**: width 1160px, `padding: 40px`, background `#ffffff`, `display: flex; flex-direction: column; gap: 28px`
 
-**Header block** (optional, see Step 2 for when to include it):
-- Title h2: `font-size: 28px; font-weight: 800; color: #171717; margin: 0`
-- Description p: `font-size: 16px; color: #6B7280; line-height: 1.7; max-width: 640px; margin: 0`
+**No header block.** The rendered image is the grid and nothing else — no title, no description, no eyebrow. Those belong in `draft.md` as real text: the paragraph above the image carries the explanation, the captions label each image, and the alt text (Step 9) names what the grid shows. A heading baked into a PNG can't be selected, searched, translated, fixed by a later wording pass, or read by a screen reader, and it competes with the article's own heading hierarchy once Beehiiv scales the image down.
 
-The eyebrow label ("Component · Image Grid") is the design tool's category tag, not article content — never render it into the final image.
+The artboard's own header (the eyebrow "组件 · 图片网格", the h2, the two grey paragraphs) is the design canvas documenting itself — it is not part of the component. Never render any of it.
 
 **Grid**: `display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px`
 
@@ -62,12 +60,12 @@ Three columns is the design's fixed value; don't change it unless the user expli
 
 ## Design spec B: Variation Grid (replicated from `VariationGrid.dc.html`)
 
-Same container, header, grid, and font values as Image Grid above, with these differences:
+Same container, grid, and font values as Image Grid above, with these differences:
 
 - **Fixed 3x3 grid**: exactly 9 images, always 3 columns × 3 rows. Not a flexible column count — if the user supplies a different number of images, tell them the spec expects 9 and ask whether to pad/crop the set or fall back to Image Grid's flexible layout; don't silently render an incomplete grid.
-- **No captions, no labels of any kind.** `<figure>` wraps only the image container — drop `figcaption` entirely, and drop the `flex-direction: column; gap: 10px` on `<figure>` (it's a single-child wrapper now, `margin: 0` is enough).
-- **Header block is optional** (same Step 2 decision logic), but since there's no per-image caption, a short group title ("九种变体对比" style) is the only place to say what the variations share (same prompt/seed/subject) — include it whenever that context is available.
-- Eyebrow label is "组件 · 变体网格" — same rule: never render it into the final image.
+- **No captions per image.** `<figure>` wraps only the image container — drop `figcaption` entirely, and drop the `flex-direction: column; gap: 10px` on `<figure>` (it's a single-child wrapper now, `margin: 0` is enough).
+- **One group label instead**, the single piece of text in the image. Nine captionless images are indistinguishable from the nine in the grid next to them, so the label names what this set *is* — the model, config, seed or score it shares (`Flux.2 Klein 4B GGUF — Framed Ink (3/10)`). It is an identifying label, not a sentence and not a heading: `font-size: 15px; font-weight: 600; color: #171717; line-height: 1.5`, one line, sitting in a `display: flex; flex-direction: column; gap: 14px` wrapper directly above the grid. No explanatory paragraph under it.
+- Eyebrow label is "组件 · 变体网格" — same rule as Spec A: the artboard's header documents the component, never render it.
 
 ---
 
@@ -83,12 +81,11 @@ The user provides a folder path. Use Glob to list images in it (`.png`/`.jpg`/`.
 
 For Variation Grid, also confirm the count is exactly 9 — if not, flag it per Design spec B before continuing.
 
-### Step 2: Decide whether a header block is needed
+### Step 2: Text inside the image
 
-- If the user gave explicit title/description text, use it.
-- If context (e.g. the target article's draft.md) has a title sentence that can be lifted directly, do so — don't invent one.
-- With no material to draw from, skip the header block entirely and render only the grid; shrink the container `padding` to `40px` and drop the header's `gap`.
-- If this grid is one of several being built for the same article/session (e.g. multiple scene comparisons), check whether a sibling grid already has a header. If it does, give this grid a matching header too (same title style, e.g. "<场景名>场景对比") — don't silently drop the header on some grids while keeping it on others. When unsure whether a sibling grid exists, check the article directory for other `*-comparison.png` / `*-grid.png` files before deciding.
+- **Image Grid**: none. No title, no description. If the user hands you title or description text, don't render it — tell them it goes above the image in `draft.md` as editable text, and offer to put it there (Step 9).
+- **Variation Grid**: one group label (Design spec B). Take it from what the user says the nine share (model, config, seed, score) or from the source filenames; if no such identifier exists, ask for one rather than inventing it, and drop the label only if the user says the grid needs no identifier.
+- Don't match a sibling grid's header just because it has one — older grids in the article may predate this rule. If the user wants a set of grids consistent, the fix is to re-render the ones that still carry a baked-in header, not to add one here.
 
 ### Step 3: Determine caption text (Image Grid only — skip entirely for Variation Grid)
 
@@ -126,6 +123,7 @@ Use Read to inspect the resulting PNG and check:
 - Image Grid: if the count isn't a multiple of 3, the last row sits flush left with empty space on the right, not stretched to fill. Captions don't overflow or wrap awkwardly.
 - Variation Grid: exactly 3 full rows of 3 (9 images total), and no captions/labels anywhere in the render
 - No leftover dashed placeholder boxes or "placeholder" text from the design source
+- No title, description, or eyebrow text anywhere in the render — Image Grid should contain only images and captions, Variation Grid only images and the one group label
 
 **Per-image crop check**: for each image in the grid, Read the original source file alongside the cropped result and confirm the default top-crop (`object-position: top`) didn't cut off the subject that matters — a foreground action, an extra/duplicated object being called out, a face, or whatever the caption is actually pointing at. A source that's noticeably taller than 4:3 (e.g. a portrait-oriented photo) is the case most likely to lose content at the bottom.
 
@@ -162,7 +160,8 @@ If the change touches files inside the git repo (inserted into draft.md, or save
 - Three columns is a fixed design value for both specs — don't drop to two columns just because there are few images (e.g. only 2 for Image Grid), unless the user asks. For Variation Grid, the row count is also fixed at 3 (9 images total), not just the columns.
 - Don't add watermarks, logos, or other extra elements unless requested.
 - Filenames tagged `cold`/`warm` (e.g. `seedA-cold`, `seedB-warm`) refer to cold start vs warm start (启动/热启动) — inference timing, not color temperature. Captions (Image Grid only) must say "冷启动"/"热启动" (or "cold start"/"warm start"), never "冷色调"/"暖色调" or similar color-temperature language.
-- Don't render the design source's eyebrow label ("Component · Image Grid" / "组件 · 变体网格") as if it were article content.
+- Don't render the design source's header — eyebrow ("Component · Image Grid" / "组件 · 变体网格"), h2, or grey description paragraphs — as if it were article content. It documents the component on the canvas.
+- Article-facing explanation lives in `draft.md`, never in the PNG. A grid that already has a baked-in title/description is out of spec: re-render it from its `.source.html` with the header removed and `padding: 40px`, and move the text into the surrounding prose if it isn't there already.
 - The `*_raw.png` intermediate stays in the scratchpad directory only — don't copy it into the project. The `.source.html`, unlike `*_raw.png`, is deliberately persisted alongside the final PNG (see Step 8) so wording fixes don't require regenerating it from scratch.
 - If asked to fix wording (wrong language, a mistranslated caption/title, a typo) on a grid that already has a `.source.html` next to it, Edit that file directly and redo Steps 5–7 instead of rebuilding the HTML from Step 4 — the design source is only needed when the layout itself is being redone.
 - The design sources are `.claude/agents/_gala.assets/ImageGrid.dc.html` and `.claude/agents/_gala.assets/VariationGrid.dc.html`. If this document's described values ever diverge from either file, the file wins.
