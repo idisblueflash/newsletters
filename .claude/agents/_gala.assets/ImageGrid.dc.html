@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>图片网格组件</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:#ffffff;color:#171717;}
+</style>
+</helmet>
+
+<div style="width: 1160px; box-sizing: border-box; background: #ffffff; padding: 64px; display: flex; flex-direction: column; gap: 28px;">
+
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: {{accent}};">组件 · 图片网格</span>
+    <h2 style="margin: 0; font-size: 28px; font-weight: 800; color: #171717;">配图网格</h2>
+    <p style="margin: 0; font-size: 16px; color: #6B7280; max-width: 640px; line-height: 1.7;">正文中并排展示多张插图时使用，三列等宽、统一比例，图注延续正文的说明文字样式。渲染出的图里只有网格本身，不带标题、不带说明段落——那些话留在正文里，逐张说明交给图注。</p>
+    <p style="margin: 0; font-size: 13px; color: #9CA3AF; max-width: 640px; line-height: 1.6;">真实图片统一按 4:3 裁切（object-fit: cover）；数量非 3 的倍数时，最后一行靠左排列，不拉伸填满。渲染时容器 padding 用 40px（没有标题块要留白）。</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+    <sc-for list="{{images}}" as="img" hint-placeholder-count="6">
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+        <div style="width: 100%; aspect-ratio: 4/3; background: #F3F3F1; border: 1px dashed #D4D4D4; border-radius: 4px; display: flex; align-items: center; justify-content: center; box-sizing: border-box;">
+          <span style="font-size: 13px; color: #9CA3AF; text-align: center; padding: 0 12px;">插图占位 {{img.index}}</span>
+        </div>
+        <figcaption style="font-size: 14px; color: #6B7280; line-height: 1.6;">{{img.caption}}</figcaption>
+      </figure>
+    </sc-for>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{
+  "accent": {"editor": "color", "default": "#2B4C5C", "options": ["#2B4C5C", "#171717", "#8A5A33"]},
+  "$preview": {"width": 1160, "height": 900}
+}'>
+class Component extends DCLogic {
+  renderVals() {
+    const captions = [
+      '图一 · 白天的工位',
+      '图二 · 深夜仍亮着的屏幕',
+      '图三 · 没画完的画',
+      '图四 · 晚饭后重新坐回电脑前',
+      '图五 · 冥想时转个不停的脑子',
+      '图六 · 树下打盹的人和狗'
+    ];
+    const images = captions.map((caption, i) => ({ caption, index: i + 1 }));
+    return {
+      accent: this.props.accent ?? '#2B4C5C',
+      images
+    };
+  }
+}
+</script>
+</body>
+</html>
