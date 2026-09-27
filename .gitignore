@@ -31,3 +31,13 @@ newsletter/10-going-daily/
 articles/2026-09-26-enlarge-image-without-painting/issue-outpaint/
 articles/2026-09-26-enlarge-image-without-painting/left-only-outpaint/
 articles/2026-09-26-enlarge-image-without-painting/outpaint-swift/
+
+# outpaint 文章里 draft.md 没引用的图：封面原图、mask/out 中间产物，只留在本地
+articles/2026-09-26-enlarge-image-without-painting/assets/image-raw/both-mask.png
+articles/2026-09-26-enlarge-image-without-painting/assets/image-raw/both-out.png
+articles/2026-09-26-enlarge-image-without-painting/assets/image-raw/cover.png
+articles/2026-09-26-enlarge-image-without-painting/both-mask.jpeg
+articles/2026-09-26-enlarge-image-without-painting/both-out.jpeg
+articles/2026-09-26-enlarge-image-without-painting/composition-result-raw.jpeg
+articles/2026-09-26-enlarge-image-without-painting/cover.jpeg
+articles/2026-09-26-enlarge-image-without-painting/cropped.jpeg
