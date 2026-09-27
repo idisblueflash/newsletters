@@ -4,11 +4,12 @@
 
 这周正好赶上中秋和十一长假。我猜你在休息了几天以后，一定手开始痒了，要起来做点有趣的 AI 项目吧。如果真的有，请说给我听听，我很好奇。
 
-这周是我日更的第二周，我成功的保持了日更！（这里应该有个什么勋章🎖️，笑）
+这周是我日更的第二周，我成功地
+保持了日更！（这里应该有个什么勋章🎖️，笑）
 
 日更的挑战在流程上。选题和内容都是我平时遇到的事，写出来不难。而更多的时间花在了创作流程上。
 
-之前的周更创作流太重了，一套流程下来要 2-3 天。我已经精简成了：草稿、 配图和封面。但是仍然需要两个小时。
+之前的周更创作流太重了，一套流程下来要 2-3 天。我已经精简成了：草稿、配图和封面。但是仍然需要两个小时。
 
 草稿是手写的，再敲进电脑。是挺慢的，但慢的时候能让我思考得更多，也是好事。后面会让 AI 扮演完全不知情的读者（Cold Reader），给我提出三个重要的问题和修改建议。我要是觉得它说得对，就回去原文修改，再让它这个读者提意见。大概要反复 3-4 轮。这个阶段要一个小时。
 
@@ -23,13 +24,13 @@
 - [Masterminds: Secrets of the Octopus (Full Episode) | National Geographic](https://youtu.be/ah8U0-fV6k8)
   - 国家地理频道的章鱼纪录片。说起来也惭愧，我做了一周的章鱼封面，我连章鱼有八只脚都不知道。
 - [Framed Drawing Techniques: Mastering Ballpoint Pen, Graphite Pencil, and Digital Tools for Visual Storytelling](https://a.co/d/0cpWD1E4)
-  - 这是著名的 Framed 系列中讲绘图的书。从圆珠笔、铅笔到数位笔都说了一遍。我昨天居然看完了，这阅读速度真的提高了呀。因该是平日里背单词见效了。
+  - 这是著名的 Framed 系列中讲绘图的书。从圆珠笔、铅笔到数位笔都说了一遍。我昨天居然看完了，这阅读速度真的提高了呀。应该是平日里背单词见效了。
 
 ## 本周的输出
 
 - [用画笔帮助 AI 生图](https://ai-companion-newsletter.beehiiv.com/p/control-ai-image-composition-with-pen)
   - 几笔涂鸦就能很快确定画面构图。
-- [作出更好的细节](https://ai-companion-newsletter.beehiiv.com/p/ai-image-detail-fix)
+- [做出更好的细节](https://ai-companion-newsletter.beehiiv.com/p/ai-image-detail-fix)
   - 用照片类型的出图提示词得到更多细节
 - [今天的单词 - stampede](https://ai-companion-newsletter.beehiiv.com/p/stampede-mnemonic-sentence)
   - 我打算把我日常背单词碰到的有趣的东西也写出来
