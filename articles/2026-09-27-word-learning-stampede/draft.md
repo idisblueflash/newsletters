@@ -15,7 +15,7 @@ Stampede 在语料库（corpus）里的意思是这样的：
 然后让 AI 助理 Nemo 来头脑风暴出三个辅助句子，我选了这个：  
 Feet stamp, someone peed, doorbusters rush inside.  
 再生成个图片：  
-![stampede 助记图，3x3 九格同一场景的不同视角：人群从写着 DOORBUSTERS 的红色招牌旁冲进玻璃门，最前面穿黄外套的男子一脸惊慌，牛仔裤裆部有一块深色水渍，红色球鞋重重跺在地上、脚边画着表示震动的短线](stampede-mnemonic.grid.png)  
+![stampede 助记图：人群从写着 DOORBUSTERS 的红色招牌旁冲进商场玻璃门，最前面穿黄外套的男子瞪大眼睛一脸惊慌，牛仔裤裆部有一块深色水渍，红色球鞋正重重跺在地上，脚边几道短线表示震动](stampede.png)
 
 
 我一开始没看懂为什么那个男的会尿裤子，后来看到 someone peed 我才明白。原来是我已经开始默写辅助句子了，却没看出这个细节。  
