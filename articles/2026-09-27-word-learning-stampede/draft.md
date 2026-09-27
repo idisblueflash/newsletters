@@ -15,14 +15,14 @@
 先看看它的意思。
 
 Stampede 在语料库（corpus）里的意思是这样的：象群受惊扬尘奔逃、家长挤进玩具店、有人在购物人潮里被撞倒。九个例句里它一半是名词「一窝蜂乱冲」，一半是被动的「被冲撞」。  
-![stampede 语料库九格例句图，每格一句例句配一幅漫画](stampede-corpus.grid.png)
+![「图组：stampede 的九格语料例句漫画，象群扬尘奔逃、家长涌进玩具店、购物人潮里有人被撞倒、男孩在象群前奔跑、礼帽长裙的人群涌向酒店、奶牛撞塌围栏、粉丝举着手机和鲜花越过围栏，每格下方配一句把 stampede 加粗的英文例句」](stampede-corpus.grid.jpeg)
 
 然后让 AI 助理 Nemo 来头脑风暴出三个辅助句，我选了这个：
 
 > Feet stamp, someone peed, doorbusters rush inside.
 
 再生成个图片：最前面那个穿黄外套的男的瞪大眼睛，裤裆上一块深色水渍，红球鞋重重跺在地上。  
-![stampede 助记图：人群从写着 DOORBUSTERS 的红色招牌旁冲进商场玻璃门](stampede.png)
+![「图：一群人穿过商场玻璃门朝画面冲来，左边立着写有 DOORBUSTERS 的红色招牌，最前面穿黄外套的男子瞪大眼睛一脸惊慌，牛仔裤裆部有一块深色水渍，红色球鞋重重跺在地上，脚边几道短线表示震动」](stampede.jpeg)
 
 Stampede 的重音在后面的 -pede，所以 someone 后面放 peed 正好。
 
