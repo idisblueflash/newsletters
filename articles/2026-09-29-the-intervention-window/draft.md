@@ -68,9 +68,10 @@ p124 was the same failure with a different ending: its loop never stopped on its
 burned the full 600-second timeout — and then, because the retry policy couldn't tell a hung
 generation from a flapping server, did it twice more. Half an hour, no output.
 
-One cause for both, which took me embarrassingly long to see. You photograph a book one
-page at a time, but the camera also catches the sideways marginal text of the page *facing*
-it. The model tries to read that and loops. Crop the facing page off and p128 converts in
+One cause for both, which took me embarrassingly long to see. The book lies open and I
+frame the shot on the right-hand page — but the facing page never leaves the frame, curving
+away at the gutter, so what the model gets is the page I wanted plus a strip of sideways
+text down one edge. It tries to read that strip and loops. Crop the facing page off and p128 converts in
 23.8 seconds. A factor of twenty, from one crop.
 
 Those two pages were essentially the entire cost of the batch: 38 of its 42 minutes,
@@ -119,10 +120,11 @@ nobody prices it.
 
 So this isn't really about reading, and definitely not about reading code — reading is only
 the sensor. The question isn't *how carefully did you read* but *did you arrange to still
-be there*. And depth, here, isn't thoroughness. It's **having a normal to read against**.
+be there*. And what makes reading worth anything here isn't care. It's **having a normal
+to read against**.
 Eight minutes on a page is meaningless as a number; it is legible only beside twenty-three
 seconds on the page before it. By that measure a newcomer's careful line-by-line review of
-my pipeline's source is *shallower* than a three-second glance at a latency column. The
+my pipeline's source is worth *less* than a three-second glance at a latency column. The
 novice reads more and sees less.
 
 ## "Just automate it"
@@ -158,16 +160,18 @@ did it and the residue is still there.
 
 ## What watching doesn't buy
 
-Two things I would rather say myself than have someone find.
+Two things I would rather say myself than have someone find, and both need the real tally,
+which is worse than the table makes it look. Of ten pages, three came out wrong in ways the
+run itself could have shown me — p124, p128, and one more. Then I proofread the rest against
+the photographs, and the clean-looking ones were wrong too.
 
-**The window would have caught two of my three bad pages.** The third reordered its page
+**The window would have caught two of those three.** The third reordered its page
 and appended two hundred words that aren't in the book. Its line reads 43.7 seconds and 829
 tokens — the largest of the eight normal pages, and nowhere near far enough out to catch a
 distracted eye. Whatever the window is worth, it is not a detector.
 
-**And one failure class is beyond watching entirely.** I proofread all ten pages against
-the photographs afterwards and found corrections on pages that were fast, normal-sized and
-clean-looking. Two of them invert the meaning of their sentence: "distrust flatfooted
+**And one failure class is beyond watching entirely.** That proofread turned up corrections
+on pages that were fast, normal-sized and clean-looking. Two of them invert the meaning of their sentence: "distrust flatfooted
 certainty **except** in words like" for "**expressed** in words like", and an interest in
 **defying** FDR for **deifying** him. A page that drops a clause or changes one letter
 costs no extra seconds and emits no extra tokens. Only reading the output against the
