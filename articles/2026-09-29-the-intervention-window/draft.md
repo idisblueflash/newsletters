@@ -28,7 +28,7 @@ went to do something else, which is the point of having a pipeline.
 I ran it three times. Here is the third run, one line per page, straight out of the
 manifest:
 
-![Ten-page OCR run manifest: eight pages finish in 23-44 seconds, p124 times out after three 600-second attempts, and p128 runs 495.8 seconds emitting 11,137 tokens yet still reports a normal `stop` finish reason](ocr-run-manifest.png)
+![Ten-page OCR run manifest: eight pages finish in 23-44 seconds, p124 times out after three 600-second attempts, and p128 runs 495.8 seconds emitting 11,137 tokens yet still reports a normal stop finish reason](ocr-run-manifest.png)
 
 Eight pages took between 23 and 44 seconds. Two did not.
 
