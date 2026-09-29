@@ -1,6 +1,6 @@
 ---
 title: "The Intervention Window"
-subtitle: "The one page that took eight minutes, and what it cost me to not be looking"
+subtitle: "Every signal said the run succeeded. The only one that didn't had already expired."
 date: 2026-09-29
 tags: [ai, vibe-coding, agents, tooling]
 source_notes: draft/intervention-window.md
