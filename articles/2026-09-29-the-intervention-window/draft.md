@@ -32,7 +32,7 @@ straight out of the manifest:
 |---|---|---|---|
 | p122 | 24.7s | 284 | stop |
 | p123 | 26.9s | 354 | stop |
-| **p124** | **~30m (3 × 600s)** | — | **quarantined, `curl exited 28`** |
+| **p124** | **~30m (3 × 600s)** | — | **quarantined, timed out (`curl` 28)** |
 | p125 | 29.3s | 364 | stop |
 | p126 | 29.5s | 382 | stop |
 | p127 | 28.8s | 364 | stop |
@@ -145,14 +145,12 @@ You can only write a guardrail against a failure someone has already met. Nobody
 completion length they have never seen exceeded. **The assertion is the fossil of the
 encounter.**
 
-And *what* I encoded gives this away even more than the fact that I encoded it. The retry
-logic I ended up with doesn't treat failures alike: a 502 keeps the full retry budget,
-because an unreachable server announces itself in under a second and costs nothing to ask
-again — while a transport timeout quarantines the page on its *first* occurrence, because a
-runaway generation is deterministic and the same page will hang the same way. Two failures,
-opposite settings. That asymmetry is in no documentation and is not recoverable from the
-source. It is a fact about how two kinds of failure *feel at different speeds*, and the
-only place it was ever legible is in front of a running batch.
+And *what* I encoded gives this away even more than the fact that I encoded it. My retry
+logic treats two failures in opposite directions: a 502 keeps the full budget (cheap to ask
+again), a transport timeout quarantines the page on its first occurrence (a runaway
+generation will hang the same way twice). That asymmetry is in no documentation and is not
+recoverable from the source. It is a fact about how two kinds of failure feel at different
+speeds, and the only place it was ever legible is in front of a running batch.
 
 So automation doesn't compete with attention. It is what attention leaves behind. Pipelines
 can be run unwatched not because they never needed watching, but because somebody already
