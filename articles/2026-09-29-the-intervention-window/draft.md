@@ -169,11 +169,13 @@ tokens — the largest of the eight normal pages, and nowhere near far enough ou
 distracted eye. Whatever the window is worth, it is not a detector.
 
 **And one failure class is beyond watching entirely.** That proofread turned up corrections
-on pages that were fast, normal-sized and clean-looking. Two of them invert the meaning of their sentence: "distrust flatfooted
-certainty **except** in words like" for "**expressed** in words like", and an interest in
-**defying** FDR for **deifying** him. A page that drops a clause or changes one letter
-costs no extra seconds and emits no extra tokens. Only reading the output against the
-source finds it. Watching does not substitute for checking the work.
+on pages that were fast, normal-sized and clean-looking. Two of them invert the meaning of
+their sentence. One turns "distrust flatfooted certainty **expressed** in words like …" into
+"certainty **except** in words like …" — one word, and the advice now says the opposite. In
+the other, a historian's interest in **deifying** FDR became an interest in **defying** him.
+A page that drops a clause or changes one letter costs no extra seconds and emits no extra
+tokens. Only reading the output against the source finds it. Watching does not substitute for
+checking the work.
 
 ## What I actually want
 
