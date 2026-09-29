@@ -28,18 +28,7 @@ went to do something else, which is the point of having a pipeline.
 I ran it three times. Here is the third run, one line per page, straight out of the
 manifest:
 
-| page | latency | tokens out | finish reason |
-|---|---|---|---|
-| p122 | 24.7s | 284 | stop |
-| p123 | 26.9s | 354 | stop |
-| **p124** | **~30m (3 × 600s)** | — | **timed out, quarantined** |
-| p125 | 29.3s | 364 | stop |
-| p126 | 29.5s | 382 | stop |
-| p127 | 28.8s | 364 | stop |
-| **p128** | **495.8s** | **11,137** | **stop** |
-| p129 | 30.0s | 394 | stop |
-| p130 | 43.7s | 829 | stop |
-| p131 | 23.2s | 198 | stop |
+![Ten-page OCR run manifest: eight pages finish in 23-44 seconds, p124 times out after three 600-second attempts, and p128 runs 495.8 seconds emitting 11,137 tokens yet still reports a normal `stop` finish reason](ocr-run-manifest.png)
 
 Eight pages took between 23 and 44 seconds. Two did not.
 
@@ -70,7 +59,7 @@ generation from a flapping server, did it twice more. Half an hour, no output.
 
 One cause for both, which took me embarrassingly long to see. Here is the photo I fed it.
 
-![Phone photo of page 128 of *The Craft of Research*. The left-hand page lies flat and sharp, printed with the Hamlet and honeybee examples. The facing page doesn't: the spine won't press flat, so that page stands up and its text is photographed at an angle, the lines crowding down the right edge of the frame — the running head QUALIFYING CLAIMS TO and the half-line *Limit your clai* are still readable in it.](p128-photo.jpg)
+![Phone photo of page 128 of *The Craft of Research*, numbered 128 under the running head CHAPTER EIGHT. The left-hand page lies flat and sharp, printed with the Hamlet and honeybee contest-your-claim examples. The facing page doesn't: the spine won't press flat, so that page stands up and its text is photographed at an angle, the lines crowding down the right edge of the frame — the running head QUALIFYING CLAIMS TO and the half-line *Limit your clai* are still readable in it.](p128-photo.jpg)
 
 The page I wanted is flat and square in the frame. The facing one isn't: the book won't lie
 open, so that page stands up along the spine and its text reaches the model tilted and
