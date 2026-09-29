@@ -70,7 +70,7 @@ generation from a flapping server, did it twice more. Half an hour, no output.
 
 One cause for both, which took me embarrassingly long to see. Here is the photo I fed it.
 
-![「图：《The Craft of Research》第 128 页的手机照片。左边那页摊平、字迹清晰，印着 Hamlet 和蜜蜂的例句；右边对页因为书脊压不平而立了起来，整片文字被拍成斜的，行与行挤在画面右缘，能认出 QUALIFYING CLAIMS TO 的小标题和 Limit your clai 半句」](p128-photo.jpg)
+![Phone photo of page 128 of *The Craft of Research*. The left-hand page lies flat and sharp, printed with the Hamlet and honeybee examples. The facing page doesn't: the spine won't press flat, so that page stands up and its text is photographed at an angle, the lines crowding down the right edge of the frame — the running head QUALIFYING CLAIMS TO and the half-line *Limit your clai* are still readable in it.](p128-photo.jpg)
 
 The page I wanted is flat and square in the frame. The facing one isn't: the book won't lie
 open, so that page stands up along the spine and its text reaches the model tilted and
@@ -160,6 +160,10 @@ can be run unwatched not because they never needed watching, but because somebod
 did it and the residue is still there.
 
 ## What watching doesn't buy
+
+Before any of this, I had Claude Code proofread the output: all ten converted pages read back
+against the photos, line by line. It took longer than the conversion did, and it is the only
+reason I know what the run actually produced rather than what the manifest says it produced.
 
 Two things I would rather say myself than have someone find. Both turn on a second count: two
 pages were expensive, but three came out *wrong*, and they are not the same two.
