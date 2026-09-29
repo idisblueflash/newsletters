@@ -53,6 +53,13 @@ by the user) is that most of the file-size win on illustrated cover art comes
 from PNG -> JPEG re-encoding, not from downscaling. Only pass `--max-width`
 if the user explicitly wants a smaller thumbnail, not just a smaller file.
 
+## EXIF orientation
+
+Photos straight off a phone store their rotation in an EXIF orientation tag
+instead of in the pixels. The script bakes that rotation into the pixels before
+re-encoding (`ImageOps.exif_transpose`), so a portrait photo stays portrait —
+and `--max-width` measures the width you actually see, not the sensor's.
+
 ## Prerequisites
 
 `Pillow` on the Python path (`pip install Pillow`).

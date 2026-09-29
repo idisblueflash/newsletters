@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageOps
 except ImportError:
     print("Error: Pillow not installed. Run: pip install Pillow", file=sys.stderr)
     sys.exit(1)
@@ -28,6 +28,10 @@ except ImportError:
 
 def optimize(src: Path, quality: int, max_width: int | None, suffix: str, out_dir: Path | None) -> Path:
     im = Image.open(src)
+    # Phone photos carry their rotation in an EXIF orientation tag rather than in
+    # the pixels. Saving without applying it lays the image on its side, so bake
+    # the rotation in before anything reads im.width/im.height.
+    im = ImageOps.exif_transpose(im)
     if im.mode in ("RGBA", "P", "LA"):
         im = im.convert("RGB")
 
