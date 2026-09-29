@@ -165,13 +165,14 @@ Before any of this, I had Claude Code proofread the output: all ten converted pa
 against the photos, line by line. It took longer than the conversion did, and it is the only
 reason I know what the run actually produced rather than what the manifest says it produced.
 
-Two things I would rather say myself than have someone find. Both turn on a second count: two
-pages were expensive, but three came out *wrong*, and they are not the same two.
+Two things I would rather say myself than have someone find. Both turn on the same gap: the
+pages that were expensive and the pages that came out *wrong* are different sets, and they
+barely overlap.
 
-**The window would have caught two of the three wrong pages.** The one it misses is p130,
-which reordered its page and appended two hundred words that aren't in the book — at 43.7
-seconds and 829 tokens, the largest of the eight ordinary pages and nowhere near far enough
-out to catch a distracted eye. Whatever the window is worth, it is not a detector.
+**The window sees cost. It does not see correctness.** p130 reordered its page and appended
+two hundred words that aren't in the book — at 43.7 seconds and 829 tokens, the largest of
+the eight ordinary pages and nowhere near far enough out to catch a distracted eye. Whatever
+the window is worth, it is not a detector.
 
 **And one failure class is beyond watching entirely.** That proofread turned up corrections
 on pages that were fast, normal-sized and clean-looking. Two of them invert the meaning of
