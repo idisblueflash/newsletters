@@ -25,14 +25,14 @@ I wanted chapter 8 of *The Craft of Research* as Markdown. Ten phone photos of t
 local vision model, a small OCR pipeline I'd used before. I pointed it at the folder and
 went to do something else, which is the point of having a pipeline.
 
-It took three passes to get a clean chapter out. Here is the third, one line per page,
-straight out of the manifest:
+I ran it three times. Here is the third run, one line per page, straight out of the
+manifest:
 
 | page | latency | tokens out | finish reason |
 |---|---|---|---|
 | p122 | 24.7s | 284 | stop |
 | p123 | 26.9s | 354 | stop |
-| **p124** | **~30m (3 × 600s)** | — | **quarantined, timed out (`curl` 28)** |
+| **p124** | **~30m (3 × 600s)** | — | **timed out, quarantined** |
 | p125 | 29.3s | 364 | stop |
 | p126 | 29.5s | 382 | stop |
 | p127 | 28.8s | 364 | stop |
@@ -68,11 +68,16 @@ p124 was the same failure with a different ending: its loop never stopped on its
 burned the full 600-second timeout — and then, because the retry policy couldn't tell a hung
 generation from a flapping server, did it twice more. Half an hour, no output.
 
-One cause for both, which took me embarrassingly long to see. The book lies open and I
-frame the shot on the right-hand page — but the facing page never leaves the frame, curving
-away at the gutter, so what the model gets is the page I wanted plus a strip of sideways
-text down one edge. It tries to read that strip and loops. Crop the facing page off and p128 converts in
-23.8 seconds. A factor of twenty, from one crop.
+One cause for both, which took me embarrassingly long to see. Here is the photo I fed it.
+
+![「图：《The Craft of Research》第 128 页的手机照片。左边那页摊平、字迹清晰，印着 Hamlet 和蜜蜂的例句；右边对页因为书脊压不平而立了起来，整片文字被拍成斜的，行与行挤在画面右缘，能认出 QUALIFYING CLAIMS TO 的小标题和 Limit your clai 半句」](p128-photo.jpg)
+
+The page I wanted is flat and square in the frame. The facing one isn't: the book won't lie
+open, so that page stands up along the spine and its text reaches the model tilted and
+foreshortened — a column of skewed, half-cropped lines jammed down the right edge, including,
+I notice only now, the phrase *Limit your clai—*, half a step from the sentence the model
+spent eight minutes repeating. It tries to read that column and loops. Crop the facing page
+off and p128 converts in 23.8 seconds. A factor of twenty, from one crop.
 
 Those two pages were essentially the entire cost of the batch: 38 of its 42 minutes,
 against four minutes for the eight that worked.
@@ -145,12 +150,10 @@ You can only write a guardrail against a failure someone has already met. Nobody
 completion length they have never seen exceeded. **The assertion is the fossil of the
 encounter.**
 
-And *what* I encoded gives this away even more than the fact that I encoded it. My retry
-logic treats two failures in opposite directions: a 502 keeps the full budget (cheap to ask
-again), a transport timeout quarantines the page on its first occurrence (a runaway
-generation will hang the same way twice). That asymmetry is in no documentation and is not
-recoverable from the source. It is a fact about how two kinds of failure feel at different
-speeds, and the only place it was ever legible is in front of a running batch.
+And *what* I encoded gives this away even more than the fact that I encoded it. Retry freely
+when the server burps, give up on the first hang, because a burp doesn't repeat and a hang
+does. That is in no documentation and not recoverable from the source. The only place it was
+ever legible is in front of a running batch.
 
 So automation doesn't compete with attention. It is what attention leaves behind. Pipelines
 can be run unwatched not because they never needed watching, but because somebody already
@@ -158,15 +161,13 @@ did it and the residue is still there.
 
 ## What watching doesn't buy
 
-Two things I would rather say myself than have someone find, and both need the real tally,
-which is worse than the table makes it look. Of ten pages, three came out wrong in ways the
-run itself could have shown me — p124, p128, and one more. Then I proofread the rest against
-the photographs, and the clean-looking ones were wrong too.
+Two things I would rather say myself than have someone find. Both turn on a second count: two
+pages were expensive, but three came out *wrong*, and they are not the same two.
 
-**The window would have caught two of those three.** The third reordered its page
-and appended two hundred words that aren't in the book. Its line reads 43.7 seconds and 829
-tokens — the largest of the eight normal pages, and nowhere near far enough out to catch a
-distracted eye. Whatever the window is worth, it is not a detector.
+**The window would have caught two of the three wrong pages.** The one it misses is p130,
+which reordered its page and appended two hundred words that aren't in the book — at 43.7
+seconds and 829 tokens, the largest of the eight ordinary pages and nowhere near far enough
+out to catch a distracted eye. Whatever the window is worth, it is not a detector.
 
 **And one failure class is beyond watching entirely.** That proofread turned up corrections
 on pages that were fast, normal-sized and clean-looking. Two of them invert the meaning of
