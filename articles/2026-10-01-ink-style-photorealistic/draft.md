@@ -1,4 +1,4 @@
-# Ink Style based on the photorealistic way
+# 从实景图开始的封面设计
 
 出图和写代码一样，大步拆成小步才好控制
 
