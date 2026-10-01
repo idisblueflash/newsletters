@@ -16,3 +16,11 @@ Eye-level view at the seabed. A veined octopus has closed itself inside two coco
 - Shading: flat mid-gray fills for the base tone plus a single darker gray for core shadows — essentially a 3-value system (white/light gray paper, mid-gray flat, black ink accents), no gradients or rendered soft shading
 - Rendering approach: shapes are blocked in with a marker/brush rather than fully rendered — reads as a fast, expressive creature/prop design sketch rather than a finished illustration
 - Palette: strictly achromatic (black/gray/white), likely a grayscale digital brush set (Procreate/Photoshop marker brushes) or traditional Copic-marker-on-paper study
+
+## Nano Banana direct version (for comparison)
+
+One-pass comparison sample: the same prompt as the local one-shot run (Pipeline A in comfy-ui `plans/2026-10-01-octopus-one-stage-vs-two-stage-trial-plan.md`: style part 1 + style part 2 + scene S), sent straight to Nano Banana (`google/gemini-3.1-flash-image-preview`) at 1:1, 1K.
+
+```
+Marcos Mateu-Mestre "Framed Ink" style, bold graphic ink illustration, high-contrast black and white with warm gray midtones, loose expressive marker linework, confident economical brushstrokes, cinematic character design sketch, dynamic gesture drawing, thick black spot-inks for shadow, storyboard/concept-art aesthetic, strong silhouette read, no color, film-noir lighting mood. image extends the whole page, no visible border or vignette frame, whole scene kept simple with minimal flat background details, avoid clutter or busy texture, clear figure-ground separation, single dominant silhouette. A reddish-brown octopus resting on a rocky seabed, seen from a medium-close, slightly low eye-level angle. Its rounded mantle rises left of center, with one large eye, a dark horizontal pupil, looking straight at the camera. Three of its eight arms curl across the foreground sand and over a small rounded boulder, suckers visible along the underside of each arm, while the other five arms trail back behind it. A single shaft of light falls from the upper right across the mantle and the nearest arms, leaving the rest of the seabed in deep shadow. A few large rocks and a stretch of plain sand fill the background, simple and uncluttered.
+```
