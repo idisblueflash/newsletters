@@ -113,8 +113,9 @@ Not three because three looks nice. Count your free hours first.
   you have hours left over past the point where the first stops absorbing them.
 
 1000 hours is a milestone, not a guarantee; practice explains only part of why people
-differ in skill (Macnamara et al., 2014). But reaching it in 11 months rather than 4.6
-years may decide whether you're still practising when month three arrives.
+differ in skill (Macnamara et al., 2014). What one account gives you is a balance you can
+see early: by the end of month three, about 270 hours in one account, against about 54 in
+each of five. That gap may decide whether you're still practising after month three.
 
 ---
 
