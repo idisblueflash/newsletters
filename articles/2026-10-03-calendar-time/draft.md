@@ -39,12 +39,16 @@ The research didn't back me up.
 
 - **There's no daily floor.** People who revised vocabulary 13 times, 56 days apart,
   remembered it about as well as people who revised 26 times, 14 days apart (Bahrick et
-  al., 1993). Practising recall beats re-reading by a wide margin (Karpicke & Roediger,
-  2008). Short, spaced practice isn't wasted.
+  al., 1993): half the sessions, spread further apart, did the same job. And how you
+  practise matters: testing yourself beats re-reading by a wide margin (Karpicke &
+  Roediger, 2008). Neither needs three hours in one day, so a short daily session isn't
+  wasted.
 - **Even muscles don't work that way.** Muscle damage isn't what drives growth (Damas et
   al., 2018).
 
-Two things survived, and they're the real reason behind the number.
+So the three-hour floor was wrong. What decides how many goals to run is something else:
+a ceiling on how many hours one skill can absorb in a day, and the fixed pile of hours
+you have to split between goals.
 
 ## Reason one: there's a ceiling
 
@@ -75,14 +79,17 @@ finish. Efficiency per hour and time to the finish line are different questions.
 
 ## The condition: spaced review
 
-The table only holds if **those hours are spent with spaced review**: coming back to old
-material at growing intervals instead of cramming and moving on.
+The chart only counts hours. Those hours turn into skill only if **they're spent with
+spaced review**: coming back to old material at growing intervals instead of cramming and
+moving on.
 
 For each new English word, I write a mnemonic sentence that leaves the word out but
 carries sound and meaning anchors back to it. A mnemonic like that speeds up learning
 but fades without recall practice (Chiu & Hawkins, 2023), and with the same total time,
 spreading practice out beats massing it (Lotfolahi & Salehi, 2017). Fifteen minutes of
 spaced review a day makes real progress; three hours without it can lose much of it.
+That doesn't make five fifteen-minute goals a good plan: each one would still take years
+to reach 1000 hours.
 
 ## Why the first three months matter
 
