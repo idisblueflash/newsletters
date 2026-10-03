@@ -98,6 +98,11 @@ function convert(mdPath) {
       while (i < lines.length && /^[-*]\s+/.test(lines[i])) {
         items.push(lines[i].replace(/^[-*]\s+/, ''));
         i++;
+        // Indented continuation lines belong to the same item (wrapped text)
+        while (i < lines.length && /^\s+\S/.test(lines[i]) && !/^\s*([-*]|\d+\.)\s+/.test(lines[i])) {
+          items[items.length - 1] += ' ' + lines[i].trim();
+          i++;
+        }
       }
       out.push(`<ul>\n${items.map(it => `<li>${inlineFormat(stripCiteMarkers(it))}</li>`).join('\n')}\n</ul>`);
       continue;
@@ -109,6 +114,11 @@ function convert(mdPath) {
       while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
         items.push(lines[i].replace(/^\d+\.\s+/, ''));
         i++;
+        // Indented continuation lines belong to the same item (wrapped text)
+        while (i < lines.length && /^\s+\S/.test(lines[i]) && !/^\s*([-*]|\d+\.)\s+/.test(lines[i])) {
+          items[items.length - 1] += ' ' + lines[i].trim();
+          i++;
+        }
       }
       out.push(`<ol>\n${items.map(it => `<li>${inlineFormat(stripCiteMarkers(it))}</li>`).join('\n')}\n</ol>`);
       continue;
