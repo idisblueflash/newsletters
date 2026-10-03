@@ -70,7 +70,7 @@ absorbing them. Spread across three, they get used.
 Most beginners have one to three free hours, not six to nine. Below the ceiling, every
 extra goal just divides the same small pile of time. For a 1000-hour goal:
 
-![With 3 free hours a day, one goal reaches 1000 hours in about 11 months; three goals take about 2.7 years each; five goals take about 4.6 years each](goals-vs-time-bars.png)
+![Bar chart, headed "5× longer": with 3 free hours a day, one goal at 3 hours a day reaches 1000 hours in about 11 months (short dark bar); three goals at 1 hour each take about 2.7 years (grey bar, more than twice as long); five goals at 0.6 hours each take about 4.6 years (dark bar running the full width)](goals-vs-time-bars.jpeg)
 
 Same three hours of practice a day, very different calendar time: one goal reaches its
 finish line in under a year, while five goals each reach theirs four and a half years
@@ -166,3 +166,4 @@ this argument, so check the original before you cite one.
   an unsupervised setting: Explanatory variables for high attrition rates among fitness
   center members](https://doi.org/10.1016/j.jsams.2015.12.522). *Journal of Science and
   Medicine in Sport*, 19(11), 916–920.
+
