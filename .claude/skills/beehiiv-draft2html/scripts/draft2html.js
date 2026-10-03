@@ -13,6 +13,9 @@ function escapeHtml(s) {
 function inlineFormat(text) {
   // Footnote refs [^1] -> <sup><a href="#fn1">[1]</a></sup>
   text = text.replace(/\[\^(\w+)\]/g, '<sup><a href="#fn$1">[$1]</a></sup>');
+  // Images ![alt](src) — before links, or the link rule leaves a stray "!"
+  text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,
+    (_, alt, src) => `<img src="${src}" alt="${alt.replace(/"/g, '&quot;')}" style="max-width:100%;">`);
   // Links [text](url)
   text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
   // Bare autolinks <https://...>
@@ -95,6 +98,11 @@ function convert(mdPath) {
       while (i < lines.length && /^[-*]\s+/.test(lines[i])) {
         items.push(lines[i].replace(/^[-*]\s+/, ''));
         i++;
+        // Indented continuation lines belong to the same item (wrapped text)
+        while (i < lines.length && /^\s+\S/.test(lines[i]) && !/^\s*([-*]|\d+\.)\s+/.test(lines[i])) {
+          items[items.length - 1] += ' ' + lines[i].trim();
+          i++;
+        }
       }
       out.push(`<ul>\n${items.map(it => `<li>${inlineFormat(stripCiteMarkers(it))}</li>`).join('\n')}\n</ul>`);
       continue;
@@ -106,6 +114,11 @@ function convert(mdPath) {
       while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
         items.push(lines[i].replace(/^\d+\.\s+/, ''));
         i++;
+        // Indented continuation lines belong to the same item (wrapped text)
+        while (i < lines.length && /^\s+\S/.test(lines[i]) && !/^\s*([-*]|\d+\.)\s+/.test(lines[i])) {
+          items[items.length - 1] += ' ' + lines[i].trim();
+          i++;
+        }
       }
       out.push(`<ol>\n${items.map(it => `<li>${inlineFormat(stripCiteMarkers(it))}</li>`).join('\n')}\n</ol>`);
       continue;
@@ -156,7 +169,8 @@ function convert(mdPath) {
       i++;
     }
     const paraText = stripCiteMarkers(paraLines.join(' '));
-    if (paraText) out.push(`<p>${inlineFormat(paraText)}</p>`);
+    if (/^!\[[^\]]*\]\([^)]+\)$/.test(paraText.trim())) out.push(inlineFormat(paraText.trim()));
+    else if (paraText) out.push(`<p>${inlineFormat(paraText)}</p>`);
   }
 
   // Footnote block at the end.
