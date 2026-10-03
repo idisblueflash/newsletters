@@ -1,0 +1,4 @@
+# Stage log — Calendar Time
+
+- 2026-10-03 · Stage 1 → 2: third cold read leaves no blocking point (pivot "Two things survived", "the table" reference, and the illogical closing sentence were fixed in e1e7708 and 5085d6f); remaining points judged taste — title phrase never used in body, short-sessions vs one-goal tension, AI-sourced disclaimer placement, one-to-three-hours rule, dense Bahrick bullet; table rendered as goals-vs-time-bars.png; beaver-dam cover scene in cover-prompt.md.
+- 2026-10-03 · Stage 2 → 3 (blocked on assets): subtitle "11 months vs 4.6 years" kept (option 1); seo.md approved; approved edits applied — AI-sourced caveat moved up to "The research didn't back me up", "calendar time" named after the chart, finish-line preview after the postmen paragraph, whether-hours-count vs how-soon-they-add-up spelled out, all eleven references DOI-linked and completed; pangu-spacing no-op (no CJK). Stage 3 waits: no cover file yet.
