@@ -64,11 +64,7 @@ absorbing them. Spread across three, they get used.
 Most beginners have one to three free hours, not six to nine. Below the ceiling, every
 extra goal just divides the same small pile of time. For a 1000-hour goal:
 
-| Free hours a day | Goals | Hours per goal | Time to 1000 h, each |
-|---|---|---|---|
-| 3 | 1 | 3 | **about 11 months** |
-| 3 | 3 | 1 | about 2.7 years |
-| 3 | 5 | 0.6 | **about 4.6 years** |
+![With 3 free hours a day, one goal reaches 1000 hours in about 11 months; three goals take about 2.7 years each; five goals take about 4.6 years each](goals-vs-time-bars.png)
 
 Same person, same three hours. One goal reaches its finish line in under a year; five
 goals each reach theirs four and a half years from now.
