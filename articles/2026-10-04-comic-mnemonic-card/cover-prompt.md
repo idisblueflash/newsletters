@@ -1,6 +1,6 @@
 # Cover image prompt (Z-Image Turbo)
 
-Reference: `cover.png` (frame 0321-water-splash from the swallow-migration picks) — rebuild it in ComfyUI.
+Reference: `cover-reference.png` (frame 0321-water-splash from the swallow-migration picks) — rebuild it in ComfyUI.
 
 Low-angle close shot taken right at water level, the lens almost touching a still pond surface. A single adult barn swallow bursts up out of the water at the left third of the frame, about a third of the frame height, body tilted toward the camera, both wings flung up and back in a ragged V above its shoulders, glossy blue-black head, deep rust-red throat patch, cream-white breast soaked and spiky with water. All around it a huge spray of water droplets hangs frozen in mid-air, flying outward and upward across most of the frame, bigger glassy blobs near the bird and fine white specks toward the edges, a thin curved sheet of water lifting from the surface just below its body. The bottom strip of the frame is the flat bright water surface, slightly blurred. Strong low backlight from behind the bird, every droplet glowing white against the dark. Sudden and wet. High-speed wildlife photograph, 1/8000 s freeze, 300mm telephoto lens, shallow depth of field with the swallow's head and the nearest droplets sharp, background melting into smooth dark olive-green and black bokeh of out-of-focus foliage. Natural bird anatomy, one swallow only, simple dark uncluttered background, no text, no subtitles, no watermark.
 
