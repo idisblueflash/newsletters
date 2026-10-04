@@ -12,21 +12,22 @@
 
 昨天我突然开了窍：可以多选几张，弄成漫画啊！
 
-说干就干。我更新了图片生成的提示此，它可以让我选择多张，它来连成 2x2 四格漫画。
+说干就干。我更新了图片生成的提示词。现在我可以从 3x3 里选出多张图片，按照顺序给它，它来连成 2x2 四格漫画。
 
 拿 overreach 这个单词来说，它的辅助句是：
 
-Hanging over a peach tree, he stretches too far, falls.
+Hanging **over** a **peach** tree, he stretches too far, falls.
+
+这里 over + peach ≈ overreach，辅助记忆发音。stretches too far 辅助记忆意思。
 
 AI 生成的 3x3 的图组是这样的：
 
-【图组：3x3 候选图】
+![](overreach-grid.png)
 
 单独选图 1 能说清 Hanging over 和 stretches，少了 falls。 选图 8 说清了 falls， 却少了前面两个动作。
 
 用四格漫画就可以解决了：
 
-【图：四格漫画】
+![](overreach-comic.png)
 
 我最后选了图 1、7、8、9。 图 1 和图 8 已经把动作表现出来了。我又选了图 7 作动作过渡，图 9 表达动作结果。整个漫画更像是一个故事。也更容易记住。
-
