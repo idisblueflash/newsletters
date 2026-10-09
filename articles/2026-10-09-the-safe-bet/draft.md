@@ -45,14 +45,15 @@ text instructions:
 
 - Each 25-minute session fills one glass jar with **150 copper coins**. A normal day
   is about four sessions, so four new jars.
-- The jars sit on top of a **shelf with fixed space**: room for only 6 jars, about three
-  hours of focus with the breaks in between. Within a couple of days, it's full.
+- The jars sit on top of a **shelf with fixed space**: room for only 6 jars. By the second
+  day, it's full.
 - To make room, you exchange coins: **10 copper for 1 silver, 10 silver for 1 gold.** A
-  jar of 150 copper becomes 1 gold and 5 silver, small enough to drop into one of the
-  **30 small cells** beneath the shelf, one for each of the last 30 days.
+  jar of 150 copper becomes 1 gold and 5 silver, small enough to drop into a
+  small cell beneath the shelf. There are **30 cells**, one for each of the last 30 days,
+  and all of a day's exchanged coins go into that day's cell.
 
-The shelf makes it more than decoration. You decide when to cash in: keep the copper
-jars piling up where you can see them, or turn them into gold and free the space. A
+The shelf makes it more than decoration. You decide when to cash in: keep full jars on
+the shelf where you can see the copper, or cash them in and free the space. A
 constraint plus a choice is a game. And
 the fixed shelf is the same idea as my [last post](https://ai-companion-newsletter.beehiiv.com/p/calendar-time): your day has
 limited hours, so you can't keep adding goals. The shelf just makes it visible.
@@ -60,7 +61,7 @@ limited hours, so you can't keep adding goals. The shelf just makes it visible.
 I like gold coins. I like watching them pile up and hearing them fall. That's my taste,
 and a few friends say they share it.
 
-## Reason one: neither path sells better
+## Reason one: sales can't decide it
 
 If the market path were safer, trend-following apps should earn more often. I couldn't
 find numbers that compare the two paths directly, and the best numbers are for games,
@@ -81,8 +82,8 @@ favorite", without the sales.
 
 So I have no evidence that building for yourself sells *better*. But I have none that
 the market path does either. Almost everything earns little, so the "safe" path has no
-proven advantage. If sales are a toss-up on both paths, sales can't decide
-between them. Something else has to.
+proven advantage. Since almost nothing earns, sales can't be the reason to
+pick the "safe" path. Something else has to decide.
 
 ## Reason two: the user who never leaves
 
@@ -135,7 +136,7 @@ way.
 It's worth considering building the thing you'd open every day, using metaphors other
 people already understand. And plan for more than one app.
 
-Or, as one of them jokes at the end of the conversation: "Stay home and make some cool stuff."
+Or, as McMillen jokes at the end of the conversation: "Stay home and make some cool stuff."
 
 ---
 
