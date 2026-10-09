@@ -34,18 +34,22 @@ succeeded. So I went looking for what happens to everyone else.
 
 ## My app, and the trend I'm not following
 
-I'm building Time-Cost-Averaging, an app for investing time in a few skills. A timing
-app usually looks like a dashboard: a countdown, charts, totals, lots of text.
+I'm building Time-Cost-Averaging, an app for investing time in a few skills. You pick a
+skill, start a 25-minute focus session, and the app keeps count of how much time you've
+put into each one. The name comes from dollar-cost averaging, the investing habit of
+putting in a fixed amount on a regular schedule instead of trying to time the market.
+A timing app usually looks like a dashboard: a countdown, charts, totals, lots of text.
 
 Mine has none of that. It's a game in the clothes of an app:
 
-- Every 25 minutes of focus drops **150 copper coins** into a glass jar.
-- Coins can be exchanged: **10 copper for 1 silver, 10 silver for 1 gold.** So a full
-  jar of 150 copper becomes 1 gold and 5 silver.
-- The jars sit on a **shelf with fixed space**, so at some point you have to exchange
-  coins to make room.
+- Each 25-minute session fills one glass jar with **150 copper coins**. A normal day
+  is about four sessions, so four new jars.
+- The jars sit on a **shelf with fixed space**: room for only 6 to 9 jars. Within a
+  couple of days, it's full.
+- To make room, you exchange coins: **10 copper for 1 silver, 10 silver for 1 gold.** A
+  jar of 150 copper becomes 1 gold and 5 silver, a handful of coins instead of a jar.
 
-That last rule makes it more than decoration. A constraint plus a choice is a game. And
+The shelf makes it more than decoration. A constraint plus a choice is a game. And
 the fixed shelf is the same idea as my [last post](https://ai-companion-newsletter.beehiiv.com/p/calendar-time): your day has
 limited hours, so you can't keep adding goals. The shelf just makes it visible.
 
@@ -54,8 +58,9 @@ and a few friends say they share it.
 
 ## Reason one: the safe bet isn't safe
 
-If the market path were safer, trend-following apps should earn more often. Mostly,
-nothing earns.
+If the market path were safer, trend-following apps should earn more often. I couldn't
+find numbers that compare the two paths directly. What I found is that mostly, nothing
+earns.
 
 On Steam, the median game released in 2019 earned **$1,136** in its lifetime, before
 Steam's cut (Zukowski, 2022, using Video Games Insights data). Only about 1 in 10 passed
@@ -69,9 +74,11 @@ very small, very vocal audience that really loved that game, and nobody else in 
 world wanted it" (PocketGamer.biz, 2021). That's Blow's "small number of people's
 favorite", without the sales.
 
-So I have no evidence that building for yourself sells *better*. What the numbers show
-is that the market path doesn't sell better either. Sales are a toss-up on both paths,
-so sales can't decide between them. Something else has to.
+So I have no evidence that building for yourself sells *better*. But I have none that
+the market path does either. Almost everything earns little, so the "safe" path has no
+proven advantage. These numbers are about games, not iPhone apps, but the App Store's
+long tail looks no kinder. If sales are a toss-up on both paths, sales can't decide
+between them. Something else has to.
 
 ## Reason two: the user who never leaves
 
