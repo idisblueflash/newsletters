@@ -40,16 +40,20 @@ put into each one. The name comes from dollar-cost averaging, the investing habi
 putting in a fixed amount on a regular schedule instead of trying to time the market.
 A timing app usually looks like a dashboard: a countdown, charts, totals, lots of text.
 
-Mine has none of that. It's a game in the clothes of an app:
+Mine has none of that. It's a game in the clothes of an app, drawn in pixel art, with no
+text instructions:
 
 - Each 25-minute session fills one glass jar with **150 copper coins**. A normal day
   is about four sessions, so four new jars.
-- The jars sit on a **shelf with fixed space**: room for only 6 to 9 jars. Within a
-  couple of days, it's full.
+- The jars sit on top of a **shelf with fixed space**: room for only 6 to 9 jars. Within
+  a couple of days, it's full.
 - To make room, you exchange coins: **10 copper for 1 silver, 10 silver for 1 gold.** A
-  jar of 150 copper becomes 1 gold and 5 silver, a handful of coins instead of a jar.
+  jar of 150 copper becomes 1 gold and 5 silver, small enough to drop into one of the
+  **30 small day cells** beneath the shelf.
 
-The shelf makes it more than decoration. A constraint plus a choice is a game. And
+The shelf makes it more than decoration. You decide when to cash in: keep the copper
+jars piling up where you can see them, or turn them into gold and free the space. A
+constraint plus a choice is a game. And
 the fixed shelf is the same idea as my [last post](https://ai-companion-newsletter.beehiiv.com/p/calendar-time): your day has
 limited hours, so you can't keep adding goals. The shelf just makes it visible.
 
@@ -59,8 +63,9 @@ and a few friends say they share it.
 ## Reason one: the safe bet isn't safe
 
 If the market path were safer, trend-following apps should earn more often. I couldn't
-find numbers that compare the two paths directly. What I found is that mostly, nothing
-earns.
+find numbers that compare the two paths directly, and the best numbers are for games,
+not apps. Mine is a game in the clothes of an app, so they're close enough. What I found
+is that mostly, nothing earns.
 
 On Steam, the median game released in 2019 earned **$1,136** in its lifetime, before
 Steam's cut (Zukowski, 2022, using Video Games Insights data). Only about 1 in 10 passed
@@ -76,8 +81,7 @@ favorite", without the sales.
 
 So I have no evidence that building for yourself sells *better*. But I have none that
 the market path does either. Almost everything earns little, so the "safe" path has no
-proven advantage. These numbers are about games, not iPhone apps, but the App Store's
-long tail looks no kinder. If sales are a toss-up on both paths, sales can't decide
+proven advantage. If sales are a toss-up on both paths, sales can't decide
 between them. Something else has to.
 
 ## Reason two: the user who never leaves
