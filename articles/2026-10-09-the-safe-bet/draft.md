@@ -46,7 +46,7 @@ Mine has none of that. It's a game in the clothes of an app:
   coins to make room.
 
 That last rule makes it more than decoration. A constraint plus a choice is a game. And
-the fixed shelf is the same idea as my [last post](calendar-time.md): your day has
+the fixed shelf is the same idea as my [last post](https://ai-companion-newsletter.beehiiv.com/p/calendar-time): your day has
 limited hours, so you can't keep adding goals. The shelf just makes it visible.
 
 I like gold coins. I like watching them pile up and hearing them fall. That's my taste,
