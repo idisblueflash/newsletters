@@ -43,19 +43,19 @@ A timing app usually looks like a dashboard: a countdown, charts, totals, lots o
 Mine has none of that. It's a game in the clothes of an app, drawn in pixel art, with no
 text instructions:
 
-- Each 25-minute session fills one glass jar with **150 copper coins**. A normal day
-  is about four sessions, so four new jars.
+- Each 25-minute session fills one glass jar with **copper coins**. A normal day is
+  about four sessions, so four new jars.
 - The jars sit on top of a **shelf with fixed space**: room for only 6 jars. By the second
   day, it's full.
-- To make room, you exchange coins: **10 copper for 1 silver, 10 silver for 1 gold.** A
-  jar of 150 copper becomes 1 gold and 5 silver, small enough to drop into a
-  small cell beneath the shelf. There are **30 cells**, one for each of the last 30 days,
-  and all of a day's exchanged coins go into that day's cell.
+- To make room, you **exchange the copper for silver and gold**, which is small enough
+  to drop into a cell beneath the shelf, one cell for each day.
 
 ![Time-Cost-Averaging, work in progress: the jar shelf with the day cells beneath, and no text on screen](app-screenshot.png)
 
 The shelf makes it more than decoration. Once it's full, you have to cash jars in to
-make room for the next one. A hard limit is what turns it into a game. And
+make room for the next one, and every exchange pays you back: the gold piles up in the
+day's cell, with an animation and the sound of coins falling. A hard limit with a reward
+like that is what turns it into a game. And
 the fixed shelf is the same idea as my [last post](https://ai-companion-newsletter.beehiiv.com/p/calendar-time): your day has
 limited hours, so you can't keep adding goals. The shelf just makes it visible.
 
@@ -65,14 +65,13 @@ and a few friends say they share it.
 ## Reason one: sales can't decide it
 
 If the market path were safer, trend-following apps should earn more often. I couldn't
-find numbers that compare the two paths directly, and the best numbers are for games,
-not apps. Mine is a game in the clothes of an app, so they're close enough. What I found
-is that mostly, nothing earns.
+find numbers that compare the two paths directly. What I found, for apps and games
+alike, is the same steep long tail: mostly, nothing earns.
 
-On Steam, the median game released in 2019 earned **$1,136** in its lifetime, before
-Steam's cut (Zukowski, 2022, using Video Games Insights data). Only about 1 in 10 passed
-$200,000. App Store data is older and patchier, but it shows the same steep long tail
-(Perry, 2015).
+App Store data is older and patchier, but it shows that tail (Perry, 2015). Steam's
+numbers are newer: the median game released in 2019 earned **$1,136** in its lifetime,
+before Steam's cut (Zukowski, 2022, using Video Games Insights data). Only about 1 in 10
+passed $200,000.
 
 "Make it for yourself" doesn't escape those odds either. *Where the Water Tastes Like
 Wine* took four years of creative work and sold fewer copies than its developer had
@@ -142,18 +141,14 @@ Or, as McMillen jokes at the end of the conversation: "Stay home and make some c
 
 ## References
 
-- Blow, J., & McMillen, E. Conversation clip, "gamedev cuts", published 2026-10-06.
-  <https://youtu.be/gBpuZNFssCM> (quotes from auto-captions; speakers not separated).
-- CGMagazine (2018). *Where the Water Tastes Like Wine* postmortem paints a bleak
-  picture of indie development.
-  <https://www.cgmagonline.com/news/where-the-water-tastes-like-wine-postmortem-paints-a-bleak-picture-of-indie-development/>
-- Perry, C. (2015, January). The shape of the App Store. *MacStories*.
-  <https://www.macstories.net/?p=37727>
-- PocketGamer.biz (2021, April 20). Interview with Christopher Natsuume, Boomzap.
-  <http://www.pocketgamer.biz/boomzap-christopher-natsuume-last-regiment/>
-- *The Witness* (2016 video game). Wikipedia.
-  <https://en.wikipedia.org/wiki/The_Witness_(2016_video_game)>
-- Zukowski, C. (2022, November 28). The median indie game does not earn a whole lot.
+- Blow, J., & McMillen, E. (2026, October 6). [Conversation clip, "gamedev cuts"](https://youtu.be/gBpuZNFssCM).
+  Quotes from auto-captions; speakers identified by me from the video.
+- CGMagazine (2018). [*Where the Water Tastes Like Wine* postmortem paints a bleak
+  picture of indie development](https://www.cgmagonline.com/news/where-the-water-tastes-like-wine-postmortem-paints-a-bleak-picture-of-indie-development/).
+- Perry, C. (2015, January). [The shape of the App Store](https://www.macstories.net/?p=37727). *MacStories*.
+- PocketGamer.biz (2021, April 20). [Interview with Christopher Natsuume,
+  Boomzap](http://www.pocketgamer.biz/boomzap-christopher-natsuume-last-regiment/).
+- [*The Witness* (2016 video game)](https://en.wikipedia.org/wiki/The_Witness_(2016_video_game)). Wikipedia.
+- Zukowski, C. (2022, November 28). [The median indie game does not earn a whole
+  lot](https://howtomarketagame.com/2022/11/28/the-median-indie-game-does-not-earn-a-whole-lot/).
   *How To Market A Game*.
-  <https://howtomarketagame.com/2022/11/28/the-median-indie-game-does-not-earn-a-whole-lot/>
-
