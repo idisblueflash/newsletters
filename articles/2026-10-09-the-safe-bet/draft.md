@@ -26,7 +26,7 @@ I watched Jonathan Blow (*Braid*, *The Witness*) and Edmund McMillen (*Super Mea
 > all time than a game that a lot of people think is pretty okay."
 
 They make fun of the alternative, designing "for 15-to-19-year-olds who like… *Avatar*
-or something." What does that even mean? "I guess you just look at other games and copy
+or something." "What does that even mean?" Blow asks. "I guess you just look at other games and copy
 them."
 
 That's good advice from two famous developers. But they're famous because they
@@ -45,11 +45,11 @@ text instructions:
 
 - Each 25-minute session fills one glass jar with **150 copper coins**. A normal day
   is about four sessions, so four new jars.
-- The jars sit on top of a **shelf with fixed space**: room for only 6 to 9 jars. Within
-  a couple of days, it's full.
+- The jars sit on top of a **shelf with fixed space**: room for only 6 jars, about three
+  hours of focus with the breaks in between. Within a couple of days, it's full.
 - To make room, you exchange coins: **10 copper for 1 silver, 10 silver for 1 gold.** A
   jar of 150 copper becomes 1 gold and 5 silver, small enough to drop into one of the
-  **30 small day cells** beneath the shelf.
+  **30 small cells** beneath the shelf, one for each of the last 30 days.
 
 The shelf makes it more than decoration. You decide when to cash in: keep the copper
 jars piling up where you can see them, or turn them into gold and free the space. A
@@ -60,7 +60,7 @@ limited hours, so you can't keep adding goals. The shelf just makes it visible.
 I like gold coins. I like watching them pile up and hearing them fall. That's my taste,
 and a few friends say they share it.
 
-## Reason one: the safe bet isn't safe
+## Reason one: neither path sells better
 
 If the market path were safer, trend-following apps should earn more often. I couldn't
 find numbers that compare the two paths directly, and the best numbers are for games,
