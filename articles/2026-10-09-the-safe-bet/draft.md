@@ -54,9 +54,8 @@ text instructions:
 
 ![Time-Cost-Averaging, work in progress: the jar shelf with the day cells beneath, and no text on screen](app-screenshot.png)
 
-The shelf makes it more than decoration. You decide when to cash in: keep full jars on
-the shelf where you can see the copper, or cash them in and free the space. A
-constraint plus a choice is a game. And
+The shelf makes it more than decoration. Once it's full, you have to cash jars in to
+make room for the next one. A hard limit is what turns it into a game. And
 the fixed shelf is the same idea as my [last post](https://ai-companion-newsletter.beehiiv.com/p/calendar-time): your day has
 limited hours, so you can't keep adding goals. The shelf just makes it visible.
 
@@ -83,9 +82,8 @@ world wanted it" (PocketGamer.biz, 2021). That's Blow's "small number of people'
 favorite", without the sales.
 
 So I have no evidence that building for yourself sells *better*. But I have none that
-the market path does either. Almost everything earns little, so the "safe" path has no
-proven advantage. Since almost nothing earns, sales can't be the reason to
-pick the "safe" path. Something else has to decide.
+the market path does either. Almost everything earns little, so sales can't be the reason
+to pick the "safe" path. Something else has to decide.
 
 ## Reason two: the user who never leaves
 
