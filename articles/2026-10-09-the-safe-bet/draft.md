@@ -52,6 +52,8 @@ text instructions:
   small cell beneath the shelf. There are **30 cells**, one for each of the last 30 days,
   and all of a day's exchanged coins go into that day's cell.
 
+![Time-Cost-Averaging, work in progress: the jar shelf with the day cells beneath, and no text on screen](app-screenshot.png)
+
 The shelf makes it more than decoration. You decide when to cash in: keep full jars on
 the shelf where you can see the copper, or cash them in and free the space. A
 constraint plus a choice is a game. And
