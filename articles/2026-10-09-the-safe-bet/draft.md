@@ -50,7 +50,7 @@ text instructions:
 - To make room, you **exchange the copper for silver and gold**, which is small enough
   to drop into a cell beneath the shelf, one cell for each day.
 
-![Time-Cost-Averaging, work in progress: the jar shelf with the day cells beneath, and no text on screen](app-screenshot.png)
+![Time-Cost-Averaging, work in progress: a pixel-art shelf with room for six glass jars. Three are filled (gold, copper, silver) and three slots are empty. Beneath it is a grid of 30 day cells, each holding a small stack of exchanged coins, with today's cell highlighted.](app-screenshot.png)
 
 The shelf makes it more than decoration. Once it's full, you have to cash jars in to
 make room for the next one, and every exchange pays you back: the gold piles up in the
