@@ -25,9 +25,8 @@ I watched Jonathan Blow (*Braid*, *The Witness*) and Edmund McMillen (*Super Mea
 > "I would rather make a game that is a very small number of people's favorite game of
 > all time than a game that a lot of people think is pretty okay."
 
-They make fun of the alternative, designing "for 15-to-19-year-olds who like… *Avatar*
-or something." "What does that even mean?" Blow asks. "I guess you just look at other games and copy
-them."
+They make fun of the alternative, designing "for 15-to-19-year-olds who like… *Avatar*  
+or something." "What does that even mean?" Blow asks. "I guess you just look at other games and copy them."
 
 That's good advice from two famous developers. But they're famous because they
 succeeded. So I went looking for what happens to everyone else.
@@ -152,3 +151,4 @@ Or, as McMillen jokes at the end of the conversation: "Stay home and make some c
 - Zukowski, C. (2022, November 28). [The median indie game does not earn a whole
   lot](https://howtomarketagame.com/2022/11/28/the-median-indie-game-does-not-earn-a-whole-lot/).
   *How To Market A Game*.
+
