@@ -9,7 +9,7 @@ Whenever I hand you the post ("continue", "done", "fixed", "cover is in", or any
 | Stage | Enter when | You run | Exit when |
 |---|---|---|---|
 | 1 · Draft filled | `draft.md` is no longer the placeholder and has no unfinished section or TODO | `_cold_reader`, `_tabitha` on every Markdown table, cover scene candidates (`cover-image` skill), figure scan | no blocking friction point is left open, tables are rendered, I picked a cover scene and `cover-prompt.md` exists |
-| 2 · Text locked | stage 1 exited | 3 subtitle options, `serana` (SEO → `seo.md`), reference-link formatting, `pangu-spacing` | I picked a subtitle, the approved edits are in `draft.md` and committed, `seo.md` exists |
+| 2 · Text locked | stage 1 exited | 3 subtitle options, `serana` (SEO → `seo.md`), reference-link formatting, `pangu-spacing` | I picked a subtitle, the approved edits are in `draft.md` and committed, `seo.md` exists, and for a newsletter the footer is in |
 | 3 · Assets landed | stage 2 exited, every image `draft.md` links to exists, no image placeholder is left, a cover file exists | alt text, image conversion, raw archive, `beehiiv.html` (this is `/post-process`) | every linked image and the cover are JPEG, `beehiiv.html` is regenerated |
 | 4 · Ship | stage 3 exited and the image gate passes | `/clean-up` up to the push, then ask me to check `beehiiv.html` and confirm the merge | merged, back on `main` |
 
@@ -26,8 +26,8 @@ Whenever I hand you the post ("continue", "done", "fixed", "cover is in", or any
 9. **Stage 3 converts what the draft links to.** Convert every image `draft.md` references plus `cover.png`, wherever they live in the article folder — not only top-level PNGs. It must be safe to re-run after a late cover arrives.
 10. **The gate.** Before any stage 4 commit, check that no image linked from `draft.md`, nor the cover, is still PNG or larger than 500 KB. If one is, fix it by re-running the stage 3 conversion; stop only if that fails.
 11. **The merge always needs my yes.** Commit and push without asking; never merge without my confirmation.
-12. **Steps marked (new) have no agent or script yet.** Do them yourself, inline: figure scan, subtitle options, reference-link formatting (fold each URL into the paper title), the image gate.
-13. **Weekly newsletters** under `newsletter/` use the same stages; skip the cover and figure tasks when there are none.
+12. **Steps marked (new) have no agent or script yet.** Do them yourself, inline: figure scan, subtitle options, reference-link formatting (fold each URL into the paper title), the image gate, the newsletter footer.
+13. **Weekly newsletters** under `newsletter/` use the same stages; skip the cover and figure tasks when there are none. In stage 2, append the standard footer if it is missing: a `---` rule, then the 「与 AI 同行」每周一发刊。 line, the reply invitation and the PS unsubscribe line, copied verbatim from the previous issue's `draft.md`.
 
 ## The chart
 
@@ -83,6 +83,8 @@ sequenceDiagram
     Main->>Main: CHECK stage 1 exit met, justify, log, enter stage 2
     par
         Main->>Main: subtitle task (new), 3 options
+    and
+        Main->>Main: newsletter footer (new), if missing
     and
         Main->>Ser: SEO metadata
         Ser-->>Main: seo.md
