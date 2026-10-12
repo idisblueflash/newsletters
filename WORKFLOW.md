@@ -84,6 +84,8 @@ sequenceDiagram
     par
         Main->>Main: subtitle task (new), 3 options
     and
+        Main->>Main: newsletter footer (new), if missing
+    and
         Main->>Ser: SEO metadata
         Ser-->>Main: seo.md
     and
