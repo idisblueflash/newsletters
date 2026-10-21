@@ -14,10 +14,10 @@ write it down clearly, and let the agent build it. You're the architect; it's th
 builder. I believed it too. When something looked wrong, I'd arrive with the fix
 already in mind.
 
-My answer now: in my experience, a human's taste is a problem-finder, not a
-solution-designer who sticks to their own fix, at least when the problem touches
-several parts of a plugin. I notice problems while using the output. The agent holds
-more of the project's context.
+My answer now: my taste finds the problem, and the agent is often better at the fix.
+By taste I mean the gut sense that something is off, which I get while using what we
+built. The agent holds more of the project's context. In my experience, this holds at
+least when the problem touches several parts of a plugin.
 
 ## One small sentence
 
