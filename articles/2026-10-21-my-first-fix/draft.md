@@ -56,20 +56,23 @@ And it was simpler than both.
 
 ## Was it a one-off?
 
-I went back through my sessions on the same project, about a week of building two  
-plugins. Another one is called *backlog*. A similar structure but focused on developing tasks. It records each tasks in backlog (epics, user stories, bugs, concepts, etc), link the concepts as a map, and draft task with specific requirements (acceptance criteria).
+I went back through my sessions on the same project, about a week of building two
+plugins. The other one is called *backlog*. It works the same way, but for building
+software: it keeps a list of things to build, shows them on a map, and writes down for
+each task what "done" looks like, its *acceptance criteria*.
 
 I found ten moments where my taste flagged something.
 
 - **My taste was right about the problem every time.** The agent never said "that's
   not a problem."
 - **My fix was replaced 3 times.**
-- **It was kept but changed 3 times**, and kept as is 3 times.
+- **My fix was kept but changed 3 times.**
+- **My fix was kept as is 3 times.**
 - **In the tenth, it went the other way:** I corrected the agent.
 
 The concept card was the first replacement. Here's the second: in the backlog map, acceptance
 criteria were written in code blocks, and the narrow side panel made me scroll sideways
-to read a single *Given*. My fix: stop putting them in code blocks. The agent changed
+to read even one line of a criterion. My fix: stop putting them in code blocks. The agent changed
 only how the map *shows* them. The files kept their code blocks, because two other
 parts of the plugin count those blocks to number the test scenarios. My fix would have
 broken them.
@@ -97,7 +100,8 @@ My fix came from where I was standing. The agent's fix came from the whole proje
 ## When my fix was fine
 
 Three times the agent did exactly what I asked: make the detail panel wider, use a
-contrast color for the selected row, add a button that moves sections into the trail.
+contrast color for the selected row, add a button that moves sections into the trail, a panel that collects the tasks and
+concepts I'm focused on right now.
 Each one changed a single spot in the page.
 
 The replaced fixes were different. Each one touched several parts of the plugin. That's
@@ -107,15 +111,13 @@ matters.
 
 ## Two things I didn't give up
 
-**I still argue.** In one session, the agent said parallel work was risky because  
-"parallel worktrees are cheap to start but expensive to merge". 
-
-My workflow tends to run multliple sessions on each task in parallel worktrees, in the old time, this can cause a headache merging issue. 
-
-I asked it to rethink it, since an agent, not a person, does the  
-merging now in AI era. It agreed that, and revised its  
-plan. In another session, I disagreed with when the plugin should recommend a review,  
-and it changed the rule my way. The agent holds the project's context. That doesn't  
+**I still argue.** In one session, the agent said running tasks in parallel was risky:
+"parallel worktrees are cheap to start but expensive to merge." A worktree is a separate
+copy of the project, so several sessions can each work on their own task at once. The
+expensive part used to be merging those copies back together, because a person had to
+untangle every conflict by hand. I asked it to rethink that: in my workflow, an agent
+does the merging, not a person. It agreed and revised its plan. In another session, I disagreed with when the plugin should recommend a review,
+and it changed the rule my way. The agent holds the project's context. That doesn't
 make its judgment right.
 
 **I keep asking.** In the concept story, the reversal didn't come from the agent alone.
@@ -133,8 +135,8 @@ fits together, so my taste for "this is wrong" has some training behind it. I do
 know whether a newer developer's taste finds problems as reliably.
 
 **This is about a code agent.** Claude Code read the repo before it answered. A chat
-assistant that can't see your files doesn't have that context, and my second reason
-falls away.
+assistant that can't see your files doesn't have that context, and the agent's view of the whole
+project falls away.
 
 And it's ten moments from one person in one project. Small, but enough to change how I
 work.
