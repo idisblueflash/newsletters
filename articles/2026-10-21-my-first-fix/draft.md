@@ -56,8 +56,10 @@ And it was simpler than both.
 
 ## Was it a one-off?
 
-I went back through my sessions on the same project, about a week of building two
-plugins. I found ten moments where my taste flagged something.
+I went back through my sessions on the same project, about a week of building two  
+plugins. Another one is called *backlog*. A similar structure but focused on developing tasks. It records each tasks in backlog (epics, user stories, bugs, concepts, etc), link the concepts as a map, and draft task with specific requirements (acceptance criteria).
+
+I found ten moments where my taste flagged something.
 
 - **My taste was right about the problem every time.** The agent never said "that's
   not a problem."
@@ -105,12 +107,15 @@ matters.
 
 ## Two things I didn't give up
 
-**I still argue.** In one session, the agent said parallel work was risky because
-"parallel worktrees are cheap to start but expensive to merge" and "rank already
-encodes risk". I asked it to rethink both, since an agent, not a person, does the
-merging. It agreed that it had treated rank as if it meant sequence, and revised its
-plan. In another session, I disagreed with when the plugin should recommend a review,
-and it changed the rule my way. The agent holds the project's context. That doesn't
+**I still argue.** In one session, the agent said parallel work was risky because  
+"parallel worktrees are cheap to start but expensive to merge". 
+
+My workflow tends to run multliple sessions on each task in parallel worktrees, in the old time, this can cause a headache merging issue. 
+
+I asked it to rethink it, since an agent, not a person, does the  
+merging now in AI era. It agreed that, and revised its  
+plan. In another session, I disagreed with when the plugin should recommend a review,  
+and it changed the rule my way. The agent holds the project's context. That doesn't  
 make its judgment right.
 
 **I keep asking.** In the concept story, the reversal didn't come from the agent alone.
