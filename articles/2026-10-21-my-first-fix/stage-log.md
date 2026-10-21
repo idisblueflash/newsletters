@@ -8,3 +8,4 @@
 - 2026-10-21 · Stage 2: subtitle B picked ("My taste finds the problem. The agent often finds the better fix."); seo.md approved; taste edits 3-6 approved (third example payoff, "tests", "project" in thesis, "the whole project" kept only at L98). No reference links, no CJK (pangu no-op), not a newsletter (no footer).
 - 2026-10-21 Stage 2 → 3 (blocked): subtitle picked, edits in draft.md and committed (28f43dc), seo.md exists. Stage 3 waiting on cover.png — draft.md links no other images.
 - 2026-10-21 Stage 3 → 4: cover.png (972 KB) → cover.jpeg (157 KB), raw archived to assets/image-raw/; draft.md links no images; beehiiv.html generated (frontmatter + H1 stripped). Gate passed: no PNG, nothing over 500 KB.
+- 2026-10-21 Stage 4: author checked beehiiv.html and confirmed the merge of PR #95.
