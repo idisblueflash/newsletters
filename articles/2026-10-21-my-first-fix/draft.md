@@ -1,6 +1,6 @@
 ---
 title: "The First Fix"
-subtitle: "What my taste is good for when I build with a code agent"
+subtitle: "My taste finds the problem. The agent often finds the better fix."
 date: 2026-10-15
 tags: [claude-code, ai-collaboration, taste, plugin-design]
 source_notes: notes/claim-taste-problem-finder.md
@@ -17,7 +17,7 @@ already in mind.
 My answer now: my taste finds the problem, and the agent is often better at the fix.
 By taste I mean the gut sense that something is off, which I get while using what we
 built. The agent holds more of the project's context. In my experience, this holds at
-least when the problem touches several parts of a plugin.
+least when the problem touches several parts of a project.
 
 ## One small sentence
 
@@ -74,13 +74,13 @@ The concept card was the first replacement. Here's the second: in the backlog ma
 criteria were written in code blocks, and the narrow side panel made me scroll sideways
 to read even one line of a criterion. My fix: stop putting them in code blocks. The agent changed
 only how the map *shows* them. The files kept their code blocks, because two other
-parts of the plugin count those blocks to number the test scenarios. My fix would have
+parts of the plugin rely on those blocks to count and number the tests. My fix would have
 broken them.
 
-And the third: I wanted a step that decides which user story to build next, and I asked
-whether it belonged inside the `implement` command or in a new one. Neither. The plugin
-already had a `/backlog:next` command that picks the next item. The judgment belonged
-there.
+And the third: I asked whether a step that picks the next task should go inside the
+`implement` command or into a new one. The agent said neither: the plugin already had a
+`/backlog:next` command that does exactly that. A second place choosing the next task
+would have been a duplicate.
 
 ## Why my fix got replaced
 
@@ -106,8 +106,8 @@ Each one changed a single spot in the page.
 
 The replaced fixes were different. Each one touched several parts of the plugin. That's
 the limit of my claim: when the problem stays in one place, your first fix may be fine.
-When it spreads across the project, that's where the agent's view of the whole project
-matters.
+When it spreads across the project, that's where it matters that the agent knows where else the
+problem shows up.
 
 ## Two things I didn't give up
 
@@ -125,7 +125,7 @@ It came from my second question and the fact inside it: almost every concept use
 standard meaning. Letting go of my first fix didn't mean going quiet.
 
 So "co-designer" fits better than "builder". I bring the problem and what I see while
-using the output. The agent brings the whole project. The fix comes out of the
+using the output. The agent brings what it reads in the repo. The fix comes out of the
 back-and-forth.
 
 ## Two honest limits
@@ -135,16 +135,16 @@ fits together, so my taste for "this is wrong" has some training behind it. I do
 know whether a newer developer's taste finds problems as reliably.
 
 **This is about a code agent.** Claude Code read the repo before it answered. A chat
-assistant that can't see your files doesn't have that context, and the agent's view of the whole
-project falls away.
+assistant that can't see your files doesn't have that context, and the agent's knowledge of where
+else a problem shows up falls away.
 
 And it's ten moments from one person in one project. Small, but enough to change how I
 work.
 
 ## So, what should you bring?
 
-If you stick to your own fix, you can miss the agent's fix, which comes from the whole
-project and might be the simpler one.
+If you stick to your own fix, you can miss the agent's fix, which comes from reading the
+repo and might be the simpler one.
 
 It's worth trying this: when your taste says something is wrong, say *what* feels
 wrong and *why*, then offer your fix as a draft, not a spec. My first fix is a draft
