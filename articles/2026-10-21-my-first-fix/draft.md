@@ -49,7 +49,7 @@ That changed the answer. If nearly every card carries the mark, the mark tells y
 nothing. So the agent turned it around: mark the *exception*. A concept the paper
 really defines gets `defined: S01-03` and a small "defined in S01-03" link to the
 section. Every other card says nothing about where its meaning came from. The sentence
-was deleted from seven files.
+was deleted from the seven concept cards that carried it.
 
 The final fix contradicted my first idea. It also contradicted the agent's first idea.
 And it was simpler than both.
@@ -68,7 +68,7 @@ I found ten moments where my taste flagged something.
 - **My fix was replaced 3 times.**
 - **My fix was kept but changed 3 times.**
 - **My fix was kept as is 3 times.**
-- **In the tenth, it went the other way:** I corrected the agent.
+- **In the tenth, it went the other way:** I corrected the agent (more on that below).
 
 The concept card was the first replacement. Here's the second: in the backlog map, acceptance
 criteria were written in code blocks, and the narrow side panel made me scroll sideways
@@ -100,8 +100,8 @@ My fix came from where I was standing. The agent's fix came from the whole proje
 ## When my fix was fine
 
 Three times the agent did exactly what I asked: make the detail panel wider, use a
-contrast color for the selected row, add a button that moves sections into the trail, a panel that collects the tasks and
-concepts I'm focused on right now.
+contrast color for the selected row, add a button that moves sections into the trail (a panel that collects the tasks and
+concepts I'm focused on right now).
 Each one changed a single spot in the page.
 
 The replaced fixes were different. Each one touched several parts of the plugin. That's
@@ -111,14 +111,14 @@ matters.
 
 ## Two things I didn't give up
 
-**I still argue.** In one session, the agent said running tasks in parallel was risky:
+**I still argue.** That tenth moment: in one session, the agent said running tasks in parallel was risky:
 "parallel worktrees are cheap to start but expensive to merge." A worktree is a separate
 copy of the project, so several sessions can each work on their own task at once. The
 expensive part used to be merging those copies back together, because a person had to
 untangle every conflict by hand. I asked it to rethink that: in my workflow, an agent
-does the merging, not a person. It agreed and revised its plan. In another session, I disagreed with when the plugin should recommend a review,
-and it changed the rule my way. The agent holds the project's context. That doesn't
-make its judgment right.
+does the merging, not a person. It agreed and revised its plan.
+
+The agent holds the project's context. That doesn't make its judgment right.
 
 **I keep asking.** In the concept story, the reversal didn't come from the agent alone.
 It came from my second question and the fact inside it: almost every concept uses the
