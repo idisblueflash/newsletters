@@ -16,7 +16,7 @@ Claude Code（用的是 Sonnet 模型）会根据我给的生词，拆开单词�
 
 就拿 cramped 这个词来说，AI 生成的句子是 A crow camped in my tent; no room to move. 这里的 crow，提示 `cr`amped 的发音。camped 提示 cr`amped`。no room to move 暗示了 cramped 的意思。看完这个句子，我的脑子里出现了一个大只的乌鸦和我一起挤帐篷的生动画面。
 
-![cramped.png](./assets/images/cramped-1792755394416-z7kl-1792755394426-ups7glnl.png)
+![图：卡通画里，一只大个子乌鸦挤进一顶绿色小帐篷，旁边戴毛线帽的人缩在睡袋里，一脸惊慌](./assets/images/cramped-1792755394416-z7kl-1792755394426-ups7glnl.jpeg)
 
 这个句子是我从 4-5 个候选里挑的。Claude 可以头脑风暴出类似的句子，但是挑哪一个，以前一直是我自己来。这也是我设计新流程的初衷：把人工甄选这一步也自动化，更快地制卡。
 
