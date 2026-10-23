@@ -8,3 +8,4 @@
 - 2026-10-23 · Stage 2 → 3: 副标题选 c，seo.md 已写，pangu 与引用链接修改、并发段压缩、补报错原文、请求口径统一均已应用并提交；非 newsletter 无需页脚。Stage 3 等封面（cover.png 未到）。
 - 2026-10-23 · Stage 3 进入：cover.png 已由 _jenny 渲染、作者确认；draft.md 唯一配图 cramped png 存在，无占位符。
 - 2026-10-23 · Stage 3 → 4: 配图与封面均已转 JPEG（cover 137 KB、cramped 34 KB），原 PNG 归档到 assets/image-raw/，alt text 已写，beehiiv.html 已生成；图片关卡通过（无 PNG、无超 500 KB）。
+- 2026-10-23 · Stage 4: 作者确认合并，PR #97 合并。
