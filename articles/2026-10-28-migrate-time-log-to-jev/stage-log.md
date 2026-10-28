@@ -10,3 +10,4 @@
 - 2026-10-28 · Stage 2 → 3: 副标题选 c「省 Token 的最好办法，是一行解析代码」（写入 frontmatter）；seo.md 已批准；错字五处、Claude 全文统一为 Claude Code（作者要求，含标题与 seo.md）、L31 拆段、Sumomo 引入、「看来」语气均已应用；pangu 无改动；无引用链接；非 newsletter 无需页脚。Stage 3 等封面（ComfyUI 已起，_jenny 重新渲染中）；draft.md 未链接任何图片。
 - 2026-10-28 · Stage 3 准备：作者加入 sumomo.png（Sumomo 界面截图），插在 Sumomo 介绍段之后。
 - 2026-10-28 · Stage 3 进入：cover.png 已由 _jenny 渲染（Version A，参考 3336，种子见 cover-prompt.md）；draft.md 唯一配图 sumomo.png 存在，无占位符。
+- 2026-10-28 · Stage 3 → 4: 封面与 sumomo 截图均已转 JPEG（cover 190 KB、sumomo 97 KB），原 PNG 归档到 assets/image-raw/，alt text 已写，beehiiv.html 已生成；图片关卡通过（无 PNG、无超 500 KB）。
