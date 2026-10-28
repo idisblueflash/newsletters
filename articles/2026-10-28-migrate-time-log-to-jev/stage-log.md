@@ -6,4 +6,5 @@
 - 2026-10-28 · Stage 1 冷读 #2：blocking 2 条（第一次失败原因缺失、应急工作流兜底范围变宽）已改；时间格式说明提前（taste，作者同意改）。结尾偏软为 taste，未改。
 - 2026-10-28 · Stage 1：作者同意拆开第二次失败那一大段，「最后它保证：下次一定成功！」单独成段。
 - 2026-10-28 · Stage 1 冷读 #3：blocking 2 条（首条输入像命令、第二次修复是哪个 Claude 且账是否记上）已改；80% 门槛提前说明（taste，作者同意改）。0.32 美元缺参照为 taste。
-- 2026-10-28 · Stage 1 → 2: 冷读 #4 无 blocking（读者原话「The only places I stumbled were sorting out which Claude was which and the crowded paragraph at L31」，都能自行理顺）；剩余 L37 的 Claude 指代、L31 段落过满、Sumomo 引入、「好吧」语气均判 taste；无表格；封面场景已选、cover-prompt.md 已在，cover.png 正由 _jenny 渲染。
+- 2026-10-28 · Stage 1 → 2: 冷读 #4 无 blocking（读者原话「The only places I stumbled were sorting out which Claude was which and the crowded paragraph at L31」，都能自行理顺）；剩余 L37 的 Claude 指代、L31 段落过满、Sumomo 引入、「好吧」语气均判 taste；无表格；封面场景已选、cover-prompt.md 已在；cover.png 未到（ComfyUI 未启动，_jenny 未能渲染）。
+- 2026-10-28 · Stage 2 → 3: 副标题选 c「省 Token 的最好办法，是一行解析代码」（写入 frontmatter）；seo.md 已批准；错字五处、Claude 全文统一为 Claude Code（作者要求，含标题与 seo.md）、L31 拆段、Sumomo 引入、「看来」语气均已应用；pangu 无改动；无引用链接；非 newsletter 无需页脚。Stage 3 等封面（ComfyUI 已起，_jenny 重新渲染中）；draft.md 未链接任何图片。
