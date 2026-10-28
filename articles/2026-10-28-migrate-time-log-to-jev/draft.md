@@ -50,7 +50,7 @@ Claude Code 把判断工作流的动作改成了代码逻辑。它翻了我之�
 
 现在时间是 8:46，我点开 Sumomo 头像，输入：
 
-> 8.30 draft post about migration on Jev timelog
+> 8.30 draft post about migrating to Jev for time log script.
 
 可我期待的快速流程并没有顺利走完。这次的工作流还是导向了应急的 Claude Code 分支。又失败了！
 
