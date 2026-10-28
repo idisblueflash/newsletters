@@ -2,7 +2,7 @@
 
 Scene: a beaver at dusk, half out of the water on the crest of its stick-and-mud dam, pressing a fresh peeled stick into the top. The dam already holds. The beaver is not building it from scratch, only patching the spot that leaked. It stands for a workflow you keep using and keep mending: 且用且完善.
 
-Visual reference: `sumomo/youtube/beaver-documentaries/cover-trial/picks/3424-climbing-dam.jpg` (dark rippled pond behind, wet brown fur, a tangle of pale peeled sticks along the dam crest, low warm light). Alternative: `picks/3336-on-dam-with-stick.jpg`.
+Visual reference: `sumomo/youtube/beaver-documentaries/cover-trial/picks/3336-on-dam-with-stick.jpg` (dark blue water behind, wet dark-brown fur, a pale stick angled up out of the grassy dam crest in the foreground). Alternative: `picks/4218-swimming-with-branch.jpg` (the beaver hauling a leafy branch to the dam). Not 3424-climbing-dam: it was already the reference for 2026-10-03-calendar-time and 2026-10-09-the-safe-bet.
 
 Fact check: beavers repair dams mostly at dusk and through the night, and patch leaks within hours of finding them. They carry sticks in their mouths and push mud and sticks into place with their small, dexterous forepaws. Sticks on a dam are often peeled pale, because beavers eat the bark first.
 
