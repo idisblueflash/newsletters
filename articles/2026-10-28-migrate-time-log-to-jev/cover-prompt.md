@@ -23,3 +23,31 @@ A medium-close documentary-style photograph at eye level of a beaver's head and 
 ```
 A wide documentary-style landscape photograph at eye level of a long beaver dam of stacked sticks and mud running across the lower third of the frame, holding back a calm dark pond that reflects a pale dusk sky and a line of willows. Near the right third of the dam crest, one small beaver is half out of the water, pushing a fresh pale stick into the top of the dam. The dam forms a strong horizontal line, the beaver small in the frame. Soft warm dusk light, muted greens, browns and greys, natural color grading, light film grain. 135mm lens, f/8, dam and beaver in sharp focus, background gently softened. A single beaver, realistic proportions, uncluttered scene, no people, no text, no watermark.
 ```
+
+## Rendered with _jenny (2026-10-28)
+
+Version A, three steps on local ComfyUI. Output: `cover.png` (1440×720). Visual reference was `picks/3336-on-dam-with-stick.jpg` (not 3424-climbing-dam). All renders came from the first round; nothing was rerun.
+
+Step 1: Z-Image Turbo txt2img, short prompt:
+
+```
+An eye-level documentary photograph from just above the waterline of a single North American beaver at dusk, half out of the water on the crest of its stick-and-mud dam in the centre of the frame. Its wet dark-brown fur is slicked into spikes, and its small forepaws press a fresh pale peeled stick into the grey sticks and mud of the dam top. Behind, a calm dark blue-grey pond fills both sides, softly out of focus. Low warm side light. Exactly one beaver, no text, no watermark.
+```
+
+Step 2: Flux 2 Klein 4B + pixaoutpaint, outpaint to 1440×720 (default outpaint prompt).
+
+Step 3: Flux 2 Klein 4B two-image style transfer against `.claude/agents/_jenny.assets/cover-style.jpg`, full style prompt:
+
+```
+A wide 2:1 eye-level ink drawing from just above the waterline of a single beaver at dusk, sitting in the centre of the frame on the crest of its stick-and-mud dam. Its wet spiky fur is massed in solid black ink, and its small forepaws press a fresh pale peeled stick into the dam top. The dam crest runs as a long horizontal band of stacked sticks and mud across the whole frame, a calm pond behind it on both sides and its reflection below. Heavy solid black brush shadows in the mud and under the sticks, bright white paper highlights on the pale stick and the water. Exactly one beaver, no text, no watermark.
+
+Line work: loose, confident black ink/brush linework with visible overshoot strokes at joints and edges (classic concept-art "energy line" gesture drawing)
+
+Shading: flat mid-gray fills for the base tone plus a single darker gray for core shadows — a 3-value system (white/light gray paper, mid-gray flat, black ink accents), no gradients or rendered soft shading
+
+Rendering approach: shapes blocked in with a marker/brush rather than fully rendered — reads as a fast, expressive design sketch rather than a finished illustration
+
+Palette: strictly achromatic (black/gray/white), grayscale digital marker brushes or Copic-marker-on-paper study
+```
+
+Picked seeds: step 1 `494208114580278`, step 2 `1091560843525602`, step 3 `698482217004515`.
