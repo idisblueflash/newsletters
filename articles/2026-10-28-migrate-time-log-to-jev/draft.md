@@ -28,7 +28,7 @@ status: draft
 
 Sumomo 是我自己做的生活助理，一个浮在电脑桌面上的小人儿，等着我的命令。点击她的头像，会弹出输入框。我输入一句话，她先问 Jev 该走哪个工作流，再交给那个工作流处理，返回结果。Sumomo 负责接话，Jev 负责拿主意。Jev 拿不准的（把握不到八成），或者工作流半路出错的，都交给 Claude Code 兜底，我管这叫应急工作流。
 
-![图：Sumomo 的桌面界面。右边是坐在粉色坐垫上的卡通女孩 Sumomo，左边是一盆挂着工作流小标签的盆景树，上方气泡输入框里写着「What should I do?」和一句待发送的时间记录](./sumomo.png)
+![图：Sumomo 的桌面界面。深色桌面上，短发、穿粉色上衣的卡通女孩 Sumomo 坐在粉色坐垫上；左边一盆盆景树，枝上挂着画有各个工作流图标的小木牌和两颗紫色李子；上方的对话气泡问「What should I do?」，输入框里是那句「8.30 draft post about migrating to Jev for time log script.」，旁边有 Cancel 和 Send 两个按钮](./sumomo.jpeg)
 
 我把旧的脚本目录贴给 Claude Code，再说清我的想法，AI 一通操作，一个新的工作流就出来了。这比我预想的顺利多了。
 
