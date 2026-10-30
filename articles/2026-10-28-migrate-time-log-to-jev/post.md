@@ -45,7 +45,7 @@ Claude Code 还用几个例子做了验证。代码挡在前头，Jev 管拿不�
 
 ---
 
-你们给 AI 工作流做路由，是全交给 Jev 这样的模型判断，还是先让代码挡一层？有没有被这种「看着像，其实不是」的输入坑过？🤔
+你们给 AI 工作流做路由，是全交给 Jev 这样的模型判断，还是先让代码挡一下？
 
 > 真能放心了吗？完整的故事在这：[把「时间账」从 Claude Code 搬到 Jev，又迁到了代码](https://ai-companion-newsletter.beehiiv.com/p/migrate-time-log-claude-jev-code)
 
