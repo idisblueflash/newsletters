@@ -8,6 +8,7 @@ their settings in hidden UI state, so padding and stitching happen here in Pillo
   txt2img   Z-Image Turbo, 1024x1024                       (step01-zimage-txt2img.json)
   outpaint  Flux 2 Klein 4B + pixaoutpaint LoRA, 1440x720  (step02-Flux 2 Klein 4B Outpaint.json)
   style     Flux 2 Klein 4B, content + style reference     (step03-... Two Images Style transfer.json)
+  colorize  Flux 2 Klein 4B, CMYK old-comic colour edit    (step04-... CMYK comic colorize.json)
 
 Each subcommand queues N variations with random seeds and writes them to --out,
 printing one saved path per line.
@@ -23,12 +24,19 @@ import urllib.request
 import uuid
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
 
 SERVER = "http://localhost:8188"
 WIDE_W, WIDE_H = 1440, 720
 PAD_GRAY = (128, 128, 128)  # #808080, the colour the pixaoutpaint LoRA expects
 OUTPAINT_PROMPT = "pixaoutpaint, replace the solid gray area by naturally extending the surrounding scene"
+PAPER_TONE = (244, 236, 214)  # warm newsprint the colorize output is faded towards
+COLORIZE_PROMPT = (
+    "Colorize this black-and-white ink drawing as a 1950s vintage American comic book page printed in CMYK "
+    "four-color process. Keep every line, shape and the composition exactly the same. Flat cyan, magenta, yellow "
+    "and black ink fills, slightly off-register, visible Ben-Day halftone dots in the mid-tones, bold black ink "
+    "outlines, limited palette, aged yellowed newsprint paper texture. No text, no speech balloons."
+)
 
 
 # The local server must never go through HTTP(S)_PROXY (a system proxy answers 502 for localhost).
@@ -212,6 +220,24 @@ def cmd_style(a):
     run_variations(build, a.n, a.out, "step3")
 
 
+def cmd_colorize(a):
+    ref = upload(a.image)
+    prompt = COLORIZE_PROMPT + (f" Colours: {a.palette}." if a.palette else "")
+
+    def build(seed, prefix):
+        g = klein_base(prompt)
+        g["10"] = {"class_type": "LoadImage", "inputs": {"image": ref}}
+        g["11"] = {"class_type": "VAEEncode", "inputs": {"pixels": ["10", 0], "vae": ["3", 0]}}
+        g["12"] = {"class_type": "ReferenceLatent", "inputs": {"conditioning": ["4", 0], "latent": ["11", 0]}}
+        g["13"] = {"class_type": "ReferenceLatent", "inputs": {"conditioning": ["5", 0], "latent": ["11", 0]}}
+        return klein_sample(g, ("1", 0), ("12", 0), ("13", 0), seed, prefix)
+
+    # Klein's colours come out poster-bright; fade them like an old print (approved look: 0.55 / 0.18).
+    for path in run_variations(build, a.n, a.out, "colorize"):
+        img = ImageEnhance.Color(Image.open(path).convert("RGB")).enhance(a.saturation)
+        Image.blend(img, Image.new("RGB", img.size, PAPER_TONE), a.paper).save(path)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -236,6 +262,15 @@ def main():
     s.add_argument("--n", type=int, default=4)
     s.add_argument("--out", required=True)
     s.set_defaults(func=cmd_style)
+
+    s = sub.add_parser("colorize")
+    s.add_argument("--image", required=True, help="a finished 1440x720 gray cover")
+    s.add_argument("--palette", help="optional per-subject colours, e.g. 'warm brown beaver fur, cyan sky, blue water'")
+    s.add_argument("--saturation", type=float, default=0.55, help="colour saturation kept (1 = as rendered)")
+    s.add_argument("--paper", type=float, default=0.18, help="blend towards newsprint tone (0 = none)")
+    s.add_argument("--n", type=int, default=3)
+    s.add_argument("--out", required=True)
+    s.set_defaults(func=cmd_colorize)
 
     a = p.parse_args()
     a.func(a)
