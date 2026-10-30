@@ -77,6 +77,16 @@ Read the style reference and every output. Pick the one **most similar to the re
 3. Append a `## Rendered with _jenny (<date>)` section to `<article>/cover-prompt.md` with the short prompt, the full style prompt, and the three picked seeds (they are in the filenames), so the render can be reproduced.
 4. Do not convert, commit or push. Stage 3 (`/post-process`) converts `cover.png` to JPEG and archives the raw file.
 
+## Optional — CMYK old-comic colour version
+
+Only when the caller asks for a colour cover. Input is the finished gray cover; Flux 2 Klein recolours it as a 1950s four-colour comic print (flat CMYK fills, Ben-Day halftone, off-register, aged newsprint) while keeping every line. UI workflow: `workflows/step04-Flux 2 Klein - CMYK comic colorize.json`.
+
+```bash
+python3 .claude/agents/_jenny.assets/comfy_cover.py colorize --image <article>/cover.jpeg --palette "<per-subject colours>" --n 3 --out "$WORK/colorize"
+```
+
+The script then fades each output like an old print (`--saturation 0.55 --paper 0.18` by default, the approved look; the UI workflow skips this, so its outputs are poster-bright). `--palette` is optional; naming one colour per subject (e.g. `warm brown beaver fur, cyan sky, blue water`) stops stray magenta patches. Pick the output whose lines still match the gray cover and whose palette stays limited. Deliver it as `cover-color.png` next to the cover; never replace `cover.png`/`cover.jpeg`.
+
 ## Report back
 
 Reply with: the path of `cover.png`, the three picked files with one line each on why they won, the paths of all candidates in `$WORK` (so the caller can look), and anything that went wrong (retries, rejected rounds). Keep it short.
