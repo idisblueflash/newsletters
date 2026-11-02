@@ -9,7 +9,7 @@ Whenever I hand you the post ("continue", "done", "fixed", "cover is in", or any
 | Stage | Enter when | You run | Exit when |
 |---|---|---|---|
 | 1 · Draft filled | `draft.md` is no longer the placeholder and has no unfinished section or TODO | `_cold_reader`, `_edith` (first pass only), `_tabitha` on every Markdown table, cover scene candidates (`cover-image` skill), figure scan | no blocking friction point is left open, tables are rendered, I picked a cover scene and `cover-prompt.md` exists |
-| 2 · Text locked | stage 1 exited | 3 subtitle options, `serana` (SEO → `seo.md`), reference-link formatting, `pangu-spacing` | I picked a subtitle, the approved edits are in `draft.md` and committed, `seo.md` exists, and for a newsletter the footer is in |
+| 2 · Text locked | stage 1 exited | 3 subtitle options, `serana` (SEO → `seo.md`), reference-link formatting, related-post links, `pangu-spacing` | I picked a subtitle, I picked or dropped the related-post links, the approved edits are in `draft.md` and committed, `seo.md` exists, and for a newsletter the footer is in |
 | 3 · Assets landed | stage 2 exited, every image `draft.md` links to exists, no image placeholder is left, a cover file exists | alt text, image conversion, raw archive, `beehiiv.html` (this is `/post-process`) | every linked image and the cover are JPEG, `beehiiv.html` is regenerated |
 | 4 · Ship | stage 3 exited and the image gate passes | `/clean-up` up to the push, then ask me to check `beehiiv.html` and confirm the merge | merged, back on `main` |
 
@@ -26,8 +26,9 @@ Whenever I hand you the post ("continue", "done", "fixed", "cover is in", or any
 9. **Stage 3 converts what the draft links to.** Convert every image `draft.md` references plus `cover.png`, wherever they live in the article folder — not only top-level PNGs. It must be safe to re-run after a late cover arrives.
 10. **The gate.** Before any stage 4 commit, check that no image linked from `draft.md`, nor the cover, is still PNG or larger than 500 KB. If one is, fix it by re-running the stage 3 conversion; stop only if that fails.
 11. **The merge always needs my yes.** Commit and push without asking; never merge without my confirmation.
-12. **Steps marked (new) have no agent or script yet.** Do them yourself, inline: figure scan, subtitle options, reference-link formatting (fold each URL into the paper title), the image gate, the newsletter footer.
+12. **Steps marked (new) have no agent or script yet.** Do them yourself, inline: figure scan, subtitle options, reference-link formatting (fold each URL into the paper title), related-post links, the image gate, the newsletter footer.
 13. **Weekly newsletters** under `newsletter/` use the same stages; skip the cover and figure tasks when there are none. In stage 2, append the standard footer if it is missing: a `---` rule, then the 「与 AI 同行」每周一发刊。 line, the reply invitation and the PS unsubscribe line, copied verbatim from the previous issue's `draft.md`.
+14. **Related-post links.** In stage 2, read the published archive (https://ai-companion-newsletter.beehiiv.com/archive and its `?page=N` pages, via `web-fetch`) and propose up to four earlier posts that continue a thread in this draft. For each, give the title, URL, why it fits, and the exact sentence it hangs on, then recommend one or two with an inline wording such as 「……我在《[标题](url)》里写过。」. Link into the body where the topic comes up, not as a list; a leftover pick can go in one 「相关文章」 line above the footer. Don't suggest the post itself or one I dropped for this post (recorded in `stage-log.md`).
 
 ## The chart
 
@@ -90,6 +91,8 @@ sequenceDiagram
     and
         Main->>Main: newsletter footer (new), if missing
     and
+        Main->>Main: related-post links (new), from the archive
+    and
         Main->>Ser: SEO metadata
         Ser-->>Main: seo.md
     and
@@ -99,8 +102,8 @@ sequenceDiagram
         Main->>Scr: pangu-spacing
         Scr-->>Main: proposed spacing diff
     end
-    Main-->>You: REVIEW subtitles, SEO, diffs
-    You->>Main: pick subtitle, approve
+    Main-->>You: REVIEW subtitles, SEO, diffs, related posts
+    You->>Main: pick subtitle and links, approve
     Main->>Main: apply edits to draft.md once, commit
     end
 
