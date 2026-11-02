@@ -8,3 +8,4 @@
 - 2026-11-02 · Fixes after cold read #3: legibility example from the lesson added to the 150-word claim (sentences named consistently with L5); 花体 named at the AI recommendation and 斜体字（Italic） at L17; 2.9mm sentence rewritten without 哪怕.
 - 2026-11-02 · Fixes after cold read #4: legibility example replaced by cramp (lesson line "finger cramp"), its mnemonic sentence shown at L5 so the L15 payoff is set up; flat-nib thin/thick mechanism explained (小扁铲).
 - 2026-11-02 · Stage 1 → 2: cold read #5 finds no blocking friction; remaining points (病历本 opener origin, history length/不为人知, 连结 wording, glasses image after crow, "两页" object) are taste. No tables; all three images in place; no cover for a newsletter.
+- 2026-11-02 · Stage 2 → 3: subtitle (c) picked; title, subtitle and #15 footer applied and committed. Pangu: no changes. No reference links. SEO skipped (newsletter, author's standing call). All three linked images exist; no cover for a newsletter.
