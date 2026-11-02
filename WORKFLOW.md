@@ -8,8 +8,8 @@ Whenever I hand you the post ("continue", "done", "fixed", "cover is in", or any
 
 | Stage | Enter when | You run | Exit when |
 |---|---|---|---|
-| 1 · Draft filled | `draft.md` is no longer the placeholder and has no unfinished section or TODO | `_cold_reader`, `_tabitha` on every Markdown table, cover scene candidates (`cover-image` skill), figure scan | no blocking friction point is left open, tables are rendered, I picked a cover scene and `cover-prompt.md` exists |
-| 2 · Text locked | stage 1 exited | 3 subtitle options, `serana` (SEO → `seo.md`), reference-link formatting, `pangu-spacing` | I picked a subtitle, the approved edits are in `draft.md` and committed, `seo.md` exists, and for a newsletter the footer is in |
+| 1 · Draft filled | `draft.md` is no longer the placeholder and has no unfinished section or TODO | `_cold_reader`, `_edith` (first pass only), `_tabitha` on every Markdown table, cover scene candidates (`cover-image` skill), figure scan | no blocking friction point is left open, tables are rendered, I picked a cover scene and `cover-prompt.md` exists |
+| 2 · Text locked | stage 1 exited | 3 subtitle options, `serana` (SEO → `seo.md`), reference-link formatting, related-post links, `pangu-spacing` | I picked a subtitle, I picked or dropped the related-post links, the approved edits are in `draft.md` and committed, `seo.md` exists, and for a newsletter the footer is in |
 | 3 · Assets landed | stage 2 exited, every image `draft.md` links to exists, no image placeholder is left, a cover file exists | alt text, image conversion, raw archive, `beehiiv.html` (this is `/post-process`) | every linked image and the cover are JPEG, `beehiiv.html` is regenerated |
 | 4 · Ship | stage 3 exited and the image gate passes | `/clean-up` up to the push, then ask me to check `beehiiv.html` and confirm the merge | merged, back on `main` |
 
@@ -17,17 +17,18 @@ Whenever I hand you the post ("continue", "done", "fixed", "cover is in", or any
 
 1. **You move the stage, with a reason.** Each transition is one line: `Stage 1 → 2: <what you checked and found>`. Append the same line, dated, to `stage-log.md` in the article folder.
 2. **Stop only for me.** Valid stops: a review that needs my choice, a blocking friction point I have to fix in the text, assets only I can make (cover render, images for a grid), the merge confirmation. Every stop says which exit condition is unmet and exactly what you need from me. Never stop to ask which stage we are in.
-3. **Judging the cold read.** `_cold_reader` always returns friction points. A point is *blocking* if a stranger would lose the thread or misread the claim (undefined term, missing step, broken reference). Anything else is taste. Stage 1 exits when no blocking point is open. A point I dismiss is recorded in `stage-log.md` and never raised again.
-4. **Stage 1 loops.** When `draft.md` changed since the last cold read, re-run `_cold_reader` only, then judge again.
+3. **Judging the cold read.** `_cold_reader` always returns friction points. A point is *blocking* if a stranger would lose the thread or misread the claim (undefined term, missing step, broken reference). Anything else is taste. `_edith` hits are judged the same way, and a P7 hit (the story stops for an explainer) is blocking: readers skip the whole block. Stage 1 exits when no blocking point is open. A point I dismiss is recorded in `stage-log.md` and never raised again.
+4. **Stage 1 loops.** When `draft.md` changed since the last cold read, re-run `_cold_reader` only (`_edith` runs on the first pass only), then judge again.
 5. **Fan out in one message.** Launch the stage's subagents together, in parallel. This file is my standing request to spawn them.
 6. **Parallel tasks propose; the main agent writes.** Nothing in a `par` block edits `draft.md`. After I approve, apply all edits to `draft.md` once, then commit. Exceptions: `serana` writes `seo.md`, `_tabitha` writes its PNG.
-7. **One fan-in review, numbered.** Give me one message with numbered items so I can answer "1 ok, 2 drop, 3 …". Relay `_cold_reader` exactly as `agents.md` says (top 3 friction points, verbatim structure), and mark each one blocking or taste.
+7. **One fan-in review, numbered.** Give me one message with numbered items so I can answer "1 ok, 2 drop, 3 …". Relay `_cold_reader` exactly as `agents.md` says (top 3 friction points, verbatim structure), and mark each one blocking or taste. List `_edith`'s hits after them, P7 first, each marked blocking or taste; drop a hit that points at the same line as a cold-read point already listed.
 8. **Interactive work stays with me.** Rendering the cover in ComfyUI and `_gala` grid rounds happen when I ask. If stage 3 can't start because assets are missing, list the missing files and stop.
 9. **Stage 3 converts what the draft links to.** Convert every image `draft.md` references plus `cover.png`, wherever they live in the article folder — not only top-level PNGs. It must be safe to re-run after a late cover arrives.
 10. **The gate.** Before any stage 4 commit, check that no image linked from `draft.md`, nor the cover, is still PNG or larger than 500 KB. If one is, fix it by re-running the stage 3 conversion; stop only if that fails.
 11. **The merge always needs my yes.** Commit and push without asking; never merge without my confirmation.
-12. **Steps marked (new) have no agent or script yet.** Do them yourself, inline: figure scan, subtitle options, reference-link formatting (fold each URL into the paper title), the image gate, the newsletter footer.
+12. **Steps marked (new) have no agent or script yet.** Do them yourself, inline: figure scan, subtitle options, reference-link formatting (fold each URL into the paper title), related-post links, the image gate, the newsletter footer.
 13. **Weekly newsletters** under `newsletter/` use the same stages; skip the cover and figure tasks when there are none. In stage 2, append the standard footer if it is missing: a `---` rule, then the 「与 AI 同行」每周一发刊。 line, the reply invitation and the PS unsubscribe line, copied verbatim from the previous issue's `draft.md`.
+14. **Related-post links.** In stage 2, read the published archive (https://ai-companion-newsletter.beehiiv.com/archive and its `?page=N` pages, via `web-fetch`) and propose up to four earlier posts that continue a thread in this draft. For each, give the title, URL, why it fits, and the exact sentence it hangs on, then recommend one or two with an inline wording such as 「……我在《[标题](url)》里写过。」. Link into the body where the topic comes up, not as a list; a leftover pick can go in one 「相关文章」 line above the footer. Don't suggest the post itself or one I dropped for this post (recorded in `stage-log.md`).
 
 ## The chart
 
@@ -39,6 +40,7 @@ sequenceDiagram
     actor You
     participant Main as Main agent
     participant Cold as _cold_reader
+    participant Edi as _edith
     participant Tab as _tabitha
     participant Cover as cover-image skill
     participant Gala as _gala
@@ -56,6 +58,9 @@ sequenceDiagram
     par
         Main->>Cold: read as a stranger
         Cold-->>Main: top 3 friction points
+    and
+        Main->>Edi: check known habits, P7 first
+        Edi-->>Main: pattern hits
     and
         Main->>Tab: render Markdown tables
         Tab-->>Main: table PNG
@@ -86,6 +91,8 @@ sequenceDiagram
     and
         Main->>Main: newsletter footer (new), if missing
     and
+        Main->>Main: related-post links (new), from the archive
+    and
         Main->>Ser: SEO metadata
         Ser-->>Main: seo.md
     and
@@ -95,8 +102,8 @@ sequenceDiagram
         Main->>Scr: pangu-spacing
         Scr-->>Main: proposed spacing diff
     end
-    Main-->>You: REVIEW subtitles, SEO, diffs
-    You->>Main: pick subtitle, approve
+    Main-->>You: REVIEW subtitles, SEO, diffs, related posts
+    You->>Main: pick subtitle and links, approve
     Main->>Main: apply edits to draft.md once, commit
     end
 
