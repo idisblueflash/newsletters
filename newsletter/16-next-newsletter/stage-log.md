@@ -13,3 +13,4 @@
 - 2026-11-02 · Author polished wording in draft.md (opener, mnemonic, Jobs, 十几个/一百多个, pen names, guideline line); beehiiv.html regenerated.
 - 2026-11-02 · _edith pass (author asked): P7 ×3 fixed — guideline paragraphs cut to the nib-spacing payoff, guidelines image moved after the AI-template step (alt text now lists all six lines, 五个笔尖宽 moved to the ruler check), pen paragraph rewritten as what the author saw with one name (平头笔). Taste: 不为人知 → 我从没听过, 两页示范 → 两页练习纸. Typos 十几个 and double 了 fixed. beehiiv.html regenerated.
 - 2026-11-02 · Cross-link added at the cramp mnemonic (L7) to 《用漫画背单词》 (comic-mnemonic-card); beehiiv.html regenerated with link support.
+- 2026-11-02 · italic-idea.jpg cropped to 640×384 to remove the burned-in subtitles (author: distracting); original kept as assets/image-raw/italic-idea-subtitled.jpg; alt text updated; beehiiv.html regenerated. Gate still passes.
