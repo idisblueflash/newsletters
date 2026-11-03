@@ -11,3 +11,4 @@
 - 2026-10-28 · Stage 3 准备：作者加入 sumomo.png（Sumomo 界面截图），插在 Sumomo 介绍段之后。
 - 2026-10-28 · Stage 3 进入：cover.png 已由 _jenny 渲染（Version A，参考 3336，种子见 cover-prompt.md）；draft.md 唯一配图 sumomo.png 存在，无占位符。
 - 2026-10-28 · Stage 3 → 4: 封面与 sumomo 截图均已转 JPEG（cover 190 KB、sumomo 97 KB），原 PNG 归档到 assets/image-raw/，alt text 已写，beehiiv.html 已生成；图片关卡通过（无 PNG、无超 500 KB）。
+- 2026-11-03 · 封面重渲染：_jenny 规则改为三分法构图，海狸放右三分线、三分之四侧面、前爪把树枝按进坝里；再 outpaint 缩到 65% 成中景（种子见 cover-prompt.md）。cover.jpeg 已替换，原 PNG 归档到 assets/image-raw/cover.png；draft.md 不链接封面，beehiiv.html 无需重生成；cover-color.jpeg 仍是旧构图。
