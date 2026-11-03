@@ -31,13 +31,15 @@ Everything you need is in `.claude/agents/_jenny.assets/`:
 
 Condense the chosen version into a **short prompt**: 2–4 plain sentences, about 40–70 words. Keep the subject, count, action, composition and light; drop lens jargon and adjective stacks. End with the positive cleanup clause (e.g. `Exactly five birds, no text, no watermark.`). Z-Image Turbo has no working negative prompt, so every "don't" becomes a positive clause.
 
+**Three-quarter view, not a front face.** Ask for the subject turned about 45° to one side (for animals: the head and body angled, one eye and the profile of the snout visible). A dead-on front face reads flat and passport-like; a three-quarter view shows the action and gives the subject a direction to look into, which step 2 uses to pick the third.
+
 The cover will be outpainted to 2:1 with the subject moved onto a third of the wide frame, so keep the subject group inside the middle of the square and leave plain background at the left and right edges. That background is what the outpaint continues into the open side.
 
 ```bash
 python3 .claude/agents/_jenny.assets/comfy_cover.py txt2img --prompt "<short prompt>" --n 4 --out "$WORK/step1"
 ```
 
-Read every output. Pick the best one on, in this order: the scene matches the prompt (right count, right action), anatomy is correct, the subject sits in the middle of the square with room on both sides, the background is clean. If none passes, adjust one clause of the short prompt and run again (at most 2 extra rounds).
+Read every output. Pick the best one on, in this order: the scene matches the prompt (right count, right action), the subject is in three-quarter view (reject front-facing ones even when they are otherwise clean), anatomy is correct, the subject sits in the middle of the square with room on both sides, the background is clean. If none passes, adjust one clause of the short prompt and run again (at most 2 extra rounds).
 
 ## Step 2 — outpaint to 2:1, 1440×720
 
@@ -53,7 +55,7 @@ Measure where the subject's horizontal centre sits in the square pick as a fract
 python3 .claude/agents/_jenny.assets/comfy_cover.py outpaint --image "$WORK/step1/<pick>.png" --place right --subject-x 0.5 --n 3 --out "$WORK/step2"
 ```
 
-The script scales the pick to 720×720, places it on a #808080 gray 1440×720 canvas so the subject lands on the chosen third (for a centred subject: x = 120 for left, x = 600 for right, leaving 600 px to fill on the open side and 120 px on the other), runs Flux 2 Klein with the `pixaoutpaint` LoRA, and stitches the pristine original back in place with a 64 px feathered seam. Read every output and pick the one where the extended sides continue the scene with no visible seam, no leftover gray, and no duplicated subject. The wide open side is the riskiest: reject any output that grows a second subject there or leaves it as an empty smear. If gray patches or seams remain in all of them, run another round.
+The script scales the pick to 720×720, places it on a #808080 gray 1440×720 canvas so the subject lands on the chosen third (for a centred subject: x = 120 for left, x = 600 for right, leaving 600 px to fill on the open side and 120 px on the other), runs Flux 2 Klein with the `pixaoutpaint` LoRA, and stitches the pristine original back in place with a 64 px feathered seam. Read every output and pick the one where the extended sides continue the scene with no visible seam, no leftover gray, and no duplicated subject. **One main character beats two.** The outpaint often clones the subject into the open side; a second animal or figure splits the eye and weakens the cover, even when it looks natural. Reject every output that grows a second subject, unless the cover prompt itself asks for more than one, and never accept a duplicate as a fallback. If all outputs in a round are duplicated, run another round. The open side must show the scene the subject belongs to, not another copy of it, and not an empty smear. If gray patches or seams remain in all of them, run another round.
 
 ## Step 3 — gray style transfer, 3–6 variations
 
