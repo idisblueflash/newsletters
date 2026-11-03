@@ -148,20 +148,25 @@ def klein_sample(g, model_ref, pos_ref, neg_ref, seed, prefix):
     return g
 
 
-def pad_to_wide(src, dst):
-    """Scale the square pick to the target height and centre it on a gray 2:1 canvas."""
+PLACE_X = {"left": WIDE_W / 3, "center": WIDE_W / 2, "right": WIDE_W * 2 / 3}
+
+
+def pad_to_wide(src, dst, place="right", subject_x=0.5):
+    """Scale the square pick to the target height and put it on a gray 2:1 canvas so the
+    subject (at subject_x of the square's width) lands on the left third, centre or right third."""
     img = Image.open(src).convert("RGB")
     scale = WIDE_H / img.height
     img = img.resize((round(img.width * scale), WIDE_H), Image.LANCZOS)
     canvas = Image.new("RGB", (WIDE_W, WIDE_H), PAD_GRAY)
-    x = (WIDE_W - img.width) // 2
+    x = round(PLACE_X[place] - subject_x * img.width)
+    x = max(0, min(WIDE_W - img.width, x))
     canvas.paste(img, (x, 0))
     canvas.save(dst)
     return img, x
 
 
 def stitch(generated, original, x, feather=64):
-    """Put the pristine original back over the generated centre, fading its side edges."""
+    """Put the pristine original back where it was padded, fading its side edges."""
     out = Image.open(generated).convert("RGB").resize((WIDE_W, WIDE_H), Image.LANCZOS)
     mask = Image.new("L", original.size, 0)
     ImageDraw.Draw(mask).rectangle([feather, 0, original.width - feather, original.height], fill=255)
@@ -178,7 +183,7 @@ def cmd_outpaint(a):
     out_dir = Path(a.out)
     out_dir.mkdir(parents=True, exist_ok=True)
     padded = out_dir / "step2-padded.png"
-    original, x = pad_to_wide(a.image, padded)
+    original, x = pad_to_wide(a.image, padded, a.place, a.subject_x)
     ref = upload(padded)
 
     def build(seed, prefix):
@@ -252,6 +257,10 @@ def main():
     s.add_argument("--image", required=True, help="the step 1 pick (square)")
     s.add_argument("--n", type=int, default=3)
     s.add_argument("--out", required=True)
+    s.add_argument("--place", choices=["left", "right", "center"], required=True,
+                   help="which vertical line of the 1440x720 frame the subject lands on: left third, right third, or centre")
+    s.add_argument("--subject-x", type=float, default=0.5,
+                   help="horizontal centre of the subject in the square pick, 0-1 (default 0.5)")
     s.add_argument("--no-stitch", action="store_true", help="keep the model's centre instead of the pristine original")
     s.set_defaults(func=cmd_outpaint)
 

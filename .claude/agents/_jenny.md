@@ -1,7 +1,7 @@
 ---
 name: _jenny
 description: |
-  Cover-render agent. Turns an article's cover-prompt.md into a finished 2:1 cover on the local ComfyUI server (http://localhost:8188) in three steps: Z-Image Turbo txt2img from a short prompt (3–6 variations, pick the best), Flux 2 Klein outpaint of that pick to 1440×720 by extending both sides, then Flux 2 Klein two-image style transfer against the gray ink style reference (3–6 variations, pick the one closest to the reference). Saves the result as cover.png in the article folder. Target folder is user-specified, defaults to the article folder of the current branch.
+  Cover-render agent. Turns an article's cover-prompt.md into a finished 2:1 cover on the local ComfyUI server (http://localhost:8188) in three steps: Z-Image Turbo txt2img from a short prompt (3–6 variations, pick the best), Flux 2 Klein outpaint of that pick to 1440×720 with the subject on the left or right third (never centred by default), then Flux 2 Klein two-image style transfer against the gray ink style reference (3–6 variations, pick the one closest to the reference). Saves the result as cover.png in the article folder. Target folder is user-specified, defaults to the article folder of the current branch.
   Trigger on: "_jenny", "render the cover", "generate the cover image", "run the cover pipeline", "cover is not in yet, make it".
 tools:
   - Bash
@@ -31,27 +31,35 @@ Everything you need is in `.claude/agents/_jenny.assets/`:
 
 Condense the chosen version into a **short prompt**: 2–4 plain sentences, about 40–70 words. Keep the subject, count, action, composition and light; drop lens jargon and adjective stacks. End with the positive cleanup clause (e.g. `Exactly five birds, no text, no watermark.`). Z-Image Turbo has no working negative prompt, so every "don't" becomes a positive clause.
 
-The cover will be outpainted to 2:1 by extending both sides, so keep the subject group inside the middle of the square and leave plain background at the left and right edges.
+The cover will be outpainted to 2:1 with the subject moved onto a third of the wide frame, so keep the subject group inside the middle of the square and leave plain background at the left and right edges. That background is what the outpaint continues into the open side.
 
 ```bash
 python3 .claude/agents/_jenny.assets/comfy_cover.py txt2img --prompt "<short prompt>" --n 4 --out "$WORK/step1"
 ```
 
-Read every output. Pick the best one on, in this order: the scene matches the prompt (right count, right action), anatomy is correct, the subject sits centred with room on both sides, the background is clean. If none passes, adjust one clause of the short prompt and run again (at most 2 extra rounds).
+Read every output. Pick the best one on, in this order: the scene matches the prompt (right count, right action), anatomy is correct, the subject sits in the middle of the square with room on both sides, the background is clean. If none passes, adjust one clause of the short prompt and run again (at most 2 extra rounds).
 
 ## Step 2 — outpaint to 2:1, 1440×720
 
+**Composition: rule of thirds, not centre.** The subject goes on the left third (x = 480) or the right third (x = 960) of the 1440×720 frame; the open side shows the scene the subject belongs to (the dam it is mending, the road it is walking). Both thirds are fine; choose the one that fits the step 1 pick:
+
+- The subject faces or moves towards one side → put it on the opposite third, so it looks into the open space.
+- The subject faces the camera → the right third by default (the eye reads left to right across the scene and lands on the subject), unless the cover prompt names a side.
+- Use `--place center` only when the caller or the cover prompt explicitly asks for a centred, symmetric cover.
+
+Measure where the subject's horizontal centre sits in the square pick as a fraction of its width (0.5 if it is centred) and pass it as `--subject-x`, so the subject itself, not the square, lands on the third.
+
 ```bash
-python3 .claude/agents/_jenny.assets/comfy_cover.py outpaint --image "$WORK/step1/<pick>.png" --n 3 --out "$WORK/step2"
+python3 .claude/agents/_jenny.assets/comfy_cover.py outpaint --image "$WORK/step1/<pick>.png" --place right --subject-x 0.5 --n 3 --out "$WORK/step2"
 ```
 
-The script scales the pick to 720×720, centres it on a #808080 gray 1440×720 canvas, runs Flux 2 Klein with the `pixaoutpaint` LoRA, and stitches the pristine original back over the centre with a 64 px feathered seam. Read every output and pick the one where the extended sides continue the scene with no visible seam, no leftover gray, and no duplicated subject. If gray patches or seams remain in all of them, run another round.
+The script scales the pick to 720×720, places it on a #808080 gray 1440×720 canvas so the subject lands on the chosen third (for a centred subject: x = 120 for left, x = 600 for right, leaving 600 px to fill on the open side and 120 px on the other), runs Flux 2 Klein with the `pixaoutpaint` LoRA, and stitches the pristine original back in place with a 64 px feathered seam. Read every output and pick the one where the extended sides continue the scene with no visible seam, no leftover gray, and no duplicated subject. The wide open side is the riskiest: reject any output that grows a second subject there or leaves it as an empty smear. If gray patches or seams remain in all of them, run another round.
 
 ## Step 3 — gray style transfer, 3–6 variations
 
 Build the style prompt from two parts:
 
-1. The short scene prompt from step 1, rewritten for the wide frame (mention it is a wide 2:1 shot and where the subject sits).
+1. The short scene prompt from step 1, rewritten for the wide frame (mention it is a wide 2:1 shot and which third the subject sits on).
 2. The gray style block, verbatim:
 
 ```
@@ -68,13 +76,13 @@ Palette: strictly achromatic (black/gray/white), grayscale digital marker brushe
 python3 .claude/agents/_jenny.assets/comfy_cover.py style --image "$WORK/step2/<pick>.png" --style .claude/agents/_jenny.assets/cover-style.jpg --prompt "<scene + style block>" --n 4 --out "$WORK/step3"
 ```
 
-Read the style reference and every output. Pick the one **most similar to the reference's style**: strictly black/white/gray, bold ink shapes and brush shadows, white paper highlights, the same hand-drawn energy — while the scene (subject count, action, composition) still matches step 2. Reject any output with colour, text, a copied element of the reference scene (children, ants, forest), or a broken subject.
+Read the style reference and every output. Pick the one **most similar to the reference's style**: strictly black/white/gray, bold ink shapes and brush shadows, white paper highlights, the same hand-drawn energy — while the scene (subject count, action, composition, the subject still on its third) still matches step 2. Reject any output with colour, text, a copied element of the reference scene (children, ants, forest), or a broken subject.
 
 ## Step 4 — deliver
 
 1. Verify before you deliver: Read `cover-style.jpg` and the step 3 pick side by side once more. It passes only if it is strictly achromatic, uses the reference's bold ink shapes, flat grays and white paper highlights, and still shows the step 2 scene. If it fails, pick the next-best candidate or run step 3 again; never deliver a cover that fails this check.
 2. Copy the step 3 pick to `<article>/cover.png`. If `cover.png` already exists, look at it first and keep the old one as `cover.prev.png`, never silently overwrite.
-3. Append a `## Rendered with _jenny (<date>)` section to `<article>/cover-prompt.md` with the short prompt, the full style prompt, and the three picked seeds (they are in the filenames), so the render can be reproduced.
+3. Append a `## Rendered with _jenny (<date>)` section to `<article>/cover-prompt.md` with the short prompt, the `--place`/`--subject-x` values, the full style prompt, and the three picked seeds (they are in the filenames), so the render can be reproduced.
 4. Do not convert, commit or push. Stage 3 (`/post-process`) converts `cover.png` to JPEG and archives the raw file.
 
 ## Optional — CMYK old-comic colour version
