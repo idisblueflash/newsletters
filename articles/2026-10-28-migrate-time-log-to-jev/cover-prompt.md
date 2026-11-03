@@ -51,3 +51,35 @@ Palette: strictly achromatic (black/gray/white), grayscale digital marker brushe
 ```
 
 Picked seeds: step 1 `494208114580278`, step 2 `1091560843525602`, step 3 `698482217004515`.
+
+## Rendered with _jenny (2026-11-03)
+
+Re-render of Version A. The 2026-10-28 cover had the beaver dead centre, its tail lying as a dark oval on the dam crest, and the beaver only holding a stick. Output: `cover.png` (1440×720). `cover.jpeg` and `cover-color.jpeg` are the old render and were not touched. Step 1 took three rounds: round 1 showed the tail on the dam or the water, and round 2 picks faced the camera. Round 3 asked for a three-quarter view. The first step 2 round, from a front-facing round 2 pick, cloned a second beaver into two of three outputs and was dropped.
+
+Step 1: Z-Image Turbo txt2img, short prompt:
+
+```
+An eye-level documentary photograph from just above the waterline of a single North American beaver at dusk, half out of the water on the crest of its stick-and-mud dam in the middle of the frame, turned in three-quarter view towards the left. Both small forepaws press a fresh pale peeled stick down into the grey sticks and mud of the dam top. Its wet dark-brown fur is slicked into spikes, and its hind half is submerged in the pond, so only its head, shoulders and forepaws show. A calm dark blue-grey pond fills both sides, softly out of focus, in low warm side light. Exactly one beaver, no text, no watermark.
+```
+
+Step 2: Flux 2 Klein 4B + pixaoutpaint, outpaint to 1440×720 with `--place right --subject-x 0.6` (the beaver faces left, so it sits on the right third and looks into the dam on the open left side). Beaver centre lands at about x = 965.
+
+Step 3: Flux 2 Klein 4B two-image style transfer against `.claude/agents/_jenny.assets/cover-style.jpg`, full style prompt:
+
+```
+A wide 2:1 eye-level ink drawing from just above the waterline of a single beaver at dusk, sitting at the edge of its stick-and-mud dam on the right third of the frame, turned in three-quarter view towards the left. Both small forepaws push a fresh pale peeled stick down into the mud of the dam; its flat tail lies in the water behind it. The dam of stacked sticks and mud runs across the open left side, a calm pond behind it and its reflection below. Heavy solid black brush shadows in the mud and under the sticks, bright white paper highlights on the pale stick and the water. Exactly one beaver, no text, no watermark.
+
+Line work: loose, confident black ink/brush linework with visible overshoot strokes at joints and edges (classic concept-art "energy line" gesture drawing)
+
+Shading: flat mid-gray fills for the base tone plus a single darker gray for core shadows — a 3-value system (white/light gray paper, mid-gray flat, black ink accents), no gradients or rendered soft shading
+
+Rendering approach: shapes blocked in with a marker/brush rather than fully rendered — reads as a fast, expressive design sketch rather than a finished illustration
+
+Palette: strictly achromatic (black/gray/white), grayscale digital marker brushes or Copic-marker-on-paper study
+```
+
+Picked seeds: step 1 `363724421604350`, step 2 `542017559427361`, step 3 `939500675916650`.
+
+### Zoom-out to a medium shot (2026-11-03)
+
+The step 3 pick was scaled to 65% (936×468) and placed at (333, 84) on a gray 1440×720 canvas, so the beaver stays at x ≈ 960 with its eye at y ≈ 240. The border was outpainted with Flux 2 Klein + `pixaoutpaint` (same graph as step 2), and the scaled original was stitched back with a 48 px feathered seam. Picked seed 266016538457764 (of 3; 02 grew a fake signature, 01 a stray tuft at the right edge).
