@@ -25,3 +25,32 @@ A low, close underwater documentary photograph of a giant Pacific octopus on a k
 ```
 A wide eye-level underwater documentary photograph of a cold-water rocky reef with low brown kelp and green algae across the lower third of the frame. On the left third a giant Pacific octopus, red-brown with raised papillae, spreads its arms over the rocks, working a crab out of a crevice beside a small pile of broken shells. On the right third, a few metres back, an adult scuba diver in a black drysuit and mask hovers level and still, hands at their sides, looking at the octopus. Open teal water fills the upper half, soft light rays from the surface, suspended particles. Natural color grading, light film grain. Wide-angle underwater lens, f/8, octopus in sharp focus, diver slightly soft. Exactly one octopus and one diver, no contact between them, no text, no watermark.
 ```
+
+
+## Rendered with _jenny (2026-11-03)
+
+Version A, three steps on local ComfyUI. Output: `cover.png` (1440×720). Visual reference was `picks/2250-diver-face-to-face-giant-octopus.jpg`. Step 1 took two rounds: in round 1 the octopus faced the camera and the crab was not under its arm, so round 2 rewrote the octopus clause (three-quarter view, papillae, cobbles and kelp). Steps 2 and 3 came from their first round.
+
+Step 1: Z-Image Turbo txt2img, short prompt (round 2):
+
+```
+An eye-level underwater photograph over a cold-water reef of grey cobbles and brown kelp. On the left, one large giant Pacific octopus seen in side three-quarter view, head and body angled to the right, its deep red-brown skin rough with raised papillae, long arms pulling a crab out from under a rock. On the right, two metres behind, one diver in a black drysuit, hood and mask hovers still, hands at their sides, slightly soft. Teal water above. Exactly one octopus and one diver, no text, no watermark.
+```
+
+Step 2: Flux 2 Klein 4B + pixaoutpaint, outpaint to 1440×720 (default outpaint prompt), `--place left --subject-x 0.4` (octopus on the left third).
+
+Step 3: Flux 2 Klein 4B two-image style transfer against `.claude/agents/_jenny.assets/cover-style.jpg`, full style prompt:
+
+```
+A wide 2:1 eye-level ink drawing of a cold-water underwater reef. On the left third, one giant Pacific octopus perched on a rock covered in kelp, its body massed in solid black ink and its long curling arms drawing a crab out from under the rock. Just right of centre, two metres behind, one scuba diver in a black drysuit, hood and mask hovers still with both hands at their sides, drawn lighter and looser. Open water above as bright white paper, cobbles scattered across the sand floor, a rocky reef fading on the far right. Heavy solid black brush shadows under the rock and the octopus. Exactly one octopus and one diver, the diver not touching the octopus, no text, no watermark.
+
+Line work: loose, confident black ink/brush linework with visible overshoot strokes at joints and edges (classic concept-art "energy line" gesture drawing)
+
+Shading: flat mid-gray fills for the base tone plus a single darker gray for core shadows — a 3-value system (white/light gray paper, mid-gray flat, black ink accents), no gradients or rendered soft shading
+
+Rendering approach: shapes blocked in with a marker/brush rather than fully rendered — reads as a fast, expressive design sketch rather than a finished illustration
+
+Palette: strictly achromatic (black/gray/white), grayscale digital marker brushes or Copic-marker-on-paper study
+```
+
+Picked seeds: step 1 `659163386345374`, step 2 `273195661575240`, step 3 `436495024069199`.
