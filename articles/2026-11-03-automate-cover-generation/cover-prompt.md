@@ -29,7 +29,7 @@ A wide eye-level underwater documentary photograph of a cold-water rocky reef wi
 
 ## Rendered with _jenny (2026-11-03)
 
-Version A, three steps on local ComfyUI. Output: `cover.png` (1440×720). Visual reference was `picks/2250-diver-face-to-face-giant-octopus.jpg`. Step 1 took two rounds: in round 1 the octopus faced the camera and the crab was not under its arm, so round 2 rewrote the octopus clause (three-quarter view, papillae, cobbles and kelp). Steps 2 and 3 came from their first round.
+Version A, three steps on local ComfyUI. Output: `cover.jpeg` (1440×720; raw PNG in `assets/image-raw/`, not committed). Visual reference was `picks/2250-diver-face-to-face-giant-octopus.jpg`. Step 1 took two rounds: in round 1 the octopus faced the camera and the crab was not under its arm, so round 2 rewrote the octopus clause (three-quarter view, papillae, cobbles and kelp). Steps 2 and 3 came from their first round.
 
 Step 1: Z-Image Turbo txt2img, short prompt (round 2):
 
@@ -54,3 +54,30 @@ Palette: strictly achromatic (black/gray/white), grayscale digital marker brushe
 ```
 
 Picked seeds: step 1 `659163386345374`, step 2 `273195661575240`, step 3 `436495024069199`.
+
+## CMYK colour versions and English covers (2026-11-03/04)
+
+Four covers, all 1440×720 JPEG. The raw PNGs sit in `assets/image-raw/` and are not committed.
+
+| File | What it is | Source |
+|---|---|---|
+| `cover.jpeg` | Chinese, gray ink | step 3 seed `436495024069199` (above) |
+| `cover-color.jpeg` | Chinese, CMYK old comic, red-brown octopus | colorize of `cover`, seed `39890841906636` |
+| `cover-en.jpeg` | English, gray ink | step 3 seed `142127591193593` (the runner-up from the same step 3 batch: crisper diver, no shadow blot under him) |
+| `cover-en-color.jpeg` | English, CMYK old comic, magenta octopus | colorize of `cover-en`, seed `597709266737283` |
+
+Colorize: `comfy_cover.py colorize`, Flux 2 Klein 4B single-image edit, default fade `--saturation 0.55 --paper 0.18`, 3 variations each.
+
+Palette for `cover-color`:
+
+```
+deep red-brown giant Pacific octopus, black drysuit diver, olive brown kelp, tan sand and grey cobbles, teal cyan water
+```
+
+Palette for `cover-en-color`:
+
+```
+strong magenta crimson-pink octopus with a yellow eye, black drysuit diver, olive brown kelp, tan yellow sand floor and grey cobbles, pale teal cyan water above, sand-coloured sea floor
+```
+
+Rejected: for `cover-color`, seed `620046781744287` (magenta octopus, comic border) and `284508125982285` (teal river across the sand). For `cover-en-color`, seed `267898844543334` (olive-yellow rock wall, one magenta crab leg) and `1000309849457717` (magenta crab, yellowish hands).
