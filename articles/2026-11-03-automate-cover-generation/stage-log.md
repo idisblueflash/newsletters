@@ -2,3 +2,4 @@
 
 - 2026-11-05 · Enter stage 1: draft.md transcribed from the five handwritten pages (~/Downloads/draft3), no TODO left; one [配图] placeholder (the beaver image). Cover scene already picked (scene 2) and cover-prompt.md exists.
 - 2026-11-05 · Stage 1 review answered: applied 菠菜心, shortened cabbage paragraph, manual run reframed as 以前 / 今天, L31 leads with the benefit, pronouns fixed (Jenny 她, beaver 河狸), 下一篇文章的封面, Jenny说明书, 二十分钟后, 各色叶子. Kept the author's wording: 配置节点 / 生成字段, 反正要按老路走一遍. Added the before/after beaver figures (beaver-before.jpeg, beaver-after.jpeg).
+- 2026-11-05 · Cold read 2: dismissed by author — "kitchen opening too long / tofu leads nowhere" (the tofu air-fryer timer is a deliberate hidden line: it opens and closes a timer, hinting that cutting the cabbage takes as long as the tofu takes to air-fry). Do not raise again. Fixed: the beaver's gaze now matches the after image (looks along the dam). Open: the spinach/cabbage callback at L51 (blocking).
