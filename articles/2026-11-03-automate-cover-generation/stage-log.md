@@ -7,3 +7,4 @@
 - 2026-11-05 · Stage 1 → 2: no blocking friction point open after cold read 4 (the only blocking one, the double 刷完碗, is fixed); no tables to render; cover scene picked and cover-prompt.md exists; both figures are in.
 - 2026-11-05 Stage 2 review: title 「切菜的功夫，AI 把封面做好了」; subtitle c; seo.md ok as is; related links a (keep made-up name 「把时间账迁出来」, linked), b (L19), c (L17); d 《拓宽图片的两侧》 dropped for this post; pangu ok; no reference links to format.
 - 2026-11-05 Stage 2 → 3: subtitle picked, related links picked/dropped, edits applied to draft.md and committed, seo.md exists; not a newsletter so no footer.
+- 2026-11-05 Stage 3 → 4: alt text written for both beaver images, cover and linked images already JPEG (raw cover PNGs archived in assets/image-raw), beehiiv.html regenerated; gate passed (no PNG linked, largest 372 KB).
