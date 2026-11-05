@@ -22,9 +22,9 @@ status: draft
 
 我向右拖动流程图，露出配置节点，找到「生成字段」，改成「随机」，然后按下回车键。第一个生图任务开始了。
 
-我又按了五下回车，排上了五个生图任务。我的 Mac mini 上生一张图要 3 分钟左右，用的模型我在《[我的 Mac mini 主力生图模型](https://ai-companion-newsletter.beehiiv.com/p/z-image-turbo-vs-flux-klein)》里写过。我会从六张不同配图里挑一张最好的。我可不想盯着电脑生图。一次排满更高效。二十分钟后，我再回来选。
+我又按了五下回车，排上了五个生图任务。我的 [Mac mini](https://ai-companion-newsletter.beehiiv.com/p/z-image-turbo-vs-flux-klein) 上生一张图要 3 分钟左右。我会从六张不同配图里挑一张最好的。我可不想盯着电脑生图。一次排满更高效。二十分钟后，我再回来选。
 
-一周之内我要写两三篇文章。每篇要配一张图片做封面。以前那套操作只是配图流程的第一步。后面还有扩大画面和转换风格，这套流程我在《[从实景图开始的封面设计](https://ai-companion-newsletter.beehiiv.com/p/ink-style-from-photorealistic-base)》里写过。每一步跑完，我都得回到电脑前挑图，再排下一步。一套跑完要近五十分钟。里面还没算上我选图、调图的时间。每次文章还没写，配图已经让我发愁了。时间久了，我的文章都拖延了。
+一周之内我要写两三篇文章。每篇要配一张图片做封面。以前那套操作只是配图流程的第一步。后面还有扩大画面和[转换风格](https://ai-companion-newsletter.beehiiv.com/p/ink-style-from-photorealistic-base)。每一步跑完，我都得回到电脑前挑图，再排下一步。一套跑完要近五十分钟。里面还没算上我选图、调图的时间。每次文章还没写，配图已经让我发愁了。时间久了，我的文章都拖延了。
 
 今天，我把这活交给 AI 了。
 
