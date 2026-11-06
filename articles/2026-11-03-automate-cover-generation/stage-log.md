@@ -1,0 +1,14 @@
+# Stage log
+
+- 2026-11-05 · Enter stage 1: draft.md transcribed from the five handwritten pages (~/Downloads/draft3), no TODO left; one [配图] placeholder (the beaver image). Cover scene already picked (scene 2) and cover-prompt.md exists.
+- 2026-11-05 · Stage 1 review answered: applied 菠菜心, shortened cabbage paragraph, manual run reframed as 以前 / 今天, L31 leads with the benefit, pronouns fixed (Jenny 她, beaver 河狸), 下一篇文章的封面, Jenny说明书, 二十分钟后, 各色叶子. Kept the author's wording: 配置节点 / 生成字段, 反正要按老路走一遍. Added the before/after beaver figures (beaver-before.jpeg, beaver-after.jpeg).
+- 2026-11-05 · Cold read 2: dismissed by author — "kitchen opening too long / tofu leads nowhere" (the tofu air-fryer timer is a deliberate hidden line: it opens and closes a timer, hinting that cutting the cabbage takes as long as the tofu takes to air-fry). Do not raise again. Fixed: the beaver's gaze now matches the after image (looks along the dam). Open: the spinach/cabbage callback at L51 (blocking).
+- 2026-11-05 · Cold read 4: fixed the double 刷完碗 (my bridge), ending now stops on the spinach realisation (walk-home scenery paragraph cut), beaver description + before image moved up to right after the image is found, 憨憨 → 直愣愣地瞪着.
+- 2026-11-05 · Stage 1 → 2: no blocking friction point open after cold read 4 (the only blocking one, the double 刷完碗, is fixed); no tables to render; cover scene picked and cover-prompt.md exists; both figures are in.
+- 2026-11-05 Stage 2 review: title 「切菜的功夫，AI 把封面做好了」; subtitle c; seo.md ok as is; related links a (keep made-up name 「把时间账迁出来」, linked), b (L19), c (L17); d 《拓宽图片的两侧》 dropped for this post; pangu ok; no reference links to format.
+- 2026-11-05 Stage 2 → 3: subtitle picked, related links picked/dropped, edits applied to draft.md and committed, seo.md exists; not a newsletter so no footer.
+- 2026-11-05 Stage 3 → 4: alt text written for both beaver images, cover and linked images already JPEG (raw cover PNGs archived in assets/image-raw), beehiiv.html regenerated; gate passed (no PNG linked, largest 372 KB).
+- 2026-11-05 Related links reworded per user: embed the link on an existing phrase (Mac mini, 转换风格) instead of adding a 「我在《…》里写过」 clause.
+- 2026-11-06 Cold read 5 (after user's full-text edit): 1 ComfyUI undefined → 「生图软件 ComfyUI」; 2 title promised speed during chopping → title now 「炒菜的功夫，AI 把封面做好了」; 3 subagent → 助手, 风格相近 → 和以前的封面风格相近. Typos (锯/嫩/拿它) already fixed in b6c6ebe.
+- 2026-11-06 Cold read 6: no blocking point (到时候 jump, how Jenny picks, spinach metaphor, why a beaver — all taste; the ending metaphor was the author's own pick in round 3).
+- 2026-11-06 Stage 1 → 2 → 3 → 4: no blocking point after cold read 6; stage 2 edits committed (2803cf0), seo.md unchanged and valid; beehiiv.html regenerated from final text; gate passed (no PNG linked, largest 372 KB).

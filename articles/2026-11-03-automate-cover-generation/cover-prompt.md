@@ -1,0 +1,83 @@
+# Cover prompt — The octopus works, the diver judges
+
+Scene: a giant Pacific octopus in the foreground, spread over cobbles and kelp, its arms busy turning over shells and pulling a crab out from under a rock. One arm-length behind it, a diver hovers with hands at their sides, watching through the mask and not reaching in. The octopus does the checking between stages; the diver stays the final judge. It stands for the claim: hand the checkpoints to the agent, keep the last call.
+
+Visual reference: `sumomo/youtube/secrets-of-the-octopus/cover-trial/picks/2250-diver-face-to-face-giant-octopus.jpg` (deep red papillae-covered octopus filling one side, a diver in a black drysuit and mask close behind, teal water). Alternatives: `picks/2125-giant-octopus-in-kelp-diver-behind.jpg` and `picks/2820-giant-octopus-green-meadow-diver-behind.jpg` (octopus in front, diver soft in the background). Not 0120-diver-hand-holds-giant-octopus: the diver's hand on the octopus says the opposite of hands-off. No octopus pick has been a cover reference before.
+
+Fact check: giant Pacific octopuses live in cold water from Alaska to California and Japan, usually over rocky bottoms around 12–25 m. They are usually reddish-brown and raise their skin into small peaks (papillae) to match the bottom. They hunt crabs (Dungeness is a favourite), clams and fish, and their dens are marked by a litter of broken crab and clam shells. Divers in British Columbia meet them often; in cold water divers wear drysuits and hoods, so a black drysuit, hood and mask is right.
+
+Mood (my call from the claim, change it if you feel otherwise): calm, grounded trust, not tension. So eye level, the octopus on the left third, the diver soft on the right.
+
+## Version A — eye level, octopus left, diver behind right (recommended)
+
+```
+An eye-level underwater documentary photograph taken just above a cold-water rocky seabed of a large giant Pacific octopus occupying the left third of the frame. Its deep red-brown skin is raised into small papillae, and its long arms spread over grey cobbles and brown kelp, one arm curled around a Dungeness crab it is drawing out from under a rock, a few opened clam shells scattered nearby. On the right third, about two metres behind, an adult scuba diver in a black drysuit, hood and mask hovers still with both hands at their sides, watching the octopus, slightly out of focus. Soft blue-green ambient light filtering down from the surface, a gentle fill on the octopus's skin, suspended particles in the teal water. Natural color grading, fine film grain. Wide-angle underwater lens, f/8, sharp focus on the octopus's eye and arms, diver softened by depth. Exactly one octopus and one diver, the diver's hands not touching the animal, open teal water above, no text, no watermark.
+```
+
+## Version B — close on the octopus, diver as a shape
+
+```
+A low, close underwater documentary photograph of a giant Pacific octopus on a kelp-covered cobble reef, its head and one large eye on the left third of the frame, deep red skin textured with raised papillae and pale suckers showing on an arm that turns over an empty clam shell. Behind it, on the right, an adult diver in a black drysuit and mask floats upright, hands loose at their sides, rendered as a soft dark silhouette against teal water. Diffuse blue-green daylight from above, cool shadows under the kelp, suspended particles. Natural color grading, subtle film grain. Wide-angle lens close to the subject, f/5.6, focus on the octopus's eye and suckers, background diver out of focus. One octopus, one diver who is not touching it, uncluttered water background, no text, no watermark.
+```
+
+## Version C — wider, both in the reef
+
+```
+A wide eye-level underwater documentary photograph of a cold-water rocky reef with low brown kelp and green algae across the lower third of the frame. On the left third a giant Pacific octopus, red-brown with raised papillae, spreads its arms over the rocks, working a crab out of a crevice beside a small pile of broken shells. On the right third, a few metres back, an adult scuba diver in a black drysuit and mask hovers level and still, hands at their sides, looking at the octopus. Open teal water fills the upper half, soft light rays from the surface, suspended particles. Natural color grading, light film grain. Wide-angle underwater lens, f/8, octopus in sharp focus, diver slightly soft. Exactly one octopus and one diver, no contact between them, no text, no watermark.
+```
+
+
+## Rendered with _jenny (2026-11-03)
+
+Version A, three steps on local ComfyUI. Output: `cover.jpeg` (1440×720; raw PNG in `assets/image-raw/`, not committed). Visual reference was `picks/2250-diver-face-to-face-giant-octopus.jpg`. Step 1 took two rounds: in round 1 the octopus faced the camera and the crab was not under its arm, so round 2 rewrote the octopus clause (three-quarter view, papillae, cobbles and kelp). Steps 2 and 3 came from their first round.
+
+Step 1: Z-Image Turbo txt2img, short prompt (round 2):
+
+```
+An eye-level underwater photograph over a cold-water reef of grey cobbles and brown kelp. On the left, one large giant Pacific octopus seen in side three-quarter view, head and body angled to the right, its deep red-brown skin rough with raised papillae, long arms pulling a crab out from under a rock. On the right, two metres behind, one diver in a black drysuit, hood and mask hovers still, hands at their sides, slightly soft. Teal water above. Exactly one octopus and one diver, no text, no watermark.
+```
+
+Step 2: Flux 2 Klein 4B + pixaoutpaint, outpaint to 1440×720 (default outpaint prompt), `--place left --subject-x 0.4` (octopus on the left third).
+
+Step 3: Flux 2 Klein 4B two-image style transfer against `.claude/agents/_jenny.assets/cover-style.jpg`, full style prompt:
+
+```
+A wide 2:1 eye-level ink drawing of a cold-water underwater reef. On the left third, one giant Pacific octopus perched on a rock covered in kelp, its body massed in solid black ink and its long curling arms drawing a crab out from under the rock. Just right of centre, two metres behind, one scuba diver in a black drysuit, hood and mask hovers still with both hands at their sides, drawn lighter and looser. Open water above as bright white paper, cobbles scattered across the sand floor, a rocky reef fading on the far right. Heavy solid black brush shadows under the rock and the octopus. Exactly one octopus and one diver, the diver not touching the octopus, no text, no watermark.
+
+Line work: loose, confident black ink/brush linework with visible overshoot strokes at joints and edges (classic concept-art "energy line" gesture drawing)
+
+Shading: flat mid-gray fills for the base tone plus a single darker gray for core shadows — a 3-value system (white/light gray paper, mid-gray flat, black ink accents), no gradients or rendered soft shading
+
+Rendering approach: shapes blocked in with a marker/brush rather than fully rendered — reads as a fast, expressive design sketch rather than a finished illustration
+
+Palette: strictly achromatic (black/gray/white), grayscale digital marker brushes or Copic-marker-on-paper study
+```
+
+Picked seeds: step 1 `659163386345374`, step 2 `273195661575240`, step 3 `436495024069199`.
+
+## CMYK colour versions and English covers (2026-11-03/04)
+
+Four covers, all 1440×720 JPEG. The raw PNGs sit in `assets/image-raw/` and are not committed.
+
+| File | What it is | Source |
+|---|---|---|
+| `cover.jpeg` | Chinese, gray ink | step 3 seed `436495024069199` (above) |
+| `cover-color.jpeg` | Chinese, CMYK old comic, red-brown octopus | colorize of `cover`, seed `39890841906636` |
+| `cover-en.jpeg` | English, gray ink | step 3 seed `142127591193593` (the runner-up from the same step 3 batch: crisper diver, no shadow blot under him) |
+| `cover-en-color.jpeg` | English, CMYK old comic, magenta octopus | colorize of `cover-en`, seed `597709266737283` |
+
+Colorize: `comfy_cover.py colorize`, Flux 2 Klein 4B single-image edit, default fade `--saturation 0.55 --paper 0.18`, 3 variations each.
+
+Palette for `cover-color`:
+
+```
+deep red-brown giant Pacific octopus, black drysuit diver, olive brown kelp, tan sand and grey cobbles, teal cyan water
+```
+
+Palette for `cover-en-color`:
+
+```
+strong magenta crimson-pink octopus with a yellow eye, black drysuit diver, olive brown kelp, tan yellow sand floor and grey cobbles, pale teal cyan water above, sand-coloured sea floor
+```
+
+Rejected: for `cover-color`, seed `620046781744287` (magenta octopus, comic border) and `284508125982285` (teal river across the sand). For `cover-en-color`, seed `267898844543334` (olive-yellow rock wall, one magenta crab leg) and `1000309849457717` (magenta crab, yellowish hands).
