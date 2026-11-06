@@ -9,3 +9,4 @@
 - 2026-11-05 Stage 2 → 3: subtitle picked, related links picked/dropped, edits applied to draft.md and committed, seo.md exists; not a newsletter so no footer.
 - 2026-11-05 Stage 3 → 4: alt text written for both beaver images, cover and linked images already JPEG (raw cover PNGs archived in assets/image-raw), beehiiv.html regenerated; gate passed (no PNG linked, largest 372 KB).
 - 2026-11-05 Related links reworded per user: embed the link on an existing phrase (Mac mini, 转换风格) instead of adding a 「我在《…》里写过」 clause.
+- 2026-11-06 Cold read 5 (after user's full-text edit): 1 ComfyUI undefined → 「生图软件 ComfyUI」; 2 title promised speed during chopping → title now 「炒菜的功夫，AI 把封面做好了」; 3 subagent → 助手, 风格相近 → 和以前的封面风格相近. Typos (锯/嫩/拿它) already fixed in b6c6ebe.
