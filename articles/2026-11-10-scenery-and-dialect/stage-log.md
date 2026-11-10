@@ -9,3 +9,5 @@
 - 2026-11-10 · Taste a applied: L19 route repeat cut, station names lead straight into 全靠耳朵听.
 - 2026-11-10 · Stage 2 → 3: subtitle picked, related links picked (a, b) and dropped (c, d), all approved edits in draft.md and committed, seo.md exists; not a newsletter, no footer. draft.md links no images, no placeholders; cover.png exists.
 - 2026-11-10 · Stage 3 → 4: draft.md links no images; cover.png and cover-color.png converted to JPEG (392 KB, 380 KB), raws archived to assets/image-raw/, beehiiv.html generated. Gate passes: no linked PNG, nothing over 500 KB.
+- 2026-11-10 · Stage 4 → 2 (title reopened): title 写景抒情 → 「抄着抄着，就忘了吵架」, subtitle → 「安倍夜郎怎么只用耳朵写回家」. seo.md has no meta title and its description already opens on the fight, so unchanged; beehiiv.html omits the title, so unchanged.
+- 2026-11-10 · Stage 2 → 4: title and subtitle committed; no image or body change, stage 3 outputs and gate still hold.
