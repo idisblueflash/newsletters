@@ -15,4 +15,3 @@
 - 2026-11-10 · Stage 3 → 4: no images or cover to convert; beehiiv.html generated (H1 stripped, subtitle kept bold, 3 links, quote as blockquote, footer). Gate: no linked images, passes.
 - 2026-11-10 · Author hand-edited wording (opening trimmed, ending tightened, small phrasing); beehiiv.html regenerated. Gate still passes (no images).
 - 2026-11-10 · Linked the Dan Koe WeChat article title (author request); beehiiv.html regenerated.
-- 2026-11-10 · Stage 4: PR #114 merged on author's confirmation; branch deleted; back on main.
