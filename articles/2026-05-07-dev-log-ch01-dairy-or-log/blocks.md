@@ -1,6 +1,6 @@
 # Beehiiv Code Blocks
 
-_来源：articles/dev-log-ch01-dairy-or-log/draft.md_
+_来源：articles/2026-05-07-dev-log-ch01-dairy-or-log/draft.md_
 
 在 Beehiiv 编辑器中输入 `/html` 插入 HTML Block，粘贴对应块的 HTML 内容。
 

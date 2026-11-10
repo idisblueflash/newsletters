@@ -30,7 +30,7 @@ Per the S.O.P in `agents.md`, daily article topics come from the [GitHub project
 
 This is a placeholder name, not the final article title — it can be changed later. Format is fixed as `<YYYY-MM-DD>-<slug>` (the date prefix keeps things sorted chronologically and easy to find):
 
-- Prefer extracting 2-4 English words from the draft's first line / title as the slug, in kebab-case (match the naming style of existing directories under `articles/`, e.g. `picture-the-word`, `dog-and-breakfast`).
+- Prefer extracting 2-4 English words from the draft's first line / title as the slug, in kebab-case (match the naming style of existing directories under `articles/`, e.g. the `picture-the-word` in `2026-09-15-picture-the-word`).
 - If the draft has no clear title to extract from, use `new-post` as the slug.
 - Use today's date (`YYYY-MM-DD`).
 - Run `ls articles/` to confirm there's no existing directory with the same name; if there's a collision, append `-2`, `-3`, etc. to the slug.

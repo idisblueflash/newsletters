@@ -32,7 +32,7 @@ Below, `<dir>` refers to this directory.
   ```
   python3 .claude/skills/web-image-optimize/scripts/optimize.py <file> --suffix ""
   ```
-- The script outputs `.jpg`; rename it to `.jpeg` to match the repo's existing naming convention (see `articles/z-image-vs-flux`):
+- The script outputs `.jpg`; rename it to `.jpeg` to match the repo's existing naming convention (see `articles/2026-09-20-z-image-vs-flux`):
   ```
   mv <stem>.jpg <stem>.jpeg
   ```
