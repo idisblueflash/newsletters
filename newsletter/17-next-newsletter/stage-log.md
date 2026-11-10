@@ -13,3 +13,4 @@
 - 2026-11-10 · Stage 1 → 2: no blocking cold-read point left open; newsletter, so no cover or figure tasks.
 - 2026-11-10 · Stage 2 → 3: subtitle (b) picked with its title; #16 footer appended; related links a/b/c embedded (karpathy-wiki on LLM Wiki Skill, comic-mnemonic-card on 造个句, cover-pipeline post on 切菜炒菜); d dropped. Pangu: no changes. No reference links. SEO skipped (newsletter). No images, no cover.
 - 2026-11-10 · Stage 3 → 4: no images or cover to convert; beehiiv.html generated (H1 stripped, subtitle kept bold, 3 links, quote as blockquote, footer). Gate: no linked images, passes.
+- 2026-11-10 · Author hand-edited wording (opening trimmed, ending tightened, small phrasing); beehiiv.html regenerated. Gate still passes (no images).
