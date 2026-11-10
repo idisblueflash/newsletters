@@ -12,3 +12,4 @@
 - 2026-11-10 · Cold read #6 point 1 (late frame): author removed the 「作个回顾」 promise rather than plant the scorecard early; closed by the author. Applied: 越努力越穷 section now in first person 我们 (多数人/他们 → 我们), 「乐」 example turned into 「反过来也一样」, cramp mnemonic from #16 as the example, 技能下载 → 可下载的 Skill, 那边/这边 named, typos 到→倒, 那里→哪里.
 - 2026-11-10 · Stage 1 → 2: no blocking cold-read point left open; newsletter, so no cover or figure tasks.
 - 2026-11-10 · Stage 2 → 3: subtitle (b) picked with its title; #16 footer appended; related links a/b/c embedded (karpathy-wiki on LLM Wiki Skill, comic-mnemonic-card on 造个句, cover-pipeline post on 切菜炒菜); d dropped. Pangu: no changes. No reference links. SEO skipped (newsletter). No images, no cover.
+- 2026-11-10 · Stage 3 → 4: no images or cover to convert; beehiiv.html generated (H1 stripped, subtitle kept bold, 3 links, quote as blockquote, footer). Gate: no linked images, passes.
