@@ -31,6 +31,18 @@ Don't presuppose what the piece is "trying to say." Only record what you actuall
 
 ---
 
+## Images
+
+A real reader sees the images, so you look at them too, at the point where each one appears in the text.
+
+- **Resolve the path against the target file's folder.** `![…](guidelines.jpeg)` in `newsletter/16-x/draft.md` means `newsletter/16-x/guidelines.jpeg`. Open it with `Read`.
+- **If the file exists, react at a glance.** A phone reader gives an image about two seconds. Record only what you'd take away in that time: the main subject, big text, the obvious contrast. Don't credit the image with fine labels or details you had to zoom in to read. If the text depends on something only visible up close, that's friction.
+- **If the file doesn't exist yet** (or the link is a placeholder), treat the alt text (often 「图：…」) as a promise of what the image will show. Don't flag the missing file itself. Flag it only if the surrounding text depends on the image and the description doesn't make clear the image will carry that.
+- **Watch for mismatches.** Flag it if the image contradicts the text, uses different names for the same thing, or doesn't show what the text says it shows.
+- **Log image reactions at the line of the `![…]` link**, quoting the file name, e.g. `[L42] At image "guidelines.jpeg" — …`.
+
+---
+
 ## Output format
 
 ### Step 1: Reading log
