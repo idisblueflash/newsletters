@@ -38,6 +38,47 @@ with something concrete, the note is an assertion — wait until you have the ex
 
 ## Rules
 
+- **No `从…出发`.** It's report language (从实际出发、从用户出发) and it hides both the actor and
+  the verb. Say what you did: `从喜好出发，设计变简单了` → `我喜欢什么就做什么，设计就简单了`.
+- **Say the verb, not the noun.** Two wrappers to watch. `对…有着…的喜欢` turns a feeling into a
+  noun and its object into `东西`: `对古文有关的东西有着说不清的喜欢` is just `喜欢跟古文有关
+  的东西，说不清为什么`. And `X 是件…的事` turns an action into an object — `件` counts objects,
+  not activities, and `是…的` labels the thing instead of doing it: `从一堆方案里选是件头疼的事`
+  is `想想就头疼`. If a sentence ends in `的 + 名词`, or a `件` / `种` stands between you and the
+  verb, check what verb is hiding inside.
+- **States can go subjectless.** `现在忽然容易了。` is correct Chinese — `容易` is a stative
+  predicate and the topic carries over from the clause before (`之前…现在…`). Don't flag a missing
+  subject unless the sentence is an *action* whose actor is hidden; that's a different fault, and
+  it's what `从…出发` does.
+- **Pass the spoken test.** If a line reads like a summary of the post, it's written, not spoken.
+  Four markers — any one is enough to flag it:
+  1. **对仗.** Two clauses of near-equal length, split by a comma, then stopped —
+     `照喜好设计，我两天改到满意` is 5 + 7. Speech links clauses (然后、就、结果), it doesn't
+     balance them.
+  2. **Zero function words.** No `就` / `了` / `才` / `也` / `吧`. Compare the author's own spoken
+     line: `我喜欢什么就做什么，设计就简单了。`
+  3. **Subject drift.** The first clause has no subject, the second one says `我`. Speech keeps one
+     topic and keeps naming it.
+  4. **Two compressions in one sentence.** `照 + 宾语 + 动词` (coverb fronting, with `自己的` / `着`
+     dropped) and `动词 + 补语` (`改到满意` standing in for `改得我满意`).
+
+  The fix is a direction, never wording: keep the subject, keep a particle, let it end on the
+  concrete word instead of on the comma-balance.
+- **Use the spoken localizer: `在…里`, not `在…中`; `平时`, not `平日`.** Written Chinese leans on
+  中 / 于 / 基于 where speech says 里 / 在. Same fault as `从…出发`, one word at a time: a written
+  phrase standing where the word anyone would say goes. Every clause can be well built and the
+  line can still sound like a report — `在一段文字里圈出名词` is what a person says,
+  `在一段文字中圈出名词` is what a manual says.
+- **A paragraph is one beat, and it ends on its point.** The note is read on a phone; four
+  sentences in a block get skimmed. Break at the seam — feeling becomes fact, claim becomes
+  evidence — and read the *last* sentence of each paragraph, because that is the one the break
+  gives emphasis to. `我用 AI 设计了这个 app。` closing a paragraph about 竖排 hands a method fact
+  the weight of the paragraph's point.
+- **A contrast opener needs its antecedent in the paragraph above.** `但真相是` / `不过` / `其实`
+  promise a correction and name nothing. If the paragraph directly above is on a different thread,
+  the reader has to work out what was being corrected — and they won't. `但真相是` following
+  `我用 AI 设计了这个 app` corrects a fact about tooling; following the 竖排 reasoning, it corrects
+  a 做法.
 - **Experience, not instruction.** The claim is something you lived, not a law. Write what
   happened to you and what you now do; don't tell the reader what they should do. No "you
   should", no "the rule is", no lesson handed down from above. The reader takes the lesson
@@ -101,6 +142,9 @@ xiaohongshu/
 - `/short-post` — guided session: 判断 → 反面 → 证据 → 第一行 → your body.
 - `/short-review` — weekly ranking, pick the next long article.
 - `claim-guide` — run the four questions directly on any note.
+- `xiaohongshu-title` — three title candidates from the **cover plus the body**, each naming its
+  bet (search / saves / comments) and what it lacks. The cover carries the picture; the title
+  carries the category.
 
 If a note is promoted, the article's `draft.md` gets `source_note: xiaohongshu/<folder>` in its
 frontmatter and `stage-log.md` records the promotion.
