@@ -44,7 +44,10 @@ article: ""              # 晋升后填 articles/<folder>
 ## 封面（可选）
 
 - 文件：
-- 画面：
+  - `cover-1-overall.jpg` — 最终版（上）vs 第一版（下）
+  - `cover-2-font.jpg` — 旧字体（左）vs 新字体（右）
+  - `cover-3-seals.jpg` — 旧按钮（上）vs 新印章（下）
+- 画面：三张前后对比图，同一组 app 截图裁切；红色实心标签是改后，红色描边标签是改前。
 
 ## 发布记录
 
