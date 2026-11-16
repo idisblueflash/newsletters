@@ -39,7 +39,7 @@ article: ""              # 晋升后填 articles/<folder>
 
 ## 标签（3–6 个，放在正文末尾）
 
-#
+#断舍离 #UI设计 #字体 #印章 #ai #buildinpublic
 
 ## 封面（可选）
 
