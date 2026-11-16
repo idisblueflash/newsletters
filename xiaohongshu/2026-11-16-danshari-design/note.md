@@ -1,0 +1,57 @@
+---
+date: 2026-11-16
+status: drafted          # drafted | published | promoted | dropped
+platform: xiaohongshu
+source_idea: "设计这个app我用上了「断舍离」"
+source_note: ""
+article: ""              # 晋升后填 articles/<folder>
+---
+
+# 设计这个app我用上了「断舍离」
+
+## 这一条只验证一个判断
+
+- **Claim（一句话）**：I found use the clutter clean method can also apply to app design.
+- **反面**：someone trust AI's suggestions, then falls in the mud of small UI designs. and the more suggestions from AI they took in, the more hard to make decision, thus the app becomes more messy. until they want to start from scratch again.
+- **证据**：比如app头一版的AI设计的正文字体是手写体。但用在这里不合适。改成有质感的仿宋字才更有旧书的调子。再比如右上角的「擦去」和「核对」按钮。它们看着不舒服，在旧书、竖排的主题里，电脑风格的按钮很出戏。换成印章风格，放到右下角就舒服了。
+
+> 三个空里有一个填不出来，就还不是一条 note——放回 `inbox.md`。
+
+## 标题候选（每个 ≤ 20 字）
+
+1.
+2.
+3.
+
+## 正文（≤ 1000 字，纯文本，不要 Markdown 语法）
+
+设计这个app我用上了「断舍离」
+
+上次说到我靠「自己开心」的原则设计了「圈名词」的app。今天分享我处理细节的技巧——断舍离。
+
+这是山下英子的一本书，讲如何收拾家里破烂儿的书。用书里的原话解释断舍离就是：「找到不需要，不合适，不舒服」。
+
+比如app头一版的AI设计的正文字体是手写体。但用在这里不合适。改成有质感的仿宋字才更有旧书的调子。
+
+再比如右上角的「擦去」和「核对」按钮。它们看着不舒服，在旧书、竖排的主题里，电脑风格的按钮很出戏。换成印章风格，放到右下角就舒服了。
+
+我用了二天把app改舒服了。你还能看出有哪些改进吗？
+
+## 标签（3–6 个，放在正文末尾）
+
+#
+
+## 封面（可选）
+
+- 文件：
+- 画面：
+
+## 发布记录
+
+- 发布时间：
+- 链接：
+
+## 评论里的反馈
+
+- 被引用/被追问的那一句：
+- 常见问题：
