@@ -89,7 +89,9 @@ Read the style reference and every output. Pick the one **most similar to the re
 
 ## Step 5 — patch one region of an approved cover
 
-Use this when the caller likes the cover but names one region that is wrong (leaves with no branch, a broken hand, a gap). Do **not** rerun steps 2–3 for one corner: `style` re-decides the whole frame, so everything else drifts. `patch` renders only the named box and pastes it back, so the rest of the plate cannot change.
+Use this when the caller likes the cover but names one region that is wrong in the *ink pass* — a broken hand, a gap, a shape drawn in the wrong value. Do **not** rerun steps 2–3 for one corner: `style` re-decides the whole frame, so everything else drifts. `patch` renders only the named box and pastes it back, so the rest of the plate cannot change.
+
+**It cannot supply structure the photograph never had.** The crop is rendered through the same graph, so the model sees the same evidence the ink pass saw: if the near leaves in the source have no branch, the patch has nothing to draw one from, and the redraw will paste a plausible-looking rectangle of foliage where the defect was. When the caller's complaint is "this thing in the frame makes no sense" rather than "this thing is drawn badly", check the step-2 photograph at 1:1 first. If the structure is missing there, the fix is a new step 1 — make the missing thing the subject of the prompt — not a patch. One patch round is worth one try; two failed rounds on the same box means the base is wrong.
 
 How it works: the box is cropped at `--scale` (2× by default) and rendered through the same style graph, so the crop's real pixels carry the composition; the result is downscaled, matched to the plate's tone and background gradient, and composited through a wide feathered mask.
 
