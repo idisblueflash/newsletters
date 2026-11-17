@@ -20,10 +20,11 @@ skill.
 - If empty, ask one question: 「今天想从哪件事、哪个画面开始？」
 - Do not propose topics or claims.
 
-## 2. The four questions, one at a time
+## 2. The four questions, all in one message
 
-Ask exactly one per turn and wait. After each answer, quote it back verbatim and ask whether it
-is the author's own wording. Never answer a question yourself; never offer a "better" version.
+Put all four in a single message, numbered, and let the author answer them together — as many as
+they can. Quote each answer back verbatim, then follow up **only on the ones left blank**, one at
+a time. Never answer a question yourself; never offer a "better" version.
 
 1. 「这条 note 只验证一个判断。你想让读者接受的那一句话是什么？」
 2. 「谁会不同意？什么观察会让这个判断不成立？」

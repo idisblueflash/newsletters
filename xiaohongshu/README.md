@@ -13,7 +13,8 @@ words, and counts characters. It does not draft the claim, the title, or the bod
 2. **State the claim** — `/short-post` starts a guided session. You say the one judgment the
    note will test, in your own words. The assistant asks; it doesn't propose one.
 3. **Build the support** — you answer who would disagree, what specific evidence supports it,
-   and what the first line is. The assistant asks one question at a time and transcribes.
+   and what the first line is. The assistant lists all four questions in one message and
+   transcribes your answers; it only comes back for the ones you left blank.
 4. **Write the note** — you write the body. The assistant can count characters and point at a
    sentence that doesn't support the claim; it cannot rewrite that sentence.
 5. **Publish** — copy the title, body and tags into 小红书 by hand. Then fill in the URL in
