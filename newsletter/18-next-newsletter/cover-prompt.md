@@ -165,3 +165,18 @@ Step 2: `--place right --subject-x 0.83`, n=3. The far-left ~360 px of the wide 
 Step 3: same prompt as round 4 — the test only works if the ink pass is held constant.
 
 Picked seeds: step 1 `242069681560459`, step 2 `974791914190321`, step 3 `996584995123920` (candidate 1 of 4; p99 chroma 8). Delivered as `cover.png`; round 4 kept as `cover.prev.png`, round 3 as `cover.round3.png`. Candidates: `/tmp/jenny-panda-18/round5-step1r2/`, `/tmp/jenny-panda-18/round5-step2/`, `/tmp/jenny-panda-18/round5-step3/`.
+
+## Coloured with _jenny (2026-11-17, colorize)
+
+The author asked for a colour cover after the round-5 gray one was approved. `colorize` runs on that gray cover, so every ink line stays and only the fills change — 1950s four-colour comic print, Ben-Day halftone, slightly off-register, faded toward newsprint (`--saturation 0.55 --paper 0.18`, the approved defaults).
+
+```bash
+python3 .claude/agents/_jenny.assets/comfy_cover.py colorize \
+  --image newsletter/18-next-newsletter/cover.jpeg \
+  --palette "pale jade-green bamboo culms, deep forest green leaf masses, black and cream-white panda, pale misty blue-gray distance, ochre-brown forest floor litter" \
+  --n 3 --out /tmp/jenny-color-18
+```
+
+Picked seed `3511485090349`: the cleanest white on the panda, crisp halftone, jade culms against a blue-gray distance. Candidate 1 (`417437485618514`) is warmer and creamier with a stray magenta patch in the bottom-left corner; candidate 2 (`553755957021742`) puts a lavender cast across the panda's back.
+
+Delivered as `cover.jpeg` (404 KB). The gray round-5 render is kept at `assets/image-raw/cover.png`, and the colour raw at `assets/image-raw/cover-color.png`. Candidates: `/tmp/jenny-color-18/`.
