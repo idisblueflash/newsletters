@@ -33,3 +33,4 @@
 - 2026-11-17 · Stage 3 → 4: 三张截图转了 JPEG（290 KB / 204 KB / 43 KB），封面 cover.jpeg 253 KB，原 PNG 连同 cover.prev / cover.round3 八张已归档到 `assets/image-raw/`，draft.md 三处链接改成 .jpeg，alt text 逐张对着图重写（头一版的窗标题、四步导航、批注与点评位置；定版的篇名、页码、箭头、褪色印章）。`beehiiv.html` 已生成并打开。图片门：draft 链接的三张和封面全是 JPEG、没有一张超过 500 KB，顶层无 PNG，通过。
 - 2026-11-17 · 封面改彩（stage 4 已进、push 已完成，merge 待作者）：作者要彩色封面。跑 `colorize`（CMYK 旧漫画上色，只换填色、线稿不动），palette 按竹青／叶绿／熊猫黑白／远山灰蓝／地面赭，3 张里取 seed 3511485090349（熊猫白最干净、网点最清），另两张一张偏暖且左下角带一块洋红、一张熊猫背上有紫调。`cover.jpeg` 换成上色版（404 KB，门放行），灰稿留在 `assets/image-raw/cover.png`，彩稿原图归档为 `assets/image-raw/cover-color.png`。beehiiv.html 不涉及封面，无需重跑。
 - 2026-11-17 · 封面退回灰稿（作者定）：上色版保留在 `assets/image-raw/cover-color.png`，`cover.jpeg` 从 `assets/image-raw/cover.png` 重新导出（253 KB）。beehiiv.html 不涉及封面，未重跑；merge 仍待作者确认。
+- 2026-11-17 · 彩稿保留（作者定）：`cover-color.jpeg`（404 KB）与灰稿并排放进文章目录，原图仍在 `assets/image-raw/cover-color.png`；灰稿继续当封面。merge 仍待作者确认。

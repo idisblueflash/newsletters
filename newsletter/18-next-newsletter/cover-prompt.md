@@ -179,4 +179,4 @@ python3 .claude/agents/_jenny.assets/comfy_cover.py colorize \
 
 Picked seed `3511485090349`: the cleanest white on the panda, crisp halftone, jade culms against a blue-gray distance. Candidate 1 (`417437485618514`) is warmer and creamier with a stray magenta patch in the bottom-left corner; candidate 2 (`553755957021742`) puts a lavender cast across the panda's back.
 
-Delivered as `cover.jpeg` (404 KB). The gray round-5 render is kept at `assets/image-raw/cover.png`, and the colour raw at `assets/image-raw/cover-color.png`. Candidates: `/tmp/jenny-color-18/`.
+The author tried it as the cover and went back to the gray one, so the colour version ships alongside rather than as the cover: `cover.jpeg` is the gray round-5 render, `cover-color.jpeg` (404 KB) is this colour pass. Raw files: `assets/image-raw/cover.png` (gray) and `assets/image-raw/cover-color.png` (colour). Candidates: `/tmp/jenny-color-18/`.
