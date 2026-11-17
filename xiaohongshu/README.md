@@ -17,11 +17,14 @@ words, and counts characters. It does not draft the claim, the title, or the bod
    transcribes your answers; it only comes back for the ones you left blank.
 4. **Write the note** — you write the body. The assistant can count characters and point at a
    sentence that doesn't support the claim; it cannot rewrite that sentence.
-5. **Publish** — copy the title, body and tags into 小红书 by hand. Then fill in the URL in
+5. **Pass the spoken test** — the assistant runs the `colloquial-review` skill and lists the
+   written-register hits numbered, each with a spoken alternative. You accept or drop them one by
+   one; it applies only what you approved, in one pass, then counts the body again.
+6. **Publish** — copy the title, body and tags into 小红书 by hand. Then fill in the URL in
    `note.md`, set `status: published`, and add a row to `ledger.md`.
-6. **Read the signal** — after 48h, and again after a week, copy 浏览 / 点赞 / 收藏 / 评论 into
+7. **Read the signal** — after 48h, and again after a week, copy 浏览 / 点赞 / 收藏 / 评论 into
    `ledger.md`. Record **which part** people responded to and what the top comments say.
-7. **Promote** — `/short-review` ranks the ledger, picks the strongest note, and turns the
+8. **Promote** — `/short-review` ranks the ledger, picks the strongest note, and turns the
    resonant part into a long article under `articles/` (the normal `WORKFLOW.md` stages then
    apply). The article keeps a `source_note:` line pointing back here.
 
@@ -143,6 +146,8 @@ xiaohongshu/
 - `/short-post` — guided session: 判断 → 反面 → 证据 → 第一行 → your body.
 - `/short-review` — weekly ranking, pick the next long article.
 - `claim-guide` — run the four questions directly on any note.
+- `colloquial-review` — the spoken test. Lists written-register phrases with spoken
+  alternatives, numbered, so you accept or drop them one at a time.
 - `xiaohongshu-title` — three title candidates from the **cover plus the body**, each naming its
   bet (search / saves / comments) and what it lacks. The cover carries the picture; the title
   carries the category.

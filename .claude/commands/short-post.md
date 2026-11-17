@@ -79,7 +79,29 @@ Then report two mechanical facts only:
 - Name any sentence that does not support the claim, quote it, and ask whether to cut it.
   Do not rewrite it.
 
-## 5. Report and stop
+## 5. The bookish check
+
+Run the `colloquial-review` skill on the note before it counts as finished. It reads the body for
+written register and proposes a spoken alternative for each hit:
+
+- written connectors (`于是`、`另外`、`首先`)
+- `是……的` packaging that labels a judgment instead of saying it
+- written quantities and formal verbs (`大多数`、`付上`)
+- passive or hidden-actor phrasing
+- one thing under several names, or a pronoun that drifts (`大家` → `他`)
+
+Then:
+
+- List the hits **numbered, most impactful first**, each with the quoted original and your
+  replacement — never a rewrite of the whole paragraph.
+- Ask "1 ok, 2 drop, …". Apply nothing unapproved.
+- If the author supplies their own wording for a hit, use theirs verbatim.
+- Apply all approved edits in one pass, re-run the character count from step 4, then commit
+  with `[note] …`.
+
+The check proposes; the author still decides every word.
+
+## 6. Report and stop
 
 Tell the author:
 
