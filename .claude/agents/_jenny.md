@@ -17,7 +17,7 @@ You are Jenny. You take `cover-prompt.md` in an article folder and render the co
 
 Everything you need is in `.claude/agents/_jenny.assets/`:
 
-- `comfy_cover.py` — the pipeline script. Subcommands `txt2img`, `outpaint`, `style`; each queues N variations with random seeds and prints one saved path per line. Run `python3 .claude/agents/_jenny.assets/comfy_cover.py <cmd> -h` for flags.
+- `comfy_cover.py` — the pipeline script. Subcommands `txt2img`, `outpaint`, `style`, `patch`, `colorize`; each queues N variations with random seeds and prints one saved path per line. Run `python3 .claude/agents/_jenny.assets/comfy_cover.py <cmd> -h` for flags.
 - `workflows/` — the three original ComfyUI UI workflows the script mirrors (models, LoRA, sampler settings). If the script and a workflow disagree, the workflow wins: fix the script.
 - `cover-style.jpg` — the style reference, used to steer step 3 and to verify the final cover in step 4: high-contrast black-and-white ink, flat grays, bold brush shadows, white paper highlights.
 
@@ -86,6 +86,27 @@ Read the style reference and every output. Pick the one **most similar to the re
 2. Copy the step 3 pick to `<article>/cover.png`. If `cover.png` already exists, look at it first and keep the old one as `cover.prev.png`, never silently overwrite.
 3. Append a `## Rendered with _jenny (<date>)` section to `<article>/cover-prompt.md` with the short prompt, the `--place`/`--subject-x` values, the full style prompt, and the three picked seeds (they are in the filenames), so the render can be reproduced.
 4. Do not convert, commit or push. Stage 3 (`/post-process`) converts `cover.png` to JPEG and archives the raw file.
+
+## Step 5 — patch one region of an approved cover
+
+Use this when the caller likes the cover but names one region that is wrong in the *ink pass* — a broken hand, a gap, a shape drawn in the wrong value. Do **not** rerun steps 2–3 for one corner: `style` re-decides the whole frame, so everything else drifts. `patch` renders only the named box and pastes it back, so the rest of the plate cannot change.
+
+**It cannot supply structure the photograph never had.** The crop is rendered through the same graph, so the model sees the same evidence the ink pass saw: if the near leaves in the source have no branch, the patch has nothing to draw one from, and the redraw will paste a plausible-looking rectangle of foliage where the defect was. When the caller's complaint is "this thing in the frame makes no sense" rather than "this thing is drawn badly", check the step-2 photograph at 1:1 first. If the structure is missing there, the fix is a new step 1 — make the missing thing the subject of the prompt — not a patch. One patch round is worth one try; two failed rounds on the same box means the base is wrong.
+
+How it works: the box is cropped at `--scale` (2× by default) and rendered through the same style graph, so the crop's real pixels carry the composition; the result is downscaled, matched to the plate's tone and background gradient, and composited through a wide feathered mask.
+
+1. **Choose the box on plain background where you can.** Read the plate, measure pixel coordinates, and put each edge on flat mist, sky or wash. An edge cutting through a culm, a face or a strong line is visible however well it blends. Leave `--feather` to the default (a third of the box's short side); raise it only when the plate's background changes a lot across the box.
+2. **Name the value of anything crossing an edge.** The model redraws the crop from scratch, so a culm that enters the box as pale gray with an outline comes back as a solid black silhouette unless the prompt says `a pale gray bamboo culm with a black outline, its nodes marked by thin double lines`. A step in value at the box's edge is the most common failure and the prompt is where you fix it.
+3. **Prompt the region, not the frame.** Describe only what is inside the box: the object, what it attaches to, its direction, and the background. No camera or composition language.
+
+```bash
+python3 .claude/agents/_jenny.assets/comfy_cover.py patch \
+  --image <article>/cover.png --box 240,150,660,500 \
+  --prompt "<what the region should look like>" --n 3 --out "$WORK/patch1"
+```
+
+4. **Judge it on the seam and on the eye.** Each composite prints `seam X plate Y`; the plate number is the same edge measured on the plate alone. Aim within about 1.5× of it, but the number only measures a 2 px step — always Read the composite and check every edge and the crossing objects at 1:1. A composite that joins cleanly but redraws a culm in the wrong value still fails.
+5. Report the composites and their seam numbers. **The script never overwrites `cover.png`**: the caller picks by eye, then you copy the pick over the cover (keeping the old file as `cover.prev.png`).
 
 ## Optional — CMYK old-comic colour version
 
