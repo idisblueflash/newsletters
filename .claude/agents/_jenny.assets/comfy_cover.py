@@ -9,6 +9,13 @@ their settings in hidden UI state, so padding and stitching happen here in Pillo
   outpaint  Flux 2 Klein 4B + pixaoutpaint LoRA, 1440x720  (step02-Flux 2 Klein 4B Outpaint.json)
   style     Flux 2 Klein 4B, content + style reference     (step03-... Two Images Style transfer.json)
   colorize  Flux 2 Klein 4B, CMYK old-comic colour edit    (step04-... CMYK comic colorize.json)
+  patch     style, on one crop of an approved cover, then pasted back
+
+`patch` exists because `style` re-decides the whole frame: asking it to fix one corner
+redraws everything else. Patch renders only the named box — upscaled so the model has
+pixels to work with — pulls the render onto the plate's tone and background gradient, and
+composites it back through a wide feathered mask. Steps 2 and 3 never rerun, so the rest
+of an approved cover cannot drift.
 
 Each subcommand queues N variations with random seeds and writes them to --out,
 printing one saved path per line.
@@ -25,6 +32,8 @@ import uuid
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
+
+import numpy as np
 
 SERVER = "http://localhost:8188"
 WIDE_W, WIDE_H = 1440, 720
@@ -93,7 +102,7 @@ def wait(prompt_id, timeout=1800):
     sys.exit(f"timed out waiting for {prompt_id}")
 
 
-def run_variations(build, n, out_dir, prefix):
+def run_variations(build, n, out_dir, prefix, quiet=False):
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     jobs = []
@@ -105,7 +114,8 @@ def run_variations(build, n, out_dir, prefix):
         path = out_dir / f"{prefix}-{i:02d}-seed{seed}.png"
         path.write_bytes(wait(pid))
         paths.append(path)
-        print(path, flush=True)
+        if not quiet:
+            print(path, flush=True)
     return paths
 
 
@@ -128,14 +138,14 @@ def zimage_graph(prompt):
     return build
 
 
-def klein_base(prompt, model_ref=("1", 0), clip_ref=("2", 0)):
+def klein_base(prompt, model_ref=("1", 0), clip_ref=("2", 0), width=WIDE_W, height=WIDE_H):
     return {
         "1": {"class_type": "UnetLoaderGGUF", "inputs": {"unet_name": "flux-2-klein-4b-Q4_K_M.gguf"}},
         "2": {"class_type": "CLIPLoaderGGUF", "inputs": {"clip_name": "Qwen3-4B-Q4_K_M.gguf", "type": "flux2"}},
         "3": {"class_type": "VAELoader", "inputs": {"vae_name": "flux2-vae.safetensors"}},
         "4": {"class_type": "CLIPTextEncode", "inputs": {"clip": list(clip_ref), "text": prompt}},
         "5": {"class_type": "ConditioningZeroOut", "inputs": {"conditioning": ["4", 0]}},
-        "6": {"class_type": "EmptyFlux2LatentImage", "inputs": {"width": WIDE_W, "height": WIDE_H, "batch_size": 1}},
+        "6": {"class_type": "EmptyFlux2LatentImage", "inputs": {"width": width, "height": height, "batch_size": 1}},
     }
 
 
@@ -202,11 +212,9 @@ def cmd_outpaint(a):
             stitch(path, original, x)
 
 
-def cmd_style(a):
-    content, style = upload(a.image), upload(a.style)
-
+def style_graph(prompt, content, style, width=WIDE_W, height=WIDE_H):
     def build(seed, prefix):
-        g = klein_base(a.prompt)
+        g = klein_base(prompt, width=width, height=height)
         g["10"] = {"class_type": "LoadImage", "inputs": {"image": content}}
         g["11"] = {"class_type": "ImageScaleToTotalPixels", "inputs": {
             "image": ["10", 0], "upscale_method": "nearest-exact", "megapixels": 1, "resolution_steps": 1}}
@@ -221,8 +229,117 @@ def cmd_style(a):
         g["32"] = {"class_type": "ReferenceLatent", "inputs": {"conditioning": ["5", 0], "latent": ["12", 0]}}
         g["33"] = {"class_type": "ReferenceLatent", "inputs": {"conditioning": ["32", 0], "latent": ["22", 0]}}
         return klein_sample(g, ("1", 0), ("31", 0), ("33", 0), seed, prefix)
+    return build
 
-    run_variations(build, a.n, a.out, "step3")
+
+def cmd_style(a):
+    content, style = upload(a.image), upload(a.style)
+    run_variations(style_graph(a.prompt, content, style), a.n, a.out, "step3")
+
+
+def parse_box(text, width, height):
+    try:
+        x0, y0, x1, y1 = (int(v) for v in text.replace(" ", "").split(","))
+    except ValueError:
+        sys.exit(f"--box wants x0,y0,x1,y1 in pixels, got {text!r}")
+    x0, x1 = sorted((max(0, min(width, x0)), max(0, min(width, x1))))
+    y0, y1 = sorted((max(0, min(height, y0)), max(0, min(height, y1))))
+    if x1 - x0 < 32 or y1 - y0 < 32:
+        sys.exit("--box is under 32x32 px; there is nothing worth rendering in it")
+    return x0, y0, x1, y1
+
+
+def round8(n):
+    """Flux works on an 8 px grid; anything else comes back a different size than asked."""
+    return max(8, int(round(n / 8)) * 8)
+
+
+def luma(arr):
+    return arr[..., 0] * 0.299 + arr[..., 1] * 0.587 + arr[..., 2] * 0.114
+
+
+def edge_delta(arr, box, band=2):
+    """Mean |Δluma| straight across the box edges: how visible the join is.
+
+    On the plate alone this is the local baseline; on a composite it is the seam. A
+    composite within ~1.5x the plate's own baseline joins without a visible step."""
+    x0, y0, x1, y1 = box
+    L = luma(arr.astype(np.float32))
+    d = []
+    if x1 + band <= L.shape[1]:
+        d.append(np.abs(L[y0:y1, x1:x1 + band] - L[y0:y1, x1 - band:x1]).mean())
+    if y1 + band <= L.shape[0]:
+        d.append(np.abs(L[y1:y1 + band, x0:x1] - L[y1 - band:y1, x0:x1]).mean())
+    return float(np.mean(d)) if d else float("nan")
+
+
+def match_tone(patch, plate_crop, band=12):
+    """Pull the patch onto the plate's tone using the border each side shares."""
+    p = np.asarray(patch, np.float32)
+    t = np.asarray(plate_crop, np.float32)
+    m = np.zeros(p.shape[:2], bool)
+    m[:band], m[-band:], m[:, :band], m[:, -band:] = True, True, True, True
+    pb, tb = p[m], t[m]
+    gain = float(np.clip(tb.std() / (pb.std() or 1.0), 0.6, 1.6))
+    out = (p - pb.mean(axis=0)) * gain + tb.mean(axis=0)
+    return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
+
+
+def blur_luma(arr, sigma):
+    im = Image.fromarray(np.clip(luma(arr), 0, 255).astype(np.uint8))
+    return np.asarray(im.filter(ImageFilter.GaussianBlur(sigma)), np.float32)
+
+
+def match_field(patch, plate_crop, sigma=None):
+    """Carry the plate's background gradient into the patch.
+
+    A single global shift cannot fix a sky that changes across the box: the patch keeps
+    its own flat gradient and the box edge shows as a soft rectangle even when the border
+    band matches. Blurring both luma images to the box's own scale and adding the
+    difference moves the patch's background onto the plate's, leaving the patch's own
+    brushwork where it falls."""
+    p = np.asarray(patch, np.float32)
+    t = np.asarray(plate_crop, np.float32)
+    if sigma is None:
+        sigma = max(6.0, min(p.shape[:2]) / 8)
+    return Image.fromarray(np.clip(p + (blur_luma(t, sigma) - blur_luma(p, sigma))[..., None], 0, 255).astype(np.uint8))
+
+
+def composite(plate, patch, box, feather):
+    """Paste the patch into the box, fading its edge over `feather` px."""
+    x0, y0, x1, y1 = box
+    mask = Image.new("L", plate.size, 0)
+    ImageDraw.Draw(mask).rectangle([x0, y0, x1 - 1, y1 - 1], fill=255)
+    if feather:
+        mask = mask.filter(ImageFilter.GaussianBlur(feather / 2))
+    out = plate.copy()
+    out.paste(patch, (x0, y0), mask.crop(box))
+    return out
+
+
+def cmd_patch(a):
+    plate = Image.open(a.image).convert("RGB")
+    box = parse_box(a.box, plate.width, plate.height)
+    crop = plate.crop(box)
+    size = (round8(crop.width * a.scale), round8(crop.height * a.scale))
+
+    out_dir = Path(a.out)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    big = out_dir / f"patch-input-{box[0]}-{box[1]}-{box[2]}-{box[3]}.png"
+    crop.resize(size, Image.LANCZOS).save(big)
+    content, style = upload(big), upload(a.style)
+    build = style_graph(a.prompt, content, style, *size)
+
+    base = edge_delta(np.asarray(plate), box)
+    feather = a.feather or round(min(crop.size) / 3)
+    for raw in run_variations(build, a.n, out_dir, "patch", quiet=True):
+        patch = Image.open(raw).convert("RGB").resize(crop.size, Image.LANCZOS)
+        patch = match_tone(patch, crop, a.band)
+        patch = match_field(patch, crop, a.field or None)
+        joined = composite(plate, patch, box, feather)
+        dst = raw.with_name(raw.stem.replace("patch-", "composite-") + ".png")
+        joined.save(dst)
+        print(f"{dst}  seam {edge_delta(np.asarray(joined), box):.2f}  plate {base:.2f}  feather {feather}", flush=True)
 
 
 def cmd_colorize(a):
@@ -271,6 +388,19 @@ def main():
     s.add_argument("--n", type=int, default=4)
     s.add_argument("--out", required=True)
     s.set_defaults(func=cmd_style)
+
+    s = sub.add_parser("patch")
+    s.add_argument("--image", required=True, help="the approved cover the patch goes back onto")
+    s.add_argument("--box", required=True, help="region to re-render, as x0,y0,x1,y1 in that image's pixels")
+    s.add_argument("--prompt", required=True, help="what the region should look like — scene, not whole-cover framing")
+    s.add_argument("--style", default=".claude/agents/_jenny.assets/cover-style.jpg", help="style reference (house ink by default)")
+    s.add_argument("--scale", type=float, default=2.0, help="how far the crop is upscaled before rendering (default 2x)")
+    s.add_argument("--feather", type=int, default=0, help="px the pasted patch fades over (default: a third of the box's short side)")
+    s.add_argument("--band", type=int, default=12, help="px of border used to match the patch's global tone (default 12)")
+    s.add_argument("--field", type=int, default=0, help="px of blur used to match the patch's background gradient (default: an eighth of the short side)")
+    s.add_argument("--n", type=int, default=3)
+    s.add_argument("--out", required=True)
+    s.set_defaults(func=cmd_patch)
 
     s = sub.add_parser("colorize")
     s.add_argument("--image", required=True, help="a finished 1440x720 gray cover")
